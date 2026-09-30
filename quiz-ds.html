@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MA216 Quiz Zone — Important + Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="themes.css">
+
+<script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="bg-blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grid-overlay"></div>
+
+<nav class="topbar">
+  <a class="brand" href="index.html"><span class="logo">Σ</span> BS-CYS · NOTES HUB</a>
+<div class="nav-right">
+  <a class="back-btn" href="index.html">← All Subjects</a>
+  <div class="theme-wrap">
+    <button class="theme-btn" id="themeBtn" title="Switch theme (press T)"><span class="palette">🎨</span><span class="label">Theme</span></button>
+    <div class="theme-menu" id="themeMenu">
+      <button class="theme-opt" data-theme="midnight"><span class="sw sw-midnight"></span><b>Midnight Cyber</b><i>glassy dark · aurora blobs</i></button>
+      <button class="theme-opt" data-theme="matrix"><span class="sw sw-matrix"></span><b>Matrix Terminal</b><i>digital rain · scanlines · mono</i></button>
+      <button class="theme-opt" data-theme="paper"><span class="sw sw-paper"></span><b>Paper Notes</b><i>ruled page · ink · sticky notes</i></button>
+      <button class="theme-opt" data-theme="synthwave"><span class="sw sw-synthwave"></span><b>Synthwave</b><i>chrome · retro sun · grid floor</i></button>
+      <button class="theme-opt" data-theme="aurora"><span class="sw sw-aurora"></span><b>Aurora Light</b><i>soft pastel glass</i></button>
+      <button class="theme-opt" data-theme="cyberpunk"><span class="sw sw-cyberpunk"></span><b>Cyberpunk Neon</b><i>glitch boxes · orbitron · neon</i></button>
+      <button class="theme-opt" data-theme="dracula"><span class="sw sw-dracula"></span><b>Dracula Gothic</b><i>serif italics · purple glow</i></button>
+      <button class="theme-opt" data-theme="coffee"><span class="sw sw-coffee"></span><b>Coffee Warmth</b><i>cozy sepia · serif · warm</i></button>
+    </div>
+  </div>
+</div>
+</nav>
+
+<header class="subject-hero">
+  <span class="code-lg">MA216 · QUIZ ZONE</span>
+  <h1><span>Discrete Structures — Important Questions &amp; Test Quiz</span></h1>
+  <p>Propositional logic (Lecture 1–2). <b>Tab 1:</b> high-probability questions with flip answers ·
+     <b>Tab 2:</b> scored 12-question MCQ test. Press <b>1</b> / <b>2</b> to switch.</p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="imp"><span class="dot"></span> ⭐ Important Questions</button>
+  <button class="tab-btn" data-tab="test"><span class="dot"></span> 📝 Test Quiz (12 MCQs)</button>
+</div>
+
+<!-- ======================= IMPORTANT ======================= -->
+<section class="tab-panel active" id="imp">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>How to Use This Page</h2>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div>1) Flip every card until you answer <b>before</b> seeing it. 2) Recite the short-answer
+      list — these map directly to exam formats (definitions, truth tables, translations). 3) Take the
+      <b>Test Quiz</b> and aim for <b>≥ 10 / 12 (80%)</b>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⭐ Core Definitions &amp; Connectives</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Definition of a proposition?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>A <b>declarative</b> sentence that is <b>either true or false, but not both</b>. Questions, commands and free-variable sentences are NOT propositions.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>p ∧ q — true when?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Only when both are true</b> — one false makes the conjunction false.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>p ∨ q — false when? XOR vs inclusive?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>∨ false only when both false</b> (inclusive: both-true is fine). <b>⊕ XOR:</b> true only when exactly one is true (both-true → false).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>p ↔ q — true when?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>When <b>p and q have the same truth value</b> (TT or FF) — "twins".</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>How many rows in a truth table for n propositions?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>2ⁿ</b> — so 2 propositions → 4 rows, 3 → 8 rows.</p></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⭐ The Conditional (highest-yield topic)</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>When is p → q false?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Only when p is true and q is false (T → F).</b> False hypothesis → automatically true.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Which form of p → q is equivalent?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>The <b>contrapositive ¬q → ¬p</b>. Converse (q→p) and inverse (¬p→¬q) are NOT equivalent (but equal each other).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>"p only if q" → which form?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>p → q</b> — "only if" introduces the conclusion (q is <b>necessary</b> for p). "q if p" is also p → q. Sufficient → p.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Converse / contrapositive / inverse of p → q?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Converse = <b>q → p</b> · Contrapositive = <b>¬q → ¬p</b> · Inverse = <b>¬p → ¬q</b>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>Operator precedence, highest → lowest?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>¬ &gt; ∧ &gt; ∨ &gt; → &gt; ↔</b> — "Not first, Iff last". So <code>p → q ∨ r</code> = <code>p → (q ∨ r)</code>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>Build (p ∨ ¬q) → (p ∧ q) — where is it false?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Rows <b>TF</b> and <b>FF</b> → F (hypothesis true, conclusion false). Build columns: ¬q → p ∨ ¬q → p ∧ q → conditional.</p></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⭐ Bits &amp; Cross-Topics</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>T/F as bits? Length of <code>101010011</code>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>T = 1, F = 0</b> · the bit string has length <b>nine</b> (count the bits).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>A = 0110 1011 0110, B = 1100 0001 1101 — A AND B?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>0100 0001 0100</b> (1 only where both are 1). OR → <b>1110 1011 1111</b> · XOR → <b>1010 1010 1011</b>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>N bits → how many distinct patterns?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>2ᴺ</b> (8 bits → 256). Same rule as CS111 overflow: uint8 range 0…255.</p></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎤 Likely Short/Written Answers (recite these)</h2>
+    <ul class="checklist">
+      <li>State Definition 1 (proposition) with 2 examples and 2 non-examples.</li>
+      <li>Draw the truth tables for ¬, ∧, ∨ (and XOR), →, ↔ from memory.</li>
+      <li>When is a conditional false? Why is a false hypothesis "automatically true"?</li>
+      <li>Define converse, contrapositive and inverse — which is equivalent to p → q? Why?</li>
+      <li>Rewrite "You can graduate only if you pass all courses" in if-then form.</li>
+      <li>Build the full truth table of (p ∨ ¬q) → (p ∧ q), column by column.</li>
+      <li>List the precedence of logical operators and parenthesize <code>p → q ∨ r</code>.</li>
+      <li>Evaluate bitwise OR, AND and XOR of two given bit strings (group in 4s).</li>
+    </ul>
+    <p><b>Revision notes:</b> <a href="rev-ds.html" style="color:var(--cyan)">DS Revision Sprint →</a>
+       · <b>Full lecture:</b> <a href="ma216.html" style="color:var(--cyan)">MA216 Lecture 1–2 →</a></p>
+  </div>
+
+</section>
+
+<!-- ======================= TEST ======================= -->
+<section class="tab-panel" id="test">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📝 Test Quiz — 12 MCQs</h2>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div>Pick one option per question, then hit <b>Check Answers</b>. Explanations unlock after
+      grading. <b>Target: 10/12 (80%)+</b>. <b>Reset</b> to retry without notes.</div>
+    </div>
+
+    <form id="testForm" onsubmit="return false;">
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">1</span><span>Which of these is a <b>proposition</b>?</span><span class="q-tag">Basics</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q1" value="a"><span>What time is it?</span></label>
+          <label class="q-opt"><input type="radio" name="q1" value="b"><span>2 + 2 = 5</span></label>
+          <label class="q-opt"><input type="radio" name="q1" value="c"><span>Read this carefully.</span></label>
+          <label class="q-opt"><input type="radio" name="q1" value="d"><span>x + 1 = 2</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> It's false, but it's declarative with a definite truth value — that's all a proposition needs. A (question), C (command) and D (free variable, a predicate) fail.</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">2</span><span>How many rows does a truth table for p ∧ q have?</span><span class="q-tag">Basics</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q2" value="a"><span>2</span></label>
+          <label class="q-opt"><input type="radio" name="q2" value="b"><span>3</span></label>
+          <label class="q-opt"><input type="radio" name="q2" value="c"><span>4</span></label>
+          <label class="q-opt"><input type="radio" name="q2" value="d"><span>8</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C.</b> n propositions → <b>2ⁿ</b> rows; with 2 propositions that's 2² = 4 (TT, TF, FT, FF).</div>
+      </div>
+
+      <div class="q-block" data-answer="a">
+        <p class="q-title"><span class="q-badge">3</span><span>p ∧ q is TRUE when…</span><span class="q-tag">Connectives</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q3" value="a"><span>both p and q are true</span></label>
+          <label class="q-opt"><input type="radio" name="q3" value="b"><span>both are false</span></label>
+          <label class="q-opt"><input type="radio" name="q3" value="c"><span>exactly one is true</span></label>
+          <label class="q-opt"><input type="radio" name="q3" value="d"><span>p is false and q is true</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: A.</b> Conjunction = strictest connective: <b>one false spoils it</b> — true only in the TT row.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">4</span><span>p ∨ q is FALSE when…</span><span class="q-tag">Connectives</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q4" value="a"><span>both are true</span></label>
+          <label class="q-opt"><input type="radio" name="q4" value="b"><span>both are false</span></label>
+          <label class="q-opt"><input type="radio" name="q4" value="c"><span>exactly one is true</span></label>
+          <label class="q-opt"><input type="radio" name="q4" value="d"><span>p is true, q is false</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> Inclusive OR fails only in the FF row — it accepts "both true". (XOR would also fail the TT row.)</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">5</span><span>p → q is FALSE only when…</span><span class="q-tag">Conditional</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q5" value="a"><span>p is false, q is true</span></label>
+          <label class="q-opt"><input type="radio" name="q5" value="b"><span>p is true, q is false</span></label>
+          <label class="q-opt"><input type="radio" name="q5" value="c"><span>both are true</span></label>
+          <label class="q-opt"><input type="radio" name="q5" value="d"><span>both are false</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> A promise breaks only when kept-then-betrayed (<b>T → F</b>). F hypothesis → the conditional counts as true.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">6</span><span>p ↔ q is TRUE when…</span><span class="q-tag">Conditional</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q6" value="a"><span>p and q have different truth values</span></label>
+          <label class="q-opt"><input type="radio" name="q6" value="b"><span>p and q have the same truth value</span></label>
+          <label class="q-opt"><input type="radio" name="q6" value="c"><span>p is true regardless of q</span></label>
+          <label class="q-opt"><input type="radio" name="q6" value="d"><span>it is never true</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> Biconditional = "twins": TT and FF rows are true; TF and FT are false.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">7</span><span>If p = T and q = T, then p ⊕ q (XOR) is…</span><span class="q-tag">Connectives</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q7" value="a"><span>T</span></label>
+          <label class="q-opt"><input type="radio" name="q7" value="b"><span>F</span></label>
+          <label class="q-opt"><input type="radio" name="q7" value="c"><span>Both T and F</span></label>
+          <label class="q-opt"><input type="radio" name="q7" value="d"><span>Undefined</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> XOR is true only when <b>exactly one</b> input is true — two trues give <b>false</b> (that's what makes it "exclusive").</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">8</span><span>The contrapositive of p → q is…</span><span class="q-tag">Conditional</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q8" value="a"><span>q → p (converse)</span></label>
+          <label class="q-opt"><input type="radio" name="q8" value="b"><span>¬q → ¬p</span></label>
+          <label class="q-opt"><input type="radio" name="q8" value="c"><span>¬p → ¬q (inverse)</span></label>
+          <label class="q-opt"><input type="radio" name="q8" value="d"><span>p ∧ ¬q</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> Contrapositive = flip <b>and</b> negate → <b>¬q → ¬p</b>, the only form guaranteed to keep the truth values.</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">9</span><span>The <b>converse</b> of p → q is…</span><span class="q-tag">Conditional</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q9" value="a"><span>¬p → ¬q (inverse)</span></label>
+          <label class="q-opt"><input type="radio" name="q9" value="b"><span>¬q → ¬p (contrapositive)</span></label>
+          <label class="q-opt"><input type="radio" name="q9" value="c"><span>q → p</span></label>
+          <label class="q-opt"><input type="radio" name="q9" value="d"><span>p ↔ q</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C.</b> Converse just <b>swaps</b> hypothesis and conclusion. It is NOT equivalent to the original (the inverse is equivalent to the converse).</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">10</span><span>Correct precedence (highest → lowest)?</span><span class="q-tag">Syntax</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q10" value="a"><span>∧ &gt; ∨ &gt; ¬ &gt; → &gt; ↔</span></label>
+          <label class="q-opt"><input type="radio" name="q10" value="b"><span>¬ &gt; ∧ &gt; ∨ &gt; → &gt; ↔</span></label>
+          <label class="q-opt"><input type="radio" name="q10" value="c"><span>¬ &gt; ∨ &gt; ∧ &gt; ↔ &gt; →</span></label>
+          <label class="q-opt"><input type="radio" name="q10" value="d"><span>→ &gt; ∧ &gt; ∨ &gt; ¬ &gt; ↔</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> "Not first, Iff last": ¬ → ∧ → ∨ → → → ↔. So <code>p → q ∨ r</code> parses as <code>p → (q ∨ r)</code>.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">11</span><span>"p only if q" translates to…</span><span class="q-tag">Translation</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q11" value="a"><span>q → p</span></label>
+          <label class="q-opt"><input type="radio" name="q11" value="b"><span>p → q</span></label>
+          <label class="q-opt"><input type="radio" name="q11" value="c"><span>p ↔ q</span></label>
+          <label class="q-opt"><input type="radio" name="q11" value="d"><span>¬q → ¬p</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> "Only if" introduces the <b>then</b>-part (q is necessary for p): p → q. (The contrapositive ¬q → ¬p is equivalent, but the standard direct translation is p → q.)</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">12</span><span>Bitwise AND: <code>1100 ∧ 1010</code> = ?</span><span class="q-tag">Bits</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q12" value="a"><span>1100</span></label>
+          <label class="q-opt"><input type="radio" name="q12" value="b"><span>0110</span></label>
+          <label class="q-opt"><input type="radio" name="q12" value="c"><span>1000</span></label>
+          <label class="q-opt"><input type="radio" name="q12" value="d"><span>1110</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C.</b> AND keeps 1 only where <b>both</b> bits are 1: 1∧1=1, 1∧0=0, 0∧1=0, 0∧0=0 → <b>1000</b>. (OR of the same pair would be 1110.)</div>
+      </div>
+
+      <div class="quiz-bar">
+        <button type="button" class="btn primary" id="quizSubmit">✅ Check Answers</button>
+        <button type="button" class="btn ghost" id="quizReset">↺ Reset</button>
+        <div class="score-pill" id="scoreOut" aria-live="polite"></div>
+      </div>
+
+    </form>
+
+    <p><b>Scored low?</b> Read the explanations → <a href="rev-ds.html" style="color:var(--cyan)">DS Revision Sprint →</a>
+       · <b>Full theory:</b> <a href="ma216.html" style="color:var(--cyan)">MA216 Lecture 1–2 →</a></p>
+  </div>
+
+</section>
+
+<footer class="footer">
+  MA216 · Quiz Zone · <b>Lecture 1–2</b> · <a href="rev-ds.html" style="color:inherit">Revision notes →</a> · Fall 2026
+</footer>
+
+<button id="toTop" title="Back to top">↑</button>
+<script src="script.js"></script>
+<script>
+(function () {
+  var form = document.getElementById('testForm');
+  if (!form) return;
+  var blocks = [].slice.call(form.querySelectorAll('.q-block'));
+  var score = document.getElementById('scoreOut');
+
+  function gradeAll() {
+    var right = 0;
+    blocks.forEach(function (b) {
+      var ans = b.getAttribute('data-answer');
+      var chk = b.querySelector('input:checked');
+      b.classList.add('graded');
+      [].forEach.call(b.querySelectorAll('.q-opt'), function (o) {
+        var i = o.querySelector('input');
+        o.classList.remove('is-right', 'is-wrong');
+        if (i.value === ans) o.classList.add('is-right');
+        if (chk && i === chk && i.value !== ans) o.classList.add('is-wrong');
+      });
+      if (chk && chk.value === ans) right++;
+    });
+    var pct = Math.round(right * 100 / blocks.length);
+    var msg = pct >= 80 ? 'Excellent! Quiz-ready 🎉'
+            : pct >= 60 ? 'Good — revise the red ones, then retry.'
+            : 'Keep revising — read every explanation, then retry.';
+    score.innerHTML = 'Score: <b>' + right + ' / ' + blocks.length + '</b> (' + pct + '%) — ' + msg;
+    score.classList.add('show');
+    score.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  document.getElementById('quizSubmit').addEventListener('click', gradeAll);
+  document.getElementById('quizReset').addEventListener('click', function () {
+    form.reset();
+    blocks.forEach(function (b) {
+      b.classList.remove('graded');
+      [].forEach.call(b.querySelectorAll('.q-opt'), function (o) { o.classList.remove('is-right', 'is-wrong'); });
+    });
+    score.classList.remove('show');
+    score.innerHTML = '';
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+</script>
+</body>
+</html>

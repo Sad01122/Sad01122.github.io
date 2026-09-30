@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CS111 Revision — Weeks 1–3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="themes.css">
+
+<script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="bg-blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grid-overlay"></div>
+
+<nav class="topbar">
+  <a class="brand" href="index.html"><span class="logo">Σ</span> BS-CYS · NOTES HUB</a>
+<div class="nav-right">
+  <a class="back-btn" href="index.html">← All Subjects</a>
+  <div class="theme-wrap">
+    <button class="theme-btn" id="themeBtn" title="Switch theme (press T)"><span class="palette">🎨</span><span class="label">Theme</span></button>
+    <div class="theme-menu" id="themeMenu">
+      <button class="theme-opt" data-theme="midnight"><span class="sw sw-midnight"></span><b>Midnight Cyber</b><i>glassy dark · aurora blobs</i></button>
+      <button class="theme-opt" data-theme="matrix"><span class="sw sw-matrix"></span><b>Matrix Terminal</b><i>digital rain · scanlines · mono</i></button>
+      <button class="theme-opt" data-theme="paper"><span class="sw sw-paper"></span><b>Paper Notes</b><i>ruled page · ink · sticky notes</i></button>
+      <button class="theme-opt" data-theme="synthwave"><span class="sw sw-synthwave"></span><b>Synthwave</b><i>chrome · retro sun · grid floor</i></button>
+      <button class="theme-opt" data-theme="aurora"><span class="sw sw-aurora"></span><b>Aurora Light</b><i>soft pastel glass</i></button>
+      <button class="theme-opt" data-theme="cyberpunk"><span class="sw sw-cyberpunk"></span><b>Cyberpunk Neon</b><i>glitch boxes · orbitron · neon</i></button>
+      <button class="theme-opt" data-theme="dracula"><span class="sw sw-dracula"></span><b>Dracula Gothic</b><i>serif italics · purple glow</i></button>
+      <button class="theme-opt" data-theme="coffee"><span class="sw sw-coffee"></span><b>Coffee Warmth</b><i>cozy sepia · serif · warm</i></button>
+    </div>
+  </div>
+</div>
+</nav>
+
+<header class="subject-hero">
+  <span class="code-lg">CS111 · REVISION SPRINT</span>
+  <h1><span>Programming Fundamentals — Weeks 1–3</span></h1>
+  <p>Everything quiz-worthy from all three weeks on one page: concepts, tables, gotchas and
+     must-memorize answers. Press <b>1</b> / <b>2</b> / <b>3</b> to jump weeks.</p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="week1"><span class="dot"></span> Week 1 · Think Like a Programmer</button>
+  <button class="tab-btn" data-tab="week2"><span class="dot"></span> Week 2 · Data &amp; Expressions</button>
+  <button class="tab-btn" data-tab="week3"><span class="dot"></span> Week 3 · Decision Making</button>
+</div>
+
+<!-- ======================= WEEK 1 ======================= -->
+<section class="tab-panel active" id="week1">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Week 1 — 60-Second Summary</h2>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Logic before syntax.</b> A <b>program</b> = specific instructions + data that performs a task;
+      a <b>programming language</b> = the notation used to write them. C++ is high-level → must be translated
+      to machine code; the CPU never runs C++ text directly. Steps: <b>Problem → Inputs → Processing → Output → Check.</b></div>
+    </div>
+    <table>
+      <tr><th>Build block</th><th>Meaning</th></tr>
+      <tr><td><b>Algorithm</b></td><td>finite · ordered · unambiguous steps (defined task, known input, precise steps, termination, output)</td></tr>
+      <tr><td><b>Flowchart</b></td><td>oval = Terminator (Start/End) · parallelogram = I/O · rectangle = Process (calculate) · <b>diamond = Decision</b></td></tr>
+      <tr><td><b>IPO model</b></td><td>Input → Process → Output (inputs from keyboard/file/sensor; output to screen/file/message)</td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>First C++ Program &amp; Compilation</h2>
+    <div class="code" style="font-family:Consolas,monospace;background:#071825;color:#ecf8ff;border-radius:14px;padding:16px 18px;white-space:pre-wrap">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    cout &lt;&lt; "Hello, Cyber Security!";
+    return 0;
+}</div>
+    <ul class="checklist">
+      <li><code>#include &lt;iostream&gt;</code> — makes <code>cout</code>/<code>cin</code> available</li>
+      <li><code>using namespace std;</code> — write <code>cout</code> instead of <code>std::cout</code></li>
+      <li><code>main()</code> — entry point, execution starts here · <code>{ }</code> — function body</li>
+      <li><code>cout &lt;&lt;</code> sends data out · <code>return 0;</code> = normal completion · <code>;</code> ends statements</li>
+    </ul>
+    <div class="diagram">
+      <div class="dg-cap">Compilation pipeline — source to executable</div>
+      <svg viewBox="0 0 740 90">
+        <rect class="box pulse" x="8" y="22" width="130" height="46" rx="10"/>
+        <rect class="box pulse" x="156" y="22" width="130" height="46" rx="10"/>
+        <rect class="box g pulse" x="304" y="22" width="130" height="46" rx="10"/>
+        <rect class="box p pulse" x="452" y="22" width="130" height="46" rx="10"/>
+        <rect class="box a pulse" x="600" y="22" width="132" height="46" rx="10"/>
+        <text x="73" y="50">.cpp</text>
+        <text x="221" y="50">Preprocess</text>
+        <text x="369" y="50">Compile</text>
+        <text x="517" y="50">Link</text>
+        <text x="666" y="50">.exe</text>
+        <text x="370" y="86" text-anchor="middle" class="sub">#include / #define handled first · object code + libraries combined</text>
+      </svg>
+    </div>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><code>&lt;&lt;</code> is the <b>stream insertion</b> operator (send out), not "less than".
+      <code>&gt;&gt;</code> reads whitespace-separated input into a variable.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Data Fundamentals</h2>
+    <table>
+      <tr><th>Term</th><th>Meaning</th><th>Example</th></tr>
+      <tr><td><b>Variable</b></td><td>named storage whose value can change</td><td><code>int attempts = 3;</code></td></tr>
+      <tr><td><b>Literal</b></td><td>fixed value written directly in source</td><td><code>3</code>, <code>4.5</code>, <code>"admin"</code></td></tr>
+      <tr><td><b>Identifier</b></td><td>programmer-chosen name</td><td><code>attempts</code>, <code>userName</code></td></tr>
+    </table>
+    <ul class="checklist">
+      <li><b>Identifier rules:</b> start with letter/underscore · then letters, digits, underscores · no spaces/hyphens · keywords (<code>int</code>, <code>return</code>) reserved</li>
+      <li><b>Declaration</b> <code>int attempts;</code> = create · <b>Initialization</b> <code>= 3</code> = first value · <b>Assignment</b> <code>attempts = 4;</code> = replace later</li>
+      <li><b>Scope:</b> a variable inside <code>{ }</code> lives only in that block</li>
+    </ul>
+    <table>
+      <tr><th>Type</th><th>Stores</th><th>Example</th></tr>
+      <tr><td><code>int</code></td><td>whole numbers</td><td><code>0</code>, <code>3</code>, <code>-15</code></td></tr>
+      <tr><td><code>float</code> / <code>double</code></td><td>decimals</td><td><code>7.5f</code> / <code>0.125</code></td></tr>
+      <tr><td><code>bool</code></td><td>logical</td><td><code>true</code></td></tr>
+      <tr><td><code>string</code></td><td>text (needs <code>&lt;string&gt;</code>)</td><td><code>"student01"</code></td></tr>
+      <tr><td colspan="3"><code>sizeof(type)</code> reports storage size in <b>bytes</b> on the current system.</td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Arithmetic, Precedence &amp; Constants</h2>
+    <table>
+      <tr><th>Op</th><th>Operation</th><th>Example</th></tr>
+      <tr><td><code>+</code> <code>-</code> <code>*</code> <code>/</code></td><td>add/sub/mul/div</td><td><code>8 + 2 → 10</code></td></tr>
+      <tr><td><code>%</code></td><td>remainder (mod)</td><td><code>8 % 3 → 2</code></td></tr>
+    </table>
+    <p><b>Precedence (highest first):</b> <code>( )</code> → <code>* / %</code> → <code>+ -</code>.
+       <b>Worked:</b> <code>20 - 6 / 2 * 3</code> → 6/2=3 → 3*3=9 → 20−9 = <b>11</b>.</p>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Integer division:</b> int ÷ int discards the fraction — <code>7 / 2 → 3</code>.
+      Use a double operand for decimals: <code>7.0 / 2 → 3.5</code>.</div>
+    </div>
+    <p><b>Constants:</b> typed <code>const int MAX_ATTEMPTS = 3;</code> (preferred, compiler blocks reassignment) ·
+       <code>#define MAX_ATTEMPTS 3</code> (text replacement before compilation).</p>
+    <p><b>Style:</b> meaningful names (<code>failedAttempts</code> ≫ <code>x</code>) · whitespace reveals structure ·
+       indentation follows blocks · useful comments — <i>readable code is easier to audit (security link).</i></p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Week 1 — Likely Quiz Answers</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Program vs programming language?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Program</b> = specific instructions + data performing a task. <b>Language</b> = the formal notation used to write them (C++, Java, Python).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Stages: source → executable?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Source → Preprocess → Compile → Link → Executable.</b> CPU never runs C++ text directly.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p><code>20 - 6 / 2 * 3</code> = ?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>11</b> — / and * beat −: 6/2=3, 3×3=9, 20−9=11.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Why is <code>user-name</code> invalid?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Hyphen is treated as minus — identifiers allow only letters, digits and underscore (and no spaces).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>Declaration vs initialization vs assignment?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Declare</b> <code>int a;</code> create · <b>Initialize</b> <code>int a = 3;</code> first value at creation · <b>Assign</b> <code>a = 4;</code> replace later.</p></div>
+      </div></div>
+    </div>
+    <p><b>Full notes:</b> <a href="cs111.html" style="color:var(--cyan)">CS111 Week 1 tab →</a>
+       · <b>Test yourself:</b> <a href="quiz-pf.html" style="color:var(--amber)">PF Important Questions &amp; Test Quiz →</a></p>
+  </div>
+
+</section>
+
+<!-- ======================= WEEK 2 ======================= -->
+<section class="tab-panel" id="week2">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Week 2 — 60-Second Summary</h2>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Store → Process → Trace.</b> Variables are labelled memory boxes
+      (<code>int attempts = 3;</code> = type + name + value). Expressions compute values under
+      <b>precedence</b> rules. <code>=</code> <b>stores</b> (it is not equality). Conversion can silently
+      truncate. Every type has limits → overflow/underflow. <b>Hand tracing</b> beats guessing when debugging.</div>
+    </div>
+    <table>
+      <tr><th>Action</th><th>Code</th><th>Meaning</th></tr>
+      <tr><td>Declaration</td><td><code>int age;</code></td><td>create the variable</td></tr>
+      <tr><td>Initialization</td><td><code>int age = 18;</code></td><td>create + first value (do this!)</td></tr>
+      <tr><td>Assignment</td><td><code>age = 20;</code></td><td>replace the value — an <b>update</b></td></tr>
+    </table>
+    <ul class="checklist">
+      <li><b>Literals:</b> <code>10</code> · <code>3.14</code> · <code>'A'</code> (char, single quotes) · <code>"Ali"</code> (string, double quotes)</li>
+      <li><b>Identifier validity:</b> ✅ <code>userName</code>, <code>failed_attempts</code> · ❌ <code>2factor</code> (digit start), <code>login-count</code> (hyphen), <code>int</code> (keyword), <code>user age</code> (space)</li>
+      <li><b>sizeof</b> = bytes · <b>scope</b> = where the name is visible · <b><code>const</code></b> = value fixed after declaration (policy limits)</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Operators &amp; Expressions — Must-Know Results</h2>
+    <table>
+      <tr><th>Expression</th><th>Result</th><th>Why</th></tr>
+      <tr><td><code>2 + 3 * 4</code></td><td><b>14</b></td><td>× before + (3×4=12, then 14)</td></tr>
+      <tr><td><code>(8 + 4) / 2 + 3 * 2</code></td><td><b>12</b></td><td>parens → 12/2=6 · ×→ 6 · + → 12</td></tr>
+      <tr><td><code>int x = 5; x = x + 2;</code></td><td><b>7</b></td><td>read 5 → +2 → store 7 (update)</td></tr>
+      <tr><td><code>7 / 2</code></td><td><b>3</b></td><td>integer division discards fraction</td></tr>
+      <tr><td><code>17 % 5</code></td><td><b>2</b></td><td>17 = 5×3 + 2 (remainder)</td></tr>
+      <tr><td><code>int x = 4; x += 3;</code></td><td><b>7</b></td><td><code>x += 3</code> ≡ <code>x = x + 3</code></td></tr>
+      <tr><td><code>static_cast&lt;int&gt;(9.8)</code></td><td><b>9</b></td><td>truncates — <b>never rounds</b></td></tr>
+      <tr><td><code>uint8_t x = 255; x = x + 1;</code></td><td><b>0</b></td><td>unsigned wraps mod 2⁸ (defined)</td></tr>
+      <tr><td>4-digit counter <code>9999 + 1</code></td><td><b>0000</b></td><td>overflow wrap (odometer model)</td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Signed overflow is undefined behavior</b> in C++ — demo wrap-arounds for signed types are only a
+      two's-complement teaching model. <b>2ⁿ bits → 2ⁿ patterns</b>: <code>uint8_t</code> 0–255 ·
+      <code>int8_t</code> −128…127.</div>
+    </div>
+    <p><b>I/O:</b> <code>cout &lt;&lt;</code> out · <code>cin &gt;&gt;</code> in · cascade multiple <code>&lt;&lt;</code> ·
+       always label output (<code>"Total = "</code>). <b>Errors:</b> syntax (grammar, won't compile) ·
+       logic (runs, wrong answer) · type (wrong-type surprise).</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Trace &amp; Debug Toolkit</h2>
+    <div class="diagram">
+      <div class="dg-cap">Debugging = investigation, not guessing</div>
+      <svg viewBox="0 0 740 90">
+        <rect class="box pulse" x="8" y="22" width="130" height="46" rx="10"/>
+        <rect class="box pulse" x="156" y="22" width="130" height="46" rx="10"/>
+        <rect class="box p pulse" x="304" y="22" width="130" height="46" rx="10"/>
+        <rect class="box g pulse" x="452" y="22" width="130" height="46" rx="10"/>
+        <rect class="box a pulse" x="600" y="22" width="132" height="46" rx="10"/>
+        <text x="73" y="50">Observe</text>
+        <text x="221" y="50">Trace</text>
+        <text x="369" y="50">Hypothesize</text>
+        <text x="517" y="50">Fix</text>
+        <text x="666" y="50">Retest</text>
+      </svg>
+    </div>
+    <ul class="checklist">
+      <li><b>Hand tracing:</b> read line → update variable state → record output → next line
+        (<code>marks=70; bonus=5; total = marks + bonus;</code> → 75)</li>
+      <li><b>Assignment 1 issued after Session 06</b> — covers Weeks 1–2; trace it, explain it, test inputs</li>
+      <li>Cyber link: attempts, flags, scores, usernames must be stored with correct types</li>
+    </ul>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Why <code>int avg = 5 / 2;</code> surprises?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Integer division gives <b>2</b>, not 2.5 — the fraction is discarded before storing. Make an operand <code>double</code>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Overflow vs underflow?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Overflow</b> = exceeds the type's maximum (9999+1→0000) · <b>underflow</b> = below the minimum / float precision lost (0000−1→9999).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Implicit vs explicit conversion?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Implicit:</b> <code>double x = 5;</code> (automatic) · <b>Explicit:</b> <code>static_cast&lt;int&gt;(3.9)</code> → 3 (you asked; truncates).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Syntax vs logic vs type error?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Syntax</b> = grammar violated · <b>logic</b> = runs but wrong (<code>total/2</code> with 3 quizzes) · <b>type</b> = wrong-type surprise (<code>int avg = 7/2</code>).</p></div>
+      </div></div>
+    </div>
+    <p><b>Full notes:</b> <a href="cs111.html" style="color:var(--cyan)">CS111 Week 2 tab →</a>
+       · <b>Test yourself:</b> <a href="quiz-pf.html" style="color:var(--amber)">PF Test Quiz →</a></p>
+  </div>
+
+</section>
+
+<!-- ======================= WEEK 3 ======================= -->
+<section class="tab-panel" id="week3">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Week 3 — 60-Second Summary</h2>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Decisions pick branches.</b> A condition is true/false → C++ runs or skips a block.
+      Master the four shapes (if / if-else / nested / else-if ladder), the three traps (order matters,
+      dangling else, <code>=</code> vs <code>==</code>), then <code>&amp;&amp; || !</code>, ranges, flags,
+      validation and <code>switch</code>.</div>
+    </div>
+    <table>
+      <tr><th>Relational op</th><th>Meaning</th></tr>
+      <tr><td><code>==</code> <code>!=</code></td><td>equal · not equal (NOT <code>=</code> — that's assignment!)</td></tr>
+      <tr><td><code>&lt;</code> <code>&gt;</code> <code>&lt;=</code> <code>&gt;=</code></td><td>less · greater · ≤ · ≥</td></tr>
+    </table>
+    <table>
+      <tr><th>Shape</th><th>Runs when</th><th>Trap</th></tr>
+      <tr><td><code>if (c) A;</code></td><td>c true (else: nothing)</td><td>no automatic else</td></tr>
+      <tr><td><code>if (c) A; else B;</code></td><td>exactly one branch</td><td>—</td></tr>
+      <tr><td><code>if (a) { if (b) … }</code></td><td>inner needs BOTH</td><td>nest carefully</td></tr>
+      <tr><td><code>if…else if…else</code></td><td><b>first true wins</b>; else = fallback</td><td><b>order matters</b> — strictest first</td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">🪤</span>
+      <div><b>Dangling else</b> → binds to the <b>nearest unmatched if</b>; use braces.
+      <b><code>=</code> vs <code>==</code></b> → <code>if (x = 5)</code> assigns (classic bug).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Logic, Ranges, Menus &amp; switch</h2>
+    <table>
+      <tr><th>a</th><th>b</th><th>a &amp;&amp; b</th><th>a || b</th><th>!a</th></tr>
+      <tr><td>T</td><td>T</td><td><b>T</b></td><td><b>T</b></td><td>F</td></tr>
+      <tr><td>T</td><td>F</td><td>F</td><td><b>T</b></td><td>F</td></tr>
+      <tr><td>F</td><td>T</td><td>F</td><td><b>T</b></td><td><b>T</b></td></tr>
+      <tr><td>F</td><td>F</td><td>F</td><td>F</td><td><b>T</b></td></tr>
+    </table>
+    <ul class="checklist">
+      <li><b>Range test:</b> <code>x &gt;= 10 &amp;&amp; x &lt;= 90</code> — chained <code>10 &lt;= x &lt;= 90</code> does NOT work in C++</li>
+      <li><b>Short-circuit:</b> <code>&amp;&amp;</code> stops at first false · <code>||</code> stops at first true</li>
+      <li><b>Flag:</b> a <code>bool</code> recording yes/no state (<code>bool found = false;</code>)</li>
+      <li><b>Validation:</b> re-ask until legal (<code>while (x &lt; 1 || x &gt; 6)</code>) · <b>menu:</b> print → read → validate → act</li>
+      <li><b>switch:</b> integral values only · <code>case n: … break;</code> — missing break = <b>fall-through</b> · <code>default</code> = no match</li>
+      <li><b>?:</b> <code>cond ? a : b</code> = one-line if-else · <b>char</b> <code>'A'</code> vs <b>string</b> <code>"A"</code></li>
+    </ul>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>Ladder rule:</b> in <code>if (n&lt;0) … else if (n==0) … else …</code> an earlier branch can make later
+      tests unreachable — test <b>strictest first</b> (90 before 80).</div>
+    </div>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>What does a missing <code>break</code> do?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Execution <b>falls through</b> into the next case — intended for grouped cases, a bug otherwise.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Which range test is correct for 10–90?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><code>x &gt;= 10 &amp;&amp; x &lt;= 90</code> — always <b>AND</b> between range ends (<code>||</code> would match almost everything).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Dangling else?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>An <code>else</code> binds to the <b>nearest unmatched if</b> — braces remove the ambiguity.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>if/else-if vs switch?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>if/else-if:</b> ranges &amp; complex conditions · <b>switch:</b> one integral variable vs exact values (needs break).</p></div>
+      </div></div>
+    </div>
+    <p><b>Full notes:</b> <a href="cs111.html" style="color:var(--cyan)">CS111 Week 3 tab →</a>
+       · <b>Test yourself:</b> <a href="quiz-pf.html" style="color:var(--amber)">PF Test Quiz →</a>
+       · <b>Related:</b> <a href="ma216.html" style="color:var(--cyan)">MA216 logic (&& || !) →</a></p>
+  </div>
+
+</section>
+
+<footer class="footer">
+  CS111 · Revision Sprint · <b>Weeks 1–3</b> · <a href="quiz-pf.html" style="color:inherit">Quiz zone →</a> · Fall 2026
+</footer>
+
+<button id="toTop" title="Back to top">↑</button>
+<script src="script.js"></script>
+</body>
+</html>

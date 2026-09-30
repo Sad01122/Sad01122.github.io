@@ -45,7 +45,7 @@
 
 <div class="tabs">
   <button class="tab-btn active" data-tab="week1"><span class="dot"></span> Week 1 · Think Like a Programmer</button>
-  <button class="tab-btn soon" data-tab="week2"><span class="dot"></span> Week 2 · C++ Deep Dive</button>
+  <button class="tab-btn" data-tab="week2"><span class="dot"></span> Week 2 · Data &amp; Expressions</button>
   <button class="tab-btn" data-tab="week3"><span class="dot"></span> Week 3 · Decision Making</button>
 </div>
 
@@ -352,20 +352,214 @@ attempts = <span class="num">4</span>;           <span class="cm">// assignment 
 
 <!-- ======================= WEEK 2 ======================= -->
 <section class="tab-panel" id="week2">
-  <div class="note-card soon-panel">
-    <span class="big-ico">🚀</span>
-    <h3>Week 2 notes are brewing…</h3>
-    <p>The Week 1 lecture already previewed these topics — the notes will appear here once the
-       Week 2 lecture is processed from your inbox.</p>
-    <div class="topics">
-      <span>File input/output</span><span>Type conversion</span><span>Overflow / underflow</span>
-      <span>Type casting</span><span>Combined assignment</span><span>Formatted output</span>
-      <span>Characters &amp; strings</span><span>Hand tracing</span>
-      <span>Common program errors</span><span>Problem solving</span>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Week 2 — Data, Expressions, I/O &amp; Debugging</h2>
+    <p>Three sessions: <b>store</b> data (variables &amp; types) → <b>process</b> it (operators &amp;
+       expressions) → <b>trace &amp; debug</b> (I/O, conversion, hand tracing). Week 1 taught <i>how</i> a
+       program is written; Week 2 teaches how it <b>stores, manipulates, receives and displays</b> data.</p>
+    <div class="pipeline">
+      <span class="pipe-step">📦 Variables</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">🧮 Expressions</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">↔️ Conversion</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">🐞 Debug</span>
     </div>
-    <p style="margin-top:22px"> meanwhile, practice with the lab:
-      <a href="cs111l.html" style="color:var(--cyan)">CS111L Week 2 →</a></p>
   </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Session 04 — Variables, Literals &amp; Types</h2>
+    <p><b>Variable = a named memory box.</b> <code>int attempts = 3;</code> carries three pieces:
+       <b>type</b> (int) + <b>name</b> (attempts) + <b>value</b> (3).</p>
+    <table>
+      <tr><th>Action</th><th>Code</th><th>Meaning</th></tr>
+      <tr><td>Declaration</td><td><code>int age;</code></td><td>create the variable</td></tr>
+      <tr><td>Initialization</td><td><code>int age = 18;</code></td><td>create + first value</td></tr>
+      <tr><td>Assignment</td><td><code>age = 20;</code></td><td>replace the value (an <b>update</b>)</td></tr>
+    </table>
+    <ul class="checklist">
+      <li><b>Literals</b> = fixed values in code: <code>10</code> · <code>3.14</code> · <code>'A'</code> · <code>"Ali"</code> — no name attached</li>
+      <li><b>Identifier rules:</b> letters/digits/underscore · <b>no leading digit</b> · not a keyword · no spaces · case-sensitive (<code>age</code> ≠ <code>Age</code>)</li>
+      <li>Valid <code>userName</code>, <code>failed_attempts</code> ✅ · Invalid <code>2factor</code>, <code>login-count</code>, <code>int</code>, <code>user age</code> ❌</li>
+      <li><b>Beginner rule:</b> initialize variables before using them; prefer <code>failedAttempts</code> over <code>x</code></li>
+    </ul>
+    <table>
+      <tr><th>Type</th><th>Meaning</th><th>Example</th><th>Use</th></tr>
+      <tr><td><code>int</code></td><td>whole number</td><td><code>42</code></td><td>counts, attempts, age</td></tr>
+      <tr><td><code>float</code>/<code>double</code></td><td>decimal</td><td><code>3.75</code></td><td>average, percentage</td></tr>
+      <tr><td><code>char</code></td><td>single character</td><td><code>'Y'</code></td><td>grade, menu option</td></tr>
+      <tr><td><code>bool</code></td><td>true/false</td><td><code>true</code></td><td>security flag, status</td></tr>
+      <tr><td><code>string</code></td><td>text sequence</td><td><code>"admin"</code></td><td>name, username</td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>char vs string:</b> <code>'A'</code> single quotes (1 char) · <code>"A"</code> double quotes
+      (text). <b>sizeof</b> asks "how many bytes?" — sizes vary by system.
+      <b>Scope</b> = the region where a name is visible (inside <code>main()</code> it dies at the closing brace).
+      <b><code>const int MAX_ATTEMPTS = 3;</code></b> — named constant, assignment to it is an error (security policy limits!).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Session 05 — Operators &amp; Expressions</h2>
+    <p>An <b>expression</b> = values + operators that <b>produces a value</b>
+       (<code>marks + bonus</code> → evaluate → store or display).</p>
+    <table>
+      <tr><th>Op</th><th>Name</th><th>Example</th><th>Result</th></tr>
+      <tr><td><code>+ - * /</code></td><td>arithmetic</td><td><code>7 * 3</code></td><td>21</td></tr>
+      <tr><td><code>%</code></td><td>remainder</td><td><code>17 % 5</code></td><td><b>2</b></td></tr>
+      <tr><td><code>=</code></td><td>assignment (store)</td><td><code>x = x + 1</code></td><td>update, <b>not equality</b></td></tr>
+      <tr><td><code>+= -=</code></td><td>combined</td><td><code>score += 10</code></td><td><code>score = score + 10</code></td></tr>
+      <tr><td><code>++ --</code></td><td>inc/dec</td><td><code>count++</code></td><td><code>count = count + 1</code></td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Precedence:</b> C++ does <i>not</i> go left-to-right — <code>* / %</code> bind tighter than
+      <code>+ −</code>. <code>2 + 3 * 4</code> → 3×4=12 → <b>14</b> (not 20).
+      <b>Integer division:</b> int ÷ int discards the fraction — <code>7 / 2</code> → <b>3</b>,
+      <code>int avg = 5 / 2;</code> stores <b>2</b>. Make one operand <code>double</code> for decimals.</div>
+    </div>
+    <div class="callout tip"><span class="c-ico">🔎</span>
+      <div><b>Trace:</b> <code>(8 + 4) / 2 + 3 * 2</code> → parentheses (12) → ÷2=6 → 3×2=6 → 6+6=
+      <b>12</b>. <b>Negative remainder:</b> <code>-7 % 3</code> surprises beginners — test boundary values,
+      not only comfortable positives. Common errors: missing <code>;</code> · writing <code>x</code> instead
+      of <code>*</code> · <code>double avg = 5 / 2;</code> (still integer division → 2.0).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Session 06 — Conversion, I/O &amp; Debugging</h2>
+    <table>
+      <tr><th>Kind</th><th>Code</th><th>Rule</th></tr>
+      <tr><td>Implicit</td><td><code>double x = 5;</code></td><td>C++ converts automatically</td></tr>
+      <tr><td>Explicit</td><td><code>int y = static_cast&lt;int&gt;(3.9);</code></td><td>you request it → <b>3</b></td></tr>
+    </table>
+    <ul class="checklist">
+      <li><b>Truncation, not rounding:</b> <code>static_cast&lt;int&gt;(9.8)</code> → <b>9</b> (never 10)</li>
+      <li><b>I/O:</b> <code>cout &lt;&lt;</code> sends data out · <code>cin &gt;&gt;</code> reads data in — arrows follow the data</li>
+      <li><b>Cascade:</b> <code>cout &lt;&lt; "User: " &lt;&lt; user &lt;&lt; " Score: " &lt;&lt; score;</code> — label output, never print a bare number</li>
+      <li><b>Hand tracing:</b> read line → update state → record output → next line (marks=70, bonus=5 → total=75)</li>
+      <li><b>Debugging = investigation:</b> Observe → Trace → Hypothesize → Fix → Retest</li>
+    </ul>
+    <table>
+      <tr><th>Error type</th><th>Meaning</th><th>Example</th></tr>
+      <tr><td>Syntax</td><td>violates C++ grammar</td><td><code>cout &lt;&lt; "Hi"</code> (no <code>;</code>)</td></tr>
+      <tr><td>Logic</td><td>runs, wrong answer</td><td><code>avg = total / 2</code> with 3 quizzes</td></tr>
+      <tr><td>Type</td><td>wrong type surprise</td><td><code>int avg = 7 / 2;</code></td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Overflow &amp; Underflow — Two Counter Demos</h2>
+    <div class="diagram">
+      <div class="dg-cap">Mechanical odometer model — n-digit counter wraps like a tally wheel</div>
+      <svg viewBox="0 0 740 150">
+        <rect class="box pulse" x="8" y="16" width="228" height="46" rx="10"/>
+        <rect class="box a pulse" x="252" y="16" width="228" height="46" rx="10"/>
+        <rect class="box pulse" x="496" y="16" width="236" height="46" rx="10"/>
+        <rect class="box g pulse" x="8" y="76" width="228" height="46" rx="10"/>
+        <rect class="box pulse" x="252" y="76" width="228" height="46" rx="10"/>
+        <rect class="box p pulse" x="496" y="76" width="236" height="46" rx="10"/>
+        <text x="122" y="44">4 digits: 0000–9999</text>
+        <text x="366" y="44">range = 0 … 10ⁿ − 1</text>
+        <text x="614" y="44">2 digits: 00–99</text>
+        <text x="122" y="104">9999 + 1 → 0000</text>
+        <text x="366" y="104">OVERFLOW ⬆</text>
+        <text x="614" y="104">0000 − 1 → 9999 ⬇ UNDERFLOW</text>
+      </svg>
+    </div>
+    <ul class="checklist">
+      <li><b>Overflow:</b> result exceeds the type's maximum → wrong/unexpected value.
+        <b>Underflow:</b> falls below the minimum (floats also lose precision).</li>
+      <li><b>N bits → 2ᴺ patterns:</b> <code>uint8_t</code> = 0–255 (0…2ⁿ−1) · <code>int8_t</code> = −128…127 (−2ⁿ⁻¹…2ⁿ⁻¹−1)</li>
+      <li><b>Unsigned wraps (defined):</b> <code>uint8_t x = 255; x = x + 1;</code> → <b>0</b> (mod 2ᴺ)</li>
+      <li><b>Signed overflow = undefined behavior</b> in C++ — the demo's wrap-around is a two's-complement <i>teaching model</i>, not a guarantee</li>
+      <li>Fixed-width types (<code>int8_t</code>, <code>uint32_t</code>…) make bits explicit; check limits with <code>&lt;limits&gt;</code>: <code>numeric_limits&lt;int8_t&gt;::min()/max()</code></li>
+    </ul>
+    <div class="callout warn"><span class="c-ico">🔐</span>
+      <div><b>Cyber link:</b> type limits explain input-validation and memory-safety bugs — attempts,
+      flags, scores and usernames must be stored with the right type.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Memory Tricks</h2>
+    <ul class="trick-list">
+      <li><b><code>&lt;&lt;</code> out, <code>&gt;&gt;</code> in</b> — arrows follow the data stream.
+        <span class="mem">cout = stream out, cin = stream in.</span></li>
+      <li><b><code>=</code> pours, <code>==</code> compares</b> — assignment is an update, equality is a question (Week 3 preview).</li>
+      <li><b>int ÷ int stays int</b> — 5/2 = 2; make one operand double (×1.0) to get 2.5.</li>
+      <li><b>Precedence ladder:</b> <code>()</code> → <code>* / %</code> → <code>+ −</code>.</li>
+      <li><b>static_cast = chop, not round</b> — 9.8 → 9, 4.9 → 4.</li>
+      <li><b>Odometer wrap:</b> 9999+1 → 0000 — that <i>is</i> overflow, visualized.</li>
+      <li><b>8 bits = 256 patterns</b> (2⁸): unsigned 0–255, signed −128…127.</li>
+      <li><b>Debug loop:</b> Observe → Trace → Hypothesize → Fix → Retest ("OTHFR").</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚡ Quick Tips — Week 2</h2>
+    <div class="tips-grid">
+      <div class="tip-card"><span class="t-ico">✏️</span><h4>Trace every expression</h4>
+        <p>Write the variable state after each line — precedence bugs jump out on paper.</p></div>
+      <div class="tip-card"><span class="t-ico">🔢</span><h4>Test boundary values</h4>
+        <p>0, max, negative, one-before/after limits — comfortable positives hide overflow bugs.</p></div>
+      <div class="tip-card"><span class="t-ico">🏷️</span><h4>Label your output</h4>
+        <p><code>"Total = "</code> beats a naked number — helps users <i>and</i> your debugging.</p></div>
+      <div class="tip-card"><span class="t-ico">const</span><h4>Policy = const</h4>
+        <p>Fixed limits (max login attempts) as <code>const</code> — can't be changed by accident.</p></div>
+      <div class="tip-card"><span class="t-ico">🔄</span><h4>Init before use</h4>
+        <p>Uninitialized variables hold junk — always give a first value.</p></div>
+      <div class="tip-card"><span class="t-ico">🧪</span><h4>Assignment 1 after Session 06</h4>
+        <p>Covers Weeks 1–2 — trace it, explain it, test different inputs; don't just copy code.</p></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Week 2 Check</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Variable vs literal?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Variable</b> = named storage whose value can change · <b>literal</b> = fixed value written directly in code (<code>10</code>, <code>"Ali"</code>).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Why is <code>2user</code> invalid?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Identifiers <b>cannot start with a digit</b> — use <code>user2</code> instead.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p><code>10 + 2 * 3</code> → ?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>16</b> — multiplication has higher precedence than addition (2×3=6, then 10+6).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>What does <code>count++</code> do?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Increases <code>count</code> by 1 — short form of <code>count = count + 1;</code>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p><code>static_cast&lt;int&gt;(4.9)</code> → ?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>4</b> — conversion <b>truncates</b> the fraction; it does not round to 5.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>Why does <code>int avg = 5 / 2;</code> surprise?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Integer division gives <b>2</b>, not 2.5 — the fraction is discarded before storing.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q7</span><p>4-digit counter: 9999+1 and 0000−1?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>→ <b>0000</b> (overflow wrap) and → <b>9999</b> (underflow wrap). Range = 0…10ⁿ−1.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q8</span><p>Signed vs unsigned overflow?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Unsigned</b> wraps mod 2ᴺ (defined) · <b>signed overflow is undefined behavior</b> — the demo's wrap is just a teaching model.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q9</span><p>Syntax vs logic vs type error?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Syntax</b> = grammar violated (won't compile) · <b>logic</b> = runs but wrong answer · <b>type</b> = wrong data type surprise (<code>int avg = 7/2</code>).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q10</span><p>Why hand trace?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>To follow execution line by line, track variable values, predict output and find mistakes — the beginner's best debugging tool.</p></div>
+      </div></div>
+    </div>
+    <p><b>Related lab:</b> <a href="cs111l.html" style="color:var(--cyan)">CS111L Weeks 01–02 →</a>
+       · <b>Next:</b> Week 3 tab (decision making) →</p>
+  </div>
+
 </section>
 
 <!-- ======================= WEEK 3 ======================= -->
@@ -511,7 +705,7 @@ attempts = <span class="num">4</span>;           <span class="cm">// assignment 
 </section>
 
 <footer class="footer">
-  CS111 · Programming Fundamentals · <b>Weeks 1 &amp; 3</b> · BS Cyber Security · Fall 2026
+  CS111 · Programming Fundamentals · <b>Weeks 1–3</b> · BS Cyber Security · Fall 2026
 </footer>
 
 <button id="toTop" title="Back to top">↑</button>

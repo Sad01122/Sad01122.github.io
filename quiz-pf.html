@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CS111 Quiz Zone — Important + Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="themes.css">
+
+<script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="bg-blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grid-overlay"></div>
+
+<nav class="topbar">
+  <a class="brand" href="index.html"><span class="logo">Σ</span> BS-CYS · NOTES HUB</a>
+<div class="nav-right">
+  <a class="back-btn" href="index.html">← All Subjects</a>
+  <div class="theme-wrap">
+    <button class="theme-btn" id="themeBtn" title="Switch theme (press T)"><span class="palette">🎨</span><span class="label">Theme</span></button>
+    <div class="theme-menu" id="themeMenu">
+      <button class="theme-opt" data-theme="midnight"><span class="sw sw-midnight"></span><b>Midnight Cyber</b><i>glassy dark · aurora blobs</i></button>
+      <button class="theme-opt" data-theme="matrix"><span class="sw sw-matrix"></span><b>Matrix Terminal</b><i>digital rain · scanlines · mono</i></button>
+      <button class="theme-opt" data-theme="paper"><span class="sw sw-paper"></span><b>Paper Notes</b><i>ruled page · ink · sticky notes</i></button>
+      <button class="theme-opt" data-theme="synthwave"><span class="sw sw-synthwave"></span><b>Synthwave</b><i>chrome · retro sun · grid floor</i></button>
+      <button class="theme-opt" data-theme="aurora"><span class="sw sw-aurora"></span><b>Aurora Light</b><i>soft pastel glass</i></button>
+      <button class="theme-opt" data-theme="cyberpunk"><span class="sw sw-cyberpunk"></span><b>Cyberpunk Neon</b><i>glitch boxes · orbitron · neon</i></button>
+      <button class="theme-opt" data-theme="dracula"><span class="sw sw-dracula"></span><b>Dracula Gothic</b><i>serif italics · purple glow</i></button>
+      <button class="theme-opt" data-theme="coffee"><span class="sw sw-coffee"></span><b>Coffee Warmth</b><i>cozy sepia · serif · warm</i></button>
+    </div>
+  </div>
+</div>
+</nav>
+
+<header class="subject-hero">
+  <span class="code-lg">CS111 · QUIZ ZONE</span>
+  <h1><span>PF — Important Questions &amp; Test Quiz</span></h1>
+  <p>Weeks 1–3 combined. <b>Tab 1:</b> high-probability questions with flip answers ·
+     <b>Tab 2:</b> scored 15-question MCQ test with explanations. Press <b>1</b> / <b>2</b> to switch.</p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="imp"><span class="dot"></span> ⭐ Important Questions</button>
+  <button class="tab-btn" data-tab="test"><span class="dot"></span> 📝 Test Quiz (15 MCQs)</button>
+</div>
+
+<!-- ======================= IMPORTANT ======================= -->
+<section class="tab-panel active" id="imp">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>How to Use This Page</h2>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div>1) Tap every flip card until you can answer <b>before</b> flipping. 2) Recite the
+      short-answer list out loud. 3) Switch to the <b>Test Quiz</b> tab and aim for
+      <b>≥ 12 / 15 (80%)</b>. Missed questions? Read the explanation, then redo.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⭐ Week 1 — Think Like a Programmer</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Program vs programming language?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Program</b> = specific instructions + data performing a task. <b>Language</b> = formal notation used to write them (C++, Java, Python).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Stages from source code to executable?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Source → Preprocess (#include/#define) → Compile → Link (libraries) → Executable.</b> CPU never runs C++ text directly.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Flowchart symbols — 4 key ones?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Oval = Terminator (Start/End) · Parallelogram = I/O · Rectangle = Process · <b>Diamond = Decision</b>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p><code>20 - 6 / 2 * 3</code> = ? with reasoning</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>11</b> — / and * beat −: 6/2=3 → 3×3=9 → 20−9=11.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>Declaration vs initialization vs assignment?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Declare</b> <code>int a;</code> create · <b>Initialize</b> <code>int a = 3;</code> first value at creation · <b>Assign</b> <code>a = 4;</code> replace later. Initialize before use!</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>Identifier rules + one invalid example?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Start with letter/underscore; letters, digits, underscore after; no spaces/hyphens; keywords reserved; case-sensitive. Invalid: <code>2factor</code>, <code>login-count</code>, <code>int</code>.</p></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⭐ Week 2 — Data &amp; Expressions</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p><code>2 + 3 * 4</code> and <code>(8+4)/2 + 3*2</code>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>14</b> (× before +) and <b>12</b> (parens → 6, ×→ 6, + → 12). Precedence: <code>()</code> &gt; <code>* / %</code> &gt; <code>+ −</code>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Why does <code>int avg = 5 / 2;</code> give 2?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Integer division</b> discards the fraction (int ÷ int stays int). Use a double operand: <code>5.0 / 2</code> → 2.5.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p><code>static_cast&lt;int&gt;(9.8)</code> → ? Round or chop?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>9</b> — conversion <b>truncates</b> the decimal, it never rounds (4.9 → 4 too).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p><code>uint8_t x = 255; x = x + 1;</code> → ?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>0</b> — unsigned arithmetic wraps mod 2⁸ (defined). <b>Signed</b> overflow would be undefined behavior — demo wraps are a teaching model only.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>4-digit counter: 9999+1 and 0000−1?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>→ <b>0000</b> = overflow · → <b>9999</b> = underflow. Range = 0…10ⁿ−1 (odometer model).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>Debugging process steps?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Observe → Trace (hand trace!) → Hypothesize → Fix → Retest.</b> Investigation, not guessing.</p></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⭐ Week 3 — Decision Making</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p><code>=</code> vs <code>==</code>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><code>=</code> <b>assigns</b> (stores a value) · <code>==</code> <b>compares</b> (returns bool). <code>if (x = 5)</code> is the classic bug.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Dangling else — what happens &amp; fix?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>An <code>else</code> binds to the <b>nearest unmatched if</b> (often not the one you meant). Fix: <b>braces</b> around blocks.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Correct range test for 10–90?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><code>x &gt;= 10 &amp;&amp; x &lt;= 90</code> — range ends always join with <b>&amp;&amp;</b>; <code>||</code> matches nearly everything; chained 10&lt;=x&lt;=90 won't compile as intended.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Why "strictest first" in else-if?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>First true branch wins — test <code>&gt;= 90</code> before <code>&gt;= 80</code>, or every 95 lands in the 80 bucket.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>switch without break?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Fall-through</b> — execution continues into the next case (bug unless grouping cases intentionally).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>&amp;&amp; vs || truth at a glance?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>&amp;&amp;</b> true only when BOTH true · <b>||</b> false only when BOTH false · <b>!</b> flips. Short-circuit: &amp;&amp; stops at first F, || at first T.</p></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎤 Likely Short/Written Answers (recite these)</h2>
+    <ul class="checklist">
+      <li><b>W1:</b> Difference between a program and a programming language?</li>
+      <li><b>W1:</b> List the stages between C++ source code and an executable.</li>
+      <li><b>W1:</b> Why is <code>user-name</code> not a valid identifier? Declare vs initialize vs assign?</li>
+      <li><b>W2:</b> Explain integer division with an example — how do you get decimals?</li>
+      <li><b>W2:</b> Explain overflow &amp; underflow using a 4-digit counter; unsigned wrap vs signed UB.</li>
+      <li><b>W2:</b> Implicit vs explicit conversion — what does <code>static_cast</code> do to 9.8?</li>
+      <li><b>W3:</b> Explain if / if-else / nested / else-if ladder with a small program each.</li>
+      <li><b>W3:</b> What is a dangling else? Show the fix with braces.</li>
+      <li><b>W3:</b> Why is <code>if (x = 5)</code> a bug? Why does <code>10 &lt;= x &lt;= 90</code> fail?</li>
+      <li><b>W3:</b> switch vs else-if — when do you use each? What is fall-through?</li>
+    </ul>
+    <p><b>Revision notes:</b> <a href="rev-pf.html" style="color:var(--cyan)">PF Revision Sprint →</a>
+       · <b>Full lectures:</b> <a href="cs111.html" style="color:var(--cyan)">CS111 notes →</a></p>
+  </div>
+
+</section>
+
+<!-- ======================= TEST ======================= -->
+<section class="tab-panel" id="test">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📝 Test Quiz — 15 MCQs (3 per week group)</h2>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div>Pick one option per question, then hit <b>Check Answers</b>. Explanations unlock after
+      grading. <b>Target: 12/15 (80%)+</b>. Use <b>Reset</b> to retry — aim to beat your score without notes.</div>
+    </div>
+
+    <form id="testForm" onsubmit="return false;">
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">1</span><span>Which statement best describes a <b>program</b>?</span><span class="q-tag">Week 1</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q1" value="a"><span>The formal notation used to write instructions</span></label>
+          <label class="q-opt"><input type="radio" name="q1" value="b"><span>A specific set of instructions and data that performs a task</span></label>
+          <label class="q-opt"><input type="radio" name="q1" value="c"><span>Any computer hardware device</span></label>
+          <label class="q-opt"><input type="radio" name="q1" value="d"><span>A flowchart diamond symbol</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> The program = instructions + data doing the job. The <i>language</i> (option A) is just the notation used to write it.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">2</span><span>Correct order of compilation stages?</span><span class="q-tag">Week 1</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q2" value="a"><span>Compile → Preprocess → Link → Executable</span></label>
+          <label class="q-opt"><input type="radio" name="q2" value="b"><span>Source → Preprocess → Compile → Link → Executable</span></label>
+          <label class="q-opt"><input type="radio" name="q2" value="c"><span>Source → Executable → Preprocess → Link</span></label>
+          <label class="q-opt"><input type="radio" name="q2" value="d"><span>Link → Compile → Preprocess → Executable</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> <code>#include</code>/<code>#define</code> are handled first (preprocess), the result is compiled to object code, libraries are linked, and the executable is produced.</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">3</span><span>In a flowchart, a <b>diamond</b> represents…</span><span class="q-tag">Week 1</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q3" value="a"><span>Start / End (Terminator)</span></label>
+          <label class="q-opt"><input type="radio" name="q3" value="b"><span>Input / Output</span></label>
+          <label class="q-opt"><input type="radio" name="q3" value="c"><span>Decision (choose a path)</span></label>
+          <label class="q-opt"><input type="radio" name="q3" value="d"><span>Process (calculation)</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C.</b> Oval = Terminator · Parallelogram = I/O · Rectangle = Process · <b>Diamond = Decision</b>.</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">4</span><span>What is stored in <code>int result = 20 - 6 / 2 * 3;</code> ?</span><span class="q-tag">Week 1</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q4" value="a"><span>20</span></label>
+          <label class="q-opt"><input type="radio" name="q4" value="b"><span>17</span></label>
+          <label class="q-opt"><input type="radio" name="q4" value="c"><span>11</span></label>
+          <label class="q-opt"><input type="radio" name="q4" value="d"><span>27</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C.</b> <code>/</code> and <code>*</code> bind tighter than <code>-</code>: 6/2=3 → 3×3=9 → 20−9 = <b>11</b>.</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">5</span><span>Which identifier is <b>invalid</b>?</span><span class="q-tag">Week 1</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q5" value="a"><span><code>userName</code></span></label>
+          <label class="q-opt"><input type="radio" name="q5" value="b"><span><code>user_name</code></span></label>
+          <label class="q-opt"><input type="radio" name="q5" value="c"><span><code>2factor</code></span></label>
+          <label class="q-opt"><input type="radio" name="q5" value="d"><span><code>user2</code></span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C.</b> Identifiers cannot <b>start with a digit</b> — <code>user2</code> is fine (digit at the end), <code>2factor</code> is not.</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">6</span><span><code>int x = 5; x = x + 2;</code> — final value of x?</span><span class="q-tag">Week 2</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q6" value="a"><span>5</span></label>
+          <label class="q-opt"><input type="radio" name="q6" value="b"><span>2</span></label>
+          <label class="q-opt"><input type="radio" name="q6" value="c"><span>7</span></label>
+          <label class="q-opt"><input type="radio" name="q6" value="d"><span>Syntax error</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C.</b> <code>=</code> is an update: read 5 → add 2 → store <b>7</b> back into x. (It is not a mathematical equality.)</div>
+      </div>
+
+      <div class="q-block" data-answer="a">
+        <p class="q-title"><span class="q-badge">7</span><span>In C++, <code>7 / 2</code> evaluates to…</span><span class="q-tag">Week 2</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q7" value="a"><span>3</span></label>
+          <label class="q-opt"><input type="radio" name="q7" value="b"><span>3.5</span></label>
+          <label class="q-opt"><input type="radio" name="q7" value="c"><span>4</span></label>
+          <label class="q-opt"><input type="radio" name="q7" value="d"><span>2</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: A.</b> Both operands are int → <b>integer division</b> discards the fraction. <code>7.0 / 2</code> would give 3.5.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">8</span><span><code>int x = static_cast&lt;int&gt;(9.8);</code> stores…</span><span class="q-tag">Week 2</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q8" value="a"><span>10 (it rounds)</span></label>
+          <label class="q-opt"><input type="radio" name="q8" value="b"><span>9 (it truncates)</span></label>
+          <label class="q-opt"><input type="radio" name="q8" value="c"><span>9.8</span></label>
+          <label class="q-opt"><input type="radio" name="q8" value="d"><span>Nothing — compile error</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> Conversion to <code>int</code> <b>chops off</b> the decimal — never rounds (4.9 → 4 too).</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">9</span><span><code>17 % 5</code> equals…</span><span class="q-tag">Week 2</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q9" value="a"><span>3</span></label>
+          <label class="q-opt"><input type="radio" name="q9" value="b"><span>2</span></label>
+          <label class="q-opt"><input type="radio" name="q9" value="c"><span>5</span></label>
+          <label class="q-opt"><input type="radio" name="q9" value="d"><span>1</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> <code>%</code> = remainder: 17 = 5×3 + <b>2</b>.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">10</span><span><code>uint8_t x = 255; x = x + 1;</code> — x becomes…</span><span class="q-tag">Week 2</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q10" value="a"><span>256</span></label>
+          <label class="q-opt"><input type="radio" name="q10" value="b"><span>0</span></label>
+          <label class="q-opt"><input type="radio" name="q10" value="c"><span>−1</span></label>
+          <label class="q-opt"><input type="radio" name="q10" value="d"><span>Undefined behavior</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> <b>Unsigned</b> arithmetic wraps modulo 2⁸ (defined behavior): 255+1 → 0. Option D applies to <i>signed</i> overflow instead.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">11</span><span><code>if (x = 5) { … }</code> — what is happening?</span><span class="q-tag">Week 3</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q11" value="a"><span>Correctly comparing x with 5</span></label>
+          <label class="q-opt"><input type="radio" name="q11" value="b"><span>Assigning 5 to x — comparison was probably intended (classic bug)</span></label>
+          <label class="q-opt"><input type="radio" name="q11" value="c"><span>Always evaluates to false</span></label>
+          <label class="q-opt"><input type="radio" name="q11" value="d"><span>Syntax error — programs won't compile</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> <code>=</code> stores a value (5), and the condition then tests a non-zero value → true. Use <code>==</code> to compare.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">12</span><span>A <b>dangling else</b> binds to…</span><span class="q-tag">Week 3</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q12" value="a"><span>The first if in the code</span></label>
+          <label class="q-opt"><input type="radio" name="q12" value="b"><span>The nearest unmatched if</span></label>
+          <label class="q-opt"><input type="radio" name="q12" value="c"><span>The outermost if, always</span></label>
+          <label class="q-opt"><input type="radio" name="q12" value="d"><span>Nothing — it is a syntax error</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> C++ matches an <code>else</code> with the <b>closest if that doesn't have one yet</b>. Fix ambiguity with braces <code>{}</code>.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">13</span><span>Correct range test for 10 ≤ x ≤ 90?</span><span class="q-tag">Week 3</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q13" value="a"><span><code>10 &lt;= x &lt;= 90</code></span></label>
+          <label class="q-opt"><input type="radio" name="q13" value="b"><span><code>x &gt;= 10 &amp;&amp; x &lt;= 90</code></span></label>
+          <label class="q-opt"><input type="radio" name="q13" value="c"><span><code>x &gt;= 10 || x &lt;= 90</code></span></label>
+          <label class="q-opt"><input type="radio" name="q13" value="d"><span><code>x between 10 and 90</code></span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> Range ends join with <b>&amp;&amp;</b>. Option A isn't valid chained comparison in C++; option C matches nearly every number; option D isn't C++ syntax.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">14</span><span>In an <code>else-if</code> ladder…</span><span class="q-tag">Week 3</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q14" value="a"><span>Every branch runs</span></label>
+          <label class="q-opt"><input type="radio" name="q14" value="b"><span>The first true condition wins; the rest are skipped</span></label>
+          <label class="q-opt"><input type="radio" name="q14" value="c"><span>The last condition always runs</span></label>
+          <label class="q-opt"><input type="radio" name="q14" value="d"><span>Branch order never matters</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> Top-down test, <b>first true wins</b>, else = fallback. That's why order matters — test strictest scores first (90 before 80).</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">15</span><span>Missing <code>break</code> in a <code>switch</code> causes…</span><span class="q-tag">Week 3</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q15" value="a"><span>A compile error</span></label>
+          <label class="q-opt"><input type="radio" name="q15" value="b"><span>Fall-through into the next case</span></label>
+          <label class="q-opt"><input type="radio" name="q15" value="c"><span>The default case to run</span></label>
+          <label class="q-opt"><input type="radio" name="q15" value="d"><span>An infinite loop</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> Execution keeps falling into subsequent cases until a <code>break</code>/<code>return</code> (or the end). Useful only when grouping cases on purpose.</div>
+      </div>
+
+      <div class="quiz-bar">
+        <button type="button" class="btn primary" id="quizSubmit">✅ Check Answers</button>
+        <button type="button" class="btn ghost" id="quizReset">↺ Reset</button>
+        <div class="score-pill" id="scoreOut" aria-live="polite"></div>
+      </div>
+
+    </form>
+
+    <p><b>Scored low?</b> Re-read the explanations → <a href="rev-pf.html" style="color:var(--cyan)">PF Revision Sprint →</a>
+       · <b>Scored high?</b> Recite the <a href="#" onclick="document.querySelector('[data-tab=imp]').click();return false;" style="color:var(--amber)">Important Questions tab →</a></p>
+  </div>
+
+</section>
+
+<footer class="footer">
+  CS111 · Quiz Zone · <b>Weeks 1–3</b> · <a href="rev-pf.html" style="color:inherit">Revision notes →</a> · Fall 2026
+</footer>
+
+<button id="toTop" title="Back to top">↑</button>
+<script src="script.js"></script>
+<script>
+(function () {
+  var form = document.getElementById('testForm');
+  if (!form) return;
+  var blocks = [].slice.call(form.querySelectorAll('.q-block'));
+  var score = document.getElementById('scoreOut');
+
+  function gradeAll() {
+    var right = 0;
+    blocks.forEach(function (b) {
+      var ans = b.getAttribute('data-answer');
+      var chk = b.querySelector('input:checked');
+      b.classList.add('graded');
+      [].forEach.call(b.querySelectorAll('.q-opt'), function (o) {
+        var i = o.querySelector('input');
+        o.classList.remove('is-right', 'is-wrong');
+        if (i.value === ans) o.classList.add('is-right');
+        if (chk && i === chk && i.value !== ans) o.classList.add('is-wrong');
+      });
+      if (chk && chk.value === ans) right++;
+    });
+    var pct = Math.round(right * 100 / blocks.length);
+    var msg = pct >= 80 ? 'Excellent! Quiz-ready 🎉'
+            : pct >= 60 ? 'Good — revise the red ones, then retry.'
+            : 'Keep revising — read every explanation, then retry.';
+    score.innerHTML = 'Score: <b>' + right + ' / ' + blocks.length + '</b> (' + pct + '%) — ' + msg;
+    score.classList.add('show');
+    score.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  document.getElementById('quizSubmit').addEventListener('click', gradeAll);
+  document.getElementById('quizReset').addEventListener('click', function () {
+    form.reset();
+    blocks.forEach(function (b) {
+      b.classList.remove('graded');
+      [].forEach.call(b.querySelectorAll('.q-opt'), function (o) { o.classList.remove('is-right', 'is-wrong'); });
+    });
+    score.classList.remove('show');
+    score.innerHTML = '';
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+</script>
+</body>
+</html>
