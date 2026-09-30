@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CS181L — ICT Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="themes.css">
+
+<script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="bg-blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grid-overlay"></div>
+
+<nav class="topbar">
+  <a class="brand" href="index.html"><span class="logo">Σ</span> BS-CYS · NOTES HUB</a>
+<div class="nav-right">
+  <a class="back-btn" href="index.html">← All Subjects</a>
+  <div class="theme-wrap">
+    <button class="theme-btn" id="themeBtn" title="Switch theme (press T)"><span class="palette">🎨</span><span class="label">Theme</span></button>
+    <div class="theme-menu" id="themeMenu">
+      <button class="theme-opt" data-theme="midnight"><span class="sw sw-midnight"></span><b>Midnight Cyber</b><i>glassy dark · aurora blobs</i></button>
+      <button class="theme-opt" data-theme="matrix"><span class="sw sw-matrix"></span><b>Matrix Terminal</b><i>digital rain · scanlines · mono</i></button>
+      <button class="theme-opt" data-theme="paper"><span class="sw sw-paper"></span><b>Paper Notes</b><i>ruled page · ink · sticky notes</i></button>
+      <button class="theme-opt" data-theme="synthwave"><span class="sw sw-synthwave"></span><b>Synthwave</b><i>chrome · retro sun · grid floor</i></button>
+      <button class="theme-opt" data-theme="aurora"><span class="sw sw-aurora"></span><b>Aurora Light</b><i>soft pastel glass</i></button>
+      <button class="theme-opt" data-theme="cyberpunk"><span class="sw sw-cyberpunk"></span><b>Cyberpunk Neon</b><i>glitch boxes · orbitron · neon</i></button>
+      <button class="theme-opt" data-theme="dracula"><span class="sw sw-dracula"></span><b>Dracula Gothic</b><i>serif italics · purple glow</i></button>
+      <button class="theme-opt" data-theme="coffee"><span class="sw sw-coffee"></span><b>Coffee Warmth</b><i>cozy sepia · serif · warm</i></button>
+    </div>
+  </div>
+</div>
+</nav>
+
+<header class="subject-hero">
+  <span class="code-lg">CS181L · LAB</span>
+  <h1><span>ICT Lab — MS Word</span></h1>
+  <p>Ms. Sahar Maqsood ul Hassan · From basics to equations · Week 1 &amp; Week 2</p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="week1"><span class="dot"></span> Week 01 · Basics &amp; Insert Tab</button>
+  <button class="tab-btn" data-tab="week2"><span class="dot"></span> Week 02 · Design, WordArt &amp; Equations</button>
+</div>
+
+<!-- ======================= WEEK 1 ======================= -->
+<section class="tab-panel active" id="week1">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Lab Goal — One Professional Page</h2>
+    <p>Create a one-page document titled <strong>"Applications of ICT in Everyday Life"</strong> demonstrating
+       every Week-01 Word feature. Save immediately as <code>CS181L_Week01_Name.docx</code>.</p>
+    <ul>
+      <li><b>Title:</b> Arial/Calibri, 18–20 pt, bold, centered</li>
+      <li><b>Introduction heading:</b> bold, 14–16 pt + 80–100 word paragraph (justified)</li>
+      <li><b>Bulleted list:</b> ≥5 items under "Common Applications of ICT"</li>
+      <li><b>Numbered list:</b> ≥4 items under "Benefits of ICT" — automatic numbering only</li>
+      <li><b>Table:</b> ≥3 columns × 4 rows, distinct header row</li>
+      <li><b>Picture + ≥2 shapes</b>, header, footer, page number, symbol</li>
+    </ul>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Filename rule:</b> never submit <code>Document1.docx</code>. The name must show
+      course + week + your name, e.g. <code>CS181L_Week01_Ali.docx</code>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Step-by-Step Recipe</h2>
+    <ol>
+      <li><b>Create &amp; save</b> → Blank Document → save with the correct filename</li>
+      <li><b>Title</b> → type, format 18–20 pt bold center, add spacing below</li>
+      <li><b>Introduction</b> → heading + one well-aligned 80–100 word paragraph</li>
+      <li><b>Paragraph formatting</b> → alignment, line spacing, paragraph spacing, indentation</li>
+      <li><b>Bulleted list</b> → standard bullet style, consistent spacing</li>
+      <li><b>Numbered list</b> → Insert numbering (never type "1." manually!)</li>
+      <li><b>Table</b> → Insert → Table (3×4+), style the header row, adjust widths</li>
+      <li><b>Picture</b> → Insert → Pictures → ICT image → resize proportionally → set text wrapping</li>
+      <li><b>Shapes</b> → Insert → Shapes → 2+ (callout example: "ICT Makes Communication Faster")</li>
+      <li><b>Header</b> → "CS-181L — Application of ICT Lab"</li>
+      <li><b>Footer</b> → "Department of Computer Science — Air University Islamabad"</li>
+      <li><b>Page number</b> → Bottom of Page → Plain Number</li>
+      <li><b>Symbol</b> → Insert → Symbol → e.g. © ✓ ★ (placed meaningfully)</li>
+      <li><b>Print Preview</b> → final check → ~one page</li>
+    </ol>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Common mistakes:</b> manually typed list numbers (breaks when reordering), picture covering
+      text (use Wrap Text), symbol pasted randomly (place it in the copyright line).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🖼️ See It: The Word Window anatomy</h2>
+    <div class="diagram">
+      <div class="dg-cap">Where every Week-01/02 feature lives</div>
+      <svg viewBox="0 0 740 330">
+        <rect class="box" x="40" y="8" width="660" height="34" rx="8"/>
+        <text x="370" y="30" class="sub">Title bar · Quick Access · autosave</text>
+        <rect class="box p" x="40" y="50" width="660" height="44" rx="8"/>
+        <text x="370" y="70">RIBBON — File · Home · Insert · Design · Layout · References · Review · View</text>
+        <text x="370" y="87" class="sub">Home = font/paragraph · Insert = tables/pictures/equations · Design &amp; Layout = themes/margins/columns</text>
+        <rect class="box a" x="40" y="104" width="26" height="14" rx="3"/>
+        <rect class="box a" x="74" y="104" width="26" height="14" rx="3"/>
+        <text x="370" y="117" class="sub">horizontal ruler (margins &amp; indents live here)</text>
+        <rect class="box" x="150" y="130" width="440" height="180" rx="4"/>
+        <path class="flow" d="M175 140 V300"/><path class="flow" d="M565 140 V300"/>
+        <text x="370" y="160" class="sub">← left margin</text>
+        <text x="370" y="185">THE PAGE — type text, tables, WordArt</text>
+        <text x="370" y="205" class="sub">two-column layout splits here →</text>
+        <text x="272" y="240" class="sub">column 1</text>
+        <text x="468" y="240" class="sub">column 2</text>
+        <text x="370" y="300" class="sub">right margin →</text>
+        <rect class="box g" x="40" y="316" width="660" height="12" rx="4"/>
+        <text x="370" y="346" class="sub">status bar · page number · print preview zoom</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Memory Tricks — Week 01</h2>
+    <ul class="trick-list">
+      <li><b>Word tabs in order</b> → "<b>F</b>riends <b>H</b>elp <b>I</b>nsert <b>D</b>angerous <b>L</b>ayouts" — File, Home, Insert, Design, Layout.</li>
+      <li><b>Font vs paragraph</b> → Font = <b>per character</b> (bold, size) · Paragraph = <b>per block</b> (spacing, indent, alignment).</li>
+      <li><b>Ctrl shortcuts worth 2 marks</b> → <b>Ctrl+S</b> save · <b>Ctrl+B/I/U</b> · <b>Ctrl+Z</b> undo · <b>Ctrl+P</b> print preview.</li>
+      <li><b>Print before submit</b> → Print Preview catches overflow/margins the normal view hides.</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚡ Quick Tips — Week 01</h2>
+    <div class="tips-grid">
+      <div class="tip-card"><span class="t-ico">📋</span><h4>Automatic lists</h4>
+        <p>Always use Word's bulleted/numbered list buttons — manual numbers never renumber themselves.</p></div>
+      <div class="tip-card"><span class="t-ico">🖼️</span><h4>Wrap text first</h4>
+        <p>Set picture wrapping (Square/Tight) <i>before</i> dragging it around — text flows instead of jumping.</p></div>
+      <div class="tip-card"><span class="t-ico">🔤</span><h4>Two fonts max</h4>
+        <p>Professional ≠ decorative. One font for headings, one for body is plenty.</p></div>
+      <div class="tip-card"><span class="t-ico">📐</span><h4>Check with Print Preview</h4>
+        <p>Ctrl+P preview catches overflow and spacing issues you can't see while editing.</p></div>
+      <div class="tip-card"><span class="t-ico">⌨️</span><h4>F2 saves time</h4>
+        <p>Keep hitting Ctrl+S before every compile... wrong course — before every big edit! AutoSave lies.</p></div>
+      <div class="tip-card"><span class="t-ico">✅</span><h4>Use the checklist</h4>
+        <p>The lab sheet ends with a self-assessment checklist — tick every box before submitting.</p></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>✅ Submission Self-Check</h2>
+    <ul class="checklist">
+      <li>Title clearly visible and formatted (18–20 pt, bold, centered)</li>
+      <li>Introduction heading + 80–100 word paragraph</li>
+      <li>Bulleted list with at least 5 items</li>
+      <li>Numbered list with automatic numbering (≥4 items)</li>
+      <li>Table ≥3×4 with distinct header row</li>
+      <li>Picture inserted, resized, wrapped — not covering text</li>
+      <li>At least 2 shapes added</li>
+      <li>Header, footer and page number visible</li>
+      <li>Symbol inserted meaningfully (©)</li>
+      <li>Filename: CS181L_Week01_YourName.docx</li>
+      <li>Spelling checked · document ≈ one page</li>
+    </ul>
+    <p><b>Related theory:</b> <a href="cs181.html" style="color:var(--cyan)">CS181 Application of ICT →</a></p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Week 01 Viva</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Which shortcut saves the document?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Ctrl+S</b>. Related: Ctrl+Z undo · Ctrl+P print preview · Ctrl+B/I/U formatting.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Why never type "1." manually in a list?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Manual numbers don't renumber when you reorder/delete items. Always use Insert → Numbering.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Font vs paragraph formatting?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Font = per <b>character</b> (bold, size, colour) · Paragraph = per <b>block</b> (alignment, spacing, indent).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Picture covers my text — what's wrong?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Missing text wrapping. Right-click picture → Wrap Text → Square/Tight so text flows around it.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>What does Print Preview catch?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Overflow past margins, bad page breaks and spacing issues invisible in normal editing view.</p></div>
+      </div></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ======================= WEEK 2 ======================= -->
+<section class="tab-panel" id="week2">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Task 1 — Page Design &amp; Layout</h2>
+    <div class="pipeline">
+      <span class="pipe-step">A4 size</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">Theme</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">Margins + Portrait</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">Page border</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">2-column section</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">Page break → Pg 2</span>
+    </div>
+    <ul>
+      <li>Create a <b>two-page</b> document: "ICT in Modern Education" with title, headings, paragraphs, bulleted list</li>
+      <li>Apply a built-in <b>document theme</b> (Design tab)</li>
+      <li>One short section uses a <b>two-column layout</b> (Layout → Columns)</li>
+      <li><b>Page break</b> (Ctrl+Enter) so section 2 starts exactly on Page 2</li>
+    </ul>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Ctrl+Enter, not Enter!</b> Pressing Enter repeatedly breaks the layout when anything shifts.
+      A real page break keeps sections glued to their page.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Task 2 — Paragraph Formatting</h2>
+    <table>
+      <tr><th>Setting</th><th>Requirement</th></tr>
+      <tr><td>Line spacing</td><td>1.15 or 1.5 for main body</td></tr>
+      <tr><td>Paragraph spacing</td><td>Suitable before/after values</td></tr>
+      <tr><td>Indentation</td><td>First-line or left/right where appropriate</td></tr>
+      <tr><td>Alignment</td><td>Justified for main body paragraphs</td></tr>
+      <tr><td>Headings</td><td>Consistent and visually distinct</td></tr>
+      <tr><td>Review</td><td>Navigation Pane (View → Navigation Pane) to spot layout problems</td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Task 3 — WordArt</h2>
+    <ol>
+      <li>Place cursor at the top of Page 1</li>
+      <li><b>Insert → WordArt</b> → pick a style</li>
+      <li>Type <strong>"ICT in Modern Education"</strong></li>
+      <li>Resize/reposition so it fits neatly</li>
+      <li>Apply <b>Text Fill, Text Outline, Text Effects</b></li>
+      <li>Use <b>Wrap Text</b> to position it with surrounding content</li>
+      <li>Create a <b>second</b> WordArt: <strong>"Learn • Connect • Innovate"</strong></li>
+    </ol>
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div>WordArt is a <i>shape-like</i> object — that's why it needs Wrap Text, just like pictures.
+      Selecting it shows the Drawing Tools / Shape Format tab.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Task 4 — Mathematical Formulas</h2>
+    <p>Use <strong>Insert → Equation</strong> (or <code>Alt + =</code>) — <u>never type formulas as plain text</u>.
+       Use Equation tools for fractions, superscripts, roots, brackets and symbols.</p>
+    <table>
+      <tr><th>#</th><th>Formula</th><th>Where it's used</th></tr>
+      <tr><td>1</td><td><b>Mean:</b> x̄ = (x₁ + x₂ + … + xₙ) / n</td><td>Average marks, averages in analytics</td></tr>
+      <tr><td>2</td><td><b>Percentage:</b> (Obtained / Total) × 100</td><td>Result calculation</td></tr>
+      <tr><td>3</td><td><b>Quadratic:</b> x = (−b ± √(b² − 4ac)) / 2a</td><td>Algebra foundation</td></tr>
+      <tr><td>4</td><td><b>Circle area:</b> A = πr²</td><td>Basic geometry</td></tr>
+    </table>
+    <div class="code-block"><button class="copy-btn">Copy</button>Place cursor → <span class="kw">Insert → Equation</span>  (or press <span class="kw">Alt + =</span>)
+Pick structure from Equation Tools → fractions / scripts / radicals
+Click <span class="kw">outside</span> the equation when finished
+Center each equation on its <span class="kw">own line</span></div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎬 Worked Example — Build the two-page lab document</h2>
+    <div class="example">
+      <div class="ex-head"><span>🧩 From blank page → every feature the checker wants</span><button class="ex-next">Next step →</button></div>
+      <div class="ex-step"><span class="n">1</span><b>Page setup first (Layout tab):</b> size A4 · margins Normal (or as asked) · orientation Portrait — set the canvas before decorating it.</div>
+      <div class="ex-step"><span class="n">2</span><b>Two columns:</b> Layout → Columns → Two. Type the body — it reflows into both columns automatically.</div>
+      <div class="ex-step"><span class="n">3</span><b>Page border:</b> Design → Page Borders → Box style → OK. (Design tab = themes + borders — that's its whole personality.)</div>
+      <div class="ex-step"><span class="n">4</span><b>WordArt heading:</b> Insert → WordArt → pick a style → type → Text Fill/Outline/Effects to customize → Wrap Text → <b>In Front of Text</b> so you can drag it anywhere.</div>
+      <div class="ex-step"><span class="n">5</span><b>Equations (NOT typed text!):</b> Insert → Equation (or <b>Alt + =</b>) → build:
+        <pre style="margin:6px 0 0;font-family:Consolas,monospace;font-size:.84rem">average = (a + b + c) / 3
+percent  = (marks / total) × 100
+x = (−b ± √(b² − 4ac)) / 2a
+A = πr²</pre></div>
+      <div class="ex-step"><span class="n">6</span><b>Page break &amp; footer:</b> Ctrl+Enter for a clean page 2 → Insert → Page Number → bottom → save as <code>RegID_Lab02.docx</code>.</div>
+      <div class="ex-step"><span class="n">7</span><b>Final pass:</b> Print Preview → check borders, columns, WordArt position, equation rendering → save once more.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Memory Tricks — Week 02</h2>
+    <ul class="trick-list">
+      <li><b>Alt + =</b> summons the equation editor — "<b>A</b>lgebra <b>+</b> <b>=</b>quations". Never fake it with plain text; checkers open the file and click the object.</li>
+      <li><b>Design vs Layout</b> → Design = <b>look</b> (themes, watermarks, page borders) · Layout = <b>geometry</b> (margins, columns, orientation, breaks).</li>
+      <li><b>WordArt positioning</b> → invisible problems are wrap problems: set <b>Wrap Text → In Front of Text</b> before dragging.</li>
+      <li><b>Quadratic formula</b> → "<b>x equals minus b, plus or minus root, all over 2a</b>" — sing it while inserting.</li>
+      <li><b>Line spacing</b> → 1.15 = modern default · 1.5 = exam-friendly · Justify = tidy both edges (Ctrl+J).</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚡ Quick Tips — Week 02</h2>
+    <div class="tips-grid">
+      <div class="tip-card"><span class="t-ico">⌨️</span><h4>Alt + =</h4>
+        <p>The equation shortcut. Once your fingers know it, inserting formulas is instant.</p></div>
+      <div class="tip-card"><span class="t-ico">📄</span><h4>Navigation Pane</h4>
+        <p>View → Navigation Pane shows your heading tree — broken structure becomes obvious instantly.</p></div>
+      <div class="tip-card"><span class="t-ico">🎨</span><h4>Themes first</h4>
+        <p>Apply the theme <i>before</i> styling individual elements — otherwise you overwrite your own work.</p></div>
+      <div class="tip-card"><span class="t-ico">📐</span><h4>Exactly 2 pages</h4>
+        <p>Use a real page break, not a pile of Enters. Check with Print Preview before submitting.</p></div>
+      <div class="tip-card"><span class="t-ico">🔤</span><h4>WordArt ≠ text</h4>
+        <p>WordArt objects float — use Wrap Text so they never sit on top of your paragraphs.</p></div>
+      <div class="tip-card"><span class="t-ico">🧮</span><h4>Real equations</h4>
+        <p>Type "x^2" inside the equation editor and press space — Word auto-formats it into a proper superscript.</p></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>✅ Submission Checklist</h2>
+    <ul class="checklist">
+      <li>Two-page document completed</li>
+      <li>Design and Layout features applied (A4, theme, margins, border, columns)</li>
+      <li>Paragraph formatting completed (1.15/1.5 spacing, justified)</li>
+      <li>WordArt activity completed (2 WordArt elements)</li>
+      <li>Four mathematical formulas inserted via Insert → Equation</li>
+      <li>Document proofread (spelling, spacing, formatting)</li>
+      <li>Correct filename: CS181L_Week02_YourName.docx</li>
+      <li>Screenshots of WordArt and equations attached</li>
+    </ul>
+    <p><b>Related theory:</b> <a href="cs181.html" style="color:var(--cyan)">CS181 Application of ICT →</a></p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Week 02 Viva</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>What does <code>Alt + =</code> open?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>The <b>Equation editor</b> (Insert → Equation). Build fractions, roots, powers there — never as plain text.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Design tab vs Layout tab?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Design = <b>look</b> (themes, watermarks, page borders) · Layout = <b>geometry</b> (margins, columns, orientation, breaks).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Why does WordArt need Wrap Text?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>WordArt is a floating shape-like object — without wrapping it lands on top of paragraphs. Use In Front of Text.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Ctrl+Enter vs pressing Enter?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Ctrl+Enter inserts a real <b>page break</b> that survives edits; a pile of Enters breaks as soon as content shifts.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>Write the mean and percentage formulas.</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Mean x̄ = (x₁ + x₂ + … + xₙ) / n · Percentage = (Obtained / Total) × 100 — insert via Equation Tools.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>Where are columns and margins set?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Layout tab</b> — Margins, Orientation, Size, Columns. Design tab handles themes and page borders instead.</p></div>
+      </div></div>
+    </div>
+  </div>
+
+</section>
+
+<footer class="footer">
+  CS181L · ICT Lab · <b>Week 01 &amp; 02</b> · BS Cyber Security · Fall 2026
+</footer>
+
+<button id="toTop" title="Back to top">↑</button>
+<script src="script.js"></script>
+</body>
+</html>

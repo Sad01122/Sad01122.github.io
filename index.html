@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BS-CYS Notes Hub — Semester 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="themes.css">
+
+<script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="bg-blobs">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+</div>
+<div class="grid-overlay"></div>
+
+<nav class="topbar">
+  <a class="brand" href="index.html">
+    <span class="logo">Σ</span>
+    BS-CYS · NOTES HUB
+  </a>
+<div class="nav-right">
+  <span class="back-btn" style="cursor:default">Semester 1 · Fall 2026</span>
+  <div class="theme-wrap">
+    <button class="theme-btn" id="themeBtn" title="Switch theme (press T)"><span class="palette">🎨</span><span class="label">Theme</span></button>
+    <div class="theme-menu" id="themeMenu">
+      <button class="theme-opt" data-theme="midnight"><span class="sw sw-midnight"></span><b>Midnight Cyber</b><i>glassy dark · aurora blobs</i></button>
+      <button class="theme-opt" data-theme="matrix"><span class="sw sw-matrix"></span><b>Matrix Terminal</b><i>digital rain · scanlines · mono</i></button>
+      <button class="theme-opt" data-theme="paper"><span class="sw sw-paper"></span><b>Paper Notes</b><i>ruled page · ink · sticky notes</i></button>
+      <button class="theme-opt" data-theme="synthwave"><span class="sw sw-synthwave"></span><b>Synthwave</b><i>chrome · retro sun · grid floor</i></button>
+      <button class="theme-opt" data-theme="aurora"><span class="sw sw-aurora"></span><b>Aurora Light</b><i>soft pastel glass</i></button>
+      <button class="theme-opt" data-theme="cyberpunk"><span class="sw sw-cyberpunk"></span><b>Cyberpunk Neon</b><i>glitch boxes · orbitron · neon</i></button>
+      <button class="theme-opt" data-theme="dracula"><span class="sw sw-dracula"></span><b>Dracula Gothic</b><i>serif italics · purple glow</i></button>
+      <button class="theme-opt" data-theme="coffee"><span class="sw sw-coffee"></span><b>Coffee Warmth</b><i>cozy sepia · serif · warm</i></button>
+    </div>
+  </div>
+</div>
+</nav>
+
+<header class="hero">
+  <h1 class="anim-in">Your Semester, Beautifully Organized</h1>
+  <p class="sub anim-in anim-delay-1">Jump into any subject, pick your week, and revise with animated notes,
+     diagrams, memory tricks, worked examples and flip-card questions.
+     Press <b style="color:var(--cyan)">1</b> / <b style="color:var(--cyan)">2</b> /
+     <b style="color:var(--cyan)">3</b> to switch tabs, <b style="color:var(--cyan)">T</b> to cycle themes.</p>
+  <div class="stats anim-in anim-delay-2">
+    <span class="stat-chip"><b>9</b> Subjects</span>
+    <span class="stat-chip"><b>16</b> Note Packs</span>
+    <span class="stat-chip"><b>7</b> Subject Sites Live</span>
+    <span class="stat-chip"><b>7</b> Assignments Done</span>
+    <span class="stat-chip"><b>8</b> Themes 🎨</span>
+  </div>
+</header>
+
+<main class="subject-grid">
+
+  <a class="subject-card" href="cs111.html">
+    <span class="code">CS111 · THEORY</span>
+    <span class="icon">💻</span>
+    <h3>Programming Fundamentals</h3>
+    <p>Logic, algorithms, flowcharts, C++ structure, variables &amp; expressions.</p>
+    <div class="meta"><span>Weeks 1 &amp; 3 live · Week 2 soon</span><span class="badge-count">2 notes</span></div>
+  </a>
+
+  <a class="subject-card" href="cs111l.html">
+    <span class="code">CS111L · LAB</span>
+    <span class="icon">🧪</span>
+    <h3>Programming Fundamentals Lab</h3>
+    <p>C++ foundations, operators, type casting &amp; formatted output.</p>
+    <div class="meta"><span>Weeks 1–3 live</span><span class="badge-count">3 notes</span></div>
+  </a>
+
+  <a class="subject-card" href="cs181.html">
+    <span class="code">CS181 · THEORY</span>
+    <span class="icon">🌐</span>
+    <h3>Application of ICT</h3>
+    <p>ICT in daily life, computer history, hardware, data representation &amp; OS.</p>
+    <div class="meta"><span>Weeks 1–2 · 16-week course map</span><span class="badge-count">2 notes</span></div>
+  </a>
+
+  <a class="subject-card" href="cs181l.html">
+    <span class="code">CS181L · LAB</span>
+    <span class="icon">📝</span>
+    <h3>ICT Lab</h3>
+    <p>MS Word basics, Insert tab, design, layout, WordArt &amp; equations.</p>
+    <div class="meta"><span>Week 1 &amp; Week 2 live</span><span class="badge-count">2 notes</span></div>
+  </a>
+
+  <a class="subject-card" href="cy104.html">
+    <span class="code">CY104 · THEORY</span>
+    <span class="icon">🔐</span>
+    <h3>Introduction to Cyber Security</h3>
+    <p>CIA triad, security principles, AAA, risk language &amp; attack frameworks.</p>
+    <div class="meta"><span>Lectures 1 &amp; 2 · Course map</span><span class="badge-count">3 notes</span></div>
+  </a>
+
+  <a class="subject-card" href="cy104l.html">
+    <span class="code">CY104L · LAB</span>
+    <span class="icon">🛡️</span>
+    <h3>Cyber Security Lab</h3>
+    <p>Windows file types, CMD commands, virtualization &amp; Kali Linux.</p>
+    <div class="meta"><span>Labs 02–04 live · WSL screenshots</span><span class="badge-count">3 notes</span></div>
+  </a>
+
+  <a class="subject-card soon" href="#" onclick="return false;">
+    <span class="code">EL170 · THEORY</span>
+    <span class="icon">📖</span>
+    <h3>Functional English</h3>
+    <p>Grammar, writing &amp; communication skills — notes incoming.</p>
+    <div class="meta"><span>No notes yet</span><span class="badge-count soon">Soon</span></div>
+  </a>
+
+  <a class="subject-card soon" href="#" onclick="return false;">
+    <span class="code">HU124 · THEORY</span>
+    <span class="icon">🕌</span>
+    <h3>Islamic Studies &amp; Ethics</h3>
+    <p>Courses on ethics and Islamic studies — notes incoming.</p>
+    <div class="meta"><span>No notes yet</span><span class="badge-count soon">Soon</span></div>
+  </a>
+
+  <a class="subject-card" href="ma216.html">
+    <span class="code">MA216 · THEORY</span>
+    <span class="icon">🧮</span>
+    <h3>Discrete Structures</h3>
+    <p>Logic, sets, relations &amp; combinatorics — Lecture 1–2 live.</p>
+    <div class="meta"><span>Lecture 1–2 live · Propositional Logic</span><span class="badge-count">1 note</span></div>
+  </a>
+
+</main>
+
+<footer class="footer">
+  Built for <b>BS Cyber Security · Semester 1</b> · Air University ·
+  Notes generated from your processed <b>_inbox</b> material
+</footer>
+
+<button id="toTop" title="Back to top">↑</button>
+<script src="script.js"></script>
+</body>
+</html>

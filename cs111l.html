@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CS111L — Programming Fundamentals Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="themes.css">
+
+<script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="bg-blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grid-overlay"></div>
+
+<nav class="topbar">
+  <a class="brand" href="index.html"><span class="logo">Σ</span> BS-CYS · NOTES HUB</a>
+<div class="nav-right">
+  <a class="back-btn" href="index.html">← All Subjects</a>
+  <div class="theme-wrap">
+    <button class="theme-btn" id="themeBtn" title="Switch theme (press T)"><span class="palette">🎨</span><span class="label">Theme</span></button>
+    <div class="theme-menu" id="themeMenu">
+      <button class="theme-opt" data-theme="midnight"><span class="sw sw-midnight"></span><b>Midnight Cyber</b><i>glassy dark · aurora blobs</i></button>
+      <button class="theme-opt" data-theme="matrix"><span class="sw sw-matrix"></span><b>Matrix Terminal</b><i>digital rain · scanlines · mono</i></button>
+      <button class="theme-opt" data-theme="paper"><span class="sw sw-paper"></span><b>Paper Notes</b><i>ruled page · ink · sticky notes</i></button>
+      <button class="theme-opt" data-theme="synthwave"><span class="sw sw-synthwave"></span><b>Synthwave</b><i>chrome · retro sun · grid floor</i></button>
+      <button class="theme-opt" data-theme="aurora"><span class="sw sw-aurora"></span><b>Aurora Light</b><i>soft pastel glass</i></button>
+      <button class="theme-opt" data-theme="cyberpunk"><span class="sw sw-cyberpunk"></span><b>Cyberpunk Neon</b><i>glitch boxes · orbitron · neon</i></button>
+      <button class="theme-opt" data-theme="dracula"><span class="sw sw-dracula"></span><b>Dracula Gothic</b><i>serif italics · purple glow</i></button>
+      <button class="theme-opt" data-theme="coffee"><span class="sw sw-coffee"></span><b>Coffee Warmth</b><i>cozy sepia · serif · warm</i></button>
+    </div>
+  </div>
+</div>
+</nav>
+
+<header class="subject-hero">
+  <span class="code-lg">CS111L · LAB</span>
+  <h1><span>Programming Fundamentals Lab</span></h1>
+  <p>Ms. Aneeba Shahid · Hands-on C++ · Weeks 1–3</p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="week1"><span class="dot"></span> Week 01 · C++ Foundations</button>
+  <button class="tab-btn" data-tab="week2"><span class="dot"></span> Week 02 · Operators &amp; Formatting</button>
+  <button class="tab-btn" data-tab="week3"><span class="dot"></span> Week 03 · Strings &amp; Decisions</button>
+</div>
+
+<!-- ======================= WEEK 1 ======================= -->
+<section class="tab-panel active" id="week1">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>The Six-Step Programming Workflow</h2>
+    <div class="pipeline">
+      <span class="pipe-step">1 · Understand</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">2 · Plan (IPO)</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">3 · Code</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">4 · Compile</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">5 · Run &amp; Test</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">6 · Debug</span>
+    </div>
+    <div class="callout exam"><span class="c-ico">🔑</span>
+      <div><b>Key distinction:</b> a <b>syntax/compiler error</b> = program won't compile at all.
+      A <b>logic error</b> = program runs but gives a wrong answer. Debugging is finding <i>why</i>, not just <i>where</i>.</div>
+    </div>
+    <p>Recommended folder layout:</p>
+    <div class="code-block"><button class="copy-btn">Copy</button>CS111L/
+└── Week01/
+    ├── Task01/   Task02/   Task03/
+    ├── Flowchart_Code/
+    └── Diagnostic/</div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Program Structure &amp; I/O</h2>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">#include</span> &lt;iostream&gt;
+<span class="kw">using namespace</span> std;
+
+<span class="kw">int</span> <span class="fn">main</span>()
+{
+    <span class="kw">int</span> age;
+    cout &lt;&lt; <span class="str">"Enter your age: "</span>;
+    cin &gt;&gt; age;
+    cout &lt;&lt; <span class="str">"You entered: "</span> &lt;&lt; age &lt;&lt; endl;
+    <span class="kw">return</span> <span class="num">0</span>;
+}</div>
+    <ul>
+      <li><code>cin &gt;&gt;</code> reads whitespace-separated input; a simple <code>string</code> stops at the first space</li>
+      <li><code>endl</code> or <code>\n</code> moves to a new line</li>
+      <li>Multiple inputs in one line: <code>cin &gt;&gt; name &gt;&gt; age;</code></li>
+    </ul>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div>Most common Week-1 compile error: the missing semicolon. The compiler reports the error on the
+      <b>line after</b> your actual mistake — always check the previous line too.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Data Types, Arithmetic &amp; Flowchart → Code</h2>
+    <table>
+      <tr><th>Type</th><th>Stores</th><th>Example</th></tr>
+      <tr><td><code>int</code></td><td>Whole numbers</td><td><code>attempts = 3</code></td></tr>
+      <tr><td><code>double</code></td><td>Decimals (more precision)</td><td><code>accuracy = 94.5</code></td></tr>
+      <tr><td><code>float</code></td><td>Decimals (less precision)</td><td><code>temp = 36.5f</code></td></tr>
+      <tr><td><code>char</code></td><td>One character</td><td><code>grade = 'A'</code></td></tr>
+      <tr><td><code>bool</code></td><td>True / false</td><td><code>valid = true</code></td></tr>
+      <tr><td><code>string</code></td><td>Text</td><td><code>name = "Sara"</code></td></tr>
+      <tr><td><code>const</code></td><td>Value that cannot change</td><td><code>const double PI = 3.14159;</code></td></tr>
+    </table>
+
+    <h3>Worked example — Rectangle area (IPO → C++)</h3>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="cm">// INPUT: length, width  |  PROCESS: area = l × w  |  OUTPUT: area</span>
+<span class="kw">double</span> length, width, area;
+cout &lt;&lt; <span class="str">"Enter length: "</span>;  cin &gt;&gt; length;
+cout &lt;&lt; <span class="str">"Enter width: "</span>;   cin &gt;&gt; width;
+area = length * width;
+cout &lt;&lt; <span class="str">"Area = "</span> &lt;&lt; area &lt;&lt; endl;</div>
+    <p><b>Flowchart shapes:</b> Oval = Start/End · Parallelogram = I/O · Rectangle = Process · Arrow = flow direction.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🔍 Debugging — Find the Cause, Not Just the Error</h2>
+    <p>Five-question method:</p>
+    <ol>
+      <li>What did I <b>want</b> the program to do?</li>
+      <li>What did it <b>actually</b> do?</li>
+      <li>Is it a <b>compile-time</b> or <b>logical</b> problem?</li>
+      <li>Which line/expression is most likely responsible?</li>
+      <li>What <b>one</b> change can I make and test?</li>
+    </ol>
+    <table>
+      <tr><th>Common problem</th><th>Fix</th></tr>
+      <tr><td><code>Expected ';'</code></td><td>Check the reported line and the line before it</td></tr>
+      <tr><td><code>cin/cout not recognised</code></td><td>Check <code>#include &lt;iostream&gt;</code> / spelling</td></tr>
+      <tr><td><code>string not recognised</code></td><td>Add <code>#include &lt;string&gt;</code></td></tr>
+      <tr><td>Wrong calculation</td><td>Check formula + data types (integer division!)</td></tr>
+    </table>
+    <div class="callout good"><span class="c-ico">Record</span>
+      <div>Debugging record format: <b>Expected → Actual → Suspected cause → Change made → Test result</b>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Memory Tricks — Week 01</h2>
+    <ul class="trick-list">
+      <li><b>Six steps</b> → <b>3 think, 3 do</b>: Understand · Plan · Code ‖ Compile · Run &amp; Test · Debug.</li>
+      <li><b>Type sizes</b> → "<b>CIFDB</b>" — <b>C</b>har 1 · <b>I</b>nt 4 · <b>F</b>loat 4 · <b>D</b>ouble 8 · <b>B</b>ool 1 byte (approximate, machine-dependent).</li>
+      <li><b>Flowchart → code</b> → Oval = <code>int main()</code> start/end · Parallelogram = <code>cin</code>/<code>cout</code> · Rectangle = assignments/math · Diamond = <code>if</code>.</li>
+      <li><b>Syntax vs logic error</b> → syntax = compiler stops you (red text) · logic = program runs but gives wrong answers (you must <b>test</b>).</li>
+      <li><b>Debug rule</b> → change <b>one thing</b> at a time, re-run, observe. Two changes = you learn nothing.</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎬 Worked Example — Storage calculator logic</h2>
+    <div class="example">
+      <div class="ex-head"><span>🧩 "How many bytes does a person's record take?"</span><button class="ex-next">Next step →</button></div>
+      <div class="ex-step"><span class="n">1</span><b>Read the task:</b> one <code>int</code> age, one <code>double</code> marks, one <code>char</code> grade — find total bytes.</div>
+      <div class="ex-step"><span class="n">2</span><b>Let the machine answer:</b> <code>cout &lt;&lt; sizeof(age);</code> → typically <b>4</b> — never guess sizes in code.</div>
+      <div class="ex-step"><span class="n">3</span><b>Add them:</b> <code>sizeof(age) + sizeof(marks) + sizeof(grade)</code> → 4 + 8 + 1 = <b>13 bytes</b>.</div>
+      <div class="ex-step"><span class="n">4</span><b>Print with labels</b> so output is readable — the lab marks <i>clarity</i>, not just the number.</div>
+      <div class="ex-step"><span class="n">5</span><b>Exam twist:</b> ask again for <b>100 people</b> → multiply by 100 (1,300 bytes ≈ 1.3 KB). Show the reasoning, not just the answer.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚡ Quick Tips — Week 01</h2>
+    <div class="tips-grid">
+      <div class="tip-card"><span class="t-ico">📋</span><h4>IPO before code</h4>
+        <p>Always write Input → Process → Output on paper first. It takes 60 seconds and saves 20 minutes.</p></div>
+      <div class="tip-card"><span class="t-ico">🧮</span><h4>Integer division trap</h4>
+        <p><code>(5+8+10)/3</code> gives <b>7</b>, not 7.67. Use <code>/ 3.0</code> or <code>double</code> when you need decimals.</p></div>
+      <div class="tip-card"><span class="t-ico">💾</span><h4>Save before compiling</h4>
+        <p>Compiling stale code wastes more time than any other habit. Ctrl+S becomes muscle memory.</p></div>
+      <div class="tip-card"><span class="t-ico">🧪</span><h4>Test more than once</h4>
+        <p>Submission needs ≥2 test cases — include one that produces a decimal result.</p></div>
+      <div class="tip-card"><span class="t-ico">🔍</span><h4>dir /a mindset</h4>
+        <p>Hidden things matter — in debugging too, look for what's <i>not</i> obviously visible.</p></div>
+      <div class="tip-card"><span class="t-ico">🗣️</span><h4>Explain your code</h4>
+        <p>If you can't explain every line aloud, you don't understand it yet. Viva questions target exactly this.</p></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Lab Viva Questions</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>What are the major stages between C++ source and an executable?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Preprocess → Compile → Link → Executable (machine instructions).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Difference between <code>cout</code> and <code>cin</code>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><code>cout</code> sends data to output; <code>cin</code> reads input into program storage.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>What does <code>const</code> do?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Declares a typed constant — the compiler prevents any later assignment to it.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Why is <code>2attempts</code> an invalid variable name?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Identifiers cannot begin with a digit. Use <code>attempts2</code> or <code>twoFactor</code>.</p></div>
+      </div></div>
+    </div>
+    <p style="margin-top:16px"><b>Related theory:</b> <a href="cs111.html" style="color:var(--cyan)">CS111 Week 1 →</a></p>
+  </div>
+
+</section>
+
+<!-- ======================= WEEK 2 ======================= -->
+<section class="tab-panel" id="week2">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Arithmetic Operators</h2>
+    <table>
+      <tr><th>Op</th><th>Name</th><th>Example</th><th>Result</th></tr>
+      <tr><td><code>+</code></td><td>Addition</td><td><code>20 + 6</code></td><td>26</td></tr>
+      <tr><td><code>-</code></td><td>Subtraction</td><td><code>20 - 6</code></td><td>14</td></tr>
+      <tr><td><code>*</code></td><td>Multiplication</td><td><code>20 * 6</code></td><td>120</td></tr>
+      <tr><td><code>/</code></td><td>Division</td><td><code>20 / 6</code></td><td>3 (integer!)</td></tr>
+      <tr><td><code>%</code></td><td>Modulus (remainder)</td><td><code>20 % 6</code>, <code>17 % 5</code></td><td>2, 2</td></tr>
+    </table>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">int</span> a = <span class="num">7</span>, b = <span class="num">2</span>;
+cout &lt;&lt; a / b;   <span class="cm">// 3  — NOT 3.5 (integer division)</span>
+
+<span class="kw">double</span> x = <span class="num">7</span>, y = <span class="num">2</span>;
+cout &lt;&lt; x / y;   <span class="cm">// 3.5 — floating-point division</span></div>
+    <p><b>Guided task:</b> basic calculator with <code>a = 20</code>, <code>b = 6</code> printing all five operations
+       (expected: 26, 14, 120, 3, 2).</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Assignment &amp; Compound Operators</h2>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">int</span> marks;
+marks = <span class="num">85</span>;                 <span class="cm">// declare → assign → display</span>
+
+<span class="kw">int</span> total = a + b;          <span class="cm">// expression evaluated first, then stored</span></div>
+    <table>
+      <tr><th>Operator</th><th>Equivalent</th><th>Meaning</th></tr>
+      <tr><td><code>+=</code></td><td><code>x = x + n</code></td><td>add &amp; store</td></tr>
+      <tr><td><code>-=</code></td><td><code>x = x - n</code></td><td>subtract &amp; store</td></tr>
+      <tr><td><code>*=</code></td><td><code>x = x * n</code></td><td>multiply &amp; store</td></tr>
+      <tr><td><code>/=</code></td><td><code>x = x / n</code></td><td>divide &amp; store</td></tr>
+      <tr><td><code>%=</code></td><td><code>x = x % n</code></td><td>remainder &amp; store</td></tr>
+    </table>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">int</span> x = <span class="num">20</span>;
+x += <span class="num">5</span>;   <span class="cm">// 25</span>
+x -= <span class="num">3</span>;   <span class="cm">// 22</span>
+x *= <span class="num">2</span>;   <span class="cm">// 44</span>
+x /= <span class="num">4</span>;   <span class="cm">// 11</span>
+x %= <span class="num">4</span>;   <span class="cm">// 3  → final output: 3</span></div>
+    <div class="callout tip"><span class="c-ico">Trace</span>
+      <div><b>Salary Update guided task:</b> salary = 50000, <code>+= 5000</code> → 55000,
+      <code>-= 2000</code> → <b>53000</b> final. Compound assignment changes the <i>existing</i> value — trace after every statement.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Type Conversion &amp; Casting</h2>
+    <ul>
+      <li><b>Implicit</b> — automatic, safe widening: <code>double value = number;</code> (int → double)</li>
+      <li><b>Explicit</b> — programmer forces it with <code>static_cast&lt;&gt;</code></li>
+    </ul>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">int</span> obtained = <span class="num">7</span>, total = <span class="num">2</span>;
+
+<span class="cm">// WRONG: 7/2 = 3 (integer division before assignment)</span>
+<span class="cm">// RIGHT: cast one operand first → 3.5</span>
+<span class="kw">double</span> average = <span class="kw">static_cast</span>&lt;<span class="kw">double</span>&gt;(obtained) / total;
+
+<span class="kw">char</span> digit = <span class="str">'5'</span>;
+<span class="kw">int</span> number = digit - <span class="str">'0'</span>;   <span class="cm">// 5 — char to int trick</span></div>
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>Exam trap:</b> changing only the variable type to <code>double</code> is NOT enough —
+      <code>(7 + 8 + 10) / 3</code> still divides as integers <i>first</i>. You must use <code>/ 3.0</code>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Formatted Output (&lt;iomanip&gt;)</h2>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">#include</span> &lt;iomanip&gt;
+
+cout &lt;&lt; <span class="kw">setw</span>(<span class="num">10</span>) &lt;&lt; <span class="num">25</span> &lt;&lt; endl;        <span class="cm">// reserves 10 positions</span>
+cout &lt;&lt; left &lt;&lt; <span class="kw">setw</span>(<span class="num">15</span>) &lt;&lt; <span class="str">"Name"</span>;   <span class="cm">// left-aligned column</span>
+
+<span class="kw">double</span> pct = <span class="num">87.45678</span>;
+cout &lt;&lt; fixed &lt;&lt; <span class="kw">setprecision</span>(<span class="num">2</span>) &lt;&lt; pct;  <span class="cm">// 87.46</span>
+
+<span class="kw">bool</span> valid = <span class="kw">true</span>;
+cout &lt;&lt; boolalpha &lt;&lt; valid;          <span class="cm">// "true", not 1</span></div>
+    <table>
+      <tr><th>Manipulator</th><th>Purpose</th></tr>
+      <tr><td><code>setw(n)</code></td><td>Minimum width of the next output item</td></tr>
+      <tr><td><code>left</code> / <code>right</code></td><td>Alignment inside that width</td></tr>
+      <tr><td><code>fixed</code> + <code>setprecision(2)</code></td><td>Exactly 2 digits after the decimal point</td></tr>
+      <tr><td><code>boolalpha</code></td><td>Prints <code>true</code>/<code>false</code> instead of 1/0</td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div>Without <code>fixed</code>, <code>setprecision(2)</code> controls <b>significant digits</b>, not decimal
+      places — <code>87.45678</code> would print as <code>87</code>. Always pair them for money/percentages.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Memory Tricks — Week 02</h2>
+    <ul class="trick-list">
+      <li><b>Cast it loud</b> → to kill integer division, make <i>one</i> operand a double: <code>static_cast&lt;double&gt;(a) / b</code>.
+        <span class="mem">Casting AFTER dividing is too late — the decimal is already chopped.</span></li>
+      <li><b>Digit trick</b> → <code>'7' - '0'</code> = <b>7</b>. Char digits are consecutive in ASCII, so subtracting <code>'0'</code> converts them.</li>
+      <li><b>Compound ops</b> → <code>x += 5</code> ≡ <code>x = x + 5</code>. Same for <code>-= *= /= %=</code> — shorter, fewer typos.</li>
+      <li><b><code>&lt;iomanip&gt;</code> trio</b> → <b>W</b>idth (<code>setw</code>) · <b>A</b>lignment (<code>left</code>/<code>right</code>) · <b>P</b>recision (<code>fixed + setprecision</code>).
+        <span class="mem">"W-A-P" fixes any table layout.</span></li>
+      <li><b>Modulus in real life</b> → <code>n % 2 == 0</code> means even · <code>n % 60</code> converts seconds → minutes.</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎬 Worked Example — Percentage table without wrong decimals</h2>
+    <div class="example">
+      <div class="ex-head"><span>🧩 The classic lab bug: <code style="color:inherit">78.5%</code> prints as <code style="color:inherit">78</code></span><button class="ex-next">Next step →</button></div>
+      <div class="ex-step"><span class="n">1</span><b>Bug:</b> <code>double pct = marks * 100 / total;</code> with ints <code>marks=314, total=400</code> — <code>314 * 100 = 31400</code>, then <code>31400 / 400 = 78</code>… but if inputs are <code>int</code> everywhere, watch the order.</div>
+      <div class="ex-step"><span class="n">2</span><b>Real trap:</b> <code>total * 100</code> can <b>overflow</b> a small int in other tasks — do the division first or cast early: <code>static_cast&lt;double&gt;(marks) / total * 100</code>.</div>
+      <div class="ex-step"><span class="n">3</span><b>Force decimals:</b> <code>cout &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; pct;</code> → <b>78.50</b>.</div>
+      <div class="ex-step"><span class="n">4</span><b>Align the columns:</b> <code>cout &lt;&lt; left &lt;&lt; setw(12) &lt;&lt; name &lt;&lt; right &lt;&lt; setw(8) &lt;&lt; pct &lt;&lt; '%'</code>.</div>
+      <div class="ex-step"><span class="n">5</span><b>Result:</b>
+        <pre style="margin:6px 0 0;font-family:Consolas,monospace;font-size:.84rem">Name         Marks   %
+Ali           314   78.50
+Sara          361   90.25</pre>
+        Same numbers — but now it looks like a mark sheet.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚡ Quick Tips — Week 02</h2>
+    <div class="tips-grid">
+      <div class="tip-card"><span class="t-ico">🎯</span><h4>Cast one operand</h4>
+        <p>For decimal division, cast <i>one side only</i>: <code>static_cast&lt;double&gt;(a) / b</code>.</p></div>
+      <div class="tip-card"><span class="t-ico">📊</span><h4>setw for tables</h4>
+        <p>Never hand-align columns with spaces — <code>setw()</code> survives names of any length.</p></div>
+      <div class="tip-card"><span class="t-ico">🧮</span><h4>% means remainder</h4>
+        <p>Great for even/odd checks (<code>n % 2 == 0</code>) and digit extraction. Only works on integers.</p></div>
+      <div class="tip-card"><span class="t-ico">⏱️</span><h4>Trace compounds</h4>
+        <p>After every <code>+=</code>/<code>-=</code>, write the new value down. Half of lab marks are in the dry run.</p></div>
+      <div class="tip-card"><span class="t-ico">📎</span><h4>Include iomanip</h4>
+        <p><code>setw</code>, <code>fixed</code>, <code>setprecision</code> all live in <code>&lt;iomanip&gt;</code> — missing it = compile error.</p></div>
+      <div class="tip-card"><span class="t-ico">✅</span><h4>boolalpha matters</h4>
+        <p>Passing status must print <code>true/false</code>, not <code>1/0</code> — that's a marking criterion.</p></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Week 2 Viva</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>What is <code>17 % 5</code>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>2</b> — 17 ÷ 5 gives quotient 3, remainder 2.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Why does <code>(7+8+10)/3</code> print 8 instead of 8.33?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Integer division: all operands are <code>int</code>, so 25/3 truncates to 8. Use <code>/ 3.0</code>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>What does <code>fixed &lt;&lt; setprecision(2)</code> do?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Shows exactly 2 digits after the decimal point (87.45678 → 87.46).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Implicit vs explicit conversion?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Implicit = compiler does it automatically (int→double). Explicit = you force it with <code>static_cast&lt;&gt;</code>.</p></div>
+      </div></div>
+    </div>
+    <p style="margin-top:16px"><b>Related theory:</b> <a href="cs111.html" style="color:var(--cyan)">CS111 →</a></p>
+  </div>
+
+</section>
+
+<!-- ======================= WEEK 3 ======================= -->
+<section class="tab-panel" id="week3">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Character &amp; String Handling</h2>
+    <table>
+      <tr><th>Type</th><th>Example</th><th>Meaning</th></tr>
+      <tr><td><code>char</code></td><td><code>'A'</code></td><td>Single character</td></tr>
+      <tr><td><code>string</code></td><td><code>"Ali"</code></td><td>Sequence of characters</td></tr>
+    </table>
+    <h3>Character Functions (&lt;cctype&gt;)</h3>
+    <table>
+      <tr><th>Function</th><th>Purpose</th></tr>
+      <tr><td><code>isalpha(ch)</code></td><td>Checks for alphabetic character</td></tr>
+      <tr><td><code>isdigit(ch)</code></td><td>Checks for decimal digit</td></tr>
+      <tr><td><code>isalnum(ch)</code></td><td>Alphabetic <b>or</b> digit</td></tr>
+      <tr><td><code>isspace(ch)</code></td><td>Checks for whitespace</td></tr>
+      <tr><td><code>toupper(ch)</code> / <code>tolower(ch)</code></td><td>Convert case</td></tr>
+    </table>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">string</span> username;
+cout &lt;&lt; <span class="str">"Enter username: "</span>;  cin &gt;&gt; username;      <span class="cm">// one word only</span>
+cout &lt;&lt; <span class="str">"Length: "</span> &lt;&lt; username.<span class="fn">length</span>() &lt;&lt; endl;
+
+<span class="kw">string</span> fullName;
+cin.<span class="fn">ignore</span>();                          <span class="cm">// clear leftover newline FIRST</span>
+getline(cin, fullName);                 <span class="cm">// reads the whole line with spaces</span>
+
+<span class="kw">char</span> ch = <span class="str">'7'</span>;
+<span class="kw">if</span> (isalpha(ch))      cout &lt;&lt; <span class="str">"Alphabet"</span>;
+<span class="kw">else if</span> (isdigit(ch)) cout &lt;&lt; <span class="str">"Digit"</span>;
+<span class="kw">else</span>                  cout &lt;&lt; <span class="str">"Special"</span>;</div>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Common problem:</b> after <code>cin &gt;&gt; age</code>, the newline stays in the buffer —
+      <code>getline()</code> then reads an empty string. Fix: <code>cin.ignore()</code> before every <code>getline()</code>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Relational &amp; Logical Operators</h2>
+    <table>
+      <tr><th>Op</th><th>Meaning</th><th>Example</th></tr>
+      <tr><td><code>==</code></td><td>Equal to</td><td><code>x == 10</code></td></tr>
+      <tr><td><code>!=</code></td><td>Not equal to</td><td><code>x != 10</code></td></tr>
+      <tr><td><code>&gt;</code> <code>&lt;</code> <code>&gt;=</code> <code>&lt;=</code></td><td>Compare</td><td><code>marks &gt;= 80</code></td></tr>
+      <tr><td><code>&amp;&amp;</code></td><td>AND — both true</td><td><code>age &gt;= 18 &amp;&amp; hasID</code></td></tr>
+      <tr><td><code>||</code></td><td>OR — at least one</td><td><code>role == 'A' || role == 'U'</code></td></tr>
+      <tr><td><code>!</code></td><td>NOT — reverse</td><td><code>!blocked</code></td></tr>
+    </table>
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>#1 beginner mistake:</b> <code>=</code> <i>assigns</i>, <code>==</code> <i>compares</i>.
+      <code>age = 18</code> changes age · <code>age == 18</code> asks whether age is 18.
+      Compilers warn <code>if (age = 18)</code> — read the warning.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🖼️ See It: Decision Structures</h2>
+    <div class="diagram">
+      <div class="dg-cap">if / else — one question, two paths, one exit</div>
+      <svg viewBox="0 0 740 150">
+        <rect class="box" x="8" y="44" width="110" height="44" rx="10"/>
+        <polygon class="box a pulse" points="215,22 295,66 215,110 135,66"/>
+        <rect class="box g" x="340" y="6" width="150" height="44" rx="10"/>
+        <rect class="box r" x="340" y="90" width="150" height="44" rx="10"/>
+        <rect class="box p" x="560" y="44" width="110" height="44" rx="10"/>
+        <path class="flow" d="M118 66 H135"/>
+        <path class="flow g" d="M295 66 H316 V28 H340"/>
+        <path class="flow" d="M295 66 H316 V112 H340" style="stroke:var(--red)"/>
+        <path class="flow p" d="M490 28 H524 V66 H560"/>
+        <path class="flow p" d="M490 112 H524 V66"/>
+        <text x="63" y="64">read age</text><text x="63" y="80" class="sub">cin &gt;&gt; age</text>
+        <text x="215" y="62">age &gt;= 18?</text><text x="215" y="80" class="sub">diamond = decision</text>
+        <text x="415" y="26">"Eligible"</text><text x="415" y="42" class="sub">true branch</text>
+        <text x="415" y="110">"Not eligible"</text><text x="415" y="126" class="sub">else branch</text>
+        <text x="615" y="64">end</text><text x="615" y="80" class="sub">paths merge</text>
+      </svg>
+    </div>
+    <div class="diagram">
+      <div class="dg-cap">Nested decisions — the two-gate idea (pass Gate 1 before Gate 2 is even checked)</div>
+      <svg viewBox="0 0 640 150">
+        <rect class="box a pulse" x="8" y="26" width="160" height="52" rx="10"/>
+        <rect class="box p pulse" x="232" y="26" width="160" height="52" rx="10"/>
+        <rect class="box g" x="470" y="26" width="150" height="52" rx="10"/>
+        <rect class="box r" x="8" y="104" width="160" height="38" rx="8"/>
+        <rect class="box r" x="232" y="104" width="160" height="38" rx="8"/>
+        <path class="flow" d="M168 52 H232"/>
+        <path class="flow g" d="M392 52 H470"/>
+        <path class="flow" d="M88 78 V104" style="stroke:var(--red)"/>
+        <path class="flow" d="M312 78 V104" style="stroke:var(--red)"/>
+        <text x="88" y="48">GATE 1</text><text x="88" y="66" class="sub">age &gt;= 18?</text>
+        <text x="312" y="48">GATE 2</text><text x="312" y="66" class="sub">hasID == 'Y'?</text>
+        <text x="545" y="48">ACCESS OK</text><text x="545" y="66" class="sub">both true</text>
+        <text x="88" y="128" class="sub">denied: age</text>
+        <text x="312" y="128" class="sub">denied: ID</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>if / else-if Ladder, Validation &amp; switch</h2>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="cm">// else-if ladder: first TRUE condition wins, the rest are skipped</span>
+<span class="kw">if</span> (marks &gt;= 80)      cout &lt;&lt; <span class="str">"A"</span>;
+<span class="kw">else if</span> (marks &gt;= 70) cout &lt;&lt; <span class="str">"B"</span>;      <span class="cm">// marks = 74 → prints B, stops</span>
+<span class="kw">else if</span> (marks &gt;= 60) cout &lt;&lt; <span class="str">"C"</span>;
+<span class="kw">else</span>                  cout &lt;&lt; <span class="str">"Needs improvement"</span>;
+
+<span class="cm">// Input validation — check BEFORE using the value</span>
+<span class="kw">if</span> (marks &gt;= <span class="num">0</span> &amp;&amp; marks &lt;= <span class="num">100</span>) cout &lt;&lt; <span class="str">"Valid"</span>;
+<span class="kw">else</span>                             cout &lt;&lt; <span class="str">"Invalid"</span>;
+
+<span class="cm">// switch — one variable vs several fixed constants</span>
+<span class="kw">switch</span> (choice) {
+    <span class="kw">case</span> <span class="num">1</span>: cout &lt;&lt; <span class="str">"Add record"</span>;    <span class="kw">break</span>;   <span class="cm">// no break = FALL-THROUGH!</span>
+    <span class="kw">case</span> <span class="num">2</span>: cout &lt;&lt; <span class="str">"View record"</span>;   <span class="kw">break</span>;
+    <span class="kw">case</span> <span class="num">3</span>: cout &lt;&lt; <span class="str">"Exit"</span>;          <span class="kw">break</span>;
+    <span class="kw">default</span>: cout &lt;&lt; <span class="str">"Invalid choice"</span>;         <span class="cm">// catches everything else</span>
+}</div>
+    <h3>Flags — remembering status</h3>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">bool</span> validInput = <span class="kw">true</span>;            <span class="cm">// flag starts optimistic</span>
+<span class="kw">if</span> (age &lt; <span class="num">0</span> || age &gt; <span class="num">120</span>)
+    validInput = <span class="kw">false</span>;              <span class="cm">// something went wrong → drop the flag</span>
+<span class="kw">if</span> (validInput) cout &lt;&lt; <span class="str">"Accepted"</span>;
+<span class="kw">else</span>            cout &lt;&lt; <span class="str">"Rejected"</span>;</div>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Validation types to memorise:</b> range (<code>0–100</code>) · positive (<code>&gt; 0</code>) ·
+      allowed choice (<code>1–4</code>) · character type (<code>isalpha</code>) · non-empty (<code>!name.empty()</code>).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Programming Errors &amp; Tracing</h2>
+    <table>
+      <tr><th>Error Type</th><th>Meaning</th><th>Detected by</th></tr>
+      <tr><td><b>Syntax</b></td><td>Violates C++ grammar (missing <code>;</code>)</td><td>Compiler</td></tr>
+      <tr><td><b>Runtime</b></td><td>Crashes during execution (divide by zero)</td><td>Testing</td></tr>
+      <tr><td><b>Logical</b></td><td>Runs fine, wrong answer (<code>l * w</code> instead of <code>2*(l+w)</code>)</td><td>Tracing / testing</td></tr>
+    </table>
+    <div class="callout good"><span class="c-ico">Record</span>
+      <div><b>Trace before you run:</b> list every variable → record initial values → execute statement by statement →
+      update after each assignment → predict output on paper, <i>then</i> run and compare. That comparison is where marks are.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Memory Tricks — Week 03</h2>
+    <ul class="trick-list">
+      <li><b><code>=</code> vs <code>==</code></b> → one <code>=</code> puts a value <i>in</i> the box · two <code>==</code> <i>asks</i> what's in the box.
+        <span class="mem">"Single equals stores, double equals questions."</span></li>
+      <li><b>cctype family</b> → "<b>is</b>" + name: <b>is</b>Alpha · <b>is</b>Digit · <b>is</b>Alnum (alpha+digit) · <b>is</b>Space. If none → special character.</li>
+      <li><b>else-if ladder</b> → highest grade first, descending. First TRUE wins — everything after is skipped.</li>
+      <li><b>Two gates</b> → nested <code>if</code> = Gate 1 (age) then Gate 2 (ID). You can never reach Gate 2 without passing Gate 1.</li>
+      <li><b>switch needs <code>break</code></b> → without it, cases <b>fall through</b> like dominoes. <code>default</code> = the safety net.</li>
+      <li><b>Flags</b> → a sticky note: <code>true</code> = "still good", <code>false</code> = "something failed". Check it <i>after</i> all tests.</li>
+      <li><b><code>getline</code> after <code>cin</code></b> → always <code>cin.ignore()</code> first, or getline reads the empty leftover newline.</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎬 Worked Example — Grade calculator with validation</h2>
+    <div class="example">
+      <div class="ex-head"><span>🧩 Marks in, grade out — with the 0–100 safety check</span><button class="ex-next">Next step →</button></div>
+      <div class="ex-step"><span class="n">1</span><b>Get input first:</b> <code>int marks; cin &gt;&gt; marks;</code> — declare close to where you use it.</div>
+      <div class="ex-step"><span class="n">2</span><b>Validate BEFORE logic:</b> <code>if (marks &lt; 0 || marks &gt; 100)</code> → print error and <code>return 0;</code> (exit early, no invalid data reaches the ladder).</div>
+      <div class="ex-step"><span class="n">3</span><b>Build the ladder high → low:</b> <code>&gt;= 80</code> → A · <code>&gt;= 70</code> → B · <code>&gt;= 60</code> → C · <code>&gt;= 50</code> → D · else → F.</div>
+      <div class="ex-step"><span class="n">4</span><b>Trace it:</b> marks = 74 → 74≥80 false → 74≥70 <b>true</b> → prints "B", skips the rest. Ladder order matters — reversed order would wrongly print A.</div>
+      <div class="ex-step"><span class="n">5</span><b>Test edges:</b> 100 → A · 0 → F · −1 → invalid · 101 → invalid. Boundary cases are exactly what graders try.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚡ Quick Tips — Week 03</h2>
+    <div class="tips-grid">
+      <div class="tip-card"><span class="t-ico">🎯</span><h4>Validate early</h4>
+        <p>Reject bad input at the door (<code>return 0;</code>) — never let invalid data flow into calculations.</p></div>
+      <div class="tip-card"><span class="t-ico">🧪</span><h4>Test boundaries</h4>
+        <p>For 0–100 ranges always try −1, 0, 100, 101. Four lines of testing catches most logic bugs.</p></div>
+      <div class="tip-card"><span class="t-ico">🔀</span><h4>break in switch</h4>
+        <p>Every case except the last needs <code>break</code> — fall-through is a classic exam bug to spot.</p></div>
+      <div class="tip-card"><span class="t-ico">📝</span><h4>Trace on paper</h4>
+        <p>Exam tracing questions reward the table, not just the answer. One row per statement.</p></div>
+      <div class="tip-card"><span class="t-ico">⌨️</span><h4>getline vs cin</h4>
+        <p><code>cin &gt;&gt;</code> stops at spaces; <code>getline</code> takes the whole line. Pick based on the prompt.</p></div>
+      <div class="tip-card"><span class="t-ico">🚩</span><h4>Flag pattern</h4>
+        <p><code>bool ok = true;</code> → checks may set it <code>false</code> → one final <code>if (ok)</code> decides. Clean and readable.</p></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Week 03 Viva</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Difference between <code>=</code> and <code>==</code>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><code>=</code> assigns a value into a variable · <code>==</code> compares two values and yields true/false.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Classify <code>@</code>, <code>5</code>, <code>Q</code> with cctype.</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><code>@</code> → special (none of isalpha/isdigit) · <code>5</code> → isdigit true · <code>Q</code> → isalpha true.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>What causes switch fall-through?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Missing <code>break</code> — execution continues into the next case's code. <code>default</code> catches unmatched values.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>What is a flag? Give an example.</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>A <code>bool</code> that remembers status, e.g. <code>bool validInput = true;</code> set to <code>false</code> when a check fails; tested once at the end.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>Why does <code>getline</code> read nothing after <code>cin &gt;&gt; age</code>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>The leftover newline is still in the buffer and getline stops at it immediately. Fix: <code>cin.ignore()</code> first.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>Syntax vs logical error?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Syntax → compiler refuses to build (e.g. missing <code>;</code>). Logical → builds and runs but gives wrong results; needs tracing/testing.</p></div>
+      </div></div>
+    </div>
+    <p style="margin-top:16px"><b>Assignment:</b> <a href="../CS111L-ProgrammingFundamentalsLab/assignments/CS111L_Lab03_Assignment.docx" style="color:var(--cyan)">Lab 03 practice draft (.docx) →</a>
+    · <b>Related theory:</b> <a href="cs111.html" style="color:var(--cyan)">CS111 →</a></p>
+  </div>
+
+</section>
+
+<footer class="footer">
+  CS111L · Programming Fundamentals Lab · <b>Week 01–03</b> · BS Cyber Security · Fall 2026
+</footer>
+
+<button id="toTop" title="Back to top">↑</button>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CY104 — Introduction to Cyber Security</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="themes.css">
+
+<script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="bg-blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grid-overlay"></div>
+
+<nav class="topbar">
+  <a class="brand" href="index.html"><span class="logo">Σ</span> BS-CYS · NOTES HUB</a>
+<div class="nav-right">
+  <a class="back-btn" href="index.html">← All Subjects</a>
+  <div class="theme-wrap">
+    <button class="theme-btn" id="themeBtn" title="Switch theme (press T)"><span class="palette">🎨</span><span class="label">Theme</span></button>
+    <div class="theme-menu" id="themeMenu">
+      <button class="theme-opt" data-theme="midnight"><span class="sw sw-midnight"></span><b>Midnight Cyber</b><i>glassy dark · aurora blobs</i></button>
+      <button class="theme-opt" data-theme="matrix"><span class="sw sw-matrix"></span><b>Matrix Terminal</b><i>digital rain · scanlines · mono</i></button>
+      <button class="theme-opt" data-theme="paper"><span class="sw sw-paper"></span><b>Paper Notes</b><i>ruled page · ink · sticky notes</i></button>
+      <button class="theme-opt" data-theme="synthwave"><span class="sw sw-synthwave"></span><b>Synthwave</b><i>chrome · retro sun · grid floor</i></button>
+      <button class="theme-opt" data-theme="aurora"><span class="sw sw-aurora"></span><b>Aurora Light</b><i>soft pastel glass</i></button>
+      <button class="theme-opt" data-theme="cyberpunk"><span class="sw sw-cyberpunk"></span><b>Cyberpunk Neon</b><i>glitch boxes · orbitron · neon</i></button>
+      <button class="theme-opt" data-theme="dracula"><span class="sw sw-dracula"></span><b>Dracula Gothic</b><i>serif italics · purple glow</i></button>
+      <button class="theme-opt" data-theme="coffee"><span class="sw sw-coffee"></span><b>Coffee Warmth</b><i>cozy sepia · serif · warm</i></button>
+    </div>
+  </div>
+</div>
+</nav>
+
+<header class="subject-hero">
+  <span class="code-lg">CY104 · THEORY</span>
+  <h1><span>Introduction to Cyber Security</span></h1>
+  <p>Foundations, CIA, principles, AAA &amp; attack frameworks · Dr. Muhammad Kamran</p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="lec1"><span class="dot"></span> Lecture 1 · Foundations</button>
+  <button class="tab-btn" data-tab="lec2"><span class="dot"></span> Lecture 2 · AAA &amp; Frameworks</button>
+  <button class="tab-btn" data-tab="course"><span class="dot"></span> 📚 Course Contents</button>
+</div>
+
+<!-- ======================= LECTURE 1 ======================= -->
+<section class="tab-panel active" id="lec1">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>The Opening Problem — University Portal Incident</h2>
+    <p>Ali gets an "urgent" LMS verification email, clicks, logs in — and later a stranger is inside
+       his account: files viewed, profile changed, portal offline when he tries to report it.
+       <b>Goal of the lecture:</b> explain <i>what was attacked, which security property broke, and why one email
+       caused all of it.</i></p>
+    <div class="diagram">
+      <div class="dg-cap">Ali's attack chain — defender can break it anywhere</div>
+      <svg viewBox="0 0 740 120">
+        <rect class="box r pulse" x="8"  y="34" width="120" height="56" rx="10"/>
+        <rect class="box a pulse" x="164" y="34" width="120" height="56" rx="10"/>
+        <rect class="box p pulse" x="320" y="34" width="120" height="56" rx="10"/>
+        <rect class="box" x="476" y="34" width="120" height="56" rx="10"/>
+        <rect class="box r pulse" x="632" y="34" width="100" height="56" rx="10"/>
+        <path class="flow" d="M128 62 H164"/>
+        <path class="flow" d="M284 62 H320"/>
+        <path class="flow" d="M440 62 H476"/>
+        <path class="flow" d="M596 62 H632"/>
+        <path class="head" d="M164 62 l-10 -5 v10 z"/><path class="head" d="M320 62 l-10 -5 v10 z"/>
+        <path class="head" d="M476 62 l-10 -5 v10 z"/><path class="head" d="M632 62 l-10 -5 v10 z"/>
+        <text x="68"  y="58">1. Bait</text>  <text x="68"  y="76" class="sub">fake message</text>
+        <text x="224" y="58">2. Click</text>  <text x="224" y="76" class="sub">link opened</text>
+        <text x="380" y="58">3. Credential</text><text x="380" y="76" class="sub">password stolen</text>
+        <text x="536" y="58">4. Access</text><text x="536" y="76" class="sub">attacker logs in</text>
+        <text x="682" y="58">5. Impact</text><text x="682" y="76" class="sub">data stolen</text>
+      </svg>
+    </div>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Defender's job:</b> break the chain at <i>any</i> link — awareness, email filtering,
+      MFA, endpoint protection, monitoring, recovery.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>The CIA Model ⭐ (core of the course)</h2>
+    <div class="diagram">
+      <div class="dg-cap">CIA triad — the three security properties</div>
+      <svg viewBox="0 0 640 300">
+        <path class="flow" d="M320 76 L138 226"/>
+        <path class="flow" d="M320 76 L502 226"/>
+        <path class="flow" d="M138 226 L502 226"/>
+        <circle class="box pulse" cx="320" cy="72" r="52"/>
+        <circle class="box p pulse" cx="130" cy="232" r="52"/>
+        <circle class="box g pulse" cx="510" cy="232" r="52"/>
+        <text x="320" y="70" class="big">C</text><text x="320" y="92" class="sub">Confidentiality</text>
+        <text x="130" y="230" class="big">I</text><text x="130" y="252" class="sub">Integrity</text>
+        <text x="510" y="230" class="big">A</text><text x="510" y="252" class="sub">Availability</text>
+        <text x="320" y="176" class="sub">"Can I Access?"</text>
+      </svg>
+    </div>
+    <table>
+      <tr><th>Property</th><th>Meaning</th><th>Example (Ali)</th><th>Threat</th><th>Controls</th></tr>
+      <tr><td><b>C</b> — Confidentiality</td><td>Only authorized people see it</td><td>Grades visible only to you</td><td>Disclosure / leakage</td><td>Access control, encryption, careful sharing</td></tr>
+      <tr><td><b>I</b> — Integrity</td><td>Accurate &amp; unmodified</td><td>Marks must not change silently</td><td>Tampering, accidental change</td><td>Permissions, validation, hashes, audit trails</td></tr>
+      <tr><td><b>A</b> — Availability</td><td>Reachable when needed</td><td>LMS up at submission deadline</td><td>Outage, DoS, hardware failure</td><td>Backups, redundancy, monitoring</td></tr>
+    </table>
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>Class check:</b> ransomware mainly threatens <b>A</b> (service unusable) —
+      often C and I too. Quick-fire: file leaked → <b>C</b> · marks changed → <b>I</b> · portal offline → <b>A</b>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Cyberspace, Cybersecurity &amp; Data</h2>
+    <ul>
+      <li><b>Cyberspace</b> — global interconnected environment: <b>virtual</b> · <b>borderless</b> · <b>interactive</b> · <b>persistent</b>. Users: individuals, organizations, governments.</li>
+      <li><b>Cybersecurity</b> — ongoing effort to protect systems, networks, programs &amp; data from unauthorized access, misuse, damage or disruption. Four verbs: <b>Protect → Detect → Respond → Recover</b>.</li>
+      <li><b>Cyberattack</b> — intentional attempt to steal/expose/alter/disable/destroy/gain unauthorized access (attacker → action → impact).</li>
+      <li><b>Personal data</b> — identity · contact · behavior · content; records: MED/EDU/JOB/FIN/DEV. Your day leaks data: unlock → Wi-Fi → LMS → maps → streaming.</li>
+      <li><b>Layered effort</b> — People (awareness) + Process (policies) + Technology (tools). No single tool "solves" security.</li>
+    </ul>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>History:</b> the change that made security hardest = <b>connectivity</b>.
+      Stuxnet 2010 · Ukraine grid 2015 · Mirai 2016 · WannaCry 2017.
+      2025 numbers: <b>47.1M DDoS attacks</b> (+121% YoY), 44% of breaches involved ransomware.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎬 Worked Example — Which CIA property?</h2>
+    <div class="example">
+      <div class="ex-head"><span>🧩 Step through: classify each impact</span><button class="ex-next">Next step →</button></div>
+      <div class="ex-step"><span class="n">1</span><b>Scenario:</b> A phishing email steals a student password. The attacker logs in, reads private messages, edits the profile, then floods the portal with traffic.</div>
+      <div class="ex-step"><span class="n">2</span><b>Asset first:</b> credentials, private files, LMS account &amp; service — identify <i>what's valuable</i> before naming the harm.</div>
+      <div class="ex-step"><span class="n">3</span><b>"Reads private messages" → C.</b> Confidentiality broken: unauthorized eyes saw data that was private.</div>
+      <div class="ex-step"><span class="n">4</span><b>"Edits the profile" → I.</b> Integrity broken: data changed without authorized update.</div>
+      <div class="ex-step"><span class="n">5</span><b>"Floods the portal" → A.</b> Availability broken: real users can't reach the service.</div>
+      <div class="ex-step"><span class="n">6</span><b>Controls →</b> People: awareness · Process: incident response · Technology: MFA, email filtering, monitoring. One attack, all three CIA letters hit!</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Memory Tricks</h2>
+    <ul class="trick-list">
+      <li><b>CIA triad</b> → ask "<b>C</b>an <b>I</b> <b>A</b>ccess?" — Confidentiality, Integrity, Availability.
+        <span class="mem">Viva favourite #1 — you'll use it every single lecture.</span></li>
+      <li><b>Four verbs</b> → "<b>P</b>lease <b>D</b>on't <b>R</b>uin <b>R</b>ecovery" — Protect, Detect, Respond, Recover.
+        <span class="mem">Defenders never "prevent" only — the cycle must end in recovery.</span></li>
+      <li><b>C vs I vs A</b> → <b>C</b> = someone <b>c</b>ould read it · <b>I</b> = someone <b>i</b>lllegally changed it · <b>A</b> = <b>a</b>bsolute silence (nobody can reach it).
+        <span class="mem">Ransomware = A + C + I, the full house.</span></li>
+      <li><b>National bodies (PK)</b> → "<b>P</b>akistan <b>N</b>etworks <b>N</b>eed <b>R</b>escue" — PECA, NTISB, NR3C.
+        <span class="mem">Hotline: 9911.</span></li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚡ Quick Tips — Lecture 1</h2>
+    <div class="tips-grid">
+      <div class="tip-card"><span class="t-ico">📱</span><h4>Data > device</h4>
+        <p>If Ali loses his laptop, the <b>data</b> matters more than the hardware. Attackers want credentials &amp; identity, not your old plastic.</p></div>
+      <div class="tip-card"><span class="t-ico">🔗</span><h4>Connectivity = risk</h4>
+        <p>Exam answer to "what made cybersecurity harder?": <b>more systems connected</b> → more paths, dependencies, attackers.</p></div>
+      <div class="tip-card"><span class="t-ico">🧅</span><h4>Personal ≠ name only</h4>
+        <p>Location, searches, photos, fitness-tracker data are all <b>personal data</b> — they identify or describe you.</p></div>
+      <div class="tip-card"><span class="t-ico">🏛️</span><h4>Pakistan context</h4>
+        <p>PECA 2016 · NTISB · NR3C (FIA) · NCCS 2018 (HQ Air University) · hotline 9911. Exams love asking one of these.</p></div>
+      <div class="tip-card"><span class="t-ico">🕵️</span><h4>Threat vs vulnerability</h4>
+        <p>Threat = the hammer (potential harm). Vulnerability = the cracked glass (exploitable weakness). Don't swap them in viva.</p></div>
+      <div class="tip-card"><span class="t-ico">🎯</span><h4>CTF goal</h4>
+        <p>Course aim: start small CTF challenges (web, crypto, forensics, OSINT), build a team, aim global (DEF CON CTF).</p></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Lecture 1</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Define cybersecurity in one sentence.</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>The ongoing effort to protect systems, networks, programs and data from unauthorized access, misuse, damage or disruption.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>What are the three CIA properties?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Confidentiality (only authorized see), Integrity (accurate, unmodified), Availability (accessible when needed).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Four verbs of the cybersecurity job?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Protect → Detect → Respond → Recover.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Name four properties of cyberspace.</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Virtual, borderless, interactive, persistent.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>Which famous attack turned off Ukrainian power?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>The 2015 Ukraine grid attack — power disruption; siblings: Stuxnet 2010, Mirai 2016, WannaCry 2017.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>Ransomware — which CIA letters?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Mainly A (service dead) — and usually C + I too (data encrypted/exfiltrated).</p></div>
+      </div></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ======================= LECTURE 2 ======================= -->
+<section class="tab-panel" id="lec2">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Opening Problem — Shared Lab Account Incident</h2>
+    <p>One shared admin password → fake update link → unknown file installed → logs deleted →
+       confidential files online. <b>Because everyone shared the account, nobody can say <i>who</i> did what.</b>
+       Lecture 2 answers this with: principles → AAA → risk terms → actors/vectors → frameworks.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Security Principles (decision rules)</h2>
+    <p><b>Principles</b> = reusable rules · <b>Controls</b> = the concrete way you apply them.</p>
+    <table>
+      <tr><th>Principle</th><th>One-liner</th><th>Ask yourself</th></tr>
+      <tr><td><b>Least privilege</b></td><td>Only the access required — nothing more</td><td>Smallest permission set?</td></tr>
+      <tr><td><b>Defense in depth</b></td><td>Independent layers; one may fail</td><td>Does this layer still work after another fails?</td></tr>
+      <tr><td><b>Secure defaults</b></td><td>New thing starts with "deny"</td><td>Safest practical config first?</td></tr>
+      <tr><td><b>Separation of duties</b></td><td>Split sensitive duties</td><td>One initiates · another approves · third audits</td></tr>
+      <tr><td><b>Fail securely</b></td><td>Errors must not grant access</td><td>Detect → Contain → Recover (no bypass!)</td></tr>
+      <tr><td><b>Minimize attack surface</b></td><td>Delete unused accounts, services, ports, data</td><td>Every feature = another misuse door</td></tr>
+    </table>
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>Which principle is missing?</b> Interns get admin → <b>least privilege</b> ·
+      One person creates <i>and</i> approves refunds → <b>separation of duties</b> ·
+      A DB error shows customer records → <b>fail securely</b>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>AAA — Authenticate · Authorize · Account</h2>
+    <div class="diagram">
+      <div class="dg-cap">One request through three security gates</div>
+      <svg viewBox="0 0 740 170">
+        <rect class="box" x="8" y="52" width="96" height="60" rx="10"/>
+        <rect class="box g pulse" x="152" y="42" width="130" height="80" rx="12"/>
+        <rect class="box p pulse" x="330" y="42" width="130" height="80" rx="12"/>
+        <rect class="box a pulse" x="508" y="42" width="130" height="80" rx="12"/>
+        <rect class="box" x="686" y="52" width="46" height="60" rx="8"/>
+        <path class="flow g" d="M104 82 H152"/>
+        <path class="flow p" d="M282 82 H330"/>
+        <path class="flow a" d="M460 82 H508"/>
+        <path class="flow" d="M638 82 H686"/>
+        <path class="head g" d="M152 82 l-10 -5 v10 z"/><path class="head p" d="M330 82 l-10 -5 v10 z"/>
+        <path class="head a" d="M508 82 l-10 -5 v10 z"/><path class="head" d="M686 82 l-10 -5 v10 z"/>
+        <text x="56" y="76">Claim</text><text x="56" y="94" class="sub">"I am</text><text x="56" y="107" class="sub">student 2415"</text>
+        <text x="217" y="74">AUTHENTICATE</text><text x="217" y="94" class="sub">Who are you?</text><text x="217" y="110" class="sub">MFA checks evidence</text>
+        <text x="395" y="74">AUTHORIZE</text><text x="395" y="94" class="sub">What may you do?</text><text x="395" y="110" class="sub">policy decides</text>
+        <text x="573" y="74">ACCOUNT</text><text x="573" y="94" class="sub">What did you do?</text><text x="573" y="110" class="sub">event recorded</text>
+        <text x="709" y="76">Log</text><text x="709" y="94" class="sub">&amp;</text><text x="709" y="107" class="sub">audit</text>
+        <text x="370" y="156" class="sub">5 questions of a good event: Who · What · Where · When · Outcome</text>
+      </svg>
+    </div>
+    <table>
+      <tr><th>Part</th><th>Key facts</th></tr>
+      <tr><td><b>Authentication</b></td><td>Claim → Evidence → Decision. Factors: <b>Know</b> (password) · <b>Have</b> (phone/card) · <b>Are</b> (fingerprint) · Context · Recovery. Password + user PIN is <b>NOT MFA</b> (both knowledge).</td></tr>
+      <tr><td><b>Authorization</b></td><td>Subject acts on Object via Action, per Policy. Models: DAC (owner), MAC (labels), <b>RBAC</b> (roles — university!), ABAC (attributes), rule-based. IDOR bug: <code>/record/104 → /record/105</code>.</td></tr>
+      <tr><td><b>Accounting</b></td><td>Capture → Protect → Review logs. Answers Who/What/Where/When/Outcome.</td></tr>
+    </table>
+    <div class="callout trick"><span class="c-ico brain">🧠</span>
+      <div><b>Order trick:</b> <b>N</b> before <b>Z</b> — Auth<b>e</b>nticate (who am I) → Auth<b>o</b>rize (what may I) → Account (log it).
+      <b>AAA</b> = "<b>A</b>m <b>I</b> <b>A</b>llowed?"</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Risk Language &amp; The Risk Chain</h2>
+    <table>
+      <tr><th>Term</th><th>Definition</th><th>Where it lives</th></tr>
+      <tr><td><b>Asset</b></td><td>Anything whose compromise harms objectives/people/ops</td><td>Info, tech, services, people, reputation</td></tr>
+      <tr><td><b>Threat</b></td><td>Potential cause of harm</td><td>Intentional · accidental · environmental</td></tr>
+      <tr><td><b>Vulnerability</b></td><td>Exploitable weakness</td><td>Design (missing check) · Implementation (unpatched) · Operation (shared password)</td></tr>
+      <tr><td><b>Attack</b></td><td>Intentional attempt to cause harm</td><td>Method → Target → Outcome</td></tr>
+      <tr><td><b>Risk</b></td><td>Likelihood × Impact</td><td>Justify controls by the risk they change</td></tr>
+    </table>
+    <div class="diagram">
+      <div class="dg-cap">The risk chain — analyze before choosing a control</div>
+      <svg viewBox="0 0 740 110">
+        <rect class="box pulse" x="8" y="30" width="128" height="52" rx="10"/>
+        <rect class="box p pulse" x="176" y="30" width="128" height="52" rx="10"/>
+        <rect class="box a pulse" x="344" y="30" width="128" height="52" rx="10"/>
+        <rect class="box r pulse" x="512" y="30" width="106" height="52" rx="10"/>
+        <rect class="box g pulse" x="646" y="30" width="88" height="52" rx="10"/>
+        <path class="flow" d="M136 56 H176"/><path class="flow" d="M304 56 H344"/>
+        <path class="flow" d="M472 56 H512"/><path class="flow" d="M618 56 H646"/>
+        <text x="72" y="52">Asset</text><text x="72" y="70" class="sub">exam system</text>
+        <text x="240" y="52">Actor</text><text x="240" y="70" class="sub">unfair student</text>
+        <text x="408" y="52">Vector</text><text x="408" y="70" class="sub">phishing TA</text>
+        <text x="565" y="52">Weakness</text><text x="565" y="70" class="sub">no MFA</text>
+        <text x="690" y="52">Impact</text><text x="690" y="70" class="sub">leak</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Threat Actors, Attack Vectors &amp; MITRE ATT&amp;CK</h2>
+    <ul>
+      <li><b>Actors:</b> Cybercriminal (money) · Insider (access/grievance/error) · Hacktivist (ideology) · Nation-state (strategy) · Opportunist (easy targets). Compare <i>intent vs capability vs access vs resources</i>.</li>
+      <li><b>Vectors (the route in):</b> Human (phishing) · Application (web/API flaw) · Network (exposed service, rogue Wi-Fi) · Endpoint (malicious file/USB) · Supply chain (compromised update).
+        <b>Vector = route · technique = how they operate.</b></li>
+      <li><b>MITRE ATT&amp;CK:</b> shared language — <b>tactics = why</b> (goal), <b>techniques = how</b> (method).
+        Chain: Initial Access → Execution → Credential Access → Collection → Impact.</li>
+      <li><b>Lab incident mapped:</b> fake update link (initial access) → shared password (credential access) → file installed (execution) → files gathered (collection) → logs deleted &amp; leak (impact).</li>
+    </ul>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>Incident solved:</b> failed principles = least privilege + separation + secure defaults +
+      accounting protection · failed AAA = shared secret / broad rights / no attribution ·
+      fix = individual accounts + MFA + least privilege + allow-listing + protected logs.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎬 Worked Example — Diagnose the AAA failure</h2>
+    <div class="example">
+      <div class="ex-head"><span>🧩 Match symptom → broken A, then fix it</span><button class="ex-next">Next step →</button></div>
+      <div class="ex-step"><span class="n">A</span><b>"A stolen password was accepted."</b> → <b>Authentication</b> failed: evidence was forged/stolen.</div>
+      <div class="ex-step"><span class="n">A</span><b>Fix:</b> add a second factor (Have: authenticator app) so one stolen secret isn't enough.</div>
+      <div class="ex-step"><span class="n">B</span><b>"A student edits marks in another course."</b> → <b>Authorization</b> failed: object ownership never checked (IDOR).</div>
+      <div class="ex-step"><span class="n">B</span><b>Fix:</b> policy must verify subject↔object per action — RBAC + ownership check on every request.</div>
+      <div class="ex-step"><span class="n">C</span><b>"An admin action has no log."</b> → <b>Accounting</b> failed: no evidence, no investigation.</div>
+      <div class="ex-step"><span class="n">C</span><b>Fix:</b> capture Who/What/Where/When/Outcome, protect logs from tampering, review them.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Memory Tricks</h2>
+    <ul class="trick-list">
+      <li><b>AAA order</b> → <b>N before Z</b>: Auth<b>e</b>nticate → Auth<b>o</b>rize → Account.
+        <span class="mem">Login → permission → audit log. Never out of order.</span></li>
+      <li><b>5 principles</b> → "<b>L</b>east <b>D</b>epth <b>D</b>efaults, <b>S</b>eparate, <b>F</b>ail" — Least privilege, Defense in depth, Secure defaults, Separation of duties, Fail securely.</li>
+      <li><b>Risk chain</b> → <b>A-V-T-A-I</b>: Asset → Vector → Threat/Vulnerability → Attack → Impact.
+        <span class="mem">"The A-V train hits the T-A-I city."</span></li>
+      <li><b>Tactics vs techniques</b> → tactics = <b>Why</b> (starts with W, goal), techniques = <b>How</b> (starts with H, method).
+        <span class="mem">ATT&amp;CK: Initial access → Execution → Credential → Collection → Impact ("IE CCI").</span></li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Lecture 2</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Password + user-created PIN — is that MFA?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>No! Both are <b>knowledge</b> factors — one stolen secret defeats both. Use password + authenticator app (knowledge + possession).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>RBAC in one sentence?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Permissions follow job <b>roles</b> — students, teachers and admins each get their role's rights. The university example.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Vulnerability vs threat?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Vulnerability = exploitable weakness (the open window). Threat = the potential harm actor/event (the burglar).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Attack vector vs technique?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Vector = <b>route</b> into the target (phishing email). Technique = <b>how</b> they operate once there.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>Tactics vs techniques in ATT&amp;CK?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Tactics = why (attacker's goal, e.g. Initial Access). Techniques = how (the method used).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>5 questions of useful accounting?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Who · What · Where · When · Outcome (success/failure).</p></div>
+      </div></div>
+    </div>
+    <p><b>Related lab:</b> <a href="cy104l.html" style="color:var(--cyan)">CY104L →</a></p>
+  </div>
+
+</section>
+
+<!-- ======================= COURSE CONTENTS ======================= -->
+<section class="tab-panel" id="course">
+  <div class="note-card">
+    <h2><span class="bar"></span>CY-104 · Course at a Glance</h2>
+    <p><b>Fall 2026 · 2+0 credit hours · No pre-requisites · Dr. Muhammad Kamran (Office 274).</b><br>
+       Description: basics of cyber security, the cybersecurity ecosystem &amp; its entities, common attacks
+       and their treatment, policies &amp; standards, techniques to achieve and maintain security.</p>
+    <table>
+      <tr><th>CLO</th><th>Outcome</th><th>BT</th></tr>
+      <tr><td>CLO-1</td><td>Identify computer system threats</td><td>C2 Understand</td></tr>
+      <tr><td>CLO-2</td><td>Identify endpoint &amp; network attacks; understand attack stages and payloads</td><td>C2 Understand</td></tr>
+      <tr><td>CLO-3</td><td>Understand digital forensics needs and commonly used tools</td><td>C2 Understand</td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Grading:</b> Quizzes 4×10% · Assignments 4×10% · Project 10% · Midterm 25% · Final 45%.
+      No makeups, no late work, individual only — copying = <b>F</b>.
+      Encouraged certs: Fortinet <i>Cybersecurity &amp; Cloud Fundamentals</i>, Cisco <i>Introduction to Cybersecurity</i>.</div>
+    </div>
+    <div class="grade-bar">
+      <div>Quiz 10%</div><div>Assign 10%</div><div>Project 10%</div><div>Mid 25%</div><div>Final 45%</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📚 15-Week Planner</h2>
+    <div class="course-tl">
+      <div class="course-week"><span class="wk">WEEK 1</span><div><h4>Introduction to Cyber Security</h4><p>Course intro · What is cyber security? · Basic cyber security model</p><div class="acts"><span>Pfleeger Ch.1</span><span>CLO-1</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 2</span><div><h4>Principles · AAA · Threats &amp; Attack Frameworks</h4><p>Principles of cybersecurity · Authentication, Authorization &amp; Accounting · Threat actors, attack vectors &amp; frameworks</p><div class="acts"><span>Stallings Ch.1</span><span>CLO-1</span><span>★ you are here</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 3</span><div><h4>Social Engineering</h4><p>Methods of social engineering · fraud, scams &amp; influence campaigns · identity theft · insider threat</p><div class="acts"><span>CS Fundamentals Ch.3</span><span>CLO-2</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 4</span><div><h4>Offensive Security</h4><p>Malware &amp; exploits · attack vectors (attachments, pop-ups, links, deception) · types of malware · malware attack lifecycle</p><div class="acts"><span>Cyber Sec for Dummies Ch.1-2</span><span>CLO-2</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 5</span><div><h4>Operating System Security</h4><p>Linux security · Windows security · OS hardening</p><div class="acts"><span>Stallings Ch.12</span><span>CLO-3</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 6</span><div><h4>Security in Networks</h4><p>Network concepts &amp; attacks · firewalls · VPNs · IDS/IPS · content filtering · threat intelligence · trusted computing</p><div class="acts"><span>Pfleeger Ch.6</span><span>CLO-2</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 7</span><div><h4>Cryptography I</h4><p>Basics · symmetric (block &amp; stream ciphers) · asymmetric (PKC)</p><div class="acts"><span>Pfleeger Ch.12</span><span>CLO-2</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 8</span><div><h4>Cryptography II</h4><p>Steganography · hash &amp; MAC algorithms · digital signatures · cryptanalytic &amp; brute-force attacks</p><div class="acts"><span>Pfleeger Ch.12</span><span>CLO-2</span></div></div></div>
+      <div class="course-week exam"><span class="wk">WEEK 9</span><div><h4>🛑 MIDTERM EXAM</h4><p>Covers weeks 1–8: foundations → cryptography</p></div></div>
+      <div class="course-week"><span class="wk">WEEK 10</span><div><h4>Security in Databases</h4><p>Requirements · reliability &amp; integrity · database disclosure · data-mining security</p><div class="acts"><span>Pfleeger Ch.7</span><span>CLO-2</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 11</span><div><h4>Digital Forensics</h4><p>Process &amp; methodology · digital evidence · recovering deleted files · OS utilities · Windows registry · mobile forensics · evidence handling &amp; reporting</p><div class="acts"><span>CS Fundamentals Ch.14</span><span>CLO-3</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 12</span><div><h4>Cyber Crimes &amp; Terrorism</h4><p>Crime tactics · bullying, harassment, stalking, fraud · logic bombs · web jacking · cyber warfare &amp; defence</p><div class="acts"><span>CS Fundamentals Ch.12</span><span>CLO-2</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 13</span><div><h4>Privacy</h4><p>Concepts, principles &amp; policies · authentication &amp; privacy · social media &amp; email · anonymity &amp; onion routing</p><div class="acts"><span>Pfleeger Ch.9</span><span>CLO-2</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 14</span><div><h4>Security Management &amp; Incidents</h4><p>Security planning · business continuity · incident handling · risk analysis · disaster recovery</p><div class="acts"><span>Pfleeger Ch.10</span><span>CLO-2</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 15</span><div><h4>Legal, Ethical Issues &amp; Standards</h4><p>Protecting programs &amp; data · laws in Pakistan · ISO 27001, GDPR, PCI-DSS, HIPAA</p><div class="acts"><span>Pfleeger Ch.11</span><span>CLO-2</span></div></div></div>
+      <div class="course-week exam"><span class="wk">FINALS</span><div><h4>🛑 FINAL EXAM</h4><p>Full course · 45% of grade</p></div></div>
+    </div>
+    <p style="margin-top:16px"><b>Textbook:</b> Pfleeger, <i>Security in Computing</i> (5th ed.) ·
+       <b>Refs:</b> Kahate, Forouzan, Stallings, Miller, Nelson.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Week-Map Memory Tricks</h2>
+    <ul class="trick-list">
+      <li><b>First half flow</b> → "<b>P</b>lan <b>S</b>ocial <b>O</b>ffensive <b>S</b>ystems" — Principles/AAA (2) → Social engineering (3) → Offensive security (4) → OS security (5).</li>
+      <li><b>Weeks 7–8</b> → "<b>Crypto pair</b>" — I then II; remember SSS: <b>S</b>ymmetric, <b>S</b>teganography, <b>S</b>ignatures.</li>
+      <li><b>Back half</b> → "<b>D</b>ata, <b>F</b>orensics, <b>C</b>rime, <b>P</b>rivacy, <b>M</b>anagement, <b>L</b>aw" — weeks 10→15 in order.</li>
+      <li><b>Standards week 15</b> → "<b>I</b>'m <b>G</b>onna <b>P</b>ay <b>H</b>IPAA" — ISO 27001, GDPR, PCI-DSS, HIPAA.</li>
+    </ul>
+  </div>
+
+</section>
+
+<footer class="footer">
+  CY104 · Introduction to Cyber Security · <b>Lectures 1–2 + Course Guide</b> · BS Cyber Security · Fall 2026
+</footer>
+
+<button id="toTop" title="Back to top">↑</button>
+<script src="script.js"></script>
+</body>
+</html>

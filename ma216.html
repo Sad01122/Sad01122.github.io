@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MA216 — Discrete Structures</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="themes.css">
+
+<script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="bg-blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grid-overlay"></div>
+
+<nav class="topbar">
+  <a class="brand" href="index.html"><span class="logo">Σ</span> BS-CYS · NOTES HUB</a>
+<div class="nav-right">
+  <a class="back-btn" href="index.html">← All Subjects</a>
+  <div class="theme-wrap">
+    <button class="theme-btn" id="themeBtn" title="Switch theme (press T)"><span class="palette">🎨</span><span class="label">Theme</span></button>
+    <div class="theme-menu" id="themeMenu">
+      <button class="theme-opt" data-theme="midnight"><span class="sw sw-midnight"></span><b>Midnight Cyber</b><i>glassy dark · aurora blobs</i></button>
+      <button class="theme-opt" data-theme="matrix"><span class="sw sw-matrix"></span><b>Matrix Terminal</b><i>digital rain · scanlines · mono</i></button>
+      <button class="theme-opt" data-theme="paper"><span class="sw sw-paper"></span><b>Paper Notes</b><i>ruled page · ink · sticky notes</i></button>
+      <button class="theme-opt" data-theme="synthwave"><span class="sw sw-synthwave"></span><b>Synthwave</b><i>chrome · retro sun · grid floor</i></button>
+      <button class="theme-opt" data-theme="aurora"><span class="sw sw-aurora"></span><b>Aurora Light</b><i>soft pastel glass</i></button>
+      <button class="theme-opt" data-theme="cyberpunk"><span class="sw sw-cyberpunk"></span><b>Cyberpunk Neon</b><i>glitch boxes · orbitron · neon</i></button>
+      <button class="theme-opt" data-theme="dracula"><span class="sw sw-dracula"></span><b>Dracula Gothic</b><i>serif italics · purple glow</i></button>
+      <button class="theme-opt" data-theme="coffee"><span class="sw sw-coffee"></span><b>Coffee Warmth</b><i>cozy sepia · serif · warm</i></button>
+    </div>
+  </div>
+</div>
+</nav>
+
+<header class="subject-hero">
+  <span class="code-lg">MA216 · THEORY</span>
+  <h1><span>Discrete Structures</span></h1>
+  <p>Lecture 1–2 · The Foundations: Logic and Proofs — propositions, connectives, truth tables &amp; bit operations</p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="lec12"><span class="dot"></span> Lecture 1–2 · Propositional Logic</button>
+</div>
+
+<!-- ======================= LECTURE 1-2 ======================= -->
+<section class="tab-panel active" id="lec12">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>What is a Proposition?</h2>
+    <p><b>Definition 1.</b> A <b>proposition</b> is a declarative sentence (declares a fact) that is
+       <b>either true or false but not both</b>.</p>
+    <table>
+      <tr><th colspan="3">✅ Example 1 — all propositions</th></tr>
+      <tr><td>1</td><td>Washington, D.C., is the capital of the United States of America.</td><td><b>T</b></td></tr>
+      <tr><td>2</td><td>Toronto is the capital of Canada.</td><td><b>F</b> (Ottawa is)</td></tr>
+      <tr><td>3</td><td>1 + 1 = 2</td><td><b>T</b></td></tr>
+      <tr><td>4</td><td>2 + 2 = 3</td><td><b>F</b></td></tr>
+      <tr><th colspan="3">❌ Example 2 — NOT propositions</th></tr>
+      <tr><td>1</td><td>What time is it?</td><td>question — not declarative</td></tr>
+      <tr><td>2</td><td>Read this carefully.</td><td>command — not declarative</td></tr>
+      <tr><td>3</td><td>x + 1 = 2</td><td>no truth value until x is assigned</td></tr>
+      <tr><td>4</td><td>x + y = z</td><td>same — becomes a proposition with values</td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Notation:</b> variables <b>p, q, r, s…</b> stand for propositions · truth values <b>T</b> / <b>F</b>.
+      <b>Aristotle</b> (>2300 yrs ago) systematized logic · <b>George Boole, 1854</b>, <i>The Laws of Thought</i>
+      studied compound propositions (Not, Or, And).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>The Five Connectives — Definitions &amp; Truth Tables</h2>
+
+    <h3>1 · Negation ¬p — "not p"</h3>
+    <p>The negation of p (also p̄) is <b>"It is not the case that p"</b> — its truth value is the <b>opposite</b> of p.</p>
+    <table>
+      <tr><th>p</th><th>¬p</th></tr>
+      <tr><td>T</td><td><b>F</b></td></tr>
+      <tr><td>F</td><td><b>T</b></td></tr>
+    </table>
+
+    <h3>2 · Conjunction p ∧ q — "p and q"</h3>
+    <p><b>True only when both are true</b>, false otherwise.</p>
+    <table>
+      <tr><th>p</th><th>q</th><th>p ∧ q</th></tr>
+      <tr><td>T</td><td>T</td><td><b>T</b></td></tr>
+      <tr><td>T</td><td>F</td><td>F</td></tr>
+      <tr><td>F</td><td>T</td><td>F</td></tr>
+      <tr><td>F</td><td>F</td><td>F</td></tr>
+    </table>
+
+    <h3>3 · Disjunction p ∨ q — "p or q" (inclusive)</h3>
+    <p><b>False only when both are false</b>, true otherwise. <b>XOR (⊕)</b> is true only when <b>exactly one</b> is true.</p>
+    <table>
+      <tr><th>p</th><th>q</th><th>p ∨ q</th><th>p ⊕ q</th></tr>
+      <tr><td>T</td><td>T</td><td><b>T</b></td><td>F</td></tr>
+      <tr><td>T</td><td>F</td><td>T</td><td><b>T</b></td></tr>
+      <tr><td>F</td><td>T</td><td>T</td><td><b>T</b></td></tr>
+      <tr><td>F</td><td>F</td><td><b>F</b></td><td>F</td></tr>
+    </table>
+
+    <h3>4 · Conditional p → q — "if p, then q"</h3>
+    <p><b>False only in the T → F row</b> — one counterexample breaks a promise. <b>p</b> = hypothesis (antecedent) ·
+       <b>q</b> = conclusion (consequence).</p>
+    <table>
+      <tr><th>p</th><th>q</th><th>p → q</th></tr>
+      <tr><td>T</td><td>T</td><td>T</td></tr>
+      <tr><td>T</td><td>F</td><td><b>F</b></td></tr>
+      <tr><td>F</td><td>T</td><td>T</td></tr>
+      <tr><td>F</td><td>F</td><td>T</td></tr>
+    </table>
+
+    <h3>5 · Biconditional p ↔ q — "p if and only if q"</h3>
+    <p><b>True when p and q match</b> (both same), false otherwise. Also called <b>bi-implications</b>.</p>
+    <table>
+      <tr><th>p</th><th>q</th><th>p ↔ q</th></tr>
+      <tr><td>T</td><td>T</td><td><b>T</b></td></tr>
+      <tr><td>T</td><td>F</td><td>F</td></tr>
+      <tr><td>F</td><td>T</td><td>F</td></tr>
+      <tr><td>F</td><td>F</td><td><b>T</b></td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Conditional — Alternate Expressions (all mean p → q)</h2>
+    <div class="diagram">
+      <div class="dg-cap">13 ways to say "if p then q"</div>
+      <svg viewBox="0 0 740 170">
+        <rect class="box pulse" x="8" y="18" width="228" height="46" rx="10"/>
+        <rect class="box g pulse" x="252" y="18" width="228" height="46" rx="10"/>
+        <rect class="box p pulse" x="496" y="18" width="236" height="46" rx="10"/>
+        <rect class="box a pulse" x="8" y="78" width="228" height="46" rx="10"/>
+        <rect class="box pulse" x="252" y="78" width="228" height="46" rx="10"/>
+        <rect class="box g pulse" x="496" y="78" width="236" height="46" rx="10"/>
+        <rect class="box p pulse" x="8" y="138" width="724" height="26" rx="8"/>
+        <text x="122" y="46">if p, then q</text>
+        <text x="366" y="46">p implies q</text>
+        <text x="614" y="46">p only if q</text>
+        <text x="122" y="106">q if p</text>
+        <text x="366" y="106">q whenever p</text>
+        <text x="614" y="106">q follows from p</text>
+        <text x="370" y="156" class="sub">p sufficient for q · q necessary for p · a sufficient condition for q is p · a necessary condition for p is q · q unless ¬p · if p, q · q when p</text>
+      </svg>
+    </div>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>only if</b> = the <i>then</i>-part · <b>if</b> = the hypothesis · <b>sufficient</b> → hypothesis (p) ·
+      <b>necessary</b> → conclusion (q). Example: "You can pass <b>only if</b> you attend" → <i>If you pass, then you attended.</i></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Converse · Contrapositive · Inverse</h2>
+    <table>
+      <tr><th>Form</th><th>Statement</th><th>Equivalent to p → q?</th></tr>
+      <tr><td><b>Converse</b></td><td>q → p</td><td>✗ no</td></tr>
+      <tr><td><b>Contrapositive</b></td><td>¬q → ¬p</td><td>✅ <b>always</b> (same truth values)</td></tr>
+      <tr><td><b>Inverse</b></td><td>¬p → ¬q</td><td>✗ no (but ≡ converse)</td></tr>
+    </table>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>Only the contrapositive is equivalent</b> to the original conditional. Converse &amp; inverse are
+      equivalent <i>to each other</i>, not to p → q.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Compound Truth Table — (p ∨ ¬q) → (p ∧ q)</h2>
+    <p>Build it <b>column by column</b>: ¬q → p ∨ ¬q → p ∧ q → final conditional.</p>
+    <table>
+      <tr><th>p</th><th>q</th><th>¬q</th><th>p ∨ ¬q</th><th>p ∧ q</th><th>(p ∨ ¬q) → (p ∧ q)</th></tr>
+      <tr><td>T</td><td>T</td><td>F</td><td>T</td><td>T</td><td><b>T</b></td></tr>
+      <tr><td>T</td><td>F</td><td>T</td><td>T</td><td>F</td><td><b>F</b></td></tr>
+      <tr><td>F</td><td>T</td><td>F</td><td>F</td><td>F</td><td>T</td></tr>
+      <tr><td>F</td><td>F</td><td>T</td><td>T</td><td>F</td><td><b>F</b></td></tr>
+    </table>
+    <h3>Precedence of logical operators (Table 8)</h3>
+    <table>
+      <tr><th>Precedence</th><th>1 (highest)</th><th>2</th><th>3</th><th>4</th><th>5 (lowest)</th></tr>
+      <tr><td><b>Operator</b></td><td><b>¬</b></td><td><b>∧</b></td><td><b>∨</b></td><td><b>→</b></td><td><b>↔</b></td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><code>p → q ∨ r</code> means <code>p → (q ∨ r)</code> — ∨ binds tighter than →.
+      Read the ladder: <b>N</b>ot → <b>A</b>nd → <b>O</b>r → <b>I</b>mplies → <b>I</b>ff.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Logic &amp; Bit Operations</h2>
+    <p><b>Truth ↔ bits:</b> <b>T = 1</b>, <b>F = 0</b>.</p>
+    <p><b>Definition 7.</b> A <b>bit string</b> is a sequence of zero or more bits; its <b>length</b> = number of bits.
+       Example: <code>101010011</code> is a bit string of <b>length nine</b>.</p>
+    <div class="diagram">
+      <div class="dg-cap">Bitwise OR / AND / XOR — 0110 1011 0110 vs 1100 0001 1101</div>
+      <svg viewBox="0 0 740 190">
+        <rect class="box pulse" x="8" y="16" width="360" height="44" rx="10"/>
+        <rect class="box pulse" x="372" y="16" width="360" height="44" rx="10"/>
+        <rect class="box g pulse" x="8" y="72" width="724" height="42" rx="10"/>
+        <rect class="box p pulse" x="8" y="122" width="724" height="42" rx="10"/>
+        <text x="188" y="44">A = 0110 1011 0110</text>
+        <text x="552" y="44">B = 1100 0001 1101</text>
+        <text x="370" y="98">OR → 1110 1011 1111 &nbsp;·&nbsp; AND → 0100 0001 0100</text>
+        <text x="370" y="148">XOR → 1010 1010 1011 &nbsp;·&nbsp; (1 = any 1 / both 1 / different)</text>
+      </svg>
+    </div>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div>Do it <b>bit by bit</b>, same position with same position — the old truth tables wearing 0/1 costumes:
+      OR = 1 if <i>any</i> 1 · AND = 1 if <i>both</i> 1 · XOR = 1 if <i>different</i>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Memory Tricks</h2>
+    <ul class="trick-list">
+      <li><b>Proposition test</b> → must be <i>declarative</i> + <i>definitely T or F</i>.
+        <span class="mem">Questions, commands, and variable-riddled sentences fail.</span></li>
+      <li><b>Connectives in order</b> → <b>N</b>ot · <b>A</b>nd · <b>O</b>r · <b>I</b>f-then · <b>I</b>ff — say them as a word: <i>NAOI-I</i>.</li>
+      <li><b>→ fails only at T→F</b> — a promise breaks only when kept-and-then-betrayed; F hypothesis is automatically T.</li>
+      <li><b>Contra</b>posite flips <b>and</b> negates = <b>keeps</b> the truth · <b>Con</b>verse just flips · <b>In</b>verse just negates.
+        <span class="mem">"Only the contra keeps the truth."</span></li>
+      <li><b>↔ = twins</b> → true when p and q match (TT or FF).</li>
+      <li><b>Sufficient → left (p), necessary → right (q)</b> — "p is sufficient for q" / "q is necessary for p".</li>
+      <li><b>Range of truth</b> for →: T,T → T · T,F → F · F,* → T (generous to false hypotheses).</li>
+      <li><b>Precedence ladder</b> → ¬ ∧ ∨ → ↔ (Not first, Iff last).</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚡ Quick Tips — Lecture 1–2</h2>
+    <div class="tips-grid">
+      <div class="tip-card"><span class="t-ico">📝</span><h4>Tables from memory</h4>
+        <p>Draw Tables 1–6 cold in the exam: ¬ flips, ∧ needs both, ∨ needs one, → only T→F fails, ↔ needs twins.</p></div>
+      <div class="tip-card"><span class="t-ico">🔗</span><h4>Equivalence anchor</h4>
+        <p>p → q ≡ <b>¬q → ¬p</b>. Contrapositive is the only rewrite that keeps truth — everything else needs checking.</p></div>
+      <div class="tip-card"><span class="t-ico">🧮</span><h4>Column discipline</h4>
+        <p>Compound tables: add columns in precedence order (¬ first, ↔ last) — never compute a final column from memory.</p></div>
+      <div class="tip-card"><span class="t-ico">🔢</span><h4>Bit strings</h4>
+        <p>Group bits in 4s for readability (like the lecture does) — OR/AND/XOR each column vertically.</p></div>
+      <div class="tip-card"><span class="t-ico">🗣️</span><h4>Rewrite drills</h4>
+        <p>Practice translating <i>only if / unless / sufficient / necessary</i> sentences into if-then form (Exercise 1.1 Q22).</p></div>
+      <div class="tip-card"><span class="t-ico">❌</span><h4>Negation drill</h4>
+        <p>Negate statements by "It is not the case that…" then simplify: ≠, does not, not all (Exercise 1.1 Q5).</p></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Lecture 1–2 Check</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Definition of a proposition?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>A declarative sentence that is <b>either true or false but not both</b>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>When is p → q false?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Only when p is true and q is false</b> (T → F row). All other rows are true.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Which form of p → q is equivalent?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>The <b>contrapositive</b> ¬q → ¬p. Converse (q→p) and inverse (¬p→¬q) are NOT equivalent (but equal each other).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Inclusive vs exclusive or?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Inclusive (∨):</b> true when both true. <b>Exclusive (⊕):</b> true only when exactly one is true (both → false).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>Operator precedence in logic?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>¬ &gt; ∧ &gt; ∨ &gt; → &gt; ↔</b> — negation first, biconditional last.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>"p only if q" — which is the conclusion?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>q</b> — "only if" introduces the <i>then</i>-part: p → q. (Sufficient → p, necessary → q.)</p></div>
+      </div></div>
+    </div>
+    <p><b>Related:</b> <a href="cs111.html" style="color:var(--cyan)">CS111 logic operators (&& || !) →</a>
+       · <a href="cy104.html" style="color:var(--cyan)">CY104 logic gates →</a></p>
+  </div>
+
+</section>
+
+<footer class="footer">
+  MA216 · Discrete Structures · <b>Lecture 1–2 · Propositional Logic</b> · BS Cyber Security · Fall 2026
+</footer>
+
+<button id="toTop" title="Back to top">↑</button>
+<script src="script.js"></script>
+</body>
+</html>

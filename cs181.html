@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CS181 — Application of ICT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="themes.css">
+
+<script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="bg-blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grid-overlay"></div>
+
+<nav class="topbar">
+  <a class="brand" href="index.html"><span class="logo">Σ</span> BS-CYS · NOTES HUB</a>
+<div class="nav-right">
+  <a class="back-btn" href="index.html">← All Subjects</a>
+  <div class="theme-wrap">
+    <button class="theme-btn" id="themeBtn" title="Switch theme (press T)"><span class="palette">🎨</span><span class="label">Theme</span></button>
+    <div class="theme-menu" id="themeMenu">
+      <button class="theme-opt" data-theme="midnight"><span class="sw sw-midnight"></span><b>Midnight Cyber</b><i>glassy dark · aurora blobs</i></button>
+      <button class="theme-opt" data-theme="matrix"><span class="sw sw-matrix"></span><b>Matrix Terminal</b><i>digital rain · scanlines · mono</i></button>
+      <button class="theme-opt" data-theme="paper"><span class="sw sw-paper"></span><b>Paper Notes</b><i>ruled page · ink · sticky notes</i></button>
+      <button class="theme-opt" data-theme="synthwave"><span class="sw sw-synthwave"></span><b>Synthwave</b><i>chrome · retro sun · grid floor</i></button>
+      <button class="theme-opt" data-theme="aurora"><span class="sw sw-aurora"></span><b>Aurora Light</b><i>soft pastel glass</i></button>
+      <button class="theme-opt" data-theme="cyberpunk"><span class="sw sw-cyberpunk"></span><b>Cyberpunk Neon</b><i>glitch boxes · orbitron · neon</i></button>
+      <button class="theme-opt" data-theme="dracula"><span class="sw sw-dracula"></span><b>Dracula Gothic</b><i>serif italics · purple glow</i></button>
+      <button class="theme-opt" data-theme="coffee"><span class="sw sw-coffee"></span><b>Coffee Warmth</b><i>cozy sepia · serif · warm</i></button>
+    </div>
+  </div>
+</div>
+</nav>
+
+<header class="subject-hero">
+  <span class="code-lg">CS181 · THEORY</span>
+  <h1><span>Application of ICT</span></h1>
+  <p>Dr. Zaki Masood · Information, Communication &amp; Computer Fundamentals · Weeks 1–2</p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="week1"><span class="dot"></span> Week 1 · Intro to ICT</button>
+  <button class="tab-btn" data-tab="week2"><span class="dot"></span> Week 2 · Computer Fundamentals</button>
+  <button class="tab-btn" data-tab="course"><span class="dot"></span> 📚 Course Contents</button>
+</div>
+
+<!-- ======================= WEEK 1 ======================= -->
+<section class="tab-panel active" id="week1">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>What is ICT?</h2>
+    <p>Three acronyms combine into one idea:</p>
+    <div class="pipeline">
+      <span class="pipe-step">IT · collect, process, store data</span><span class="pipe-arrow">+</span>
+      <span class="pipe-step">CT · transmit via networks</span><span class="pipe-arrow">=</span>
+      <span class="pipe-step">ICT · do both, across the globe</span>
+    </div>
+    <p><strong>ICT</strong> = collecting, processing and storing data <em>and</em> transmitting/sharing it worldwide
+       through networks, internet and telecommunication.</p>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Memory hook:</b> IT is the <i>brain</i> (data work), CT is the <i>voice</i> (transmission).
+      ICT = brain + voice talking to the world.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>ICT Tools by Category</h2>
+    <table>
+      <tr><th>Category</th><th>Examples</th></tr>
+      <tr><td><b>Hardware</b></td><td>Computers, smartphones, tablets, network devices</td></tr>
+      <tr><td><b>Software</b></td><td>Operating systems, office productivity, management tools</td></tr>
+      <tr><td><b>Communication</b></td><td>Gmail, Outlook, WhatsApp, Telegram, Zoom, Teams</td></tr>
+      <tr><td><b>Internet</b></td><td>Chrome, Firefox, Dropbox, Google Drive</td></tr>
+      <tr><td><b>Security</b></td><td>Antivirus: Norton, McAfee</td></tr>
+      <tr><td><b>Development</b></td><td>Visual Studio, VS Code, DevC++, Jupyter Notebook</td></tr>
+      <tr><td><b>Educational</b></td><td>LMS: Moodle, Blackboard · E-learning: Coursera, Khan Academy</td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Scope of ICT in Daily Life</h2>
+    <ul>
+      <li><b>Education</b> — LMS (Moodle, Canvas, Google Classroom), online courses (Coursera, edX, Khan Academy), virtual classrooms</li>
+      <li><b>Health</b> — fitness tracking (Google Fit, Samsung Health), telemedicine (OLADOC, Sehat Kahani, Marham)</li>
+      <li><b>Finance &amp; Shopping</b> — online banking (JazzCash, Easypaisa), e-commerce (Daraz, Telemart)</li>
+      <li><b>Business</b> — Amazon-style e-commerce, mobile banking without visiting a branch</li>
+      <li><b>Agriculture</b> — IoT devices monitor crops, automate irrigation, improve yields</li>
+      <li><b>Future trends</b> — AI, IoT, Quantum Computing, Web3, Generative AI</li>
+    </ul>
+    <p>Students use ICT for: e-books &amp; online libraries, educational apps (Duolingo, Wolfram Alpha),
+       virtual classrooms, study groups, research (JSTOR, Google Scholar).</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🛡️ Safety, Security &amp; Digital Balance</h2>
+    <ul>
+      <li><b>Strong passwords</b> + multi-factor authentication for every account</li>
+      <li><b>Antivirus/anti-malware</b> — keep it updated</li>
+      <li><b>Secure networks</b> — avoid public Wi-Fi for sensitive transactions</li>
+      <li><b>Data privacy</b> — manage social media privacy settings</li>
+      <li><b>Regular updates</b> — latest security patches on devices and apps</li>
+      <li><b>Digital detox</b> — scheduled breaks, unplugging periods, screen-time limits, non-digital hobbies, device-free family time</li>
+    </ul>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>Cyber security link:</b> everything above — passwords, patches, network hygiene —
+      is the daily-life half of your CY104 course. Same syllabus, different angle.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚡ Quick Tips — Week 1</h2>
+    <div class="tips-grid">
+      <div class="tip-card"><span class="t-ico">🔤</span><h4>Acronym breakdown</h4>
+        <p>IT + CT = ICT. If an exam question defines one half, you can reconstruct the whole definition.</p></div>
+      <div class="tip-card"><span class="t-ico">📱</span><h4>Local examples score marks</h4>
+        <p>Name-drop JazzCash, Daraz, OLADOC, Sehat Kahani — Pakistani examples show real understanding.</p></div>
+      <div class="tip-card"><span class="t-ico">🔐</span><h4>Security is everywhere</h4>
+        <p>Every ICT topic has a security angle: passwords, patches, privacy settings. Link them for bonus depth.</p></div>
+      <div class="tip-card"><span class="t-ico">🌿</span><h4>Don't forget digital detox</h4>
+        <p>Examiners love the "balance" section — scheduled breaks, unplugging days, mindful usage.</p></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Week 1</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Define ICT in one sentence.</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>A combination of IT and CT — collecting, processing, storing data and transmitting it globally via networks and telecommunication.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Data vs Information?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Data</b> = raw facts/figures, not meaningful alone. <b>Information</b> = processed, organized data useful for decisions.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Give three examples of ICT in healthcare.</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Fitness tracking apps (Google Fit), telemedicine consults (OLADOC, Sehat Kahani), digital health records.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>What is a digital detox?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Planned breaks from devices — scheduled screen-free times, unplugging days, non-digital hobbies, device-free family time.</p></div>
+      </div></div>
+    </div>
+    <p><b>Related lab:</b> <a href="cs181l.html" style="color:var(--cyan)">CS181L ICT Lab →</a></p>
+  </div>
+
+</section>
+
+<!-- ======================= WEEK 2 ======================= -->
+<section class="tab-panel" id="week2">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Computer — Definition &amp; Components</h2>
+    <p>An <strong>electronic device that processes data to produce meaningful information</strong>.
+       Key traits: <b>Speed · Accuracy · Automation · Versatility</b>.</p>
+    <table>
+      <tr><th>Component</th><th>Details</th></tr>
+      <tr><td><b>CPU</b></td><td>Brain: <b>ALU</b> (calculations), <b>Control Unit</b> (directs flow), <b>Registers</b> (ultra-fast temp storage)</td></tr>
+      <tr><td><b>Memory</b></td><td>Primary: <b>RAM</b> (volatile, active programs), <b>ROM</b> (firmware) · Secondary: HDD, SSD</td></tr>
+      <tr><td><b>Input</b></td><td>Keyboard, mouse, scanner</td></tr>
+      <tr><td><b>Output</b></td><td>Monitor, printer, speaker</td></tr>
+    </table>
+    <p>The <b>system unit</b> houses the motherboard, expansion slots/cards (network, graphics, storage).</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>History — Five Generations</h2>
+    <div class="pipeline">
+      <span class="pipe-step">1 · Vacuum tubes (40s–50s)</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">2 · Transistors (50s–60s)</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">3 · ICs (60s–70s)</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">4 · Microprocessors (70s–)</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">5 · AI / Quantum / Cloud</span>
+    </div>
+    <table>
+      <tr><th>Gen</th><th>Technology</th><th>Example</th></tr>
+      <tr><td>1st</td><td>Vacuum tubes — large, slow</td><td>Early calculators, Abacus, Pascaline, Analytical Engine</td></tr>
+      <tr><td>2nd</td><td>Transistors — faster, smaller</td><td>IBM 1401</td></tr>
+      <tr><td>3rd</td><td>Integrated Circuits — reliable, compact</td><td>IBM 360</td></tr>
+      <tr><td>4th</td><td>Microprocessors — personal computers</td><td>Apple II, IBM PC</td></tr>
+      <tr><td>5th</td><td>AI &amp; parallel processing</td><td>Smart devices, quantum computers</td></tr>
+    </table>
+    <h3>Types of computers</h3>
+    <ul>
+      <li><b>Supercomputers</b> — extreme speed: weather, space, code-breaking, oil exploration</li>
+      <li><b>Mainframes</b> — large-scale centralized data: banks, hospitals, governments</li>
+      <li><b>Quantum computers</b> — qubits, super-fast, experimental</li>
+      <li><b>Micro/PCs</b> — desktops, laptops, tablets, phones</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Digital Data Representation</h2>
+    <p>Everything is <strong>binary</strong> — bits (0s &amp; 1s) physically stored as open/closed circuits,
+       current presence/absence, or magnetic charge.</p>
+    <table>
+      <tr><th>System</th><th>Bits</th><th>Range</th><th>Used in</th></tr>
+      <tr><td><b>ASCII</b></td><td>7–8</td><td>256 chars</td><td>Personal computers (English)</td></tr>
+      <tr><td><b>EBCDIC</b></td><td>8</td><td>Similar to ASCII</td><td>IBM mainframes</td></tr>
+      <tr><td><b>Unicode</b></td><td>8–32</td><td>1M+ symbols</td><td>Web, modern OS — all world languages</td></tr>
+    </table>
+    <h3>Multimedia data</h3>
+    <ul>
+      <li><b>Graphics:</b> pixels (bitmaps) — 1-bit = 2 colours, 8-bit = 256, 24-bit = 16.7M (True Color). Formats: JPEG, PNG, GIF, BMP</li>
+      <li><b>Audio:</b> samples (CD 44,100/sec), compressed to MP3 (~10× smaller), 128 Kbps common</li>
+      <li><b>Video:</b> frames at 24–60 fps, compressed with MPEG</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>CPU Performance &amp; Memory Hierarchy</h2>
+    <ul>
+      <li><b>Clock speed</b> (GHz) — higher = faster. Early CPUs &lt; 5 MHz; modern &gt; 5 GHz</li>
+      <li><b>Word size</b> — bits processed at once; modern systems are 64-bit (32-bit is legacy)</li>
+      <li><b>Cores</b> — multiple cores enable multitasking; quad-core = 4 cores</li>
+      <li><b>Cache</b> — very fast memory inside the CPU for soon-needed data</li>
+      <li><b>GPU</b> — processes images/animations/3D for display (Qualcomm, NVIDIA, Apple, Intel, AMD)</li>
+      <li><b>Bus</b> — data highway; bandwidth = data transfer capacity</li>
+    </ul>
+    <div class="callout good"><span class="c-ico">Hierarchy</span>
+      <div>Registers → Cache → RAM → ROM → HDD/SSD. <b>The closer to the CPU, the faster but smaller the memory.</b>
+      RAM = volatile (active programs). ROM = non-volatile (firmware). Flash keeps data without power.</div>
+    </div>
+    <p><b>Remote/cloud storage:</b> Google Drive, Dropbox, OneDrive, AWS S3 — accessible anywhere, auto-backup;
+       concerns: security/privacy risks and internet dependency.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Machine Cycle, Clock &amp; OS</h2>
+    <div class="pipeline">
+      <span class="pipe-step">1 · Fetch</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">2 · Decode</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">3 · Execute</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">4 · Store</span>
+    </div>
+    <p><b>Example (2 + 3):</b> fetch 2 → Register X · fetch 3 → Register Y · decode &amp; execute ADD → 5 →
+       Register Z → display result.</p>
+    <p>The <b>system clock</b> sends regular timing signals (like a heartbeat) — each tick = one cycle measured in Hz.</p>
+
+    <h3>Operating System</h3>
+    <p>Software acting as the <strong>interface between user and hardware</strong>. Examples: Windows, Linux, macOS, Android, iOS.</p>
+    <table>
+      <tr><th>Function</th><th>What it manages</th></tr>
+      <tr><td>Process management</td><td>Scheduling &amp; execution of tasks</td></tr>
+      <tr><td>Memory management</td><td>Allocates RAM to applications</td></tr>
+      <tr><td>File management</td><td>Organizes &amp; controls access to data</td></tr>
+      <tr><td>Device management</td><td>Drivers for I/O devices</td></tr>
+      <tr><td>User interface</td><td>GUI or CLI for interaction</td></tr>
+      <tr><td>Security &amp; access control</td><td>Passwords, permissions</td></tr>
+    </table>
+
+    <h3>Faster computers</h3>
+    <ul>
+      <li><b>Multiprocessing</b> — multiple processors/cores in one device, usually one job each</li>
+      <li><b>Parallel processing</b> — multiple cores work together on <i>one</i> job to finish sooner</li>
+      <li><b>Pipelining</b> — a new instruction starts before the previous one finishes its cycle</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🖼️ See It: Machine Cycle &amp; Memory Hierarchy</h2>
+    <div class="diagram">
+      <div class="dg-cap">Machine cycle — every instruction loops through these 4 steps</div>
+      <svg viewBox="0 0 740 170">
+        <rect class="box pulse" x="240" y="8" width="260" height="46" rx="12"/>
+        <text x="370" y="36">1 · FETCH — grab instruction from RAM</text>
+        <path class="flow" d="M540 31 H664 V78"/>
+        <rect class="box p pulse" x="556" y="80" width="176" height="46" rx="12"/>
+        <text x="644" y="108">2 · DECODE</text>
+        <path class="flow p" d="M556 103 H424"/>
+        <rect class="box a pulse" x="240" y="80" width="170" height="46" rx="12"/>
+        <text x="325" y="108">3 · EXECUTE</text>
+        <path class="flow a" d="M240 103 H116 V56"/>
+        <rect class="box g pulse" x="28" y="8" width="150" height="46" rx="12"/>
+        <text x="103" y="30">4 · STORE</text><text x="103" y="47" class="sub">write result back</text>
+        <path class="flow g" d="M178 31 H240"/>
+        <text x="370" y="156" class="sub">F → D → E → S, over and over at gigahertz speed</text>
+      </svg>
+    </div>
+    <div class="diagram">
+      <div class="dg-cap">Memory hierarchy — smaller &amp; faster at the top, bigger &amp; slower at the bottom</div>
+      <svg viewBox="0 0 740 240">
+        <polygon class="box r" points="370,10 440,46 300,46"/>
+        <polygon class="box a" points="300,52 440,52 470,88 270,88"/>
+        <polygon class="box p" points="270,94 470,94 505,130 235,130"/>
+        <polygon class="box" points="235,136 505,136 545,172 195,172"/>
+        <polygon class="box g" points="195,178 545,178 590,214 150,214"/>
+        <text x="370" y="40" class="sub">Registers</text>
+        <text x="370" y="76" class="sub">Cache (L1-L3)</text>
+        <text x="370" y="118" class="sub">RAM</text>
+        <text x="370" y="160" class="sub">ROM / SSD / HDD</text>
+        <text x="370" y="202" class="sub">Remote / cloud storage</text>
+        <text x="640" y="30" class="sub">↑ fastest</text>
+        <text x="640" y="60" class="sub">smallest</text>
+        <text x="640" y="200" class="sub">↓ biggest</text>
+        <text x="640" y="230" class="sub">cheapest/byte</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Memory Tricks</h2>
+    <ul class="trick-list">
+      <li><b>Machine cycle</b> → "<b>F-D-E-S</b>" — <b>F</b>etch → <b>D</b>ecode → <b>E</b>xecute → <b>S</b>tore.
+        <span class="mem">"Fetch it, understand it, do it, save it."</span></li>
+      <li><b>5 generations</b> → "<b>V</b>ery <b>T</b>iny <b>I</b>ndividuals <b>M</b>ake <b>Q</b>uick work" — Vacuum tubes → Transistors → ICs → Microprocessors → AI/Quantum.</li>
+      <li><b>Data vs information</b> → Data = <b>d</b>umb numbers (1988) · Information = <b>i</b>nswer (student born 1988, age 38).</li>
+      <li><b>Memory ladder</b> → "<b>R</b>eally <b>C</b>lever <b>R</b>obots <b>R</b>un <b>S</b>lowly" reversed: Registers → Cache → RAM → ROM/Storage. CPU eats from the top.</li>
+      <li><b>Bit vs byte</b> → a <b>bit</b> is a light switch (0/1) · a <b>byte</b> = 8 switches — a character's suitcase.</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎬 Worked Example — Why does a program feel slow?</h2>
+    <div class="example">
+      <div class="ex-head"><span>🧩 Diagnose with the concepts you just learned</span><button class="ex-next">Next step →</button></div>
+      <div class="ex-step"><span class="n">1</span><b>Symptom:</b> a student's C++ program takes seconds to process a 1,000-row file on a 3 GHz, 64-bit, quad-core machine.</div>
+      <div class="ex-step"><span class="n">2</span><b>Question the machine cycle:</b> is time lost in <b>fetch</b> (data not in RAM — jumping to slow HDD each loop)?</div>
+      <div class="ex-step"><span class="n">3</span><b>Question the clock:</b> 3 GHz = 3 billion cycles/sec — huge power wasted means the <i>algorithm</i> (extra loops) or I/O waits are the bottleneck, not the CPU.</div>
+      <div class="ex-step"><span class="n">4</span><b>Question the OS:</b> multitasking — other apps/background updates ate the cycles (check Task Manager).</div>
+      <div class="ex-step"><span class="n">5</span><b>Fix in this order:</b> better algorithm → keep data in memory (RAM/cache-friendly) → close competing processes → only then blame hardware.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚡ Quick Tips — Week 2</h2>
+    <div class="tips-grid">
+      <div class="tip-card"><span class="t-ico">📖</span><h4>Generations = timeline</h4>
+        <p>Vacuum → Transistor → IC → Microprocessor → AI. One keyword per generation is enough for MCQs.</p></div>
+      <div class="tip-card"><span class="t-ico">⚡</span><h4>Fast ≠ big</h4>
+        <p>Cache is fastest but smallest; HDD is slowest but biggest. Distance from CPU = speed.</p></div>
+      <div class="tip-card"><span class="t-ico">🔁</span><h4>Fetch-Decode-Execute-Store</h4>
+        <p>Say it like a chant — it's the answer to half the machine-cycle questions.</p></div>
+      <div class="tip-card"><span class="t-ico">🖥️</span><h4>RAM vs ROM</h4>
+        <p>RAM = working memory, forgets when power dies. ROM = permanent startup instructions.</p></div>
+      <div class="tip-card"><span class="t-ico">🔢</span><h4>Unicode is the answer</h4>
+        <p>For "which coding system supports all languages?" — always Unicode.</p></div>
+      <div class="tip-card"><span class="t-ico">🧠</span><h4>Multiprocess vs parallel</h4>
+        <p>Multi = different jobs at once. Parallel = one job split across cores. Read the question twice.</p></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Week 2</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Stages of the machine cycle?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Fetch → Decode → Execute → Store.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>RAM vs ROM — key difference?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>RAM is volatile (contents lost when power off), stores active programs. ROM is non-volatile, stores firmware permanently.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>What does the CPU's Control Unit do?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Directs data flow and coordinates tasks within the CPU (ALU does calculations, registers store temporarily).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Name the 5 computer generations.</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Vacuum tubes → Transistors → Integrated Circuits → Microprocessors → AI/Quantum/Cloud.</p></div>
+      </div></div>
+    </div>
+    <p><b>Related lab:</b> <a href="cs181l.html" style="color:var(--cyan)">CS181L ICT Lab →</a></p>
+  </div>
+
+</section>
+
+<!-- ======================= COURSE CONTENTS ======================= -->
+<section class="tab-panel" id="course">
+  <div class="note-card">
+    <h2><span class="bar"></span>CS-181 · Course at a Glance</h2>
+    <p><b>No pre-requisites.</b> History of computing → number systems → software engineering →
+       networks → AI → databases → full web stack (HTML/CSS/JS) → WordPress → AWS/DevOps.</p>
+    <table>
+      <tr><th>CLO</th><th>Outcome</th><th>BT</th></tr>
+      <tr><td>CLO-1</td><td>Understand the basics of information &amp; communication technologies</td><td>C2 Understand</td></tr>
+      <tr><td>CLO-2</td><td>Solve number-system conversions &amp; arithmetic operations</td><td>C3 Apply</td></tr>
+      <tr><td>CLO-3</td><td>Apply SDLC, modern web languages, media, architectures &amp; tools</td><td>C3 Apply</td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Grading:</b> Assignments 15% · Quizzes 15% · Midterm 25% · Final 45%.
+      <b>Policies:</b> no makeups, no late work, individual work only — group work prohibited,
+      copying from internet = <b>F</b>.</div>
+    </div>
+    <div class="grade-bar">
+      <div style="flex:15">Assign 15%</div><div style="flex:15">Quiz 15%</div><div style="flex:25">Mid 25%</div><div style="flex:45">Final 45%</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📚 16-Week Planner</h2>
+    <div class="course-tl">
+      <div class="course-week"><span class="wk">WEEK 1</span><div><h4>History &amp; Hardware</h4><p>History of computers · definition · hardware parts · types (super/mainframe/mini/micro) · data representation</p><div class="acts"><span>Activity: top-10 high-end systems incl. quantum</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 2</span><div><h4>Inside the System Unit</h4><p>Processor, memory, word size · machine cycle &amp; system clock · storage · I/O devices · OS: multitasking, multithreading, multiprocessing</p><div class="acts"><span>Activity: Intel generations spec (GCR)</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 3</span><div><h4>🔢 Number Systems <b style="color:var(--pink)">· Quiz 1</b></h4><p>Number systems &amp; conversions: binary ↔ decimal ↔ octal ↔ hexadecimal · arithmetic operations</p><div class="acts"><span>CLO-2</span><span>why it matters + practice</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 4</span><div><h4>Software Engineering</h4><p>Application &amp; system software · SDLC phases · flowcharts · system design · testing &amp; QA</p><div class="acts"><span>Activity: apply SDLC to a real project (GCR)</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 5</span><div><h4>Computer Networks</h4><p>Data communication model &amp; transmission · modems, routers, switches, load balancers, bridges, NIC</p><div class="acts"><span>Activity: network devices + real diagram</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 6</span><div><h4>Transmission, Topology &amp; OSI <b style="color:var(--pink)">· Quiz 2</b></h4><p>Digital/analog · async/sync · simplex/half/full duplex · media · protocols · topologies · OSI model · types of networks</p><div class="acts"><span>Class roles: sender/receiver/router</span><span>Milestones timeline (GCR)</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 7</span><div><h4>Artificial Intelligence</h4><p>Intro · AR · VR · Metaverse/blockchain · problem solving &amp; search · knowledge representation · ML · neural networks &amp; deep learning · NLP · reinforcement learning · ethics &amp; bias · future trends</p><div class="acts"><span>Explore AI apps · Gen-AI policy</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 8</span><div><h4>Databases</h4><p>SQL · NoSQL · MS Access</p><div class="acts"><span>Research a DBMS</span><span>Normalization + ERD exercises</span></div></div></div>
+      <div class="course-week exam"><span class="wk">WEEK 9</span><div><h4>🛑 MID EXAMS</h4><p>Covers weeks 1–8</p></div></div>
+      <div class="course-week"><span class="wk">WEEK 10</span><div><h4>Internet &amp; HTML</h4><p>Ports, URL/URI, HTTP · internet security &amp; privacy · web servers · cloud &amp; virtualization · DNS/FTP/CDN · HTML elements &amp; attributes · front/back-end frameworks</p><div class="acts"><span>Accessibility audit (GCR)</span><span>Privacy debate (recording)</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 11</span><div><h4>CSS</h4><p>Frameworks: Bootstrap, Material UI, Ant, Tailwind · syntax, selectors, class, ID, pseudo-classes, pseudo-elements</p><div class="acts"><span>Navbar: plain CSS vs framework</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 12</span><div><h4>Responsive &amp; Progressive CSS <b style="color:var(--pink)">· Quiz 3</b></h4><p>Preprocessors · cross-browser compatibility · responsive web design · progressive web design</p><div class="acts"><span>Responsive mockup (GCR)</span><span>3-min PBE vs GDD talk</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 13</span><div><h4>JavaScript</h4><p>JS · ES6+ · libraries · control flow &amp; functions · SOAP, JSON, BSON, REST</p><div class="acts"><span>Feature hunt on websites (AJAX, slideshows, validation)</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 14</span><div><h4>DOM, BOM &amp; Storage</h4><p>DOM · BOM · async/sync · browser &amp; Fetch APIs · web storage &amp; cookies · dev tools · JS security</p><div class="acts"><span>Draw a DOM tree</span><span>Cookie policy analysis (GCR)</span><span>airtime.pk article</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 15</span><div><h4>WordPress <b style="color:var(--pink)">· Quiz 4</b></h4><p>Dashboard · creating &amp; managing content · plugins &amp; widgets · performance, security &amp; SEO</p><div class="acts"><span>WP account + post + plugin + caching benchmark (GCR)</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 16</span><div><h4>AWS &amp; DevOps</h4><p>Introduction to AWS · DevOps basics</p><div class="acts"><span>Compare cloud platforms (GCR)</span><span>Service research + DevOps vs models</span></div></div></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Semester Map Memory Tricks</h2>
+    <ul class="trick-list">
+      <li><b>First half</b> → "<b>H</b>ow <b>M</b>uch <b>N</b>ice <b>S</b>oftware <b>N</b>etworks <b>M</b>ake <b>D</b>reams" — History → Machine/inside → Number systems → Software eng → Networks → AI → Databases (weeks 1–8).</li>
+      <li><b>Quizzes</b> → land on weeks <b>3, 6, 12, 15</b> — "<b>3-6-12-15</b>, don't be late." Quiz 1 = number systems.</li>
+      <li><b>Web block</b> → "<b>H-3C-J-J-W-A</b>": <b>H</b>TML → CSS ×2 → <b>J</b>avaScript ×2 → <b>W</b>ordPress → <b>A</b>WS (weeks 10–16).</li>
+      <li><b>Grading split</b> → "<b>15-15-25-45</b>" — assignments &amp; quizzes are twins (15 each); final is nearly half the course.</li>
+    </ul>
+  </div>
+</section>
+
+<footer class="footer">
+  CS181 · Application of ICT · <b>Week 1 &amp; 2</b> · BS Cyber Security · Fall 2026
+</footer>
+
+<button id="toTop" title="Back to top">↑</button>
+<script src="script.js"></script>
+</body>
+</html>

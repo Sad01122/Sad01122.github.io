@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CY104L — Cyber Security Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="themes.css">
+
+<script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="bg-blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grid-overlay"></div>
+
+<nav class="topbar">
+  <a class="brand" href="index.html"><span class="logo">Σ</span> BS-CYS · NOTES HUB</a>
+<div class="nav-right">
+  <a class="back-btn" href="index.html">← All Subjects</a>
+  <div class="theme-wrap">
+    <button class="theme-btn" id="themeBtn" title="Switch theme (press T)"><span class="palette">🎨</span><span class="label">Theme</span></button>
+    <div class="theme-menu" id="themeMenu">
+      <button class="theme-opt" data-theme="midnight"><span class="sw sw-midnight"></span><b>Midnight Cyber</b><i>glassy dark · aurora blobs</i></button>
+      <button class="theme-opt" data-theme="matrix"><span class="sw sw-matrix"></span><b>Matrix Terminal</b><i>digital rain · scanlines · mono</i></button>
+      <button class="theme-opt" data-theme="paper"><span class="sw sw-paper"></span><b>Paper Notes</b><i>ruled page · ink · sticky notes</i></button>
+      <button class="theme-opt" data-theme="synthwave"><span class="sw sw-synthwave"></span><b>Synthwave</b><i>chrome · retro sun · grid floor</i></button>
+      <button class="theme-opt" data-theme="aurora"><span class="sw sw-aurora"></span><b>Aurora Light</b><i>soft pastel glass</i></button>
+      <button class="theme-opt" data-theme="cyberpunk"><span class="sw sw-cyberpunk"></span><b>Cyberpunk Neon</b><i>glitch boxes · orbitron · neon</i></button>
+      <button class="theme-opt" data-theme="dracula"><span class="sw sw-dracula"></span><b>Dracula Gothic</b><i>serif italics · purple glow</i></button>
+      <button class="theme-opt" data-theme="coffee"><span class="sw sw-coffee"></span><b>Coffee Warmth</b><i>cozy sepia · serif · warm</i></button>
+    </div>
+  </div>
+</div>
+</nav>
+
+<header class="subject-hero">
+  <span class="code-lg">CY104L · LAB</span>
+  <h1><span>Cyber Security Lab</span></h1>
+  <p>Windows file types &amp; CMD mastery · Virtualization, VMware &amp; Kali Linux</p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn soon" data-tab="week1"><span class="dot"></span> Week 1 · Coming Soon</button>
+  <button class="tab-btn active" data-tab="week2"><span class="dot"></span> Lab 02 · CMD Commands</button>
+  <button class="tab-btn" data-tab="week3"><span class="dot"></span> Lab 03 · VMware &amp; Kali</button>
+  <button class="tab-btn" data-tab="week4"><span class="dot"></span> Lab 04 · Linux &amp; WSL</button>
+</div>
+
+<!-- ======================= WEEK 1 ======================= -->
+<section class="tab-panel" id="week1">
+  <div class="note-card soon-panel">
+    <span class="big-ico">🔍</span>
+    <h3>Week 1 notes not processed yet</h3>
+    <p>Drop the Week 1 lab material into your <b>_inbox</b> and run
+       <b>"process inbox"</b> — the note will appear here automatically once generated.</p>
+    <div class="topics">
+      <span>Lab 01 topics</span><span>Windows basics</span><span>Security fundamentals</span>
+    </div>
+    <p style="margin-top:22px"> meanwhile, revise <a href="cs111.html" style="color:var(--cyan)">Week 1 of CS111 →</a></p>
+  </div>
+</section>
+
+<!-- ======================= WEEK 2 ======================= -->
+<section class="tab-panel active" id="week2">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Windows File Types &amp; Their Security Significance</h2>
+    <table>
+      <tr><th>Extension</th><th>Type</th><th>Security note</th></tr>
+      <tr><td><code>.exe</code></td><td>Executable</td><td>Runs code — never open untrusted executables</td></tr>
+      <tr><td><code>.bat</code> / <code>.cmd</code></td><td>Batch script</td><td>Can automate malicious commands</td></tr>
+      <tr><td><code>.dll</code></td><td>Library</td><td>Loaded by programs — tamper target</td></tr>
+      <tr><td><code>.txt</code></td><td>Plain text</td><td>Generally safe, no code execution</td></tr>
+      <tr><td><code>.docx</code> / <code>.xlsx</code></td><td>Office docs</td><td>May hide macros / exploit payloads</td></tr>
+      <tr><td><code>.pdf</code></td><td>PDF</td><td>Can embed scripts or exploit code</td></tr>
+      <tr><td><code>.zip</code> / <code>.rar</code></td><td>Archive</td><td>May hide malicious files inside</td></tr>
+      <tr><td><code>.log</code></td><td>Log file</td><td>Goldmine for forensic investigation</td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🌳 Internal vs External — the split that decides viva marks</h2>
+    <div class="diagram">
+      <div class="dg-cap">CMD command families</div>
+      <svg viewBox="0 0 740 300">
+        <rect class="box f" x="300" y="10" width="140" height="46" rx="12"/>
+        <text x="370" y="38" class="ongrad">cmd.exe</text>
+        <path class="flow" d="M370 56 L170 108"/>
+        <path class="flow" d="M370 56 L570 108"/>
+        <rect class="box g pulse" x="40" y="110" width="260" height="44" rx="10"/>
+        <text x="170" y="137">INTERNAL — inside the shell</text>
+        <rect class="box p pulse" x="440" y="110" width="260" height="44" rx="10"/>
+        <text x="570" y="137">EXTERNAL — separate .exe files</text>
+        <path class="flow g" d="M170 154 V196"/>
+        <path class="flow p" d="M570 154 V196"/>
+        <rect class="box g" x="40" y="198" width="260" height="92" rx="10"/>
+        <text x="170" y="220">Navigation &amp; files</text>
+        <text x="170" y="240" class="sub">cd · dir · md · rd</text>
+        <text x="170" y="257" class="sub">type · copy · move</text>
+        <text x="170" y="274" class="sub">ren · del · attrib · cls</text>
+        <rect class="box p" x="440" y="198" width="260" height="92" rx="10"/>
+        <text x="570" y="220">Network &amp; system</text>
+        <text x="570" y="240" class="sub">ipconfig · ping · tracert</text>
+        <text x="570" y="257" class="sub">netstat · tasklist · taskkill</text>
+        <text x="570" y="274" class="sub">whoami · net user · systeminfo · cipher · fc</text>
+      </svg>
+    </div>
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>Classic viva:</b> what's the difference between <code>dir</code> and <code>dir /a</code>?
+      <code>/a</code> also displays hidden and system files that plain <code>dir</code> hides.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Internal CMD Commands (files &amp; folders)</h2>
+    <table>
+      <tr><th>Command</th><th>Purpose</th><th>Example</th></tr>
+      <tr><td><code>cd</code></td><td>Change directory</td><td><code>cd Desktop</code>, <code>cd ..</code>, <code>cd \</code></td></tr>
+      <tr><td><code>dir</code></td><td>List directory contents</td><td><code>dir</code>, <code>dir /a</code> (incl. hidden/system)</td></tr>
+      <tr><td><code>mkdir</code> / <code>md</code></td><td>Create folder</td><td><code>mkdir PracticeFolder</code></td></tr>
+      <tr><td><code>rmdir</code> / <code>rd</code></td><td>Remove empty folder</td><td><code>rmdir TestFolder</code></td></tr>
+      <tr><td><code>type</code></td><td>Show file contents</td><td><code>type notes.txt</code></td></tr>
+      <tr><td><code>copy</code></td><td>Copy a file</td><td><code>copy notes.txt Backup\</code></td></tr>
+      <tr><td><code>move</code></td><td>Move a file</td><td><code>move test.txt Documents\</code></td></tr>
+      <tr><td><code>ren</code> / <code>rename</code></td><td>Rename a file</td><td><code>ren old.txt new.txt</code></td></tr>
+      <tr><td><code>del</code> / <code>erase</code></td><td>Delete a file</td><td><code>del delete_me.txt</code></td></tr>
+      <tr><td><code>attrib</code></td><td>File attributes</td><td><code>attrib +h file.txt</code> (hide), <code>-h</code> (unhide)</td></tr>
+      <tr><td><code>cls</code></td><td>Clear screen</td><td><code>cls</code></td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Remember the 11 internals as a sentence:</b>
+      "<b>c</b>ome <b>d</b>own <b>d</b>uring <b>m</b>idterms, <b>r</b>ead <b>t</b>hese, <b>c</b>opies <b>m</b>ight <b>r</b>ename,
+      <b>d</b>on't <b>a</b>lways <b>c</b>ry" — cd, dir, md, rmdir, type, copy, move, ren, del, attrib, cls.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>External CMD Commands (system, network, processes)</h2>
+    <table>
+      <tr><th>Command</th><th>Purpose</th><th>Key flags</th></tr>
+      <tr><td><code>ipconfig /all</code></td><td>Full network config (IPv4, subnet, gateway, DNS, MAC)</td><td><code>/all</code></td></tr>
+      <tr><td><code>ping</code></td><td>Test connectivity (ICMP echo)</td><td><code>ping google.com</code></td></tr>
+      <tr><td><code>tracert</code></td><td>Trace route — list hops to destination</td><td><code>tracert google.com</code></td></tr>
+      <tr><td><code>netstat -ano</code></td><td>Connections + owning PIDs</td><td><code>-a -n -o</code></td></tr>
+      <tr><td><code>tasklist</code></td><td>List running processes</td><td>—</td></tr>
+      <tr><td><code>taskkill</code></td><td>Kill a process</td><td><code>/IM notepad.exe /F</code></td></tr>
+      <tr><td><code>whoami</code></td><td>Current user (+ privileges)</td><td><code>/priv</code></td></tr>
+      <tr><td><code>net user</code></td><td>List local user accounts</td><td>—</td></tr>
+      <tr><td><code>systeminfo</code></td><td>OS, version, system type, RAM</td><td>—</td></tr>
+      <tr><td><code>cipher</code></td><td>EFS encryption status of files/folders</td><td>—</td></tr>
+      <tr><td><code>fc</code></td><td>Compare two files</td><td><code>fc file1.txt file2.txt</code></td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Safety first:</b> don't encrypt important files with <code>cipher</code>, don't
+      <code>taskkill</code> unfamiliar processes, and never <code>del</code> a file you haven't inspected
+      with <code>type</code> first.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Lab Assignment Walkthrough (21 steps)</h2>
+    <ul class="checklist">
+      <li><code>cd</code> navigation → Desktop, Documents, CyberLab; bare <code>cd</code> shows current path</li>
+      <li><code>dir</code> then <code>dir /a</code> — note the extra hidden/system files</li>
+      <li><code>mkdir PracticeFolder</code> → confirm with <code>dir</code></li>
+      <li><code>rmdir TestFolder</code> → confirm removal</li>
+      <li>Create <code>notes.txt</code>, display with <code>type</code></li>
+      <li><code>copy</code> notes.txt into Backup folder → verify</li>
+      <li><code>move</code> a test file into Documents → verify</li>
+      <li><code>ren oldname.txt newname.txt</code> → verify</li>
+      <li><code>del delete_me.txt</code> → confirm it's gone</li>
+      <li><code>attrib +h hidden.txt</code> → check with <code>dir</code> &amp; <code>dir /a</code> → unhide with <code>-h</code></li>
+      <li>Type commands then <code>cls</code> — screen clears</li>
+      <li><code>ipconfig /all</code> → record IPv4, subnet mask, default gateway</li>
+      <li><code>ping</code> google.com and microsoft.com → record replies &amp; ms</li>
+      <li><code>tracert google.com</code> → count visible hops</li>
+      <li><code>netstat -ano</code> → find a LISTENING entry, record local address + PID</li>
+      <li><code>tasklist</code> → 3 familiar processes; open Notepad, find notepad.exe, kill your own with <code>taskkill /IM notepad.exe /F</code></li>
+      <li><code>whoami</code> + <code>whoami /priv</code> → record one privilege</li>
+      <li><code>net user</code> → list accounts (create/delete nothing)</li>
+      <li><code>systeminfo</code> → OS Name, Version, System Type, Total Physical Memory</li>
+      <li>Move to CyberLab folder → <code>cipher</code> → observe encryption status</li>
+      <li>Create file1.txt vs file2.txt with one difference → <code>fc</code> → record the difference</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎬 Worked Example — The hidden file mystery</h2>
+    <div class="example">
+      <div class="ex-head"><span>🧩 You find nothing with <code style="color:inherit">dir</code> — but the file "vanished"</span><button class="ex-next">Next step →</button></div>
+      <div class="ex-step"><span class="n">1</span><b>Symptom:</b> a lab partner says <code>secret.txt</code> exists on the desktop, but your <code>dir</code> shows nothing.</div>
+      <div class="ex-step"><span class="n">2</span><b>First check:</b> run <code>dir /a</code> — if it appears, the file is only <i>hidden</i> (attribute), not deleted.</div>
+      <div class="ex-step"><span class="n">3</span><b>Confirm the attribute:</b> <code>attrib secret.txt</code> shows <code>A H</code> — the <b>H</b> bit explains it.</div>
+      <div class="ex-step"><span class="n">4</span><b>Fix (unhide):</b> <code>attrib -h secret.txt</code> → normal <code>dir</code> sees it again.</div>
+      <div class="ex-step"><span class="n">5</span><b>Takeaway:</b> <code>attrib +h</code> is cosmetic hiding, <b>not security</b> — <code>dir /a</code> sees straight through it. Attackers use this trick, so defenders must know it.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Memory Tricks</h2>
+    <ul class="trick-list">
+      <li><b>Internal vs external</b> → Internal = <b>I</b>nside the shell (n<b>a</b>vig<b>a</b>te files) · External = <b>E</b>xecutables on <b>d</b>isk.
+        <span class="mem">Internals don't need a .exe — externals are their own programs.</span></li>
+      <li><b>PID chain</b> → <code>netstat -ano</code> finds the PID → <code>tasklist</code> maps PID → name → <code>taskkill</code> ends it.
+        <span class="mem">"Find it, name it, kill it."</span></li>
+      <li><b>attrib signs</b> → <b>+</b> = set (hide) · <b>−</b> = clear (unhide). Same trick for <code>+r</code>/<code>-r</code> read-only.
+        <span class="mem">Plus puts on, minus takes off.</span></li>
+      <li><b>Troubleshoot order</b> → <b>"IPTNT"</b> — <b>I</b>pconfig → <b>P</b>ing → <b>T</b>racert → <b>N</b>etstat → s<b>T</b>art checking processes.
+        <span class="mem">Local config → reachability → route → connections.</span></li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚡ Quick Tips — Lab 02</h2>
+    <div class="tips-grid">
+      <div class="tip-card"><span class="t-ico">👻</span><h4>dir /a finds ghosts</h4>
+        <p><code>attrib +h</code> only hides from plain <code>dir</code>. Forensically, always check with <code>/a</code>.</p></div>
+      <div class="tip-card"><span class="t-ico">🌐</span><h4>ipconfig first</h4>
+        <p>Every network troubleshooting session starts with <code>ipconfig /all</code> — memorize the layout.</p></div>
+      <div class="tip-card"><span class="t-ico">🔎</span><h4>PID is the bridge</h4>
+        <p><code>netstat -ano</code> gives a PID → <code>tasklist</code> maps PID to process → <code>taskkill</code> ends it. Chain these three.</p></div>
+      <div class="tip-card"><span class="t-ico">🧊</span><h4>LISTENING = open port</h4>
+        <p>A LISTENING entry means a service waits for incoming connections — know its address and PID for viva.</p></div>
+      <div class="tip-card"><span class="t-ico">🗂️</span><h4>Internal vs external</h4>
+        <p>cd/dir/copy/del = built into CMD (internal). ipconfig/ping/tasklist = separate programs (external). Common viva split.</p></div>
+      <div class="tip-card"><span class="t-ico">🛡️</span><h4>Think attacker mindset</h4>
+        <p>Every command you learn is also a forensic tool — what an attacker hides, <code>attrib</code> and <code>dir /a</code> reveal.</p></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Lab 02 Viva</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>What does <code>attrib +h</code> do?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Sets the hidden attribute — the file disappears from normal <code>dir</code> but still shows with <code>dir /a</code>. Unhide with <code>-h</code>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>What does LISTENING mean in netstat?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>A port is open and waiting for incoming connections; the PID identifies which process owns it.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Purpose of <code>tracert</code>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Shows every router (hop) between your computer and the destination, with response times.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>What is <code>fc</code> used for?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>File compare — displays the differing lines between two files. Great for spotting tampering.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>How do you kill Notepad by image name?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><code>taskkill /IM notepad.exe /F</code> — /IM = image name, /F = force.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>Internal vs external CMD commands?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Internal are built into cmd.exe (cd, dir, copy, del). External are separate executables (ipconfig, ping, tasklist, systeminfo).</p></div>
+      </div></div>
+    </div>
+    <p><b>Related theory:</b> <a href="cy104.html" style="color:var(--cyan)">CY104 →</a> ·
+       <a href="cs181.html" style="color:var(--cyan)">CS181 →</a></p>
+  </div>
+
+</section>
+
+<!-- ======================= LAB 03 ======================= -->
+<section class="tab-panel" id="week3">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Lab 03 — Virtualization Core Concepts</h2>
+    <table>
+      <tr><th>Term</th><th>Meaning</th></tr>
+      <tr><td><b>Virtual machine (VM)</b></td><td>A software-based computer with its own OS</td></tr>
+      <tr><td><b>Host / Guest</b></td><td>Host = your physical PC + OS · Guest = the OS inside the VM</td></tr>
+      <tr><td><b>Hypervisor</b></td><td>Software that manages VMs — VMware Workstation is a <b>Type 2</b> (runs on top of an OS)</td></tr>
+      <tr><td><b>ISO file</b></td><td>Disk image containing the OS installation files</td></tr>
+      <tr><td><b>Snapshot</b></td><td>Restore point for a VM — <b>not</b> a substitute for a real backup</td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Requirements:</b> 64-bit Windows PC with <b>virtualization enabled</b> (VT-x/AMD-V in BIOS),
+      16 GB RAM recommended (8 GB with one VM), ~150 GB free disk, admin access. Download all ISOs
+      <i>before</i> class and verify: <code>certutil -hashfile "file.iso" SHA256</code>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Install Pipeline — VMware → Windows → Kali → Snapshot</h2>
+    <div class="diagram">
+      <div class="dg-cap">Lab 03 flow</div>
+      <svg viewBox="0 0 740 150">
+        <rect class="box pulse" x="8" y="46" width="112" height="58" rx="10"/>
+        <rect class="box g pulse" x="166" y="46" width="130" height="58" rx="10"/>
+        <rect class="box p pulse" x="342" y="46" width="130" height="58" rx="10"/>
+        <rect class="box a pulse" x="518" y="46" width="100" height="58" rx="10"/>
+        <rect class="box" x="664" y="46" width="68" height="58" rx="10"/>
+        <path class="flow" d="M120 75 H166"/><path class="flow g" d="M296 75 H342"/>
+        <path class="flow p" d="M472 75 H518"/><path class="flow a" d="M618 75 H664"/>
+        <text x="64" y="70">Host check</text><text x="64" y="90" class="sub">VT-x on, RAM, disk</text>
+        <text x="231" y="70">VMware Pro</text><text x="231" y="90" class="sub">free from Broadcom</text>
+        <text x="407" y="70">Windows VM</text><text x="407" y="90" class="sub">80 GB · 4 GB · NAT</text>
+        <text x="568" y="70">Kali VM</text><text x="568" y="90" class="sub">50 GB · Xfce</text>
+        <text x="698" y="70">Snap</text><text x="698" y="90" class="sub">clean_install</text>
+        <text x="370" y="136" class="sub">Both guests: UEFI + Secure Boot (Windows also needs virtual TPM 2.0)</text>
+      </svg>
+    </div>
+    <ul class="checklist">
+      <li>Task Manager → CPU → <b>Virtualization: Enabled</b> (else BIOS: VT-x/AMD-V/SVM)</li>
+      <li>VMware: Typical → "I will install the OS later" → Windows 11 x64 → <code>Windows_YourRegID</code></li>
+      <li>80 GB split disk · 4 GB RAM · 2 cores · NAT · encryption + <b>Add vTPM</b> if prompted</li>
+      <li>Attach ISO → "Connect at power on" → boot → <b>after first restart do NOT press a key</b></li>
+      <li>Custom install → pick the VM's unallocated disk (never the host disk!) → finish OOBE → VMware Tools</li>
+      <li>Kali: Debian 64-bit → <code>Kali_YourRegID</code> → 50 GB → Graphical install → Guided, one partition</li>
+      <li>Keep Xfce only → GRUB to <code>/dev/sda</code> → disconnect ISO → reboot → login</li>
+      <li>Run <code>hostname</code> <code>whoami</code> <code>pwd</code> <code>ip -4 addr</code> (not 127.0.0.1) + <code>sudo apt update</code></li>
+      <li>Shut down both guests → take <b>Clean_Install</b> snapshots → screenshot evidence</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Windows vs Kali — two guests, two worlds</h2>
+    <table>
+      <tr><th></th><th>Windows 11 guest</th><th>Kali Linux guest</th></tr>
+      <tr><td><b>Desktop</b></td><td>Full graphical desktop + Start menu</td><td>Lightweight Xfce desktop</td></tr>
+      <tr><td><b>Software</b></td><td><code>.exe</code>/<code>.msi</code>, closed source, licensing</td><td><code>.deb</code> + <code>apt</code>, open source, security tools preinstalled</td></tr>
+      <tr><td><b>Disk</b></td><td>NTFS → <code>C:</code></td><td>ext4 → mounted under <code>/</code></td></tr>
+      <tr><td><b>Network check</b></td><td><code>ipconfig</code></td><td><code>ip -4 addr</code></td></tr>
+      <tr><td><b>Template</b></td><td>Microsoft Windows → Windows 11 x64</td><td>Linux → Debian 64-bit</td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎬 Worked Example — "Which disk do I partition?"</h2>
+    <div class="example">
+      <div class="ex-head"><span>🧩 The scariest screen in the Kali installer</span><button class="ex-next">Next step →</button></div>
+      <div class="ex-step"><span class="n">1</span><b>You're at "Partition disks."</b> The installer lists <i>two</i> disks: your host's real drive and the ~50 GB VMware virtual disk.</div>
+      <div class="ex-step"><span class="n">2</span><b>Wrong move:</b> picking the host drive formats your real Windows — data gone. This is why the VM's disk is created <i>separate</i> and clearly sized.</div>
+      <div class="ex-step"><span class="n">3</span><b>Correct move:</b> choose <b>Guided – use entire disk</b> → select <i>only</i> the ~50 GB VMware disk (SCSI, matching the size you created).</div>
+      <div class="ex-step"><span class="n">4</span><b>Then:</b> "All files in one partition" → Finish partitioning → write changes → <b>Yes</b>. It formats <b>inside</b> the virtual disk — the host stays untouched.</div>
+      <div class="ex-step"><span class="n">5</span><b>Viva follow-up:</b> "Where does GRUB go?" → the main virtual disk (<code>/dev/sda</code>), not a single partition.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Memory Tricks</h2>
+    <ul class="trick-list">
+      <li><b>Host vs Guest</b> → the Host <b>hosts</b> the party (your PC); the Guest <b>visits</b> (an OS inside a box).
+        <span class="mem">Type 2 hypervisor = runs <i>on</i> an OS, like an app.</span></li>
+      <li><b>Snapshot ≠ Backup</b> → Snapshot = <b>undo button</b> · Backup = a separate copy elsewhere.
+        <span class="mem">Delete the VM files and snapshots die with them.</span></li>
+      <li><b>Specs ladder</b> → Windows: <b>80</b> GB · Kali: <b>50</b> GB · RAM <b>4</b> GB each · <b>2</b> cores each · <b>NAT</b> both.
+        <span class="mem">"80-50, 4-2-NAT."</span></li>
+      <li><b>Kali install words</b> → <b>GFG</b>: <b>G</b>uided → <b>F</b>iles in one partition → <b>G</b>RUB on /dev/sda.</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚡ Quick Tips — Lab 03</h2>
+    <div class="tips-grid">
+      <div class="tip-card"><span class="t-ico">📸</span><h4>Evidence wins marks</h4>
+        <p>Marks: host/VMware 1 · Windows 3 · Kali 3 · snapshots 1 · viva 2. Screenshots are 7 of the 10 marks — capture as you go.</p></div>
+      <div class="tip-card"><span class="t-ico">🔑</span><h4>No passwords in reports</h4>
+        <p>Submission says it explicitly. Reference "password set" — never show it.</p></div>
+      <div class="tip-card"><span class="t-ico">🔁</span><h4>First restart rule</h4>
+        <p>Windows setup restarts once — press a key only the <i>first</i> time or the installer loops forever.</p></div>
+      <div class="tip-card"><span class="t-ico">🌙</span><h4>Run one VM at a time</h4>
+        <p>8 GB hosts can't run both guests — that's allowed ("you may run the VMs one at a time").</p></div>
+      <div class="tip-card"><span class="t-ico">💾</span><h4>ISO ≠ installed OS</h4>
+        <p>The ISO is just the installation image (like an installer disc) — the installed system lives on the virtual disk.</p></div>
+      <div class="tip-card"><span class="t-ico">🧰</span><h4>VMware Tools</h4>
+        <p>Right after Windows desktop appears: VM → Install VMware Tools — better graphics, screen capture, drag-drop.</p></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Lab 03 Viva</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Host OS vs Guest OS?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Host = the physical computer's own OS (your Windows). Guest = the OS installed inside a virtual machine.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>What type of hypervisor is VMware Workstation?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Type 2 — it runs on top of an existing host OS, like a normal application.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>What is a snapshot — and what ISN'T it?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>A restore point for VM state; it is <b>not</b> a backup (it lives with the VM and can't replace off-VM copies).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Why does NAT networking matter here?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Guests reach the internet through the host's IP — private, isolated, no extra public addresses.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>What is GRUB and where is it installed?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>The Linux bootloader, installed to the main virtual disk (<code>/dev/sda</code>) so the VM can start Kali.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>Does shutting down a VM delete its OS/files?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>No — the virtual disk persists; shutdown only powers the machine off, exactly like physical hardware.</p></div>
+      </div></div>
+    </div>
+    <p><b>Related theory:</b> <a href="cy104.html" style="color:var(--cyan)">CY104 Week 5 (OS Security) →</a></p>
+  </div>
+
+</section>
+
+<!-- ======================= LAB 04 ======================= -->
+<section class="tab-panel" id="week4">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Lab 04 — Linux via WSL &amp; Essential Commands</h2>
+    <p><b>Marks: 10 · Time: 60 min</b> — basic Linux commands, file &amp; directory management,
+       process commands, and <code>diff -r</code> directory comparison on <b>Kali Linux through WSL</b>.</p>
+    <ul class="checklist">
+      <li>PowerShell <b>as Administrator</b> → <code>wsl --install --distribution kali-linux</code></li>
+      <li>Restart Windows if prompted → open <b>Kali Linux</b> from Start Menu</li>
+      <li>Create a UNIX username &amp; password when asked</li>
+      <li>Open the terminal → verify with <code>pwd</code> (prints <code>/home/yourname</code>)</li>
+    </ul>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Submission rule:</b> screenshots must show commands + outputs — <b>never include passwords</b>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Command Cheat Sheet</h2>
+    <table>
+      <tr><th>Command</th><th>Purpose</th><th>Example</th></tr>
+      <tr><td><code>sudo</code></td><td>Run as administrator</td><td><code>sudo apt update</code></td></tr>
+      <tr><td><code>pwd</code></td><td><b>P</b>rint <b>w</b>orking <b>d</b>irectory</td><td><code>pwd</code></td></tr>
+      <tr><td><code>cd</code></td><td>Change directory</td><td><code>cd Lab</code> · <code>cd ..</code> · <code>cd -</code></td></tr>
+      <tr><td><code>ls</code></td><td>List files</td><td><code>ls</code> · <code>ls -a</code> · <code>ls -lh</code></td></tr>
+      <tr><td><code>mkdir</code></td><td>Create a directory</td><td><code>mkdir LabPractice</code></td></tr>
+      <tr><td><code>touch</code></td><td>Create an empty file</td><td><code>touch notes.txt</code></td></tr>
+      <tr><td><code>cat</code></td><td>Create / display content</td><td><code>cat &gt; f.txt</code> · <code>cat f.txt</code></td></tr>
+      <tr><td><code>cp</code></td><td>Copy files/dirs</td><td><code>cp a.txt a_backup.txt</code></td></tr>
+      <tr><td><code>mv</code></td><td>Move / rename</td><td><code>mv old.txt new.txt</code></td></tr>
+      <tr><td><code>grep</code></td><td>Search text in a file</td><td><code>grep "first" f.txt</code></td></tr>
+      <tr><td><code>rmdir</code></td><td>Remove an <b>empty</b> dir</td><td><code>rmdir EmptyFolder</code></td></tr>
+      <tr><td><code>rm</code></td><td>Remove files/dirs</td><td><code>rm f.txt</code> · <code>rm -r folder/</code></td></tr>
+      <tr><td><code>ps</code></td><td>Show running processes</td><td><code>ps ux</code></td></tr>
+      <tr><td><code>kill</code></td><td>Stop a process by PID</td><td><code>kill 12345</code> · <code>kill -9 12345</code></td></tr>
+      <tr><td><code>clear</code> / <code>reset</code></td><td>Clear / reinit the terminal</td><td><code>clear</code></td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Flags that matter:</b> <code>ls -a</code> hidden files · <code>ls -lh</code> human-readable sizes ·
+      <code>rm -r</code> recursive delete · <code>cd -</code> jump to previous dir · <code>kill -9</code> force kill.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Task 01 — Secret Directory ✅</h2>
+    <ul class="checklist">
+      <li><code>mkdir secret</code> → <code>cd secret</code> (directory in your home)</li>
+      <li><code>cat &gt; clue1.txt</code> → type <b>3 lines</b>: two with <b>ALL CAPS hidden words</b> + one normal sentence → <code>Ctrl+D</code></li>
+      <li>Same rule for <code>clue2.txt</code></li>
+      <li>Verify: <code>ls -l</code> (both files) → <code>cat</code> each file</li>
+    </ul>
+    <img class="shot" src="img/lab04_task01.png" alt="Task 01: secret directory with clue1.txt and clue2.txt verified">
+    <span class="shot-cap">Real Kali-on-WSL terminal — both clue files created, listed and displayed</span>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Task 02 — The Backup Test ✅</h2>
+    <h3>Part 1 — create &amp; copy</h3>
+    <ul class="checklist">
+      <li><code>mkdir Project</code> → create <b>3 files</b> with any content (<code>echo '...' &gt; file</code>)</li>
+      <li><code>mkdir Backup</code> → <code>cp -r Project Backup/</code> (<code>-r</code> copies the whole folder)</li>
+      <li>Compare trees: <code>ls -R Project Backup</code></li>
+    </ul>
+    <img class="shot" src="img/lab04_task02a.png" alt="Task 02 part 1: Project created and copied into Backup">
+    <span class="shot-cap">Project (design/report/requirements) copied into Backup/ — both trees identical</span>
+
+    <h3 style="margin-top:22px">Part 2 — delete &amp; compare</h3>
+    <ul class="checklist">
+      <li><code>rm Project/design.txt</code> (destroy one original)</li>
+      <li><code>diff -r Project Backup/Project</code> → reports <b>Only in Backup/Project: design.txt</b></li>
+      <li>Backup still holds the file the original lost → <b>PASSED</b></li>
+    </ul>
+    <img class="shot" src="img/lab04_task02b.png" alt="Task 02 part 2: diff -r shows backup still has design.txt">
+    <span class="shot-cap">diff -r proves the backup kept design.txt after the original was deleted</span>
+
+    <div class="callout tip"><span class="c-ico">🔍</span>
+      <div><b>Key command:</b> <code>diff -r Project Backup</code> — recursively compares directories.
+      Exit code <b>0</b> = identical · <b>1</b> = differences found · <b>2</b> = error.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Memory Tricks</h2>
+    <ul class="trick-list">
+      <li><b>cd vs ls</b> → <code>cd</code> = <b>go</b> somewhere · <code>ls</code> = <b>look</b> around.
+        <span class="mem">Moving vs glancing.</span></li>
+      <li><b>mkdir vs touch</b> → mkdir makes a <b>doorway</b> (folder) · touch makes a <b>note</b> (empty file).
+        <span class="mem">Folder, then file.</span></li>
+      <li><b>cp vs mv vs rm</b> → cp = <b>photocopy</b> (original stays) · mv = <b>physically move</b> · rm = <b>shred</b>.
+        <span class="mem">Never <code>rm -r</code> before copying!</span></li>
+      <li><b>rm vs rmdir</b> → rmdir eats only <b>empty</b> boxes · <code>rm -r</code> eats <b>everything</b>.</li>
+      <li><b>PID</b> = process ID card number · <code>kill &lt;PID&gt;</code> tears up that card.
+        <span class="mem">kill -9 = "no negotiation".</span></li>
+      <li><b>grep</b> = "<b>g</b>lobally <b>r</b>egular <b>e</b>xpression <b>p</b>rint" — finds text <i>inside</i> files.</li>
+      <li><b>diff -r</b> = "<b>diff</b>erent <b>r</b>ecursively" — walks both trees, reports mismatches.
+        <span class="mem">The backup test.</span></li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚡ Quick Tips — Lab 04</h2>
+    <div class="tips-grid">
+      <div class="tip-card"><span class="t-ico">📸</span><h4>Two screenshots = 10 marks</h4>
+        <p>Task 01 + Task 02 shots must clearly show commands <i>and</i> outputs. Capture as you go.</p></div>
+      <div class="tip-card"><span class="t-ico">🔒</span><h4>No passwords visible</h4>
+        <p>Submission explicitly says it — reference "password set", never show the prompt text.</p></div>
+      <div class="tip-card"><span class="t-ico">🐍</span><h4>cat heredoc trick</h4>
+        <p><code>cat &gt; file &lt;&lt; 'EOF'</code> lets you type multiple lines, then <code>EOF</code> saves — perfect for clue files.</p></div>
+      <div class="tip-card"><span class="t-ico">⚠️</span><h4>Stricter first (ladder rule)</h4>
+        <p><code>diff -r A B</code> also prints <code>Only in B: A</code> when comparing a folder to its copy's parent — normal, use <code>B/A</code> for a clean read.</p></div>
+      <div class="tip-card"><span class="t-ico">🧪</span><h4>Verify before screenshot</h4>
+        <p><code>ls -l</code> then <code>cat</code> each file — two commands, two proofs in one shot.</p></div>
+      <div class="tip-card"><span class="t-ico">🐧</span><h4>Kali prompt = success</h4>
+        <p><code>user@EBox:~$</code> style prompt proves you're really in Linux (WSL), not PowerShell.</p></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Lab 04 Viva (10 Qs)</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>What does <code>pwd</code> do?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Prints the <b>current working directory</b> — the full path of where you are (e.g. <code>/home/sad/secret</code>).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p><code>cd</code> vs <code>ls</code>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><code>cd</code> <b>changes</b> your location; <code>ls</code> <b>lists</b> the contents of where you already are.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p><code>mkdir</code> vs <code>touch</code>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><code>mkdir</code> creates a <b>directory (folder)</b>; <code>touch</code> creates an <b>empty file</b> (or updates a timestamp).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p><code>cp</code> vs <code>mv</code>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><code>cp</code> makes a duplicate — <b>original stays</b>. <code>mv</code> <b>relocates/renames</b> — original path is gone.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p><code>rm</code> vs <code>rmdir</code>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><code>rmdir</code> deletes only an <b>empty</b> directory; <code>rm</code> deletes files, and <code>rm -r</code> deletes directories <b>with everything inside</b>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>What is <code>grep</code> used for?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Searches for a text/pattern <b>inside files</b> (or piped input) and prints matching lines.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q7</span><p>What info does <code>ps</code> show?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Running processes: <b>PID</b>, user, CPU/memory use, and the command that started each one (<code>ps ux</code>).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q8</span><p>What is a PID, and <code>kill</code>'s role?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>PID</b> = Process ID (unique number of a running process). <code>kill PID</code> sends a termination signal; <code>kill -9</code> forces it.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q9</span><p>What does <code>cat</code> do?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Displays file content (<code>cat file</code>); with redirection (<code>cat &gt; file</code>) it <b>creates/writes</b> content — used for the clue files.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q10</span><p>Why <code>diff -r</code> in the Backup Test?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Recursively compares</b> Project with Backup and reports missing/extra files — proving the backup still has <code>design.txt</code> after the original was deleted.</p></div>
+      </div></div>
+    </div>
+    <p><b>Related theory:</b> <a href="cy104.html" style="color:var(--cyan)">CY104 Week 3 (Linux / command line) →</a>
+       · <a href="cy104l.html" style="color:var(--cyan)">Lab 03 →</a></p>
+  </div>
+
+</section>
+
+<footer class="footer">
+  CY104L · Cyber Security Lab · <b>Labs 02–04</b> · BS Cyber Security · Fall 2026
+</footer>
+
+<button id="toTop" title="Back to top">↑</button>
+<script src="script.js"></script>
+</body>
+</html>
