@@ -1,0 +1,1888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CY104 Revision — Cyber Security Lectures 1–2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="themes.css">
+
+<script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="bg-blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grid-overlay"></div>
+
+<nav class="topbar">
+  <a class="brand" href="index.html"><span class="logo">Σ</span> BS-CYS · NOTES HUB</a>
+<div class="nav-right">
+  <a class="back-btn" href="index.html">← All Subjects</a>
+  <div class="theme-wrap">
+    <button class="theme-btn" id="themeBtn" title="Switch theme (press T)"><span class="palette">🎨</span><span class="label">Theme</span></button>
+    <div class="theme-menu" id="themeMenu">
+      <button class="theme-opt" data-theme="midnight"><span class="sw sw-midnight"></span><b>Midnight Cyber</b><i>glassy dark · aurora blobs</i></button>
+      <button class="theme-opt" data-theme="matrix"><span class="sw sw-matrix"></span><b>Matrix Terminal</b><i>digital rain · scanlines · mono</i></button>
+      <button class="theme-opt" data-theme="paper"><span class="sw sw-paper"></span><b>Paper Notes</b><i>ruled page · ink · sticky notes</i></button>
+      <button class="theme-opt" data-theme="synthwave"><span class="sw sw-synthwave"></span><b>Synthwave</b><i>chrome · retro sun · grid floor</i></button>
+      <button class="theme-opt" data-theme="aurora"><span class="sw sw-aurora"></span><b>Aurora Light</b><i>soft pastel glass</i></button>
+      <button class="theme-opt" data-theme="cyberpunk"><span class="sw sw-cyberpunk"></span><b>Cyberpunk Neon</b><i>glitch boxes · orbitron · neon</i></button>
+      <button class="theme-opt" data-theme="dracula"><span class="sw sw-dracula"></span><b>Dracula Gothic</b><i>serif italics · purple glow</i></button>
+      <button class="theme-opt" data-theme="coffee"><span class="sw sw-coffee"></span><b>Coffee Warmth</b><i>cozy sepia · serif · warm</i></button>
+    </div>
+  </div>
+</div>
+</nav>
+
+<header class="subject-hero">
+  <span class="code-lg">CY104 · REVISION SPRINT</span>
+  <h1><span>Intro to Cyber Security — Lectures 1–2</span></h1>
+  <p>Everything quiz-worthy from Lectures 1-2 on one page: <b>8 term categories</b> with
+     <b>quick-trick one-liners</b>, <b>easy Threat-vs-Risk style comparisons</b>, a
+     <b>49-term glossary</b> (formal + plain + example, click any bold term to define it),
+     pictures, and a 🌳 <b>color-coded topic tree</b> with real attack data.
+     Press <b>1</b> to <b>7</b> to jump sections.</p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="found"><span class="dot"></span> 📘 Foundations (L1)</button>
+  <button class="tab-btn" data-tab="cat"><span class="dot"></span> 🗂 Categories &amp; Terms</button>
+  <button class="tab-btn" data-tab="compare"><span class="dot"></span> ⚔️ Easy Compare</button>
+  <button class="tab-btn" data-tab="gloss"><span class="dot"></span> 📖 Glossary &amp; Defs</button>
+  <button class="tab-btn" data-tab="aaa"><span class="dot"></span> 🎯 Principles, AAA &amp; Risk (L2)</button>
+  <button class="tab-btn" data-tab="tricks"><span class="dot"></span> 🧠 Tricks &amp; Drills</button>
+  <button class="tab-btn" data-tab="tree"><span class="dot"></span> 🌳 Topic Tree &amp; Data</button>
+</div>
+
+<!-- ======================= FOUNDATIONS ======================= -->
+<section class="tab-panel active" id="found">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Definitions — The Opening Words</h2>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b data-def="cyberspace">Cyberspace:</b> global interconnected digital environment — <b>virtual · borderless ·
+      interactive · persistent</b>. Users: individuals, organizations, governments (same space,
+      different assets, different consequences).<br>
+      <b data-def="cybersecurity">Cybersecurity:</b> the ongoing effort to protect systems, networks, programs and data from
+      <b>unauthorized access, misuse, damage or disruption</b>.<br>
+      <b data-def="cyberattack">Cyberattack:</b> intentional attempt to steal / expose / alter / disable / destroy / gain
+      unauthorized access — <b>attacker → action → impact</b>.</div>
+    </div>
+    <table>
+      <tr><th>Four verbs (the whole job)</th><th>Meaning</th></tr>
+      <tr><td><b>Protect</b></td><td>prevent harm</td></tr>
+      <tr><td><b>Detect</b></td><td>notice trouble</td></tr>
+      <tr><td><b>Respond</b></td><td>limit impact</td></tr>
+      <tr><td><b>Recover</b></td><td>restore service</td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>The CIA Model ⭐ (core of the course)</h2>
+    <table>
+      <tr><th>Letter</th><th>Property</th><th>Meaning</th><th>Threat</th><th>Controls</th></tr>
+      <tr><td><b>C</b></td><td>Confidentiality</td><td>Only authorized people see it</td><td>Disclosure / leakage</td><td>Access control, encryption</td></tr>
+      <tr><td><b>I</b></td><td>Integrity</td><td>Accurate &amp; unmodified</td><td>Tampering</td><td>Permissions, validation, hashes, audit trails</td></tr>
+      <tr><td><b>A</b></td><td>Availability</td><td>Accessible when needed</td><td>Outage / DoS / failure</td><td>Backups, redundancy, monitoring</td></tr>
+    </table>
+    <div class="pic">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/CIAJMK1209-en.svg/500px-CIAJMK1209-en.svg.png" alt="CIA triad diagram" loading="lazy" onerror="this.closest('.pic').classList.add('failed')">
+      <span class="cap">The CIA triad in one picture — Wikimedia Commons</span>
+    </div>
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>Scenario drill (quiz loves this):</b> private file leaked → <b>C</b> · marks changed →
+      <b>I</b> · portal offline → <b>A</b> · database encrypted by ransomware → <b>A</b> (mainly,
+      usually C+I too) · someone reads your messages → <b>C</b> · fake record inserted → <b>I</b>.</div>
+    </div>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>One attack, all three letters:</b> the Ali portal incident — attacker <i>reads</i> data
+      (C), <i>changes</i> profile (I), floods portal so it's <i>down</i> (A).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Data Is the Real Target</h2>
+    <ul class="checklist">
+      <li><b>Personal data &gt; name:</b> identity (name, DOB, ID) · contact (email, phone) · behavior (searches, location, clicks) · content (photos, messages).</li>
+      <li><b>Records:</b> MED · EDU · JOB · FIN · DEV — where your data lives.</li>
+      <li><b>Your digital day leaks:</b> 07:30 unlock → 09:00 campus Wi-Fi → 11:00 LMS → 15:00 maps → 21:00 streaming.</li>
+      <li><b>Data &gt; device:</b> if the laptop is lost, the credentials &amp; identity inside matter more than the plastic.</li>
+      <li><b>Layered effort:</b> People (awareness) + Process (policies) + Technology (controls) — no single tool "solves" security.</li>
+    </ul>
+    <div class="pic">
+      <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&amp;q=70" alt="cyber security padlock" loading="lazy" onerror="this.closest('.pic').classList.add('failed')">
+      <span class="cap">Behind every lock is data worth protecting — Unsplash</span>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>History &amp; Pakistan Context</h2>
+    <table>
+      <tr><th>Then</th><th>Now</th></tr>
+      <tr><td>The change that made security hardest = <b>more systems connected</b> (more paths, dependencies, attackers)</td><td>2025: <b>47.1M DDoS attacks</b> (+121% YoY vs 21.3M) · 44% of breaches involved ransomware</td></tr>
+      <tr><td colspan="2"><b>Famous incidents:</b> Stuxnet 2010 (industrial) · Ukraine grid 2015 (power) · Mirai 2016 (IoT botnet) · WannaCry 2017 (ransomware)</td></tr>
+    </table>
+    <div class="pic">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Countries_initially_affected_in_WannaCry_ransomware_attack.png/960px-Countries_initially_affected_in_WannaCry_ransomware_attack.png" alt="WannaCry world spread map" loading="lazy" onerror="this.closest('.pic').classList.add('failed')">
+      <span class="cap">WannaCry 2017: countries hit within the first hours — Wikimedia Commons</span>
+    </div>
+    <div class="callout tip"><span class="c-ico">🏛️</span>
+      <div><b>Pakistan:</b> PECA 2016 · NTISB (Cabinet Division) · NR3C (FIA) · hotline <b>9911</b> ·
+      NCCS June 2018 (HQ at Air University). <b>Voids:</b> awareness gap, weak laws, no national
+      threat picture, foreign-vendor dependence, coordination gaps, missing recovery framework &amp; skills.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Section 1 — Quick Drills</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Define cybersecurity in one line.</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>The ongoing effort to protect systems, networks, programs &amp; data from <b>unauthorized access, misuse, damage or disruption</b>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Four properties of cyberspace?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Virtual · borderless · interactive · persistent.</b></p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Four verbs of the cybersecurity job?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Protect → Detect → Respond → Recover.</b></p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Portal offline — which CIA property?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Availability.</b> Leaked file → C · changed marks → I · ransomware → mainly A (+C/I).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>What made cybersecurity much harder?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Connectivity</b> — more connected systems = more paths, dependencies &amp; possible attackers.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>Name 4 famous incidents + years.</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Stuxnet 2010 · Ukraine grid 2015 · Mirai 2016 · WannaCry 2017.</p></div>
+      </div></div>
+    </div>
+    <p><b>Full notes:</b> <a href="cy104.html" style="color:var(--cyan)">CY104 Lecture 1 →</a></p>
+  </div>
+
+</section>
+
+<!-- ======================= CATEGORIES & TERMS ======================= -->
+<section class="tab-panel" id="cat">
+
+  <div class="note-card">
+    <div class="banner">
+      <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1200&amp;q=70" alt="streaming code" loading="lazy" onerror="this.closest('.banner').classList.add('failed')">
+      <span class="cap">Unsplash</span>
+      <div class="ov">
+        <h3>🗂 The Whole Course in <span style="color:var(--cyan)">8 Categories</span></h3>
+        <p>Every term in the quiz belongs to exactly one box below. Learn the box, remember the
+        one-line trick, and you can define anything in under 10 seconds.</p>
+      </div>
+    </div>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>How to use:</b> read the category name → skim its terms → say the <b>trick</b> out loud.
+      Tricky exam terms are highlighted as chips (<span class="k">like this</span>). Colors match the
+      🌳 topic tree, so your eyes link "term → color → topic" instantly.</div>
+    </div>
+
+    <div class="cat-grid">
+
+      <div class="cat" style="--cc:#34d399">
+        <span class="cat-n">3 terms</span>
+        <div class="cat-h"><span class="ci">🛡</span> CIA Properties</div>
+        <ul class="tl">
+          <li><b data-def="confidentiality">Confidentiality</b> — only the <i>right eyes</i> see it. <span class="k">leak = C</span></li>
+          <li><b data-def="integrity">Integrity</b> — data stays <i>exactly</i> as authorized; no edits, no fakes. <span class="k">changed = I</span></li>
+          <li><b data-def="availability">Availability</b> — service works <i>when needed</i>. <span class="k">down = A</span></li>
+        </ul>
+        <div class="pic small">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Confidentiality_Integrity_Availability_triangle.png/500px-Confidentiality_Integrity_Availability_triangle.png" alt="CIA triangle" loading="lazy" onerror="this.closest('.pic').classList.add('failed')">
+          <span class="cap">CIA triangle — Wikimedia Commons</span>
+        </div>
+        <div class="foot"><b>Controls:</b> C → encryption + access control · I → permissions, hashes, audit · A → backups + redundancy</div>
+      </div>
+
+      <div class="cat" style="--cc:#22d3ee">
+        <span class="cat-n">6 rules</span>
+        <div class="cat-h"><span class="ci">🔷</span> Security Principles</div>
+        <ul class="tl">
+          <li><b data-def="least-privilege">Least privilege</b> — keys to <i>only your room</i>. <span class="k">smallest set</span></li>
+          <li><b data-def="defense-in-depth">Defense in depth</b> — <i>onion layers</i>, not one wall. <span class="k">layers</span></li>
+          <li><b data-def="secure-defaults">Secure defaults</b> — a new thing starts <i>locked</i>. <span class="k">default = deny</span></li>
+          <li><b data-def="separation-of-duties">Separation of duties</b> — nobody holds <i>both keys</i> (one acts, one approves). <span class="k">no solo</span></li>
+          <li><b data-def="fail-securely">Fail securely</b> — when it breaks, it <i>stays locked</i> (no bypass). <span class="k">error ≠ open</span></li>
+          <li><b data-def="minimize-surface">Minimize attack surface</b> — <i>fewer doors</i> = fewer break-ins. <span class="k">unused = gone</span></li>
+        </ul>
+        <div class="pic small">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Defense_In_Depth_-_Onion_Model.svg/500px-Defense_In_Depth_-_Onion_Model.svg.png" alt="defense in depth onion" loading="lazy" onerror="this.closest('.pic').classList.add('failed')">
+          <span class="cap">Defense in depth = layers — Wikimedia Commons</span>
+        </div>
+        <div class="foot"><b>Memory:</b> <b>L</b>east, <b>D</b>epth, <b>D</b>efaults, <b>S</b>eparate, <b>F</b>ail (+ Minimize surface) → "<b>L-DD-SF</b>"</div>
+      </div>
+
+      <div class="cat" style="--cc:#a78bfa">
+        <span class="cat-n">3 + models</span>
+        <div class="cat-h"><span class="ci">🔑</span> AAA — Authn · Authz · Account</div>
+        <ul class="tl">
+          <li><b>Authentication</b> — <i>who are you?</i> Show ID. Factors: <b>Know</b> · <b>Have</b> · <b>Are</b> (+Context, Recovery). <span class="k">2 kinds = MFA</span></li>
+          <li><b>Authorization</b> — <i>what may you do?</i> Your menu of rights. <span class="k">IDOR = broken authz</span></li>
+          <li><b data-def="accounting">Accounting</b> — <i>what did you do?</i> The log/CCTV: Who · What · Where · When · Outcome. <span class="k">5 Ws</span></li>
+          <li><b>Models:</b> DAC = owner decides · MAC = label decides · <b data-def="rbac">RBAC</b> = job decides (university!) · ABAC = context decides.</li>
+        </ul>
+        <div class="foot"><b>Order:</b> <b>N before Z</b> — Auth<b>e</b>nticate → Auth<b>o</b>rize → Account. Traps: password + PIN ≠ MFA (both "Know")</div>
+      </div>
+
+      <div class="cat" style="--cc:#fbbf24">
+        <span class="cat-n">5 terms</span>
+        <div class="cat-h"><span class="ci">⚠️</span> Risk Language</div>
+        <ul class="tl">
+          <li><b data-def="asset">Asset</b> — <i>what you'd lose</i> (data, system, reputation, people).</li>
+          <li><b data-def="threat">Threat</b> — <i>who/what could cause harm</i> (burglar). <span class="k">potential</span></li>
+          <li><b data-def="vulnerability">Vulnerability</b> — <i>the open window</i> (weakness in YOUR system). <span class="k">ours</span></li>
+          <li><b data-def="attack">Attack</b> — harm <i>actually attempted</i>: Method → Target → Outcome. <span class="k">event</span></li>
+          <li><b data-def="risk">Risk</b> — <i>how likely × how bad</i>. <span class="k">R = L × I</span></li>
+        </ul>
+        <div class="foot"><b>Chain:</b> <b>A</b>sset → <b>V</b>ector → <b>T</b>hreat/Vulnerability → <b>A</b>ttack → <b>I</b>mpact = "<b>A-V-T-A-I</b>"</div>
+      </div>
+
+      <div class="cat" style="--cc:#f472b6">
+        <span class="cat-n">5 actors</span>
+        <div class="cat-h"><span class="ci">🎭</span> Threat Actors (WHO)</div>
+        <ul class="tl">
+          <li><b data-def="cybercriminal">Cybercriminal</b> — wants <i>money</i>. <span class="k">ransom/fraud</span></li>
+          <li><b data-def="insider">Insider</b> — already <i>inside</i>: angry, careless or bribed. <span class="k">trusted access</span></li>
+          <li><b data-def="hacktivist">Hacktivist</b> — wants <i>attention to a cause</i>. <span class="k">ideology</span></li>
+          <li><b data-def="nation-state">Nation-state</b> — wants <i>strategic advantage</i>. <span class="k">resources = huge</span></li>
+          <li><b data-def="opportunist">Opportunist</b> — wants <i>anything easy</i>. <span class="k">no plan</span></li>
+        </ul>
+        <div class="foot"><b>Compare on:</b> intent · capability · access · resources · constraints — motivation alone never defines the threat</div>
+      </div>
+
+      <div class="cat" style="--cc:#fb923c">
+        <span class="cat-n">5 vectors</span>
+        <div class="cat-h"><span class="ci">🚪</span> Attack Vectors (WHICH DOOR)</div>
+        <ul class="tl">
+          <li><b>Human</b> — the <i>click</i>: phishing, impersonation. <span class="k">#1 in practice</span></li>
+          <li><b>Application</b> — the <i>flaw</i>: web/API bug. <span class="k">code hole</span></li>
+          <li><b>Network</b> — the <i>pipe</i>: open port, rogue Wi-Fi. <span class="k">traffic</span></li>
+          <li><b>Endpoint</b> — the <i>device</i>: malicious file / USB. <span class="k">laptop/phone</span></li>
+          <li><b>Supply chain</b> — the <i>vendor/update</i> you trust. <span class="k">trusted path</span></li>
+        </ul>
+        <div class="pic small">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Phishing.jpg/500px-Phishing.jpg" alt="phishing illustration" loading="lazy" onerror="this.closest('.pic').classList.add('failed')">
+          <span class="cap">Phishing = the human vector — Wikimedia Commons</span>
+        </div>
+        <div class="foot"><b>Vector = route in · technique = how they operate</b> — one vector, many techniques</div>
+      </div>
+
+      <div class="cat" style="--cc:#60a5fa">
+        <span class="cat-n">3 ideas</span>
+        <div class="cat-h"><span class="ci">🕸</span> MITRE ATT&amp;CK</div>
+        <ul class="tl">
+          <li><b data-def="tactic">Tactic</b> — the <i>WHY</i>: attacker's goal (Initial Access, Impact...). <span class="k">stage name</span></li>
+          <li><b data-def="technique">Technique</b> — the <i>HOW</i>: the method used inside that stage. <span class="k">the move</span></li>
+          <li><b>Shared language</b> — describe · compare · defend the same way everyone else does.</li>
+        </ul>
+        <div class="pic small">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Intrusion_Kill_Chain_-_v2.png/960px-Intrusion_Kill_Chain_-_v2.png" alt="intrusion kill chain" loading="lazy" onerror="this.closest('.pic').classList.add('failed')">
+          <span class="cap">Classic 7-stage kill chain — same idea as the course's 5-step chain (Wikimedia Commons)</span>
+        </div>
+        <div class="foot"><b>Course chain:</b> Initial Access → Execution → Credential Access → Collection → Impact ("I-E-C-C-I")</div>
+      </div>
+
+      <div class="cat" style="--cc:#f87171">
+        <span class="cat-n">5 items</span>
+        <div class="cat-h"><span class="ci">🇵🇰</span> Pakistan Laws &amp; Bodies</div>
+        <ul class="tl">
+          <li><b data-def="peca">PECA 2016</b> — the <i>law book</i> (cybercrime act). <span class="k">rules</span></li>
+          <li><b data-def="ntisb">NTISB</b> — the <i>incident team</i> (Cabinet Division). <span class="k">response</span></li>
+          <li><b data-def="nr3c">NR3C (FIA)</b> — the <i>cyber police</i>. <span class="k">investigation</span></li>
+          <li><b data-def="nccs">NCCS</b> — the <i>strategy HQ</i> (Air University, June 2018). <span class="k">policy</span></li>
+          <li><b>9911</b> — the <i>hotline</i> to report cybercrime. <span class="k">call</span></li>
+        </ul>
+        <div class="foot"><b>Memory:</b> "<b>P</b>akistan <b>N</b>etworks <b>N</b>eed <b>R</b>escue" — PECA, NTISB, NR3C → then NCCS + 9911</div>
+      </div>
+
+    </div>
+
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>Coverage check:</b> 3 + 6 + 3 + 5 + 5 + 5 + 3 + 5 = <b>35 anchors</b> — that's the
+      entire quiz vocabulary. Anything you're asked, name the category <i>first</i>, then the trick.</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ======================= EASY COMPARE ======================= -->
+<section class="tab-panel" id="compare">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚔️ Same-Sounding Words — Fix These First</h2>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div>Most lost marks come from <b>confusing pairs</b>, not from not knowing the course.
+      Each card = <b>plain meaning → easy story → the exact line to write in the exam</b>.</div>
+    </div>
+    <div class="map-eg">
+      <span><b data-def="threat">Threat</b> ≠ <b data-def="risk">Risk</b></span>
+      <span><b data-def="threat">Threat</b> ≠ <b data-def="vulnerability">Vulnerability</b></span>
+      <span><b data-def="vulnerability">Vulnerability</b> ≠ <b data-def="attack">Attack</b></span>
+      <span><b>Authn</b> ≠ <b>Authz</b></span>
+      <span><b>Vector</b> ≠ <b data-def="technique">Technique</b> ≠ <b data-def="tactic">Tactic</b></span>
+      <span><b>Actor</b> ≠ <b>Vector</b></span>
+      <span><b>Principle</b> ≠ <b data-def="control">Control</b></span>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>The Comparison Cards</h2>
+    <div class="vs-grid">
+
+      <div class="vs" style="--ca:var(--cyan);--cb:var(--amber)">
+        <div class="vs-top">
+          <div class="vs-side a">
+            <h4>🦹 Threat</h4>
+            <p><b>Potential cause of harm.</b> The burglar roaming your street — may never choose you.</p>
+          </div>
+          <div class="vs-badge">VS</div>
+          <div class="vs-side b">
+            <h4>📊 Risk</h4>
+            <p><b>Likelihood × Impact.</b> Chance he picks <i>your</i> house × what he'd take.</p>
+          </div>
+        </div>
+        <div class="vs-easy">🧃 <b>Easy:</b> threats exist everywhere; risk = threat × <i>your</i> open window × value inside.</div>
+        <div class="vs-exam">🎯 <b>Exam line:</b> "Threat = what could hurt us. Risk = Likelihood × Impact; controls lower the risk."</div>
+      </div>
+
+      <div class="vs" style="--ca:var(--red);--cb:var(--amber)">
+        <div class="vs-top">
+          <div class="vs-side a">
+            <h4>🕳 Vulnerability</h4>
+            <p><b>Weakness in YOUR system.</b> The unlocked window — sits there even with zero burglars.</p>
+          </div>
+          <div class="vs-badge">VS</div>
+          <div class="vs-side b">
+            <h4>🦹 Threat</h4>
+            <p><b>External actor/event</b> that could cause harm — someone who <i>might</i> come.</p>
+          </div>
+        </div>
+        <div class="vs-easy">🧃 <b>Easy:</b> a hole in the wall doesn't need a burglar to be a hole. Hole = ours, burglar = theirs.</div>
+        <div class="vs-exam">🎯 <b>Exam line:</b> "Vulnerability is ours (condition); threat is theirs (potential). Risk = when they meet."</div>
+      </div>
+
+      <div class="vs" style="--ca:var(--amber);--cb:var(--red)">
+        <div class="vs-top">
+          <div class="vs-side a">
+            <h4>🕳 Vulnerability</h4>
+            <p><b>A quiet condition.</b> Window open at night — nobody has used it (yet).</p>
+          </div>
+          <div class="vs-badge">VS</div>
+          <div class="vs-side b">
+            <h4>⚔ Attack</h4>
+            <p><b>An actual event.</b> Someone climbed in: Method → Target → Outcome.</p>
+          </div>
+        </div>
+        <div class="vs-easy">🧃 <b>Easy:</b> vulnerability <i>waits</i>; attack <i>happens</i>. One vulnerability can face many attacks.</div>
+        <div class="vs-exam">🎯 <b>Exam line:</b> "A vulnerability may never be exploited — but every attack used a vulnerability."</div>
+      </div>
+
+      <div class="vs" style="--ca:var(--purple);--cb:var(--green)">
+        <div class="vs-top">
+          <div class="vs-side a">
+            <h4>🪪 Authentication</h4>
+            <p><b>Who are you?</b> The bouncer checks your face/ID. Claim → Evidence → Decision.</p>
+          </div>
+          <div class="vs-badge">VS</div>
+          <div class="vs-side b">
+            <h4>🎟 Authorization</h4>
+            <p><b>What may you do?</b> Your wristband decides which rooms you enter.</p>
+          </div>
+        </div>
+        <div class="vs-easy">🧃 <b>Easy:</b> first the gate knows <i>who</i> you are, <i>then</i> your ticket decides <i>where</i> you go.</div>
+        <div class="vs-exam">🎯 <b>Exam line:</b> "Authn proves identity; Authz grants permissions. IDOR = authn fine, authz broken."</div>
+      </div>
+
+      <div class="vs" style="--ca:var(--amber);--cb:var(--blue)">
+        <div class="vs-top">
+          <div class="vs-side a">
+            <h4>🚪 Vector</h4>
+            <p><b>Which door.</b> The route to you: phishing email, open port, malicious USB.</p>
+          </div>
+          <div class="vs-badge">VS</div>
+          <div class="vs-side b">
+            <h4>🧰 Technique</h4>
+            <p><b>How they operate.</b> Fake login page, keylogger, pass-the-hash.</p>
+          </div>
+        </div>
+        <div class="vs-easy">🧃 <b>Easy:</b> vector = <i>which street/window</i> · technique = <i>pick lock vs break glass</i>.</div>
+        <div class="vs-exam">🎯 <b>Exam line:</b> "Vector = path to the target; technique = method of action. Tactic = the goal (WHY)."</div>
+      </div>
+
+      <div class="vs" style="--ca:var(--pink);--cb:var(--amber)">
+        <div class="vs-top">
+          <div class="vs-side a">
+            <h4>🎭 Threat Actor</h4>
+            <p><b>WHO.</b> The person/group: cybercriminal, insider, hacktivist, nation-state, opportunist.</p>
+          </div>
+          <div class="vs-badge">VS</div>
+          <div class="vs-side b">
+            <h4>🚪 Attack Vector</h4>
+            <p><b>WHICH DOOR.</b> The route used: human, application, network, endpoint, supply chain.</p>
+          </div>
+        </div>
+        <div class="vs-easy">🧃 <b>Easy:</b> same burglar can use the front door or the window — actor stays, vector changes.</div>
+        <div class="vs-exam">🎯 <b>Exam line:</b> "Actors describe the attacker; vectors describe the route. Compare actors by intent/capability/resources."</div>
+      </div>
+
+      <div class="vs" style="--ca:var(--green);--cb:var(--blue)">
+        <div class="vs-top">
+          <div class="vs-side a">
+            <h4>📏 Principle</h4>
+            <p><b>The rule / the WHY.</b> "Minimize access" — a reusable decision guide.</p>
+          </div>
+          <div class="vs-badge">VS</div>
+          <div class="vs-side b">
+            <h4>🔧 Control</h4>
+            <p><b>The tool that enforces it.</b> Permission groups, MFA, firewall rules, backups.</p>
+          </div>
+        </div>
+        <div class="vs-easy">🧃 <b>Easy:</b> the law says "drive safely" (principle); the speed camera (control) makes you.</div>
+        <div class="vs-exam">🎯 <b>Exam line:</b> "Principles guide decisions; controls implement them. Principles are the 6 rules, controls are named tools."</div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Authorization Models — 4 in One Table</h2>
+    <table>
+      <tr><th>Model</th><th>Who decides?</th><th>Real-life example</th><th>Exam line</th></tr>
+      <tr><td><b data-def="dac">DAC</b></td><td>The <b>owner</b></td><td>Your Google Drive link: you share it</td><td>"Mine to share"</td></tr>
+      <tr><td><b data-def="mac">MAC</b></td><td>The <b>security label</b></td><td>Top-secret file beats any user's wish</td><td>"Label wins"</td></tr>
+      <tr><td><b data-def="rbac">RBAC</b></td><td>Your <b>job role</b></td><td>Students / teachers / admins — the university model</td><td>"Role wins"</td></tr>
+      <tr><td><b data-def="abac">ABAC</b></td><td><b>Attributes/context</b></td><td>"Only 9-5, only on campus IP, only on managed device"</td><td>"If-then rules"</td></tr>
+    </table>
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>Trick to pick one:</b> scenario mentions a <i>file owner</i> → DAC · a <i>classification</i> →
+      MAC · a <i>job title</i> → RBAC · a <i>condition</i> (time/location/device) → ABAC.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>30-Second Pair Drill</h2>
+    <ul class="checklist">
+      <li>Say both sides out loud: "<b>threat</b> = potential, <b>risk</b> = likely × bad" etc.</li>
+      <li>Cover the right column of the table above and quiz yourself on the "Exam line".</li>
+      <li>Wrong answer on a pair → re-read only the 🧃 Easy row, not the whole chapter.</li>
+    </ul>
+    <p><b>Test it:</b> <a href="quiz-cy.html" style="color:var(--amber)">Quiz zone →</a>
+       · <b>Deep dive:</b> <a href="#aaa" onclick="document.querySelector('[data-tab=aaa]').click();return false" style="color:var(--cyan)">Principles/AAA/Risk tab →</a></p>
+  </div>
+
+</section>
+
+
+<!-- ======================= GLOSSARY & DEFINITIONS ======================= -->
+<section class="tab-panel" id="gloss">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>&#128214; Glossary &#8212; Every Term, Fully Defined</h2>
+    <div class="callout tip"><span class="c-ico">&#128218;</span>
+      <div><b>49 exam definitions</b> in three layers: <b>Formal</b> (the sentence to write in the
+      exam), <b>Plain</b> (what it really means), <b>Example</b> (one real case). Search it, filter it,
+      shuffle it, pull random cards, and tick terms as you master them &#8212; progress is saved on
+      this device.<br>&#128161; Tip: on <b>any tab, click a bold term</b> and its full definition pops
+      up right here.</div>
+    </div>
+
+    <div class="gl-bar">
+      <input id="glSearch" class="gl-search" type="search" placeholder="&#128269; Search a term or definition&#8230;  (press /)" autocomplete="off">
+      <div class="gl-tools">
+        <button class="gl-btn" id="glRandom" title="Pull a random un-mastered term">&#127922; Pull one</button>
+        <button class="gl-btn" id="glShuffle" title="Shuffle card order">&#128256; Shuffle</button>
+        <button class="gl-btn" id="glExpand" title="Expand or collapse all cards">&#128201; Expand all</button>
+        <button class="gl-btn" id="glReset" title="Clear all ticks">&#8634; Reset</button>
+      </div>
+    </div>
+
+    <div class="gl-chips">
+      <button class="gl-chip on" data-cat="all">All (49)</button>
+      <button class="gl-chip" data-cat="found">Foundations (6)</button>
+      <button class="gl-chip" data-cat="cia">CIA (3)</button>
+      <button class="gl-chip" data-cat="prin">Principles (8)</button>
+      <button class="gl-chip" data-cat="aaa">AAA (10)</button>
+      <button class="gl-chip" data-cat="risk">Risk (5)</button>
+      <button class="gl-chip" data-cat="act">Actors (6)</button>
+      <button class="gl-chip" data-cat="vec">Vectors (3)</button>
+      <button class="gl-chip" data-cat="attck">ATT&CK (4)</button>
+      <button class="gl-chip" data-cat="law">Pakistan (4)</button>
+    </div>
+
+    <div class="gl-stats">
+      <span id="glCount">49 / 49 terms shown</span>
+      <div class="gl-track"><div class="gl-fill" id="glFill"></div></div>
+      <span id="glProg">0 / 49 mastered</span>
+    </div>
+
+    <div class="gl-list" id="glList">
+      <div class="gl" data-cat="found" data-id="cyberspace" style="--cc:#34d399">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Cyberspace</span>
+          <span class="gl-cat">Foundations</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>A global, interconnected digital environment where people, devices, applications and data interact — characterised as virtual, borderless, interactive and persistent.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>The online world everybody shares.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>LMS + your phone + your bank app all live in the same space.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="found" data-id="cybersecurity" style="--cc:#34d399">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Cybersecurity</span>
+          <span class="gl-cat">Foundations</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>The ongoing effort to protect systems, networks, programs and data from unauthorized access, misuse, damage or disruption.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Keeping the online world trustworthy — the whole job in one word.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>MFA on your LMS account; backups of your project files.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="found" data-id="cyberattack" style="--cc:#34d399">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Cyberattack</span>
+          <span class="gl-cat">Foundations</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>An intentional attempt to steal, expose, alter, disable, destroy or gain unauthorized access to digital assets — attacker → action → impact.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Someone deliberately breaking in, or breaking things.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Ali's phishing email that took over his portal account.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="found" data-id="phishing" style="--cc:#34d399">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Phishing</span>
+          <span class="gl-cat">Foundations</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>A social-engineering attack that deceives people into revealing credentials or installing malware by impersonating a trustworthy party.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>A fake message wearing a real company's face.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>"Verify your LMS account or it will be suspended" email.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="found" data-id="ransomware" style="--cc:#34d399">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Ransomware</span>
+          <span class="gl-cat">Foundations</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>Malicious software that encrypts a victim's data or locks systems until a ransom is paid.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Digital kidnapping of your files.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>WannaCry (2017) locked 230,000+ computers in 150 countries.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="found" data-id="ddos" style="--cc:#34d399">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">DDoS</span>
+          <span class="gl-cat">Foundations</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>Distributed Denial of Service — flooding a service with traffic from many compromised devices so legitimate users cannot reach it.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>A mob of bots blocking the door of your website.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>47.1M DDoS attacks were observed in 2025 (+121% YoY).</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="cia" data-id="confidentiality" style="--cc:#34d399">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Confidentiality</span>
+          <span class="gl-cat">CIA</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>Ensuring information is accessible only to those authorized to view it — protecting against unauthorized disclosure.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Eyes only.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Grades visible only to you; encrypted messages.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="cia" data-id="integrity" style="--cc:#34d399">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Integrity</span>
+          <span class="gl-cat">CIA</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>Safeguarding the accuracy and completeness of information — data is modified only by authorized, tracked changes.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Untouched and true — what it says is what it is.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Marks must not change silently in the LMS.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="cia" data-id="availability" style="--cc:#34d399">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Availability</span>
+          <span class="gl-cat">CIA</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>Ensuring authorized users have reliable, timely access to information and resources when needed.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Open when you need it.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>LMS must stay up during deadline hour; backups keep it running.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="prin" data-id="security-principle" style="--cc:#22d3ee">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Security principle</span>
+          <span class="gl-cat">Principles</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>A reusable, high-level decision rule that guides security choices and trade-offs across situations.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>The rule of thumb defenders never break.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>"Least privilege" tells you how to set permissions anywhere.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="prin" data-id="control" style="--cc:#22d3ee">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Control</span>
+          <span class="gl-cat">Principles</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>A concrete safeguard — technical, administrative or physical — that implements a principle and reduces risk.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>The tool that actually enforces the rule.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>MFA, firewall rules, backups, security awareness training.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="prin" data-id="least-privilege" style="--cc:#22d3ee">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Least privilege</span>
+          <span class="gl-cat">Principles</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>Give every subject only the minimum permissions needed to do its task, for the minimum time needed.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Keys to only your room — nothing more.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Interns get user rights, not admin rights.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="prin" data-id="defense-in-depth" style="--cc:#22d3ee">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Defense in depth</span>
+          <span class="gl-cat">Principles</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>Layering multiple independent controls so that if one layer fails, the others still protect the asset.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Onion layers, not a single wall.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Awareness → MFA → endpoint → network → backups.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="prin" data-id="secure-defaults" style="--cc:#22d3ee">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Secure defaults</span>
+          <span class="gl-cat">Principles</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>Systems must start in their most secure configuration out of the box — access is denied until explicitly granted.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>New = locked.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>A brand-new account has zero access until assigned.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="prin" data-id="separation-of-duties" style="--cc:#22d3ee">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Separation of duties</span>
+          <span class="gl-cat">Principles</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>Splitting a sensitive task across multiple people so no single individual can complete or abuse it alone.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Nobody holds both keys: one acts, another approves, a third audits.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>One employee creates a refund, another approves it.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="prin" data-id="fail-securely" style="--cc:#22d3ee">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Fail securely</span>
+          <span class="gl-cat">Principles</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>When a system errors or fails it must default to a safe, restrictive state — never one that grants access.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>On error, stay locked (no open back door).</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>A crashed door controller keeps the door locked, not open.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="prin" data-id="minimize-surface" style="--cc:#22d3ee">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Minimize attack surface</span>
+          <span class="gl-cat">Principles</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>Reduce the number of possible entry points by removing unnecessary accounts, services, ports, privileges and data.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Fewer doors = fewer break-ins.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Close unused ports; delete old employee accounts.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="aaa" data-id="authentication" style="--cc:#a78bfa">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Authentication (AuthN)</span>
+          <span class="gl-cat">AAA</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>The process of verifying a subject is who it claims to be: Claim → Evidence (know/have/are/context/recovery) → Decision.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Who are you? Show ID.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Password + OTP code when logging in.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="aaa" data-id="authorization" style="--cc:#a78bfa">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Authorization (AuthZ)</span>
+          <span class="gl-cat">AAA</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>The process of determining what an authenticated subject may do to which objects, decided by policy (subject → action → object).</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>What may you do? Your menu of rights.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>A teacher can edit grades; a student cannot.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="aaa" data-id="accounting" style="--cc:#a78bfa">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Accounting</span>
+          <span class="gl-cat">AAA</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>Recording what a subject did, when, where and with what outcome — capture → protect → review of activity logs.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>The CCTV and logbook of the system.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Login record: Who · What · Where · When · Outcome.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="aaa" data-id="auth-factor" style="--cc:#a78bfa">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Authentication factor</span>
+          <span class="gl-cat">AAA</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>A category of evidence used to prove identity: knowledge (know), possession (have), inherence (are), context, and recovery.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Which kind of proof you're giving.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>PIN = know · phone token = have · fingerprint = are.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="aaa" data-id="mfa" style="--cc:#a78bfa">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">MFA / 2FA</span>
+          <span class="gl-cat">AAA</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>Requiring two or more authentication factors from different categories, so one stolen secret defeats only one factor.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Two different proofs, not two of the same kind.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Password + authenticator app. (Password + PIN = NOT MFA!)</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="aaa" data-id="idor" style="--cc:#a78bfa">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">IDOR</span>
+          <span class="gl-cat">AAA</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>Insecure Direct Object Reference — an authorization flaw where changing an identifier in a request exposes another user's object.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>My key opens your file.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Editing /record/104 → /record/105 and seeing a classmate's profile.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="aaa" data-id="dac" style="--cc:#a78bfa">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">DAC</span>
+          <span class="gl-cat">AAA</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>Discretionary Access Control — the owner of the object decides who may access it and what they may do.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>The owner shares (or not).</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>You choose who gets your Google Drive link.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="aaa" data-id="mac" style="--cc:#a78bfa">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">MAC</span>
+          <span class="gl-cat">AAA</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>Mandatory Access Control — access is decided by security labels/classifications, not by the user or owner.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>The label wins over any wish of the user.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>A top-secret file stays hidden even from admins without clearance.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="aaa" data-id="rbac" style="--cc:#a78bfa">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">RBAC</span>
+          <span class="gl-cat">AAA</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>Role-Based Access Control — permissions are granted to roles, and users acquire permissions by holding a role.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Your job title decides what you get — the university model.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Students / teachers / admins each get their role's rights.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="aaa" data-id="abac" style="--cc:#a78bfa">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">ABAC</span>
+          <span class="gl-cat">AAA</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>Attribute-Based Access Control — decisions use attributes of subject, object, action and environment in if-then rules.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Context decides.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Access allowed only 9-5, from campus IP, on a managed device.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="risk" data-id="asset" style="--cc:#fbbf24">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Asset</span>
+          <span class="gl-cat">Risk</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>Anything of value to the organization whose compromise would harm objectives, people or operations — information, technology, services, people, reputation.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>What you would lose.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>The online exam system, student records, the LMS.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="risk" data-id="threat" style="--cc:#fbbf24">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Threat</span>
+          <span class="gl-cat">Risk</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>Any potential cause of harm to an asset — an actor or event (intentional, accidental or environmental) that could exploit a vulnerability.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>The burglar roaming the street — might never pick you.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>A phishing campaign, a fire, a misconfiguration.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="risk" data-id="vulnerability" style="--cc:#fbbf24">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Vulnerability</span>
+          <span class="gl-cat">Risk</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>An exploitable weakness in a system, process or people — design, implementation or operational — that a threat can use.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>The open window — ours, and it exists even with zero burglars.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>No MFA on the portal; a shared admin password.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="risk" data-id="attack" style="--cc:#fbbf24">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Attack</span>
+          <span class="gl-cat">Risk</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>An intentional, actual attempt to cause harm to an asset: method applied to a target with an outcome.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>The climbing-in that actually happened.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>A stolen password used to change someone's profile.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="risk" data-id="risk" style="--cc:#fbbf24">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Risk</span>
+          <span class="gl-cat">Risk</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>The effect of uncertainty on objectives — expressed as Likelihood × Impact of a threat exploiting a vulnerability on an asset.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>How likely × how bad.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Phishing + no MFA on the exam DB = high risk. Controls lower it.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="act" data-id="threat-actor" style="--cc:#f472b6">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Threat actor</span>
+          <span class="gl-cat">Actors</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>A person, group or entity that conducts (or can conduct) a cyberattack — described by intent, capability, access, resources and constraints.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Who is attacking.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>A disgruntled employee; an organized crime gang.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="act" data-id="cybercriminal" style="--cc:#f472b6">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Cybercriminal</span>
+          <span class="gl-cat">Actors</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>A threat actor motivated by financial gain, often working criminally-as-a-service.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Does it for money.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Ransomware gangs demanding Bitcoin.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="act" data-id="insider" style="--cc:#f472b6">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Insider</span>
+          <span class="gl-cat">Actors</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>A threat actor with legitimate access from inside the organization — malicious, negligent, or compromised.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Attacks from inside the trusted circle.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>An employee copying the customer list before resigning.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="act" data-id="hacktivist" style="--cc:#f472b6">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Hacktivist</span>
+          <span class="gl-cat">Actors</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>A threat actor driven by ideology or a social/political cause, seeking publicity rather than money.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Does it for the cause and the headlines.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Defacing a government website with a political message.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="act" data-id="nation-state" style="--cc:#f472b6">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Nation-state</span>
+          <span class="gl-cat">Actors</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>A threat actor sponsored or directed by a country, pursuing strategic, political or military advantage with major resources.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Country-level attacker with near-unlimited resources.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Espionage campaigns stealing defence or industrial secrets.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="act" data-id="opportunist" style="--cc:#f472b6">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Opportunist</span>
+          <span class="gl-cat">Actors</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>A threat actor with no specific target — it takes whatever is easy and available.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Grabs whatever is easy.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Scanning the internet for any open port and using it.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="vec" data-id="attack-vector" style="--cc:#fb923c">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Attack vector</span>
+          <span class="gl-cat">Vectors</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>The method or path by which an attacker reaches a target — the route in (distinct from the technique used).</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Which door.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>A phishing email, an open port, a malicious USB.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="vec" data-id="social-engineering" style="--cc:#fb923c">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Social engineering</span>
+          <span class="gl-cat">Vectors</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>Manipulating people into breaking security procedures or handing over information by exploiting trust, fear or urgency.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Hacking the human instead of the machine.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>"Urgent: your account closes in 1 hour — verify now."</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="vec" data-id="supply-chain" style="--cc:#fb923c">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Supply chain attack</span>
+          <span class="gl-cat">Vectors</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>Compromising a trusted vendor, software update or dependency in order to reach all of that vendor's customers.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Poison the delivery truck instead of robbing each house.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>A trojanised update pushed to every user of a popular app.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="attck" data-id="mitre-attack" style="--cc:#60a5fa">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">MITRE ATT&CK</span>
+          <span class="gl-cat">ATT&CK</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>A globally accessible knowledge base of adversary tactics and techniques, used as a common language to describe, compare and defend against attacks.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>The shared playbook of attacker moves.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Mapping the lab incident onto its stages.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="attck" data-id="tactic" style="--cc:#60a5fa">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Tactic</span>
+          <span class="gl-cat">ATT&CK</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>The adversary's goal at a stage of an attack — the WHY — shown as a column in the ATT&CK matrix.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>Why they do it.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Initial Access, Credential Access, Impact.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="attck" data-id="technique" style="--cc:#60a5fa">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Technique</span>
+          <span class="gl-cat">ATT&CK</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>The method an adversary uses to achieve a tactic — the HOW; sub-techniques refine it further.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>How they do it inside that stage.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>A spearphishing link; keylogging; pass-the-hash.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="attck" data-id="attack-chain" style="--cc:#60a5fa">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">Attack / kill chain</span>
+          <span class="gl-cat">ATT&CK</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>A staged model of an attack (reconnaissance to impact) based on one idea: disrupting any stage breaks the chain.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>The steps of an attack — stop any one step and it fails.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Course chain: Initial Access → Execution → Credential Access → Collection → Impact.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="law" data-id="peca" style="--cc:#f87171">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">PECA 2016</span>
+          <span class="gl-cat">Pakistan</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>Pakistan's Prevention of Electronic Crimes Act — the primary law criminalising cybercrimes such as unauthorized access, data interference and cyber-terrorism.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>The cybercrime law book.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Courts punish hacking, data theft and online offences under it.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="law" data-id="ntisb" style="--cc:#f87171">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">NTISB</span>
+          <span class="gl-cat">Pakistan</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>National Telecommunication Information Security Secretariat — Pakistan's incident-response body under the Cabinet Division.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>The national incident-response team.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Coordinates handling of major national cyber incidents.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="law" data-id="nr3c" style="--cc:#f87171">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">NR3C (FIA)</span>
+          <span class="gl-cat">Pakistan</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>National Response Centre for Cyber Crime — the FIA unit that receives and investigates cybercrime complaints in Pakistan.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>The cyber police.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Reporting online fraud or harassment for investigation.</div>
+        </div>
+      </div>
+      <div class="gl" data-cat="law" data-id="nccs" style="--cc:#f87171">
+        <div class="gl-h" role="button" tabindex="0" aria-expanded="false">
+          <span class="gl-term">NCCS</span>
+          <span class="gl-cat">Pakistan</span>
+          <button class="gl-done" title="Tick when mastered" aria-label="Tick when mastered">&#10003;</button>
+          <span class="gl-arrow">&#8250;</span>
+        </div>
+        <div class="gl-body">
+          <div class="gd-row"><span class="gd-lbl f">Formal</span>National Centre for Cyber Security — established June 2018, headquartered at Air University, for R&D, strategy and national cyber capacity.</div>
+          <div class="gd-row"><span class="gd-lbl p">Plain</span>The national strategy HQ for cyber security.</div>
+          <div class="gd-row"><span class="gd-lbl e">Example</span>Research, training and policy for Pakistan's cyber defence.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ======================= PRINCIPLES / AAA / RISK ======================= -->
+<section class="tab-panel" id="aaa">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>The Six Security Principles</h2>
+    <p><b>Principles</b> = reusable decision rules · <b>Controls</b> = the concrete way you apply them.</p>
+    <table>
+      <tr><th>Principle</th><th>One-liner</th><th>Ask yourself</th></tr>
+      <tr><td><b data-def="least-privilege">Least privilege</b></td><td>Only the access required — nothing more</td><td>Smallest permission set?</td></tr>
+      <tr><td><b data-def="defense-in-depth">Defense in depth</b></td><td>Independent layers; one may fail</td><td>Does this layer still help after another fails?</td></tr>
+      <tr><td><b data-def="secure-defaults">Secure defaults</b></td><td>New thing starts with "deny"</td><td>Safest config first?</td></tr>
+      <tr><td><b data-def="separation-of-duties">Separation of duties</b></td><td>Split sensitive duties</td><td>One initiates · another approves · third audits</td></tr>
+      <tr><td><b data-def="fail-securely">Fail securely</b></td><td>Errors must not grant access</td><td>Detect → Contain → Recover (no bypass)</td></tr>
+      <tr><td><b data-def="minimize-surface">Minimize attack surface</b></td><td>Remove unused accounts/services/ports/data</td><td>Every feature = another misuse door</td></tr>
+    </table>
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>Which principle is missing?</b> Interns get admin → <b>least privilege</b> · one person
+      creates <i>and</i> approves refunds → <b>separation of duties</b> · DB error shows customer
+      records → <b>fail securely</b>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>AAA — Authenticate · Authorize · Account</h2>
+    <table>
+      <tr><th>Function</th><th>Question</th><th>Key facts</th></tr>
+      <tr><td><b>Authentication</b></td><td>Who or what are you?</td><td>Claim → Evidence → Decision. Factors: <b>Know</b> (password/PIN) · <b>Have</b> (phone/token) · <b>Are</b> (fingerprint/face) · Context · Recovery</td></tr>
+      <tr><td><b>Authorization</b></td><td>What may you access/change?</td><td>Subject → Action → Object, per Policy. Models: DAC (owner) · MAC (labels) · <b data-def="rbac">RBAC</b> (roles — university!) · ABAC · rule-based</td></tr>
+      <tr><td><b data-def="accounting">Accounting</b></td><td>What did you do, and when?</td><td>Capture → Protect → Review. A useful event answers <b>Who · What · Where · When · Outcome</b></td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Trick questions:</b> password + user-created PIN = <b>NOT multi-factor</b> (both are
+      <i>knowledge</i> — use password + authenticator app). Authentication does <b>not</b> decide file
+      permissions (that's authorization). Student edits <code>/record/104</code> → <code>/record/105</code>
+      and sees a classmate's profile = <b>broken authorization</b> (IDOR — auth was fine).</div>
+    </div>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Order:</b> <b>N before Z</b> — Auth<b>e</b>nticate (who) → Auth<b>o</b>rize (what) →
+      Account (log). <b>AAA = "Am I Allowed?"</b></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Risk Language &amp; The Risk Chain</h2>
+    <table>
+      <tr><th>Term</th><th>Definition</th><th>Where it lives</th></tr>
+      <tr><td><b data-def="asset">Asset</b></td><td>Anything whose compromise harms objectives/people/ops</td><td>Info, tech, services, people, reputation</td></tr>
+      <tr><td><b data-def="threat">Threat</b></td><td>Potential cause of harm</td><td>Intentional (phishing) · accidental (misconfig) · environmental (fire)</td></tr>
+      <tr><td><b data-def="vulnerability">Vulnerability</b></td><td>Exploitable weakness</td><td>Design (missing check) · Implementation (unpatched) · Operation (shared password)</td></tr>
+      <tr><td><b data-def="attack">Attack</b></td><td>Intentional attempt to cause harm</td><td>Method → Target → Outcome</td></tr>
+      <tr><td><b data-def="risk">Risk</b></td><td><b>Likelihood × Impact</b></td><td>Justify a control by the risk it changes</td></tr>
+    </table>
+    <div class="callout trick"><span class="c-ico brain">🧠</span>
+      <div><b>Risk chain:</b> <b>Asset → Vector → Threat/Vulnerability → Attack → Impact (A-V-T-A-I)</b>.
+      Exam-system example: asset = exam system · vector = phishing a TA · weakness = no MFA + reused
+      password · impact = exam disclosure, lost trust.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Actors, Vectors &amp; MITRE ATT&amp;CK</h2>
+    <ul class="checklist">
+      <li><b>Actors:</b> Cybercriminal (money) · Insider (access/grievance/error) · Hacktivist (ideology) · Nation-state (strategy) · Opportunist (easy targets). Compare <i>intent vs capability vs access vs resources vs constraints</i> — motivation alone doesn't define the threat.</li>
+      <li><b>Vectors (the route in):</b> Human (phishing, impersonation) · Application (web/API flaw) · Network (exposed service, rogue Wi-Fi) · Endpoint (malicious file/USB) · Supply chain (compromised vendor/update). <b>Vector = route · technique = how they operate.</b></li>
+      <li><b>ATT&amp;CK:</b> shared language to <i>describe · compare · defend</i>. <b>Tactics = why (goal) · techniques = how (method).</b> Chain: Initial Access → Execution → Credential Access → Collection → Impact.</li>
+      <li><b>Lab incident mapped:</b> fake update link (initial access) → shared password (credential access) → unknown file (execution) → project files gathered (collection) → logs deleted &amp; leak (impact).</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Section 2 — Quick Drills</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Every intern gets admin access — missing principle?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b data-def="least-privilege">Least privilege</b> — grant only the access the job requires, nothing more.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Password + user-created PIN — MFA?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>No!</b> Both are <b>knowledge</b> factors — one stolen secret defeats both. Use password + authenticator app.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>RBAC in one sentence?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Permissions follow job <b>roles</b> — students, teachers, admins each get their role's rights (the university model).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Vulnerability vs threat?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Vulnerability = the <b>weakness</b> (open window). Threat = the potential <b>harm source/event</b> (the burglar).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>Tactics vs techniques?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Tactics = <b>why</b> (attacker's goal, e.g. Initial Access) · techniques = <b>how</b> (the method).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>5 questions of useful accounting?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Who · What · Where · When · Outcome</b> (success/failure).</p></div>
+      </div></div>
+    </div>
+    <p><b>Full notes:</b> <a href="cy104.html" style="color:var(--cyan)">CY104 Lecture 2 →</a></p>
+  </div>
+
+</section>
+
+<!-- ======================= TRICKS & DRILLS ======================= -->
+<section class="tab-panel" id="tricks">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Memory Tricks — Both Lectures</h2>
+    <ul class="trick-list">
+      <li><b>CIA triad</b> → ask "<b>C</b>an <b>I</b> <b>A</b>ccess?" — Confidentiality, Integrity, Availability.
+        <span class="mem">C = someone <i>could read</i> it · I = someone <i>changed</i> it · A = <i>absolute silence</i>, nobody can reach it.</span></li>
+      <li><b>Four verbs</b> → "<b>P</b>lease <b>D</b>on't <b>R</b>uin <b>R</b>ecovery" — Protect, Detect, Respond, Recover.
+        <span class="mem">Defenders never stop at prevent — the cycle must end in recovery.</span></li>
+      <li><b>AAA order</b> → <b>N before Z</b>: Auth<b>e</b>nticate → Auth<b>o</b>rize → Account. "<b>A</b>m <b>I</b> <b>A</b>llowed?"</li>
+      <li><b>5+1 principles</b> → "<b>L</b>east, <b>D</b>epth, <b>D</b>efaults, <b>S</b>eparate, <b>F</b>ail" (+ Minimize surface).
+        <span class="mem">"LL-DS-F."</span></li>
+      <li><b>Risk chain</b> → <b>A-V-T-A-I</b>: Asset → Vector → Threat/Vulnerability → Attack → Impact.
+        <span class="mem">"The A-V train hits the T-A-I city."</span></li>
+      <li><b>Tactics vs techniques</b> → tactics = <b>Why</b> (W, goal) · techniques = <b>How</b> (H, method).
+        <span class="mem">ATT&amp;CK chain: Initial access → Execution → Credential → Collection → Impact ("IE CCI").</span></li>
+      <li><b>PK bodies</b> → "<b>P</b>akistan <b>N</b>etworks <b>N</b>eed <b>R</b>escue" — PECA, NTISB, NR3C · hotline 9911.</li>
+      <li><b>Ali's attack chain</b> → Bait → Click → Credential → Access → Impact — defender breaks it <b>anywhere</b>.</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚡ Scenario Fire-Drill — Name the Answer</h2>
+    <table>
+      <tr><th>Scenario</th><th>Answer</th></tr>
+      <tr><td>Grades visible only to you</td><td><b>C</b>onfidentiality working (control example)</td></tr>
+      <tr><td>Marks silently changed in LMS</td><td><b>I</b>ntegrity broken</td></tr>
+      <tr><td>LMS down during deadline hour</td><td><b>A</b>vailability broken</td></tr>
+      <tr><td>One shared admin password in the lab</td><td>Vulnerability (operation) — fails AAA: shared secret, broad rights, no attribution</td></tr>
+      <tr><td>DB error page lists customer records</td><td>Missing <b>fail securely</b></td></tr>
+      <tr><td>Student edits <code>/record/105</code> (was 104)</td><td>Broken <b>authorization</b> (IDOR)</td></tr>
+      <tr><td>Fake software-update email</td><td>Human <b>vector</b> → Initial Access tactic</td></tr>
+      <tr><td>Employee creates <i>and</i> approves refunds</td><td>Missing <b>separation of duties</b></td></tr>
+      <tr><td>New service opens all ports by default</td><td>Missing <b>secure defaults</b> + <b>minimized attack surface</b></td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎤 Likely Short Answers (recite these)</h2>
+    <ul class="checklist">
+      <li>Define <b>cyberspace</b> and <b>cybersecurity</b>; give the four properties + four verbs.</li>
+      <li>Explain <b>CIA</b> with one example, one threat and one control <i>each</i>.</li>
+      <li>Which famous incidents support "connectivity made things harder"? (Stuxnet / Ukraine / Mirai / WannaCry)</li>
+      <li>List the <b>six principles</b> and diagnose which is missing in a given scenario.</li>
+      <li>Explain <b>AAA</b> — three questions, order, and one failure example for each.</li>
+      <li>Why is "password + PIN" not multi-factor? Give a real 2-factor pair.</li>
+      <li>Differentiate <b>asset / threat / vulnerability / attack / risk</b>; state the risk formula.</li>
+      <li>Compare <b>threat actors</b>; vector vs technique; what ATT&amp;CK contributes.</li>
+      <li>Solve the opening problems: Ali's portal incident &amp; shared lab account — which principles/AAA failed, what control fixes it?</li>
+    </ul>
+    <p><b>Full lectures:</b> <a href="cy104.html" style="color:var(--cyan)">CY104 →</a>
+       · <b>Test yourself:</b> <a href="quiz-cy.html" style="color:var(--amber)">CY104 Important Questions &amp; Test Quiz →</a>
+       · <b>Related lab:</b> <a href="cy104l.html" style="color:var(--cyan)">CY104L →</a></p>
+  </div>
+
+</section>
+
+<style>
+#tree .tree-wrap{overflow-x:auto;overflow-y:hidden;padding:6px 2px}
+#tree .tree-svg{min-width:980px}
+#tree .gbar{transform-box:fill-box;transform-origin:bottom;animation:growY 1.15s cubic-bezier(.2,.8,.2,1) both}
+@keyframes growY{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+#tree .tdraw{stroke-dasharray:260;stroke-dashoffset:260;animation:tDraw .85s ease forwards}
+@keyframes tDraw{to{stroke-dashoffset:0}}
+#tree .tpop{opacity:0;animation:popIn .5s ease forwards;transform-box:fill-box;transform-origin:center}
+#tree .tb{transition:filter .25s ease}
+#tree .tb:hover{filter:brightness(1.5)}
+#tree .tl-node{transition:filter .25s ease}
+#tree .tl-node:hover{filter:brightness(1.45)}
+.lchip{display:inline-block;padding:2px 9px;border-radius:999px;font-size:.74rem;font-weight:800;color:#06121f;margin:2px 4px 2px 0}
+.bdot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:8px;vertical-align:middle}
+.map-eg{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.map-eg span{font-size:.8rem;font-weight:700;padding:4px 11px;border-radius:10px;border:1px dashed var(--card-border);color:var(--text)}
+.map-eg b{color:var(--cyan)}
+
+/* ---- pretty upgrades: pictures, banners, categories, compare ---- */
+@keyframes revIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.cat{position:relative;border:1px solid var(--card-border);border-radius:16px;padding:18px 18px 16px;background:var(--card);transition:.3s;overflow:hidden;animation:revIn .5s both}
+.cat::after{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:linear-gradient(90deg,var(--cc),transparent 85%)}
+.cat:hover{transform:translateY(-4px);border-color:var(--cc);box-shadow:0 16px 34px rgba(0,0,0,.3)}
+.cat:nth-child(2){animation-delay:.06s}
+.cat:nth-child(3){animation-delay:.12s}
+.cat:nth-child(4){animation-delay:.18s}
+.cat:nth-child(5){animation-delay:.24s}
+.cat:nth-child(6){animation-delay:.3s}
+.cat:nth-child(7){animation-delay:.36s}
+.cat:nth-child(8){animation-delay:.42s}
+.cat-h{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1rem;color:var(--text);line-height:1.3;padding-right:64px}
+.cat-h .ci{width:32px;height:32px;flex-shrink:0;border-radius:9px;display:grid;place-items:center;background:var(--cc);color:#06121f;font-size:.98rem;box-shadow:0 4px 12px rgba(0,0,0,.28)}
+.cat-n{position:absolute;top:14px;right:14px;font-size:.65rem;font-weight:800;padding:3px 9px;border-radius:999px;background:var(--cc);color:#06121f;letter-spacing:.4px}
+.tl{list-style:none;margin:12px 0 0;padding:0;display:grid;gap:7px}
+.tl li{font-size:.86rem;line-height:1.55;padding-left:15px;position:relative;color:var(--text)}
+.tl li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--cc);box-shadow:0 0 6px var(--cc)}
+.tl b{font-weight:800}
+.tl i{color:var(--muted);font-style:italic}
+.k{display:inline-block;font-size:.69rem;font-weight:800;padding:1px 8px;border-radius:7px;background:var(--th-grad);color:var(--amber);border:1px dashed rgba(148,163,184,.45);margin-left:4px;white-space:nowrap}
+.cat .foot{margin-top:12px;padding-top:10px;border-top:1px dashed var(--card-border);font-size:.79rem;color:var(--muted);line-height:1.5}
+.vs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.vs{border:1px solid var(--card-border);border-radius:16px;background:var(--card);overflow:hidden;transition:.3s;animation:revIn .5s both}
+.vs:nth-child(2){animation-delay:.05s}
+.vs:nth-child(3){animation-delay:.1s}
+.vs:nth-child(4){animation-delay:.15s}
+.vs:nth-child(5){animation-delay:.2s}
+.vs:nth-child(6){animation-delay:.25s}
+.vs:nth-child(7){animation-delay:.3s}
+.vs:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(0,0,0,.3);border-color:rgba(59,130,246,.5)}
+.vs-top{display:grid;grid-template-columns:1fr 44px 1fr;align-items:center;padding:16px 12px 12px;gap:6px}
+.vs-side{padding:4px 10px;font-size:.83rem;line-height:1.55}
+.vs-side h4{margin:0 0 6px;font-size:.93rem;display:flex;align-items:center;gap:6px}
+.vs-side.a{border-left:3px solid var(--ca,var(--cyan))}
+.vs-side.b{border-right:3px solid var(--cb,var(--amber))}
+.vs-side.a h4{color:var(--ca,var(--cyan))}
+.vs-side.b h4{color:var(--cb,var(--amber));justify-content:flex-end}
+.vs-side p{margin:0;color:var(--text)}
+.vs-badge{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;font-size:.7rem;font-weight:900;background:var(--grad);color:#05101f;box-shadow:0 6px 16px rgba(59,130,246,.5);justify-self:center}
+.vs-easy,.vs-exam{padding:10px 14px;font-size:.81rem;line-height:1.55;color:var(--text)}
+.vs-easy{background:var(--th-grad);border-top:1px dashed rgba(148,163,184,.4)}
+.vs-exam{background:rgba(59,130,246,.1);border-top:1px dashed rgba(59,130,246,.35)}
+.vs-easy b{color:var(--amber)}
+.vs-exam b{color:var(--cyan)}
+@media (max-width:640px){
+  .vs-top{grid-template-columns:1fr;gap:10px}
+  .vs-side.b{border-right:none;border-left:3px solid var(--cb,var(--amber))}
+  .vs-side.b h4{justify-content:flex-start}
+  .vs-badge{margin:0 auto}
+}
+.pic{margin:16px auto 4px;max-width:540px;text-align:center}
+.pic img{width:100%;height:auto;max-height:360px;object-fit:contain;background:#fff;border-radius:14px;border:1px solid var(--card-border);padding:10px;box-shadow:0 10px 26px rgba(0,0,0,.28);transition:.35s}
+.pic img:hover{transform:translateY(-3px) scale(1.015);box-shadow:0 18px 42px rgba(59,130,246,.35)}
+.pic .cap{display:block;margin-top:8px;font-size:.73rem;color:var(--muted)}
+.pic.small{max-width:100%;margin-top:14px}
+.pic.small img{max-height:250px;padding:8px}
+.pic.failed img{display:none}
+.pic.failed::after{content:"🖼 Image needs internet";display:block;padding:24px;border:2px dashed var(--card-border);border-radius:14px;color:var(--muted);font-size:.8rem}
+.banner{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--card-border);margin:0 0 18px}
+.banner img{display:block;width:100%;height:210px;object-fit:cover;opacity:.62;transition:.5s}
+.banner:hover img{opacity:.8;transform:scale(1.03)}
+.banner .ov{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:18px 22px;background:linear-gradient(180deg,transparent 30%,var(--card) 97%)}
+.banner h3{margin:0;font-size:clamp(1.05rem,3vw,1.3rem);font-weight:900}
+.banner p{margin:6px 0 0;font-size:.84rem;color:var(--muted);max-width:660px}
+.banner .cap{position:absolute;top:10px;right:12px;font-size:.65rem;background:rgba(0,0,0,.5);color:#fff;padding:3px 9px;border-radius:999px;z-index:2}
+.banner.failed img{display:none}
+.banner.failed{background:var(--th-grad);min-height:150px}
+
+/* ---- glossary & definition drawer ---- */
+.gl-bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
+.gl-search{flex:1 1 240px;min-width:200px;padding:11px 16px;border-radius:12px;border:1px solid var(--card-border);background:rgba(255,255,255,.06);color:var(--text);font-family:inherit;font-size:.9rem;outline:none;transition:.25s}
+.gl-search:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(34,211,238,.18)}
+.gl-tools{display:flex;gap:8px;flex-wrap:wrap}
+.gl-btn{cursor:pointer;border:1px solid var(--card-border);background:var(--card);color:var(--text);font-family:inherit;font-weight:700;font-size:.78rem;padding:9px 13px;border-radius:10px;transition:.25s}
+.gl-btn:hover{border-color:var(--cyan);transform:translateY(-2px)}
+.gl-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.gl-chip{cursor:pointer;border:1px dashed var(--card-border);background:none;color:var(--muted);font-family:inherit;font-weight:800;font-size:.74rem;padding:6px 13px;border-radius:999px;transition:.25s}
+.gl-chip:hover{color:var(--text);border-color:var(--cyan)}
+.gl-chip.on{background:var(--grad);color:#05101f;border:1px solid transparent;box-shadow:0 6px 16px rgba(59,130,246,.35)}
+.gl-stats{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:.8rem;color:var(--muted);margin-bottom:16px}
+.gl-track{flex:1 1 160px;height:8px;background:rgba(148,163,184,.22);border-radius:999px;overflow:hidden}
+.gl-fill{height:100%;width:0;background:var(--grad);border-radius:999px;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.gl-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.gl{border:1px solid var(--card-border);border-left:4px solid var(--cc);border-radius:14px;background:rgba(255,255,255,.035);overflow:hidden;transition:.25s;animation:revIn .5s both}
+.gl:hover{border-color:var(--cc);transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.3)}
+.gl.done{opacity:.5}
+.gl.done .gl-term{text-decoration:line-through;text-decoration-thickness:2px}
+.gl-h{display:flex;align-items:center;gap:9px;padding:12px 12px 12px 14px;cursor:pointer;user-select:none}
+.gl-h:focus-visible{outline:2px solid var(--cyan);outline-offset:-3px}
+.gl-term{flex:1;font-weight:900;font-size:.93rem;line-height:1.3}
+.gl-cat{font-size:.6rem;font-weight:900;letter-spacing:.5px;padding:3px 8px;border-radius:999px;background:var(--cc);color:#06121f;white-space:nowrap}
+.gl-done{width:24px;height:24px;flex-shrink:0;cursor:pointer;border-radius:50%;border:1.5px solid var(--card-border);background:none;color:transparent;font-size:.72rem;line-height:1;transition:.2s;display:grid;place-items:center;padding:0}
+.gl-done:hover{border-color:var(--green);color:var(--green)}
+.gl.done .gl-done{background:var(--green);border-color:var(--green);color:#06121f}
+.gl-arrow{color:var(--muted);font-size:1.1rem;transition:.3s;line-height:1}
+.gl.open .gl-arrow{transform:rotate(90deg);color:var(--cyan)}
+.gl-body{display:none;padding:0 14px 13px;font-size:.84rem;line-height:1.6}
+.gl.open .gl-body{display:block;animation:revIn .3s both}
+.gd-row{margin:8px 0;padding-left:0}
+.gd-lbl{display:inline-block;font-size:.63rem;font-weight:900;letter-spacing:.6px;text-transform:uppercase;padding:2px 7px;border-radius:6px;margin-right:7px;vertical-align:1.5px}
+.gd-lbl.f{background:rgba(59,130,246,.18);color:var(--blue)}
+.gd-lbl.p{background:rgba(52,211,153,.16);color:var(--green)}
+.gd-lbl.e{background:rgba(251,191,36,.16);color:var(--amber)}
+#defDrawer{position:fixed;right:18px;bottom:78px;width:min(370px,calc(100vw - 36px));max-height:48vh;overflow:auto;background:var(--card);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--card-border);border-radius:16px;box-shadow:0 26px 60px rgba(0,0,0,.55);padding:16px 18px 14px;z-index:70;opacity:0;transform:translateY(18px) scale(.96);pointer-events:none;transition:.3s cubic-bezier(.2,.8,.2,1)}
+#defDrawer.show{opacity:1;transform:none;pointer-events:auto}
+#defDrawer h5{margin:0 0 6px;font-size:1rem;font-weight:900;display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding-right:22px}
+#defDrawer .dd-x{position:absolute;top:9px;right:11px;border:0;background:none;color:var(--muted);font-size:1rem;cursor:pointer;padding:2px 5px}
+#defDrawer .dd-x:hover{color:var(--red)}
+#defDrawer .gd-row{font-size:.83rem;line-height:1.55}
+.dd-src{margin-top:10px;font-size:.68rem;color:var(--muted);border-top:1px dashed var(--card-border);padding-top:8px}
+[data-def]{cursor:pointer}
+[data-def]:hover{color:var(--cyan);text-decoration:underline dotted}
+</style>
+
+<!-- ======================= TOPIC TREE & DATA ======================= -->
+<section class="tab-panel" id="tree">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>How to Read This Map</h2>
+    <div class="callout tip"><span class="c-ico">🗺️</span>
+      <div>The tree below shows the <b>whole course hierarchy</b>: one root → <b>8 topic branches</b> →
+      <b>34 terms/rules</b>, each colored by branch. Pick any term from class and find its branch:
+      the <b>lookup table</b> under the tree is the answer key. Hover a branch box to spotlight it —
+      the whole page animates the structure into place.</div>
+    </div>
+    <div class="map-eg">
+      <span><b data-def="rbac">RBAC</b> → AAA → Authorization</span>
+      <span><b data-def="fail-securely">Fail securely</b> → Security Principles</span>
+      <span><b data-def="phishing">Phishing</b> → Attack Vectors → Human</span>
+      <span><b>WannaCry 2017</b> → Foundations → History</span>
+      <span><b>NR3C</b> → Pakistan Laws</span>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🌳 The Structured Tree — What Falls Under Which Topic</h2>
+    <div class="diagram">
+      <div class="dg-cap">CY104 knowledge tree — root → 8 branches → 34 terms (hover a branch, watch it animate)</div>
+      <div class="tree-wrap"><svg viewBox="0 0 1160 384">
+      <rect class="box f pulse" x="455" y="8" width="250" height="56" rx="13"/>
+      <text class="big ongrad" x="580" y="42">CYBERSECURITY — CY104</text>
+      <path class="flow" d="M580 64 V94"/>
+      <path class="flow" d="M72.5 94 H1087.5"/>
+      <path class="flow" style="stroke:#34d399" d="M72.5 94 V108"/>
+      <rect class="tb tpop" x="4.5" y="108" width="136" height="44" rx="10" style="fill:#34d399;fill-opacity:.14;stroke:#34d399;stroke-width:1.8;animation-delay:0.18s"/>
+      <text class="tpop" x="72.5" y="135" style="fill:#34d399;font-size:11.5px;font-weight:800;animation-delay:0.24s">CIA Properties</text>
+      <line class="tdraw" x1="72.5" y1="152" x2="72.5" y2="178" style="stroke:#34d399;stroke-width:2;animation-delay:0.50s"/>
+      <rect class="tpop" x="2.5" y="178" width="140" height="22" rx="8" style="fill:#34d399;fill-opacity:.14;stroke:#34d399;stroke-width:1.3;animation-delay:0.55s"/>
+      <text class="tpop" x="72.5" y="193" style="font-size:10px;font-weight:700;animation-delay:0.59s">Confidentiality</text>
+      <line class="tdraw" x1="72.5" y1="200" x2="72.5" y2="206" style="stroke:#34d399;stroke-width:2;animation-delay:0.54s"/>
+      <rect class="tpop" x="2.5" y="206" width="140" height="22" rx="8" style="fill:#34d399;fill-opacity:.14;stroke:#34d399;stroke-width:1.3;animation-delay:0.60s"/>
+      <text class="tpop" x="72.5" y="221" style="font-size:10px;font-weight:700;animation-delay:0.64s">Integrity</text>
+      <line class="tdraw" x1="72.5" y1="228" x2="72.5" y2="234" style="stroke:#34d399;stroke-width:2;animation-delay:0.58s"/>
+      <rect class="tpop" x="2.5" y="234" width="140" height="22" rx="8" style="fill:#34d399;fill-opacity:.14;stroke:#34d399;stroke-width:1.3;animation-delay:0.65s"/>
+      <text class="tpop" x="72.5" y="249" style="font-size:10px;font-weight:700;animation-delay:0.69s">Availability</text>
+      <line x1="72.5" y1="256" x2="72.5" y2="350" style="stroke:#34d399;stroke-width:2;stroke-dasharray:4 6;opacity:.4"/>
+      <path class="flow" style="stroke:#22d3ee" d="M217.5 94 V108"/>
+      <rect class="tb tpop" x="149.5" y="108" width="136" height="44" rx="10" style="fill:#22d3ee;fill-opacity:.14;stroke:#22d3ee;stroke-width:1.8;animation-delay:0.23s"/>
+      <text class="tpop" x="217.5" y="135" style="fill:#22d3ee;font-size:11.5px;font-weight:800;animation-delay:0.29s">Security Principles</text>
+      <line class="tdraw" x1="217.5" y1="152" x2="217.5" y2="178" style="stroke:#22d3ee;stroke-width:2;animation-delay:0.55s"/>
+      <rect class="tpop" x="147.5" y="178" width="140" height="22" rx="8" style="fill:#22d3ee;fill-opacity:.14;stroke:#22d3ee;stroke-width:1.3;animation-delay:0.60s"/>
+      <text class="tpop" x="217.5" y="193" style="font-size:10px;font-weight:700;animation-delay:0.64s">Least privilege</text>
+      <line class="tdraw" x1="217.5" y1="200" x2="217.5" y2="206" style="stroke:#22d3ee;stroke-width:2;animation-delay:0.59s"/>
+      <rect class="tpop" x="147.5" y="206" width="140" height="22" rx="8" style="fill:#22d3ee;fill-opacity:.14;stroke:#22d3ee;stroke-width:1.3;animation-delay:0.65s"/>
+      <text class="tpop" x="217.5" y="221" style="font-size:10px;font-weight:700;animation-delay:0.69s">Defense in depth</text>
+      <line class="tdraw" x1="217.5" y1="228" x2="217.5" y2="234" style="stroke:#22d3ee;stroke-width:2;animation-delay:0.63s"/>
+      <rect class="tpop" x="147.5" y="234" width="140" height="22" rx="8" style="fill:#22d3ee;fill-opacity:.14;stroke:#22d3ee;stroke-width:1.3;animation-delay:0.70s"/>
+      <text class="tpop" x="217.5" y="249" style="font-size:10px;font-weight:700;animation-delay:0.74s">Secure defaults</text>
+      <line class="tdraw" x1="217.5" y1="256" x2="217.5" y2="262" style="stroke:#22d3ee;stroke-width:2;animation-delay:0.67s"/>
+      <rect class="tpop" x="147.5" y="262" width="140" height="22" rx="8" style="fill:#22d3ee;fill-opacity:.14;stroke:#22d3ee;stroke-width:1.3;animation-delay:0.75s"/>
+      <text class="tpop" x="217.5" y="277" style="font-size:10px;font-weight:700;animation-delay:0.79s">Separation of duties</text>
+      <line class="tdraw" x1="217.5" y1="284" x2="217.5" y2="290" style="stroke:#22d3ee;stroke-width:2;animation-delay:0.71s"/>
+      <rect class="tpop" x="147.5" y="290" width="140" height="22" rx="8" style="fill:#22d3ee;fill-opacity:.14;stroke:#22d3ee;stroke-width:1.3;animation-delay:0.80s"/>
+      <text class="tpop" x="217.5" y="305" style="font-size:10px;font-weight:700;animation-delay:0.84s">Fail securely</text>
+      <line class="tdraw" x1="217.5" y1="312" x2="217.5" y2="318" style="stroke:#22d3ee;stroke-width:2;animation-delay:0.75s"/>
+      <rect class="tpop" x="147.5" y="318" width="140" height="22" rx="8" style="fill:#22d3ee;fill-opacity:.14;stroke:#22d3ee;stroke-width:1.3;animation-delay:0.85s"/>
+      <text class="tpop" x="217.5" y="333" style="font-size:10px;font-weight:700;animation-delay:0.89s">Minimize attack surface</text>
+      <line x1="217.5" y1="340" x2="217.5" y2="350" style="stroke:#22d3ee;stroke-width:2;stroke-dasharray:4 6;opacity:.4"/>
+      <path class="flow" style="stroke:#a78bfa" d="M362.5 94 V108"/>
+      <rect class="tb tpop" x="294.5" y="108" width="136" height="44" rx="10" style="fill:#a78bfa;fill-opacity:.14;stroke:#a78bfa;stroke-width:1.8;animation-delay:0.28s"/>
+      <text class="tpop" x="362.5" y="135" style="fill:#a78bfa;font-size:11.5px;font-weight:800;animation-delay:0.34s">AAA</text>
+      <line class="tdraw" x1="362.5" y1="152" x2="362.5" y2="178" style="stroke:#a78bfa;stroke-width:2;animation-delay:0.60s"/>
+      <rect class="tpop" x="292.5" y="178" width="140" height="22" rx="8" style="fill:#a78bfa;fill-opacity:.14;stroke:#a78bfa;stroke-width:1.3;animation-delay:0.65s"/>
+      <text class="tpop" x="362.5" y="193" style="font-size:10px;font-weight:700;animation-delay:0.69s">Authentication · factors</text>
+      <line class="tdraw" x1="362.5" y1="200" x2="362.5" y2="206" style="stroke:#a78bfa;stroke-width:2;animation-delay:0.64s"/>
+      <rect class="tpop" x="292.5" y="206" width="140" height="22" rx="8" style="fill:#a78bfa;fill-opacity:.14;stroke:#a78bfa;stroke-width:1.3;animation-delay:0.70s"/>
+      <text class="tpop" x="362.5" y="221" style="font-size:10px;font-weight:700;animation-delay:0.74s">Authorization · models</text>
+      <line class="tdraw" x1="362.5" y1="228" x2="362.5" y2="234" style="stroke:#a78bfa;stroke-width:2;animation-delay:0.68s"/>
+      <rect class="tpop" x="292.5" y="234" width="140" height="22" rx="8" style="fill:#a78bfa;fill-opacity:.14;stroke:#a78bfa;stroke-width:1.3;animation-delay:0.75s"/>
+      <text class="tpop" x="362.5" y="249" style="font-size:10px;font-weight:700;animation-delay:0.79s">Accounting · 5 Ws</text>
+      <line x1="362.5" y1="256" x2="362.5" y2="350" style="stroke:#a78bfa;stroke-width:2;stroke-dasharray:4 6;opacity:.4"/>
+      <path class="flow" style="stroke:#fbbf24" d="M507.5 94 V108"/>
+      <rect class="tb tpop" x="439.5" y="108" width="136" height="44" rx="10" style="fill:#fbbf24;fill-opacity:.14;stroke:#fbbf24;stroke-width:1.8;animation-delay:0.33s"/>
+      <text class="tpop" x="507.5" y="135" style="fill:#fbbf24;font-size:11.5px;font-weight:800;animation-delay:0.39s">Risk Language</text>
+      <line class="tdraw" x1="507.5" y1="152" x2="507.5" y2="178" style="stroke:#fbbf24;stroke-width:2;animation-delay:0.65s"/>
+      <rect class="tpop" x="437.5" y="178" width="140" height="22" rx="8" style="fill:#fbbf24;fill-opacity:.14;stroke:#fbbf24;stroke-width:1.3;animation-delay:0.70s"/>
+      <text class="tpop" x="507.5" y="193" style="font-size:10px;font-weight:700;animation-delay:0.74s">Asset</text>
+      <line class="tdraw" x1="507.5" y1="200" x2="507.5" y2="206" style="stroke:#fbbf24;stroke-width:2;animation-delay:0.69s"/>
+      <rect class="tpop" x="437.5" y="206" width="140" height="22" rx="8" style="fill:#fbbf24;fill-opacity:.14;stroke:#fbbf24;stroke-width:1.3;animation-delay:0.75s"/>
+      <text class="tpop" x="507.5" y="221" style="font-size:10px;font-weight:700;animation-delay:0.79s">Threat</text>
+      <line class="tdraw" x1="507.5" y1="228" x2="507.5" y2="234" style="stroke:#fbbf24;stroke-width:2;animation-delay:0.73s"/>
+      <rect class="tpop" x="437.5" y="234" width="140" height="22" rx="8" style="fill:#fbbf24;fill-opacity:.14;stroke:#fbbf24;stroke-width:1.3;animation-delay:0.80s"/>
+      <text class="tpop" x="507.5" y="249" style="font-size:10px;font-weight:700;animation-delay:0.84s">Vulnerability</text>
+      <line class="tdraw" x1="507.5" y1="256" x2="507.5" y2="262" style="stroke:#fbbf24;stroke-width:2;animation-delay:0.77s"/>
+      <rect class="tpop" x="437.5" y="262" width="140" height="22" rx="8" style="fill:#fbbf24;fill-opacity:.14;stroke:#fbbf24;stroke-width:1.3;animation-delay:0.85s"/>
+      <text class="tpop" x="507.5" y="277" style="font-size:10px;font-weight:700;animation-delay:0.89s">Attack</text>
+      <line class="tdraw" x1="507.5" y1="284" x2="507.5" y2="290" style="stroke:#fbbf24;stroke-width:2;animation-delay:0.81s"/>
+      <rect class="tpop" x="437.5" y="290" width="140" height="22" rx="8" style="fill:#fbbf24;fill-opacity:.14;stroke:#fbbf24;stroke-width:1.3;animation-delay:0.90s"/>
+      <text class="tpop" x="507.5" y="305" style="font-size:10px;font-weight:700;animation-delay:0.94s">Risk = L × I</text>
+      <line x1="507.5" y1="312" x2="507.5" y2="350" style="stroke:#fbbf24;stroke-width:2;stroke-dasharray:4 6;opacity:.4"/>
+      <path class="flow" style="stroke:#f472b6" d="M652.5 94 V108"/>
+      <rect class="tb tpop" x="584.5" y="108" width="136" height="44" rx="10" style="fill:#f472b6;fill-opacity:.14;stroke:#f472b6;stroke-width:1.8;animation-delay:0.38s"/>
+      <text class="tpop" x="652.5" y="135" style="fill:#f472b6;font-size:11.5px;font-weight:800;animation-delay:0.44s">Threat Actors</text>
+      <line class="tdraw" x1="652.5" y1="152" x2="652.5" y2="178" style="stroke:#f472b6;stroke-width:2;animation-delay:0.70s"/>
+      <rect class="tpop" x="582.5" y="178" width="140" height="22" rx="8" style="fill:#f472b6;fill-opacity:.14;stroke:#f472b6;stroke-width:1.3;animation-delay:0.75s"/>
+      <text class="tpop" x="652.5" y="193" style="font-size:10px;font-weight:700;animation-delay:0.79s">Cybercriminal</text>
+      <line class="tdraw" x1="652.5" y1="200" x2="652.5" y2="206" style="stroke:#f472b6;stroke-width:2;animation-delay:0.74s"/>
+      <rect class="tpop" x="582.5" y="206" width="140" height="22" rx="8" style="fill:#f472b6;fill-opacity:.14;stroke:#f472b6;stroke-width:1.3;animation-delay:0.80s"/>
+      <text class="tpop" x="652.5" y="221" style="font-size:10px;font-weight:700;animation-delay:0.84s">Insider</text>
+      <line class="tdraw" x1="652.5" y1="228" x2="652.5" y2="234" style="stroke:#f472b6;stroke-width:2;animation-delay:0.78s"/>
+      <rect class="tpop" x="582.5" y="234" width="140" height="22" rx="8" style="fill:#f472b6;fill-opacity:.14;stroke:#f472b6;stroke-width:1.3;animation-delay:0.85s"/>
+      <text class="tpop" x="652.5" y="249" style="font-size:10px;font-weight:700;animation-delay:0.89s">Hacktivist</text>
+      <line class="tdraw" x1="652.5" y1="256" x2="652.5" y2="262" style="stroke:#f472b6;stroke-width:2;animation-delay:0.82s"/>
+      <rect class="tpop" x="582.5" y="262" width="140" height="22" rx="8" style="fill:#f472b6;fill-opacity:.14;stroke:#f472b6;stroke-width:1.3;animation-delay:0.90s"/>
+      <text class="tpop" x="652.5" y="277" style="font-size:10px;font-weight:700;animation-delay:0.94s">Nation-state</text>
+      <line class="tdraw" x1="652.5" y1="284" x2="652.5" y2="290" style="stroke:#f472b6;stroke-width:2;animation-delay:0.86s"/>
+      <rect class="tpop" x="582.5" y="290" width="140" height="22" rx="8" style="fill:#f472b6;fill-opacity:.14;stroke:#f472b6;stroke-width:1.3;animation-delay:0.95s"/>
+      <text class="tpop" x="652.5" y="305" style="font-size:10px;font-weight:700;animation-delay:0.99s">Opportunist</text>
+      <line x1="652.5" y1="312" x2="652.5" y2="350" style="stroke:#f472b6;stroke-width:2;stroke-dasharray:4 6;opacity:.4"/>
+      <path class="flow" style="stroke:#fb923c" d="M797.5 94 V108"/>
+      <rect class="tb tpop" x="729.5" y="108" width="136" height="44" rx="10" style="fill:#fb923c;fill-opacity:.14;stroke:#fb923c;stroke-width:1.8;animation-delay:0.43s"/>
+      <text class="tpop" x="797.5" y="135" style="fill:#fb923c;font-size:11.5px;font-weight:800;animation-delay:0.49s">Attack Vectors</text>
+      <line class="tdraw" x1="797.5" y1="152" x2="797.5" y2="178" style="stroke:#fb923c;stroke-width:2;animation-delay:0.75s"/>
+      <rect class="tpop" x="727.5" y="178" width="140" height="22" rx="8" style="fill:#fb923c;fill-opacity:.14;stroke:#fb923c;stroke-width:1.3;animation-delay:0.80s"/>
+      <text class="tpop" x="797.5" y="193" style="font-size:10px;font-weight:700;animation-delay:0.84s">Human</text>
+      <line class="tdraw" x1="797.5" y1="200" x2="797.5" y2="206" style="stroke:#fb923c;stroke-width:2;animation-delay:0.79s"/>
+      <rect class="tpop" x="727.5" y="206" width="140" height="22" rx="8" style="fill:#fb923c;fill-opacity:.14;stroke:#fb923c;stroke-width:1.3;animation-delay:0.85s"/>
+      <text class="tpop" x="797.5" y="221" style="font-size:10px;font-weight:700;animation-delay:0.89s">Application</text>
+      <line class="tdraw" x1="797.5" y1="228" x2="797.5" y2="234" style="stroke:#fb923c;stroke-width:2;animation-delay:0.83s"/>
+      <rect class="tpop" x="727.5" y="234" width="140" height="22" rx="8" style="fill:#fb923c;fill-opacity:.14;stroke:#fb923c;stroke-width:1.3;animation-delay:0.90s"/>
+      <text class="tpop" x="797.5" y="249" style="font-size:10px;font-weight:700;animation-delay:0.94s">Network</text>
+      <line class="tdraw" x1="797.5" y1="256" x2="797.5" y2="262" style="stroke:#fb923c;stroke-width:2;animation-delay:0.87s"/>
+      <rect class="tpop" x="727.5" y="262" width="140" height="22" rx="8" style="fill:#fb923c;fill-opacity:.14;stroke:#fb923c;stroke-width:1.3;animation-delay:0.95s"/>
+      <text class="tpop" x="797.5" y="277" style="font-size:10px;font-weight:700;animation-delay:0.99s">Endpoint</text>
+      <line class="tdraw" x1="797.5" y1="284" x2="797.5" y2="290" style="stroke:#fb923c;stroke-width:2;animation-delay:0.91s"/>
+      <rect class="tpop" x="727.5" y="290" width="140" height="22" rx="8" style="fill:#fb923c;fill-opacity:.14;stroke:#fb923c;stroke-width:1.3;animation-delay:1.00s"/>
+      <text class="tpop" x="797.5" y="305" style="font-size:10px;font-weight:700;animation-delay:1.04s">Supply chain</text>
+      <line x1="797.5" y1="312" x2="797.5" y2="350" style="stroke:#fb923c;stroke-width:2;stroke-dasharray:4 6;opacity:.4"/>
+      <path class="flow" style="stroke:#60a5fa" d="M942.5 94 V108"/>
+      <rect class="tb tpop" x="874.5" y="108" width="136" height="44" rx="10" style="fill:#60a5fa;fill-opacity:.14;stroke:#60a5fa;stroke-width:1.8;animation-delay:0.48s"/>
+      <text class="tpop" x="942.5" y="135" style="fill:#60a5fa;font-size:11.5px;font-weight:800;animation-delay:0.54s">MITRE ATT&amp;CK</text>
+      <line class="tdraw" x1="942.5" y1="152" x2="942.5" y2="178" style="stroke:#60a5fa;stroke-width:2;animation-delay:0.80s"/>
+      <rect class="tpop" x="872.5" y="178" width="140" height="22" rx="8" style="fill:#60a5fa;fill-opacity:.14;stroke:#60a5fa;stroke-width:1.3;animation-delay:0.85s"/>
+      <text class="tpop" x="942.5" y="193" style="font-size:10px;font-weight:700;animation-delay:0.89s">Tactics = why</text>
+      <line class="tdraw" x1="942.5" y1="200" x2="942.5" y2="206" style="stroke:#60a5fa;stroke-width:2;animation-delay:0.84s"/>
+      <rect class="tpop" x="872.5" y="206" width="140" height="22" rx="8" style="fill:#60a5fa;fill-opacity:.14;stroke:#60a5fa;stroke-width:1.3;animation-delay:0.90s"/>
+      <text class="tpop" x="942.5" y="221" style="font-size:10px;font-weight:700;animation-delay:0.94s">Techniques = how</text>
+      <line class="tdraw" x1="942.5" y1="228" x2="942.5" y2="234" style="stroke:#60a5fa;stroke-width:2;animation-delay:0.88s"/>
+      <rect class="tpop" x="872.5" y="234" width="140" height="22" rx="8" style="fill:#60a5fa;fill-opacity:.14;stroke:#60a5fa;stroke-width:1.3;animation-delay:0.95s"/>
+      <text class="tpop" x="942.5" y="249" style="font-size:10px;font-weight:700;animation-delay:0.99s">Attack chain · 5 steps</text>
+      <line x1="942.5" y1="256" x2="942.5" y2="350" style="stroke:#60a5fa;stroke-width:2;stroke-dasharray:4 6;opacity:.4"/>
+      <path class="flow" style="stroke:#f87171" d="M1087.5 94 V108"/>
+      <rect class="tb tpop" x="1019.5" y="108" width="136" height="44" rx="10" style="fill:#f87171;fill-opacity:.14;stroke:#f87171;stroke-width:1.8;animation-delay:0.53s"/>
+      <text class="tpop" x="1087.5" y="135" style="fill:#f87171;font-size:11.5px;font-weight:800;animation-delay:0.59s">Pakistan Laws</text>
+      <line class="tdraw" x1="1087.5" y1="152" x2="1087.5" y2="178" style="stroke:#f87171;stroke-width:2;animation-delay:0.85s"/>
+      <rect class="tpop" x="1017.5" y="178" width="140" height="22" rx="8" style="fill:#f87171;fill-opacity:.14;stroke:#f87171;stroke-width:1.3;animation-delay:0.90s"/>
+      <text class="tpop" x="1087.5" y="193" style="font-size:10px;font-weight:700;animation-delay:0.94s">PECA 2016</text>
+      <line class="tdraw" x1="1087.5" y1="200" x2="1087.5" y2="206" style="stroke:#f87171;stroke-width:2;animation-delay:0.89s"/>
+      <rect class="tpop" x="1017.5" y="206" width="140" height="22" rx="8" style="fill:#f87171;fill-opacity:.14;stroke:#f87171;stroke-width:1.3;animation-delay:0.95s"/>
+      <text class="tpop" x="1087.5" y="221" style="font-size:10px;font-weight:700;animation-delay:0.99s">NTISB</text>
+      <line class="tdraw" x1="1087.5" y1="228" x2="1087.5" y2="234" style="stroke:#f87171;stroke-width:2;animation-delay:0.93s"/>
+      <rect class="tpop" x="1017.5" y="234" width="140" height="22" rx="8" style="fill:#f87171;fill-opacity:.14;stroke:#f87171;stroke-width:1.3;animation-delay:1.00s"/>
+      <text class="tpop" x="1087.5" y="249" style="font-size:10px;font-weight:700;animation-delay:1.04s">NR3C · FIA</text>
+      <line class="tdraw" x1="1087.5" y1="256" x2="1087.5" y2="262" style="stroke:#f87171;stroke-width:2;animation-delay:0.97s"/>
+      <rect class="tpop" x="1017.5" y="262" width="140" height="22" rx="8" style="fill:#f87171;fill-opacity:.14;stroke:#f87171;stroke-width:1.3;animation-delay:1.05s"/>
+      <text class="tpop" x="1087.5" y="277" style="font-size:10px;font-weight:700;animation-delay:1.09s">NCCS · Air Univ</text>
+      <line x1="1087.5" y1="284" x2="1087.5" y2="350" style="stroke:#f87171;stroke-width:2;stroke-dasharray:4 6;opacity:.4"/>
+      </svg></div>
+    </div>
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>Exam use:</b> a question like "classify: least privilege" → your eyes jump to the
+      <b>cyan branch</b> (Principles). "Where does PECA 2016 sit?" → <b>red branch</b> (Pakistan Laws).
+      Colors stay consistent between the tree, the table below and the lecture pages.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🗂 Lookup Table — Term → Branch (the answer key)</h2>
+    <table>
+      <tr><th>Branch</th><th>Terms &amp; rules that belong here</th><th>Where</th></tr>
+      <tr>
+        <td><span class="bdot" style="background:#34d399"></span><b>CIA Properties</b></td>
+        <td><span class="lchip" style="background:#34d399">Confidentiality</span><span class="lchip" style="background:#34d399">Integrity</span><span class="lchip" style="background:#34d399">Availability</span> — plus each one's <b>threat</b> (disclosure · tampering · outage) and <b>controls</b> (access control+encryption · permissions+hashes+audit · backups+redundancy)</td>
+        <td>L1 ⭐</td>
+      </tr>
+      <tr>
+        <td><span class="bdot" style="background:#22d3ee"></span><b>Security Principles</b> (6 rules)</td>
+        <td><span class="lchip" style="background:#22d3ee">Least privilege</span><span class="lchip" style="background:#22d3ee">Defense in depth</span><span class="lchip" style="background:#22d3ee">Secure defaults</span><span class="lchip" style="background:#22d3ee">Separation of duties</span><span class="lchip" style="background:#22d3ee">Fail securely</span><span class="lchip" style="background:#22d3ee">Minimize attack surface</span></td>
+        <td>L2</td>
+      </tr>
+      <tr>
+        <td><span class="bdot" style="background:#a78bfa"></span><b>AAA</b></td>
+        <td><span class="lchip" style="background:#a78bfa">Authentication</span> factors Know/Have/Are/Context/Recovery + MFA rule · <span class="lchip" style="background:#a78bfa">Authorization</span> models DAC·MAC·<b data-def="rbac">RBAC</b>·ABAC + IDOR · <span class="lchip" style="background:#a78bfa">Accounting</span> 5 questions + capture→protect→review</td>
+        <td>L2</td>
+      </tr>
+      <tr>
+        <td><span class="bdot" style="background:#fbbf24"></span><b>Risk Language</b></td>
+        <td><span class="lchip" style="background:#fbbf24">Asset</span><span class="lchip" style="background:#fbbf24">Threat</span><span class="lchip" style="background:#fbbf24">Vulnerability</span><span class="lchip" style="background:#fbbf24">Attack</span><span class="lchip" style="background:#fbbf24">Risk = L × I</span> — chain <b>A-V-T-A-I</b></td>
+        <td>L2</td>
+      </tr>
+      <tr>
+        <td><span class="bdot" style="background:#f472b6"></span><b>Threat Actors</b></td>
+        <td><span class="lchip" style="background:#f472b6">Cybercriminal</span><span class="lchip" style="background:#f472b6">Insider</span><span class="lchip" style="background:#f472b6">Hacktivist</span><span class="lchip" style="background:#f472b6">Nation-state</span><span class="lchip" style="background:#f472b6">Opportunist</span> — compare intent/capability/access/resources</td>
+        <td>L2</td>
+      </tr>
+      <tr>
+        <td><span class="bdot" style="background:#fb923c"></span><b>Attack Vectors</b> (routes in)</td>
+        <td><span class="lchip" style="background:#fb923c">Human</span><span class="lchip" style="background:#fb923c">Application</span><span class="lchip" style="background:#fb923c">Network</span><span class="lchip" style="background:#fb923c">Endpoint</span><span class="lchip" style="background:#fb923c">Supply chain</span> — vector = route · technique = how</td>
+        <td>L2</td>
+      </tr>
+      <tr>
+        <td><span class="bdot" style="background:#60a5fa"></span><b data-def="mitre-attack">MITRE ATT&amp;CK</b></td>
+        <td><span class="lchip" style="background:#60a5fa">Tactics = why</span><span class="lchip" style="background:#60a5fa">Techniques = how</span><span class="lchip" style="background:#60a5fa">Attack chain</span> Initial Access → Execution → Credential Access → Collection → Impact</td>
+        <td>L2</td>
+      </tr>
+      <tr>
+        <td><span class="bdot" style="background:#f87171"></span><b>Pakistan Laws &amp; Bodies</b></td>
+        <td><span class="lchip" style="background:#f87171">PECA 2016</span><span class="lchip" style="background:#f87171">NTISB</span><span class="lchip" style="background:#f87171">NR3C · FIA</span><span class="lchip" style="background:#f87171">NCCS @ Air University</span> · hotline <b>9911</b></td>
+        <td>L1</td>
+      </tr>
+    </table>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>Memory shortcut:</b> <b>blue-half</b> (cyan/purple/amber) = <i>how we defend</i>
+      (principles, AAA, risk) · <b>warm-half</b> (pink/orange/red) = <i>who &amp; how they attack</i>
+      (actors, vectors, laws) · <b>green</b> = the goal being defended (CIA) · <b>blue</b> = the shared
+      language for attacks (ATT&amp;CK).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📈 Real Data — The Numbers Behind Lecture 1</h2>
+    <div class="diagram">
+      <div class="dg-cap">DDoS attacks observed by Cloudflare (millions) — 2025 nearly tripled</div>
+      <svg viewBox="0 0 540 235">
+        <line x1="40" y1="190" x2="520" y2="190" stroke="rgba(148,163,184,.5)" stroke-width="1.5"/>
+        <line x1="40" y1="40" x2="40" y2="190" stroke="rgba(148,163,184,.5)" stroke-width="1.5"/>
+        <rect class="gbar" x="80"  y="145" width="80" height="45"  rx="6" fill="#22d3ee" style="animation-delay:.15s"/>
+        <rect class="gbar" x="220" y="122" width="80" height="68"  rx="6" fill="#a78bfa" style="animation-delay:.4s"/>
+        <rect class="gbar" x="360" y="40"  width="80" height="150" rx="6" fill="#f472b6" style="animation-delay:.65s"/>
+        <text class="big tpop" x="120" y="137" style="animation-delay:.9s">14.0M</text>
+        <text class="big tpop" x="260" y="114" style="animation-delay:1.1s">21.3M</text>
+        <text class="big tpop" x="400" y="32"  style="animation-delay:1.3s">47.1M</text>
+        <text x="120" y="210" class="sub">2023</text>
+        <text x="260" y="210" class="sub">2024</text>
+        <text x="400" y="210" class="sub">2025</text>
+        <text class="tpop" x="455" y="120" style="animation-delay:1.5s;font-size:14px;font-weight:900;fill:#fbbf24">↑ +121%</text>
+        <text class="sub tpop" x="455" y="138" style="animation-delay:1.6s">vs 2024</text>
+      </svg>
+    </div>
+    <div class="stats" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:12px">
+      <span class="stat-chip"><b>47.1M</b> DDoS attacks in 2025</span>
+      <span class="stat-chip"><b>+121%</b> year-over-year growth</span>
+      <span class="stat-chip"><b>44%</b> of breaches involved ransomware (Verizon DBIR 2025)</span>
+      <span class="stat-chip"><b>19%</b> growth in global internet traffic</span>
+    </div>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div>Why the numbers matter for the quiz: they back the lecture's claim that
+      <b>connectivity made everything harder</b> — more connected systems → more attack surface →
+      exponential attack volume.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🕰 Real Incidents Timeline — Lecture 1's Four Case Studies</h2>
+    <div class="diagram">
+      <div class="dg-cap">Famous attacks (the years exams ask) — hover a node</div>
+      <svg viewBox="0 0 740 130">
+        <path class="flow" d="M60 62 H690"/>
+        <circle class="box g pulse tl-node" cx="120" cy="62" r="11"/>
+        <circle class="box a pulse tl-node" cx="310" cy="62" r="11" style="animation-delay:.4s"/>
+        <circle class="box p pulse tl-node" cx="500" cy="62" r="11" style="animation-delay:.8s"/>
+        <circle class="box r pulse tl-node" cx="670" cy="62" r="11" style="animation-delay:1.2s"/>
+        <text class="big tpop" x="120" y="34" style="animation-delay:.6s;fill:#34d399">2010</text>
+        <text class="big tpop" x="310" y="34" style="animation-delay:.8s;fill:#fbbf24">2015</text>
+        <text class="big tpop" x="500" y="34" style="animation-delay:1s;fill:#a78bfa">2016</text>
+        <text class="big tpop" x="670" y="34" style="animation-delay:1.2s;fill:#f87171">2017</text>
+        <text class="tpop" x="120" y="94" style="animation-delay:.7s">Stuxnet</text>
+        <text class="tpop" x="310" y="94" style="animation-delay:.9s">Ukraine grid</text>
+        <text class="tpop" x="500" y="94" style="animation-delay:1.1s">Mirai</text>
+        <text class="tpop" x="670" y="94" style="animation-delay:1.3s">WannaCry</text>
+        <text class="sub tpop" x="120" y="112" style="animation-delay:.75s">industrial systems</text>
+        <text class="sub tpop" x="310" y="112" style="animation-delay:.95s">power disruption</text>
+        <text class="sub tpop" x="500" y="112" style="animation-delay:1.15s">IoT botnet · DDoS</text>
+        <text class="sub tpop" x="670" y="112" style="animation-delay:1.35s">ransomware</text>
+      </svg>
+    </div>
+    <ul class="trick-list">
+      <li><b>The set to memorize:</b> <b>Stuxnet 2010 → Ukraine grid 2015 → Mirai 2016 → WannaCry 2017</b>.
+        <span class="mem">"Stux took Iran's mills, Ukraine flipped the lights, Mirai juggled cameras, WannaCry held hospitals ransom."</span></li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📊 Real Course Data — Where Your Grade Comes From</h2>
+    <div class="grade-bar">
+      <div>Quiz 10%</div><div>Assign 10%</div><div>Project 10%</div><div>Mid 25%</div><div>Final 45%</div>
+    </div>
+    <ul class="checklist">
+      <li><b>4 quizzes × 10%</b> — tomorrow's is <b>Quiz 1</b> (Lectures 1–2) · no makeups, no late work</li>
+      <li><b>4 assignments × 10%</b> · <b>project 10%</b> · <b>midterm 25%</b> (weeks 1–8) · <b>final 45%</b></li>
+      <li><b>CLOs:</b> identify system threats (CLO-1) · identify endpoint/network attacks &amp; stages (CLO-2) · digital forensics tools (CLO-3)</li>
+      <li>Cert recommendations: Fortinet <i>Cybersecurity &amp; Cloud Fundamentals</i> · Cisco <i>Introduction to Cybersecurity</i></li>
+    </ul>
+  </div>
+
+</section>
+
+<footer class="footer">
+  CY104 · Revision Sprint · <b>Lectures 1–2</b> · <a href="quiz-cy.html" style="color:inherit">Quiz zone →</a> · Fall 2026
+</footer>
+
+<button id="toTop" title="Back to top">↑</button>
+
+<script>
+(function () {
+  var list = document.getElementById('glList');
+  if (!list) return;
+  var items = Array.prototype.slice.call(list.querySelectorAll('.gl'));
+  var search = document.getElementById('glSearch');
+  var countEl = document.getElementById('glCount'),
+      progEl = document.getElementById('glProg'),
+      fillEl = document.getElementById('glFill');
+  var chips = Array.prototype.slice.call(document.querySelectorAll('.gl-chip'));
+  var cat = 'all', mastered = {};
+  try { mastered = JSON.parse(localStorage.getItem('cy-gloss-mastered') || '{}') || {}; } catch (e) { mastered = {}; }
+  function save() { try { localStorage.setItem('cy-gloss-mastered', JSON.stringify(mastered)); } catch (e) {} }
+  function refresh() {
+    var q = (search.value || '').toLowerCase().trim(), shown = 0, m = 0;
+    items.forEach(function (el) {
+      var ok = (cat === 'all' || el.dataset.cat === cat) &&
+               (!q || el.textContent.toLowerCase().indexOf(q) > -1);
+      el.style.display = ok ? '' : 'none';
+      if (ok) shown++;
+      if (mastered[el.dataset.id]) m++;
+    });
+    countEl.textContent = shown + ' / ' + items.length + ' terms shown';
+    progEl.textContent = m + ' / ' + items.length + ' mastered';
+    fillEl.style.width = (items.length ? (m / items.length * 100) : 0) + '%';
+  }
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () {
+      chips.forEach(function (x) { x.classList.remove('on'); });
+      c.classList.add('on'); cat = c.dataset.cat; refresh();
+    });
+  });
+  search.addEventListener('input', refresh);
+  list.addEventListener('click', function (e) {
+    var d = e.target.closest('.gl-done');
+    if (d) {
+      e.stopPropagation();
+      var g = d.closest('.gl'), id = g.dataset.id;
+      if (mastered[id]) { delete mastered[id]; g.classList.remove('done'); }
+      else { mastered[id] = 1; g.classList.add('done'); }
+      save(); refresh(); return;
+    }
+    var h = e.target.closest('.gl-h');
+    if (h) {
+      h.parentElement.classList.toggle('open');
+      h.setAttribute('aria-expanded', h.parentElement.classList.contains('open'));
+    }
+  });
+  list.addEventListener('keydown', function (e) {
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('gl-h')) {
+      e.preventDefault(); e.target.click();
+    }
+  });
+  items.forEach(function (el) { if (mastered[el.dataset.id]) el.classList.add('done'); });
+  document.getElementById('glShuffle').addEventListener('click', function () {
+    items.slice().sort(function () { return Math.random() - 0.5; })
+         .forEach(function (el) { list.appendChild(el); });
+  });
+  document.getElementById('glRandom').addEventListener('click', function () {
+    var vis = items.filter(function (el) { return el.style.display !== 'none'; });
+    var pool = vis.filter(function (el) { return !mastered[el.dataset.id]; });
+    if (!pool.length) pool = vis;
+    if (!pool.length) return;
+    var p = pool[Math.floor(Math.random() * pool.length)];
+    items.forEach(function (el) { el.classList.remove('open'); });
+    p.classList.add('open');
+    p.setAttribute('aria-expanded', 'true');
+    p.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+  var expBtn = document.getElementById('glExpand'), expanded = false;
+  expBtn.addEventListener('click', function () {
+    expanded = !expanded;
+    items.forEach(function (el) { if (el.style.display !== 'none') el.classList.toggle('open', expanded); });
+    expBtn.innerHTML = expanded ? '&#128202; Collapse all' : '&#128201; Expand all';
+  });
+  document.getElementById('glReset').addEventListener('click', function () {
+    mastered = {}; save();
+    items.forEach(function (el) { el.classList.remove('done'); });
+    refresh();
+  });
+  document.addEventListener('keydown', function (e) {
+    var tag = document.activeElement ? document.activeElement.tagName : '';
+    if (e.key === '/' && ['INPUT', 'TEXTAREA'].indexOf(tag) < 0) { e.preventDefault(); search.focus(); }
+    if (e.key === 'Escape' && document.activeElement === search) { search.value = ''; search.blur(); refresh(); }
+  });
+  refresh();
+
+  /* ---- click-any-term definition drawer ---- */
+  var dr = document.createElement('div');
+  dr.id = 'defDrawer';
+  document.body.appendChild(dr);
+  document.addEventListener('click', function (e) {
+    if (e.target.closest && e.target.closest('#defDrawer')) {
+      if (e.target.classList.contains('dd-x')) dr.classList.remove('show');
+      return;
+    }
+    var t = e.target.closest ? e.target.closest('[data-def]') : null;
+    if (!t) { dr.classList.remove('show'); return; }
+    var src = list.querySelector('.gl[data-id="' + t.dataset.def + '"]');
+    if (!src) return;
+    var cc = src.style.getPropertyValue('--cc');
+    dr.innerHTML = '<button class="dd-x" aria-label="Close">&#10005;</button>' +
+      '<h5>' + src.querySelector('.gl-term').textContent +
+      ' <span class="gl-cat" style="--cc:' + cc + '">' + src.querySelector('.gl-cat').textContent + '</span></h5>' +
+      src.querySelector('.gl-body').innerHTML +
+      '<div class="dd-src">&#128214; Open the \u201CGlossary &amp; Defs\u201D tab for all ' + items.length + ' terms</div>';
+    dr.classList.add('show');
+  });
+})();
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>

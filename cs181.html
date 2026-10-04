@@ -40,12 +40,13 @@
 <header class="subject-hero">
   <span class="code-lg">CS181 · THEORY</span>
   <h1><span>Application of ICT</span></h1>
-  <p>Dr. Zaki Masood · Information, Communication &amp; Computer Fundamentals · Weeks 1–2</p>
+  <p>Dr. Zaki Masood · Information, Communication &amp; Computer Fundamentals · Weeks 1–3</p>
 </header>
 
 <div class="tabs">
   <button class="tab-btn active" data-tab="week1"><span class="dot"></span> Week 1 · Intro to ICT</button>
   <button class="tab-btn" data-tab="week2"><span class="dot"></span> Week 2 · Computer Fundamentals</button>
+  <button class="tab-btn" data-tab="week3"><span class="dot"></span> Week 3 · Number Systems · 🎯 Quiz 1</button>
   <button class="tab-btn" data-tab="course"><span class="dot"></span> 📚 Course Contents</button>
 </div>
 
@@ -366,6 +367,130 @@
       </div></div>
     </div>
     <p><b>Related lab:</b> <a href="cs181l.html" style="color:var(--cyan)">CS181L ICT Lab →</a></p>
+  </div>
+
+</section>
+
+<!-- ======================= WEEK 3 ======================= -->
+<section class="tab-panel" id="week3">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Quiz 1 = This Week — At a Glance</h2>
+    <div class="callout exam"><span class="c-ico">🎯</span>
+      <div>Course guide puts <b>Quiz 1 on Week 3: Number Systems</b> — conversions among bases,
+      fractional numbers, powers, and binary arithmetic. The core skill: <b>convert by hand in both
+      directions and show every step — "Don't use a calculator!"</b> Practice with
+      Assignment No. 1 (due 09 Oct).</div>
+    </div>
+    <ul class="checklist">
+      <li><b>Same number, different costumes:</b> <b>(2A)₁₆ = (52)₈ = (42)₁₀</b> — a number system is a fixed symbol set; the <b>base</b> = count of symbols; a digit's value depends on its <b>position</b>.</li>
+      <li><b>The four systems:</b> decimal 10 (<code>0–9</code>) · binary 2 (<code>0,1</code> — bits) · octal 8 (<code>0–7</code>) · hex 16 (<code>0–9,A–F</code> where A–F = 10–15).</li>
+      <li><b>Everything converts through decimal or through binary</b> — octal/hex group bits (3 or 4), decimal divides/multiplies.</li>
+      <li>Quick check to memorize: <b>25₁₀ = 11001₂ = 31₈ = 19₁₆</b> · 8 = 1000₂ = 10₈ = 8₁₀ · 13 = 1101₂ = 15₈ = D₁₆.</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Any Base → Decimal — "Expand Out"</h2>
+    <p><b>Positional expansion:</b> multiply each digit by <code>bⁿ</code>, with <b>n counted from 0
+       at the right</b>, then add. Works for every base.</p>
+    <table>
+      <tr><th>Conversion</th><th>Working</th><th>Result</th></tr>
+      <tr><td><b>101011₂</b></td><td>1·2⁰+1·2¹+0·2²+1·2³+0·2⁴+1·2⁵ = 1+2+0+8+0+32</td><td><b>43₁₀</b></td></tr>
+      <tr><td><b>724₈</b></td><td>4·8⁰+2·8¹+7·8² = 4+16+448</td><td><b>468₁₀</b></td></tr>
+      <tr><td><b>ABC₁₆</b></td><td>C(12)·1 + B(11)·16 + A(10)·256 = 12+176+2560</td><td><b>2748₁₀</b></td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Fractions = negative powers:</b> <b>10.1011₂</b> = 2+0+0.5+0+0.125+0.0625 = <b>2.6875₁₀</b>.
+      Decimal example: 3.14 → 3×10⁰ + 1×10⁻¹ + 4×10⁻².</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Decimal → Any Base — "Divide Down, Read Up"</h2>
+    <p>Repeatedly <b>divide the integer part by the base</b>; keep the remainders; the
+       <b>first remainder is the LSB</b> → <b>read remainders bottom-up</b>. Fractions:
+       <b>multiply by the base</b>, read integer parts top-down.</p>
+    <table>
+      <tr><th>Target</th><th>Working (division chain)</th><th>Result</th></tr>
+      <tr><td>125₁₀ → bin</td><td>125/2=62 <b>r1</b> · 62/2=31 r0 · 31/2=15 r1 · 15/2=7 r1 · 7/2=3 r1 · 3/2=1 r1 · 1/2=0 r1 → read ↑</td><td><b>1111101₂</b></td></tr>
+      <tr><td>1234₁₀ → oct</td><td>repeated ÷8 → remainders 2,2,3,2 (read ↑)</td><td><b>2322₈</b></td></tr>
+      <tr><td>1234₁₀ → hex</td><td>repeated ÷16 → remainders 2, 13(D), 4 (read ↑)</td><td><b>4D2₁₆</b></td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div>First remainder = <b>least significant digit</b> (rightmost) — that's why you read
+      <b>up</b>. Reading down is the #1 lost-mark mistake.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Grouping — Binary Is the Bridge</h2>
+    <table>
+      <tr><th>Conversion</th><th>Technique</th></tr>
+      <tr><td>Octal ↔ binary</td><td>each octal digit = <b>3 bits</b> (group in threes from the right)</td></tr>
+      <tr><td>Hex ↔ binary</td><td>each hex digit = <b>4 bits</b> (group in fours from the right)</td></tr>
+      <tr><td>Octal ↔ hex</td><td>go <b>via binary</b> — convert to bits, regroup</td></tr>
+    </table>
+    <div class="code-block"><button class="copy-btn">Copy</button>705₈    → 111 000 101        → <span class="num">111000101₂</span>
+10AF₁₆  → 0001 0000 1010 1111 → <span class="num">0001000010101111₂</span>
+1011010111₂ → 001 011 010 111  → <span class="num">1327₈</span>
+1076₈ → 001000111110 → regroup 4s → <span class="num">23E₁₆</span>
+1F04₁₆ → 0001 1111 0000 0100 → regroup 3s → <span class="num">1744₈</span></div>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div>Pad left with 0s when grouping (pad right for fractions) — 3 bits per octal digit,
+      4 per hex digit. "Octal is triplets, hex is quads."</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Powers of Bases &amp; Binary Arithmetic</h2>
+    <ul class="checklist">
+      <li><b>k, M, G are base-2 in computing:</b> k = 1024 = <b>2¹⁰</b> · M = 1 048 576 = <b>2²⁰</b> · G = 1 073 741 824 = <b>2³⁰</b> — even though we say "kilobyte".</li>
+      <li><b>Multiply powers (same base):</b> add exponents — 2⁶ × 2¹⁰ = 2¹⁶ · <b>64 × 2¹⁰ = 64k</b>.</li>
+      <li><b>Decimal prefixes:</b> milli 10⁻³ · kilo 10³ · mega 10⁶ · giga 10⁹ (base-10 meaning).</li>
+    </ul>
+    <table>
+      <tr><th>Binary op</th><th>1-bit rules</th><th>Worked example</th></tr>
+      <tr><td><b>Addition</b></td><td>0+0=0 · 0+1=1 · 1+0=1 · <b>1+1 = 10</b> (write 0, carry 1)</td><td>10101 (21) + 11001 (25) = <b>101110 (46)</b> — add columns, propagate carries</td></tr>
+      <tr><td><b>Multiplication</b></td><td>0×0=0 · 0×1=0 · 1×0=0 · 1×1=1</td><td>1110 (14) × 1011 (11) = <b>10011010 (154)</b> — partial product per multiplier bit, shift left, add</td></tr>
+    </table>
+    <div class="callout trick"><span class="c-ico brain">🧠</span>
+      <div><b>Memory tricks:</b> "divide down, read up" / "expand out" ·
+      <b>A = 10 … F = 15</b> ("A is the tenth letter, count on") ·
+      memorize <b>25 = 11001₂ = 31₈ = 19₁₆</b> as a self-check.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Week 3 — Quick Drills</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>101011₂ → decimal?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>43₁₀</b> — 32+8+2+1 (expand each bit × its power of 2).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>125₁₀ → binary — read which way?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>1111101₂</b> — divide by 2 and read remainders <b>bottom-up</b> (first remainder = LSB).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Octal = ? bits · Hex = ? bits?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Octal = <b>3 bits</b> (triplets) · Hex = <b>4 bits</b> (quads). Octal ↔ hex goes via binary.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>k / M / G in computing?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>2¹⁰ (1024) · 2²⁰ · 2³⁰</b> — memory uses the base-2 meaning.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>In binary, 1 + 1 = ?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>10</b> — write 0, carry 1 to the next column.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>ABC₁₆ → decimal?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>2748₁₀</b> — A(10)×256 + B(11)×16 + C(12)×1 = 2560+176+12.</p></div>
+      </div></div>
+    </div>
+    <p><b>Related lab:</b> <a href="cs181l.html" style="color:var(--cyan)">CS181L ICT Lab →</a>
+       · <b>Assignment practice:</b> Assignment No. 1 (number systems, due 09 Oct)</p>
   </div>
 
 </section>

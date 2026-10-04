@@ -40,13 +40,14 @@
 <header class="subject-hero">
   <span class="code-lg">CS111 · THEORY</span>
   <h1><span>Programming Fundamentals</span></h1>
-  <p>Think → Plan → Express → Execute · Dr. Zakir Khan · Week 1 &amp; Week 2</p>
+  <p>Think → Plan → Express → Execute · Dr. Zakir Khan · Weeks 1–4</p>
 </header>
 
 <div class="tabs">
   <button class="tab-btn active" data-tab="week1"><span class="dot"></span> Week 1 · Think Like a Programmer</button>
   <button class="tab-btn" data-tab="week2"><span class="dot"></span> Week 2 · Data &amp; Expressions</button>
   <button class="tab-btn" data-tab="week3"><span class="dot"></span> Week 3 · Decision Making</button>
+  <button class="tab-btn" data-tab="week4"><span class="dot"></span> Week 4 · Loops</button>
 </div>
 
 <!-- ======================= WEEK 1 ======================= -->
@@ -704,8 +705,207 @@ attempts = <span class="num">4</span>;           <span class="cm">// assignment 
 
 </section>
 
+<!-- ======================= WEEK 4 ======================= -->
+<section class="tab-panel" id="week4">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Why Loops? — Controlled Repetition</h2>
+    <p>Copying the same statement again and again makes code long, mistake-prone and painful to
+       change. A loop writes the logic <b>once</b> and repeats it under a condition.</p>
+    <div class="diagram">
+      <div class="dg-cap">The cycle of every loop — check, do, change</div>
+      <svg viewBox="0 0 740 110">
+        <rect class="box" x="8" y="30" width="120" height="52" rx="10"/>
+        <rect class="box pulse" x="176" y="30" width="128" height="52" rx="10"/>
+        <rect class="box g pulse" x="352" y="30" width="110" height="52" rx="10"/>
+        <rect class="box a pulse" x="510" y="30" width="118" height="52" rx="10"/>
+        <rect class="box r" x="646" y="30" width="88" height="52" rx="10"/>
+        <path class="flow" d="M128 56 H176"/><path class="flow" d="M304 56 H352"/>
+        <path class="flow" d="M462 56 H510"/><path class="flow" d="M628 56 H646"/>
+        <text x="68" y="52">Initialize</text><text x="68" y="70" class="sub">i = 1</text>
+        <text x="240" y="52">Condition</text><text x="240" y="70" class="sub">true?</text>
+        <text x="407" y="52">Body</text><text x="407" y="70" class="sub">run once</text>
+        <text x="569" y="52">Update</text><text x="569" y="70" class="sub">i++</text>
+        <text x="690" y="52">Exit</text><text x="690" y="70" class="sub">false</text>
+      </svg>
+    </div>
+    <ul class="checklist">
+      <li><b>Iteration:</b> one round of the loop body · <b>Counter:</b> variable tracking repetitions · <b>Update:</b> changing it so the loop can end.</li>
+      <li><b>Increment <code>++</code> / Decrement <code>--</code>:</b> add 1 / subtract 1.</li>
+      <li>A loop must always move toward "false" — otherwise it never ends.</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span><code>while</code> — Condition First (pre-test)</h2>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">int</span> i = <span class="num">1</span>;
+<span class="kw">while</span> (i &lt;= <span class="num">5</span>) {
+    cout &lt;&lt; i &lt;&lt; <span class="cm">" "</span>;
+    i++;                  <span class="cm">// update MUST exist inside the body</span>
+}</div>
+    <table>
+      <tr><th>Step</th><th>Condition</th><th>Action</th></tr>
+      <tr><td>i = 1</td><td>1 ≤ 5 true</td><td>print 1 → i becomes 2</td></tr>
+      <tr><td>i = 2</td><td>2 ≤ 5 true</td><td>print 2 → i becomes 3</td></tr>
+      <tr><td>i = 3..5</td><td>true each time</td><td>print 3, 4, 5</td></tr>
+      <tr><td>i = 6</td><td>6 ≤ 5 <b>false</b></td><td>loop stops → output <code>1 2 3 4 5</code></td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Infinite loop — the classic bug:</b> forgetting <code>i++</code> means the condition
+      stays true forever (hamster on a wheel). <b>Fix:</b> update inside the body. Also note
+      pre-test means <b>0 runs are possible</b>: <code>while (x &gt; 5)</code> starting at 5 never runs.</div>
+    </div>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="cm">// Input validation: keep asking while the coupon is wrong</span>
+<span class="kw">string</span> coupon;
+cin &gt;&gt; coupon;
+<span class="kw">while</span> (coupon != <span class="cm">"SAVE10"</span>) {
+    cout &lt;&lt; <span class="cm">"Invalid. Try again: "</span>;
+    cin &gt;&gt; coupon;
+}</div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span><code>do-while</code> vs <code>while</code> — The Only Difference Is <i>When</i> You Check</h2>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">do</span> {
+    <span class="cm">// body runs FIRST</span>
+} <span class="kw">while</span> (condition);   <span class="cm">// ← semicolon required!</span></div>
+    <table>
+      <tr><th></th><th><code>while</code></th><th><code>do-while</code></th></tr>
+      <tr><td><b>Check</b></td><td>pre-test (condition first)</td><td>post-test (body first)</td></tr>
+      <tr><td><b>Minimum runs</b></td><td><b>0</b></td><td><b>1</b></td></tr>
+      <tr><td><b>Use when</b></td><td>repetition depends on a condition (validation, unknown count)</td><td>display/collect once, then decide (menus, prompts)</td></tr>
+    </table>
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>Deck drills:</b> <code>int x = 1; while (x &lt; 4) { cout &lt;&lt; x; x++; }</code> → <b>123</b> ·
+      <code>int x = 5; while (x &gt; 5) {…}</code> → <b>0 iterations</b> · menu must appear first →
+      <b>do-while</b>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span><code>for</code> — The Compact Counter Loop</h2>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">1</span>; i &lt;= <span class="num">5</span>; i++)   <span class="cm">// init ; condition ; update</span>
+    cout &lt;&lt; i &lt;&lt; <span class="cm">" "</span>;</div>
+    <p><b>Anatomy:</b> <code>int i = 1</code> initialization · <code>i &lt;= 5</code> condition ·
+       <code>i++</code> update · the body. Same logic as <code>while</code>, packed into one line —
+       use it when the <b>count is known</b>.</p>
+    <table>
+      <tr><th>Situation</th><th>Choice</th></tr>
+      <tr><td>Repetition depends on a condition (unknown count)</td><td><code>while</code></td></tr>
+      <tr><td>Body must run at least once (menus, prompts)</td><td><code>do-while</code></td></tr>
+      <tr><td>Count known (print 1..10, fixed attempts)</td><td><code>for</code></td></tr>
+      <tr><td>Stop input when a special value arrives</td><td>sentinel loop</td></tr>
+      <tr><td>Rows, columns, grids, patterns</td><td>nested loops</td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div>Loop choice is a decision you make <b>before coding</b>: count known → <code>for</code> ·
+      must show once → <code>do-while</code> · only a condition → <code>while</code> · special stop → sentinel.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Sentinel-Controlled Loops</h2>
+    <p><b>Sentinel:</b> a special value (e.g. <code>-1</code>) that does <b>not</b> represent normal
+       data — it just tells the program "stop reading".</p>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">int</span> number, sum = <span class="num">0</span>;
+cin &gt;&gt; number;              <span class="cm">// 1. read BEFORE the loop</span>
+<span class="kw">while</span> (number != <span class="num">-1</span>) {
+    sum = sum + number;     <span class="cm">// 3. process only real data</span>
+    cin &gt;&gt; number;          <span class="cm">// 4. read AGAIN inside (missing = infinite loop)</span>
+}
+cout &lt;&lt; sum;                <span class="cm">// sentinel is NOT added</span></div>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>Trace inputs 5, 8, 2, −1 →</b> sum 5 → 13 → 15 → stop at −1 → output
+      <b>15</b>. The sentinel is a <i>control value, not data</i> — never include it in totals.
+      Algorithm: read first · loop while ≠ sentinel · process · read next inside.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Nested Loops — Rows Outside, Columns Inside</h2>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">for</span> (<span class="kw">int</span> row = <span class="num">1</span>; row &lt;= <span class="num">3</span>; row++) {       <span class="cm">// outer: 3 rows</span>
+    <span class="kw">for</span> (<span class="kw">int</span> col = <span class="num">1</span>; col &lt;= <span class="num">4</span>; col++) {   <span class="cm">// inner: 4 columns per row</span>
+        cout &lt;&lt; <span class="cm">"* "</span>;
+    }
+    cout &lt;&lt; endl;                         <span class="cm">// each row ends with endl</span>
+}</div>
+    <ul class="checklist">
+      <li>3 rows × 4 columns = <b>12 inner executions</b> → 3 lines of 4 stars (total work = rows × columns).</li>
+      <li>Triangle pattern: inner limit follows the row — <code>col &lt;= row</code> → <code>*</code>, <code>**</code>, <code>***</code>.</li>
+      <li>Chessboard/grids: outer = row, inner = column, an <code>if</code> inside decides the square.</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Debugging Loops + Decisions + Loops</h2>
+    <table>
+      <tr><th>Bug</th><th>What happens</th><th>Fix</th></tr>
+      <tr><td><b>Off-by-one</b> — <code>for (i=1; i&lt;5; …)</code></td><td>prints 1 2 3 4, not 1 to 5</td><td>use <code>i &lt;= 5</code> when the last value must run — ask "does it print the last value?"</td></tr>
+      <tr><td><b>Missing update</b> — <code>while (i&lt;=3) {…}</code> without <code>i++</code></td><td>infinite loop</td><td>put the update inside the body</td></tr>
+    </table>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="cm">// Login attempts (loop = repetition, if = action, break = stop early)</span>
+<span class="kw">int</span> attempts = <span class="num">1</span>;
+<span class="kw">while</span> (attempts &lt;= <span class="num">3</span>) {
+    cin &gt;&gt; password;
+    <span class="kw">if</span> (password == <span class="cm">"admin123"</span>) { cout &lt;&lt; <span class="cm">"Access granted"</span>; <span class="kw">break</span>; }
+    attempts++;
+}</div>
+    <p><b>Division of labour:</b> the loop decides <i>whether to continue</i> · the <code>if</code>
+       decides <i>what to do with this value</i> · counter variables can count events
+       (<code>if (event == "FAIL") failed++;</code>).</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Memory Tricks</h2>
+    <ul class="trick-list">
+      <li><b>while = "while true, keep going"</b> — condition first, may run 0 times.
+        <span class="mem">do-while = "do it, then ask" — runs at least once (don't forget the ;).</span></li>
+      <li><b>Loop cycle: condition → body → update → repeat</b> — "check, do, change".</li>
+      <li><b>Missing update = hamster on a wheel</b> — running, going nowhere → infinite loop.</li>
+      <li><b>Sentinel = stop sign, not data</b> — <code>-1</code> ends the sum, never joins it.
+        <span class="mem">Read-before, read-inside — the two reads of a sentinel loop.</span></li>
+      <li><b>Nested = rows outside, columns inside</b> — total = rows × columns.</li>
+      <li><b><code>&lt;</code> vs <code>&lt;=</code>:</b> <code>i &lt; 5</code> stops at 4 · <code>i &lt;= 5</code> stops at 5 — "off by one".</li>
+      <li>Selection one-liner: <b>count known → for · must show once → do-while · only condition → while · special stop → sentinel.</b></li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Week 4 — Quick Drills</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>while vs do-while in one line?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>while = pre-test</b> (0+ runs) · <b>do-while = post-test</b> (1+ runs, semicolon required).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Sum inputs 5, 8, 2, −1 with a sentinel — result?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>15</b> — the sentinel ends the loop but is <b>not added</b>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Which loop for a menu that must show first?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>do-while</b> — body runs before the condition, guaranteeing at least one display.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>3×4 nested loops — how many inner runs?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>12</b> — rows × columns (3 lines of 4 stars).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p><code>for (i=1; i&lt;5; i++)</code> prints?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>1 2 3 4</b> — off-by-one; use <code>i &lt;= 5</code> to include 5.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>#1 cause of infinite loops?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Missing update</b> — the condition variable never changes, so it never turns false.</p></div>
+      </div></div>
+    </div>
+    <p><b>Related:</b> <a href="cs111l.html" style="color:var(--cyan)">CS111L lab work →</a>
+       · <b>Test yourself:</b> <a href="quiz-pf.html" style="color:var(--amber)">PF Quiz Zone (Weeks 1–3) →</a></p>
+  </div>
+
+</section>
+
 <footer class="footer">
-  CS111 · Programming Fundamentals · <b>Weeks 1–3</b> · BS Cyber Security · Fall 2026
+  CS111 · Programming Fundamentals · <b>Weeks 1–4</b> · BS Cyber Security · Fall 2026
 </footer>
 
 <button id="toTop" title="Back to top">↑</button>

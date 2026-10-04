@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CY104 Quiz Zone — Important + Test</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="themes.css">
+
+<script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="bg-blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grid-overlay"></div>
+
+<nav class="topbar">
+  <a class="brand" href="index.html"><span class="logo">Σ</span> BS-CYS · NOTES HUB</a>
+<div class="nav-right">
+  <a class="back-btn" href="index.html">← All Subjects</a>
+  <div class="theme-wrap">
+    <button class="theme-btn" id="themeBtn" title="Switch theme (press T)"><span class="palette">🎨</span><span class="label">Theme</span></button>
+    <div class="theme-menu" id="themeMenu">
+      <button class="theme-opt" data-theme="midnight"><span class="sw sw-midnight"></span><b>Midnight Cyber</b><i>glassy dark · aurora blobs</i></button>
+      <button class="theme-opt" data-theme="matrix"><span class="sw sw-matrix"></span><b>Matrix Terminal</b><i>digital rain · scanlines · mono</i></button>
+      <button class="theme-opt" data-theme="paper"><span class="sw sw-paper"></span><b>Paper Notes</b><i>ruled page · ink · sticky notes</i></button>
+      <button class="theme-opt" data-theme="synthwave"><span class="sw sw-synthwave"></span><b>Synthwave</b><i>chrome · retro sun · grid floor</i></button>
+      <button class="theme-opt" data-theme="aurora"><span class="sw sw-aurora"></span><b>Aurora Light</b><i>soft pastel glass</i></button>
+      <button class="theme-opt" data-theme="cyberpunk"><span class="sw sw-cyberpunk"></span><b>Cyberpunk Neon</b><i>glitch boxes · orbitron · neon</i></button>
+      <button class="theme-opt" data-theme="dracula"><span class="sw sw-dracula"></span><b>Dracula Gothic</b><i>serif italics · purple glow</i></button>
+      <button class="theme-opt" data-theme="coffee"><span class="sw sw-coffee"></span><b>Coffee Warmth</b><i>cozy sepia · serif · warm</i></button>
+    </div>
+  </div>
+</div>
+</nav>
+
+<header class="subject-hero">
+  <span class="code-lg">CY104 · QUIZ ZONE</span>
+  <h1><span>Cyber Security — Important Questions &amp; Test Quiz</span></h1>
+  <p>Lectures 1–2 (Foundations + Principles/AAA/Threats/Frameworks). <b>Tab 1:</b> high-probability
+     questions with flip answers · <b>Tab 2:</b> scored 15-question MCQ test. Press <b>1</b> / <b>2</b> to switch.</p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="imp"><span class="dot"></span> ⭐ Important Questions</button>
+  <button class="tab-btn" data-tab="test"><span class="dot"></span> 📝 Test Quiz (15 MCQs)</button>
+</div>
+
+<!-- ======================= IMPORTANT ======================= -->
+<section class="tab-panel active" id="imp">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>How to Use This Page</h2>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div>1) Flip every card until you answer <b>before</b> seeing it. 2) Recite the short-answer
+      list — Dr. Kamran's format is definitions + scenario classification ("which CIA / which
+      principle / which AAA?"). 3) Take the <b>Test Quiz</b> and aim for <b>≥ 12 / 15 (80%)</b>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⭐ Foundations &amp; CIA (Lecture 1)</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Define cybersecurity in one line.</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>The ongoing effort to protect systems, networks, programs &amp; data from <b>unauthorized access, misuse, damage or disruption</b>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>The CIA triad — meanings + one threat each?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>C</b>onfidentiality (only authorized see — threat: leakage) · <b>I</b>ntegrity (accurate, unmodified — threat: tampering) · <b>A</b>vailability (reachable when needed — threat: outage/DoS).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Four verbs + four cyberspace properties?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Verbs: <b>Protect → Detect → Respond → Recover</b> · Cyberspace: <b>virtual, borderless, interactive, persistent</b>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Ransomware — which CIA letters?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Mainly <b>A</b> (service unusable) — usually C + I too (data encrypted/exfiltrated).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>What made cybersecurity harder? Name 4 incidents.</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Connectivity</b>. Stuxnet 2010 · Ukraine grid 2015 · Mirai 2016 · WannaCry 2017.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>Data records types? Why data &gt; device?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>MED, EDU, JOB, FIN, DEV</b> · attackers want credentials &amp; identity — the data inside matters more than the hardware.</p></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⭐ Principles &amp; AAA (Lecture 2)</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>List the six security principles.</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Least privilege · Defense in depth · Secure defaults · Separation of duties · Fail securely · Minimize attack surface.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>AAA — questions, order, one failure each?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Authenticate</b> (who?) — stolen password accepted · <b>Authorize</b> (what?) — student edits another's record (IDOR) · <b>Account</b> (log?) — admin action with no record. Order: <b>N before Z</b>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Password + user PIN — multi-factor?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>No</b> — both are <b>knowledge</b> factors. Real pair: password + authenticator app (knowledge + possession).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Authorization models — one line each?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>DAC</b> owner decides · <b>MAC</b> central labels · <b>RBAC</b> job roles (university) · <b>ABAC</b> attributes · <b>rule-based</b> system conditions.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>5 questions of a useful event?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Who · What · Where · When · Outcome</b> — capture → protect → review.</p></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⭐ Risk, Actors &amp; Frameworks</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Asset / Threat / Vulnerability / Attack / Risk?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Asset = what's valuable · Threat = potential harm · Vulnerability = exploitable weakness · Attack = intentional attempt · <b>Risk = Likelihood × Impact</b>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>The risk chain (order)?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Asset → Vector → Threat/Vulnerability → Attack → Impact (A-V-T-A-I)</b>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>5 threat actors? Vector vs technique?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Cybercriminal · Insider · Hacktivist · Nation-state · Opportunist. <b>Vector = route in</b> (phishing email) · <b>technique = how they operate</b>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>ATT&amp;CK: tactics vs techniques + chain?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Tactics = <b>why</b> (goal) · techniques = <b>how</b> (method). Chain: <b>Initial Access → Execution → Credential Access → Collection → Impact</b>.</p></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎤 Likely Short/Written Answers (recite these)</h2>
+    <ul class="checklist">
+      <li>Define cyberspace &amp; cybersecurity; give the four properties and four verbs.</li>
+      <li>Explain CIA with example + threat + control for each letter.</li>
+      <li>What made cybersecurity harder? Name the four incidents with years.</li>
+      <li>List the six principles; diagnose the missing principle in a short scenario.</li>
+      <li>Explain AAA with the three questions, correct order and one failure example each.</li>
+      <li>Why isn't password + PIN multi-factor? Give one real 2-factor pair.</li>
+      <li>Define asset, threat, vulnerability, attack, risk — with the risk formula.</li>
+      <li>Compare threat actors; vector vs technique; what MITRE ATT&amp;CK contributes.</li>
+      <li>Solve: shared lab account incident — failed principles, failed AAA, fixed with which controls?</li>
+    </ul>
+    <p><b>Revision notes:</b> <a href="rev-cy.html" style="color:var(--cyan)">CY104 Revision Sprint →</a>
+       · <b>Full lecture:</b> <a href="cy104.html" style="color:var(--cyan)">CY104 Lectures 1–2 →</a></p>
+  </div>
+
+</section>
+
+<!-- ======================= TEST ======================= -->
+<section class="tab-panel" id="test">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📝 Test Quiz — 15 MCQs</h2>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div>Pick one option per question, then hit <b>Check Answers</b>. Explanations unlock after
+      grading. <b>Target: 12/15 (80%)+</b>. <b>Reset</b> to retry without notes.</div>
+    </div>
+
+    <form id="testForm" onsubmit="return false;">
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">1</span><span>A backup folder is left world-readable and strangers download student records — which CIA property is breached?</span><span class="q-tag">CIA</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q1" value="a"><span>Integrity</span></label>
+          <label class="q-opt"><input type="radio" name="q1" value="b"><span>Confidentiality</span></label>
+          <label class="q-opt"><input type="radio" name="q1" value="c"><span>Availability</span></label>
+          <label class="q-opt"><input type="radio" name="q1" value="d"><span>Non-repudiation</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> Unauthorized eyes saw private data = disclosure/leakage → <b>Confidentiality</b>. (Nobody changed the data → not I; nothing stopped access → not A.)</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">2</span><span>Ransomware encrypts the whole LMS — it <b>mainly</b> threatens which CIA property?</span><span class="q-tag">CIA</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q2" value="a"><span>Confidentiality</span></label>
+          <label class="q-opt"><input type="radio" name="q2" value="b"><span>Integrity</span></label>
+          <label class="q-opt"><input type="radio" name="q2" value="c"><span>Availability</span></label>
+          <label class="q-opt"><input type="radio" name="q2" value="d"><span>Authenticity</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C.</b> The service becomes unusable for real users — <b>A</b> first. (Exams often add: C and I are usually hit too.)</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">3</span><span>The correct order of the four cybersecurity verbs is…</span><span class="q-tag">Basics</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q3" value="a"><span>Respond → Protect → Recover → Detect</span></label>
+          <label class="q-opt"><input type="radio" name="q3" value="b"><span>Detect → Protect → Respond → Recover</span></label>
+          <label class="q-opt"><input type="radio" name="q3" value="c"><span>Protect → Detect → Respond → Recover</span></label>
+          <label class="q-opt"><input type="radio" name="q3" value="d"><span>Recover → Respond → Detect → Protect</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C.</b> Memory trick: "<b>P</b>lease <b>D</b>on't <b>R</b>uin <b>R</b>ecovery" — you protect first, recover last.</div>
+      </div>
+
+      <div class="q-block" data-answer="d">
+        <p class="q-title"><span class="q-badge">4</span><span>Which is <b>NOT</b> a property of cyberspace?</span><span class="q-tag">Basics</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q4" value="a"><span>Virtual</span></label>
+          <label class="q-opt"><input type="radio" name="q4" value="b"><span>Borderless</span></label>
+          <label class="q-opt"><input type="radio" name="q4" value="c"><span>Persistent</span></label>
+          <label class="q-opt"><input type="radio" name="q4" value="d"><span>Profitable</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: D.</b> The four are <b>virtual · borderless · interactive · persistent</b>. "Profitable" sounds plausible but was never in the lecture.</div>
+      </div>
+
+      <div class="q-block" data-answer="a">
+        <p class="q-title"><span class="q-badge">5</span><span>What made cybersecurity much harder in recent years?</span><span class="q-tag">History</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q5" value="a"><span>More systems became connected</span></label>
+          <label class="q-opt"><input type="radio" name="q5" value="b"><span>Faster CPUs</span></label>
+          <label class="q-opt"><input type="radio" name="q5" value="c"><span>Cheaper RAM</span></label>
+          <label class="q-opt"><input type="radio" name="q5" value="d"><span>Open-source software</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: A.</b> Connectivity = more paths, dependencies and possible attackers. The incidents (Stuxnet, Ukraine, Mirai, WannaCry) all ride on connections.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">6</span><span>A phishing email is which kind of attack vector?</span><span class="q-tag">Vectors</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q6" value="a"><span>Network vector</span></label>
+          <label class="q-opt"><input type="radio" name="q6" value="b"><span>Human vector</span></label>
+          <label class="q-opt"><input type="radio" name="q6" value="c"><span>Supply-chain vector</span></label>
+          <label class="q-opt"><input type="radio" name="q6" value="d"><span>Application vector</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> The route runs through a <i>person</i> (impersonation/deception). Application = web/API flaw · network = exposed service/rogue Wi-Fi · supply chain = compromised vendor/update.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">7</span><span>Every intern is given admin rights on all systems — which principle is violated?</span><span class="q-tag">Principles</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q7" value="a"><span>Defense in depth</span></label>
+          <label class="q-opt"><input type="radio" name="q7" value="b"><span>Least privilege</span></label>
+          <label class="q-opt"><input type="radio" name="q7" value="c"><span>Secure defaults</span></label>
+          <label class="q-opt"><input type="radio" name="q7" value="d"><span>Fail securely</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> Admin rights are far beyond what an internship requires — grant only the smallest permission set.</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">8</span><span>One employee both creates <i>and</i> approves refunds — which principle is missing?</span><span class="q-tag">Principles</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q8" value="a"><span>Least privilege</span></label>
+          <label class="q-opt"><input type="radio" name="q8" value="b"><span>Defense in depth</span></label>
+          <label class="q-opt"><input type="radio" name="q8" value="c"><span>Separation of duties</span></label>
+          <label class="q-opt"><input type="radio" name="q8" value="d"><span>Minimize attack surface</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C.</b> Sensitive duties must be split: one initiates · another approves · a third audits.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">9</span><span>A password plus a user-created PIN counts as multi-factor authentication?</span><span class="q-tag">AAA</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q9" value="a"><span>Yes — two different secrets</span></label>
+          <label class="q-opt"><input type="radio" name="q9" value="b"><span>No — both are knowledge factors</span></label>
+          <label class="q-opt"><input type="radio" name="q9" value="c"><span>Yes, but only on mobile phones</span></label>
+          <label class="q-opt"><input type="radio" name="q9" value="d"><span>No — PINs are never factors</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> MFA needs <i>different factor types</i> (know/have/are…). Password + PIN = knowledge + knowledge — one stolen secret defeats both. Better: password + authenticator app.</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">10</span><span>Permissions assigned by job role (student / teacher / admin) describe which model?</span><span class="q-tag">AAA</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q10" value="a"><span>DAC — discretionary access control</span></label>
+          <label class="q-opt"><input type="radio" name="q10" value="b"><span>MAC — mandatory access control</span></label>
+          <label class="q-opt"><input type="radio" name="q10" value="c"><span>RBAC — role-based access control</span></label>
+          <label class="q-opt"><input type="radio" name="q10" value="d"><span>ABAC — attribute-based access control</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C.</b> RBAC = permissions follow <b>roles</b> — the university example (DAC = owner decides, MAC = central labels, ABAC = attributes).</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">11</span><span>A student changes <code>/record/104</code> to <code>/record/105</code> and reads a classmate's profile. Which AAA part failed?</span><span class="q-tag">AAA</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q11" value="a"><span>Authentication</span></label>
+          <label class="q-opt"><input type="radio" name="q11" value="b"><span>Authorization</span></label>
+          <label class="q-opt"><input type="radio" name="q11" value="c"><span>Accounting</span></label>
+          <label class="q-opt"><input type="radio" name="q11" value="d"><span>Authentication and Accounting</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> Login was fine (authentication worked) — the system never checked <i>ownership</i> of the object (broken authorization / IDOR).</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">12</span><span>Risk is calculated as…</span><span class="q-tag">Risk</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q12" value="a"><span>Frequency × cost of control</span></label>
+          <label class="q-opt"><input type="radio" name="q12" value="b"><span>Likelihood × Impact</span></label>
+          <label class="q-opt"><input type="radio" name="q12" value="c"><span>Threat + Vulnerability</span></label>
+          <label class="q-opt"><input type="radio" name="q12" value="d"><span>Asset value × number of users</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> Risk = <b>Likelihood × Impact</b> — and a control is justified by the risk it changes.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">13</span><span>In MITRE ATT&amp;CK, <b>tactics</b> describe…</span><span class="q-tag">Frameworks</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q13" value="a"><span>how the adversary operates (the method)</span></label>
+          <label class="q-opt"><input type="radio" name="q13" value="b"><span>why — the attacker's goal at that stage</span></label>
+          <label class="q-opt"><input type="radio" name="q13" value="c"><span>what software was used</span></label>
+          <label class="q-opt"><input type="radio" name="q13" value="d"><span>where the server is located</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> Tactics = <b>why</b> (goal, e.g. Initial Access) · techniques = <b>how</b> (method). Chain: Initial Access → Execution → Credential Access → Collection → Impact.</div>
+      </div>
+
+      <div class="q-block" data-answer="d">
+        <p class="q-title"><span class="q-badge">14</span><span>Which is <b>NOT</b> one of the five questions a useful accounting event must answer?</span><span class="q-tag">AAA</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q14" value="a"><span>Who</span></label>
+          <label class="q-opt"><input type="radio" name="q14" value="b"><span>When</span></label>
+          <label class="q-opt"><input type="radio" name="q14" value="c"><span>Outcome</span></label>
+          <label class="q-opt"><input type="radio" name="q14" value="d"><span>How much money</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: D.</b> The five are <b>Who · What · Where · When · Outcome</b>. "How much money" may be part of "what", but it is not one of the five.</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">15</span><span>Which is <b>NOT</b> one of the six security principles?</span><span class="q-tag">Principles</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q15" value="a"><span>Least privilege</span></label>
+          <label class="q-opt"><input type="radio" name="q15" value="b"><span>Fail securely</span></label>
+          <label class="q-opt"><input type="radio" name="q15" value="c"><span>Performance by design</span></label>
+          <label class="q-opt"><input type="radio" name="q15" value="d"><span>Separation of duties</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C.</b> The six: least privilege · defense in depth · secure defaults · separation of duties · fail securely · minimize attack surface. "Performance by design" was never one.</div>
+      </div>
+
+      <div class="quiz-bar">
+        <button type="button" class="btn primary" id="quizSubmit">✅ Check Answers</button>
+        <button type="button" class="btn ghost" id="quizReset">↺ Reset</button>
+        <div class="score-pill" id="scoreOut" aria-live="polite"></div>
+      </div>
+
+    </form>
+
+    <p><b>Scored low?</b> Read the explanations → <a href="rev-cy.html" style="color:var(--cyan)">CY104 Revision Sprint →</a>
+       · <b>Full theory:</b> <a href="cy104.html" style="color:var(--cyan)">CY104 Lectures 1–2 →</a></p>
+  </div>
+
+</section>
+
+<footer class="footer">
+  CY104 · Quiz Zone · <b>Lectures 1–2</b> · <a href="rev-cy.html" style="color:inherit">Revision notes →</a> · Fall 2026
+</footer>
+
+<button id="toTop" title="Back to top">↑</button>
+<script src="script.js"></script>
+<script>
+(function () {
+  var form = document.getElementById('testForm');
+  if (!form) return;
+  var blocks = [].slice.call(form.querySelectorAll('.q-block'));
+  var score = document.getElementById('scoreOut');
+
+  function gradeAll() {
+    var right = 0;
+    blocks.forEach(function (b) {
+      var ans = b.getAttribute('data-answer');
+      var chk = b.querySelector('input:checked');
+      b.classList.add('graded');
+      [].forEach.call(b.querySelectorAll('.q-opt'), function (o) {
+        var i = o.querySelector('input');
+        o.classList.remove('is-right', 'is-wrong');
+        if (i.value === ans) o.classList.add('is-right');
+        if (chk && i === chk && i.value !== ans) o.classList.add('is-wrong');
+      });
+      if (chk && chk.value === ans) right++;
+    });
+    var pct = Math.round(right * 100 / blocks.length);
+    var msg = pct >= 80 ? 'Excellent! Quiz-ready 🎉'
+            : pct >= 60 ? 'Good — revise the red ones, then retry.'
+            : 'Keep revising — read every explanation, then retry.';
+    score.innerHTML = 'Score: <b>' + right + ' / ' + blocks.length + '</b> (' + pct + '%) — ' + msg;
+    score.classList.add('show');
+    score.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  document.getElementById('quizSubmit').addEventListener('click', gradeAll);
+  document.getElementById('quizReset').addEventListener('click', function () {
+    form.reset();
+    blocks.forEach(function (b) {
+      b.classList.remove('graded');
+      [].forEach.call(b.querySelectorAll('.q-opt'), function (o) { o.classList.remove('is-right', 'is-wrong'); });
+    });
+    score.classList.remove('show');
+    score.innerHTML = '';
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+</script>
+</body>
+</html>
