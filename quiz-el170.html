@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EL170 FE Quiz Zone — Tenses + Parts of Speech</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="themes.css">
+
+<script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="bg-blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grid-overlay"></div>
+
+<nav class="topbar">
+  <a class="brand" href="index.html"><span class="logo">Σ</span> BS-CYS · NOTES HUB</a>
+<div class="nav-right">
+  <a class="back-btn" href="el170.html">← EL170 Notes</a>
+  <div class="theme-wrap">
+    <button class="theme-btn" id="themeBtn" title="Switch theme (press T)"><span class="palette">🎨</span><span class="label">Theme</span></button>
+    <div class="theme-menu" id="themeMenu">
+      <button class="theme-opt" data-theme="midnight"><span class="sw sw-midnight"></span><b>Midnight Cyber</b><i>glassy dark · aurora blobs</i></button>
+      <button class="theme-opt" data-theme="matrix"><span class="sw sw-matrix"></span><b>Matrix Terminal</b><i>digital rain · scanlines · mono</i></button>
+      <button class="theme-opt" data-theme="paper"><span class="sw sw-paper"></span><b>Paper Notes</b><i>ruled page · ink · sticky notes</i></button>
+      <button class="theme-opt" data-theme="synthwave"><span class="sw sw-synthwave"></span><b>Synthwave</b><i>chrome · retro sun · grid floor</i></button>
+      <button class="theme-opt" data-theme="aurora"><span class="sw sw-aurora"></span><b>Aurora Light</b><i>soft pastel glass</i></button>
+      <button class="theme-opt" data-theme="cyberpunk"><span class="sw sw-cyberpunk"></span><b>Cyberpunk Neon</b><i>glitch boxes · orbitron · neon</i></button>
+      <button class="theme-opt" data-theme="dracula"><span class="sw sw-dracula"></span><b>Dracula Gothic</b><i>serif italics · purple glow</i></button>
+      <button class="theme-opt" data-theme="coffee"><span class="sw sw-coffee"></span><b>Coffee Warmth</b><i>cozy sepia · serif · warm</i></button>
+      <button class="theme-opt" data-theme="blueprint"><span class="sw sw-blueprint"></span><b>Blueprint</b><i>engineering grid · mono · dashed</i></button>
+      <button class="theme-opt" data-theme="vaporwave"><span class="sw sw-vaporwave"></span><b>Vaporwave</b><i>pastel mall · rounded · lilac</i></button>
+      <button class="theme-opt" data-theme="lava"><span class="sw sw-lava"></span><b>Volcano Lava</b><i>ember glow · fiery accents</i></button>
+      <button class="theme-opt" data-theme="frost"><span class="sw sw-frost"></span><b>Nordic Frost</b><i>icy minimal · clean grotesk</i></button>
+    </div>
+  </div>
+</div>
+</nav>
+
+<header class="subject-hero">
+  <span class="code-lg">EL170 · FE QUIZ ZONE</span>
+  <h1><span>Tenses + Parts of Speech — Revise &amp; Test</span></h1>
+  <p><b>Quiz tomorrow.</b> <b>Tab 1:</b> one-page revision — 12-tense grid, pick-the-tense flowchart,
+     signal words &amp; PoS cheat sheet. <b>Tab 2:</b> scored 20-question MCQ test with explanations.
+     Press <b>1</b> / <b>2</b> to switch. Do flips → take the test → aim for <b>≥ 16/20</b>.</p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="rev"><span class="dot"></span> ⭐ Revise Fast</button>
+  <button class="tab-btn" data-tab="test"><span class="dot"></span> 📝 Test Quiz (20 MCQs)</button>
+</div>
+
+<!-- ======================= REVISE ======================= -->
+<section class="tab-panel active" id="rev">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>How to Use Tonight (30-minute plan)</h2>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>0–10 min:</b> read the two cheat sheets below (tense grid + signal words · PoS table).<br>
+      <b>10–20 min:</b> tap all <b>18 flip cards</b> until you answer before flipping.<br>
+      <b>20–30 min:</b> switch to the <b>Test Quiz</b>, score yourself, read every explanation for misses,
+      retry until ≥ 16/20. Then recite the viva list once out loud.</div>
+    </div>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>The 5 traps that cost the most marks:</b> ① <i>have went</i> instead of <i>have gone</i> (perfect needs <b>V3</b>) ·
+      ② <i>I have seen him yesterday</i> (finished time → past simple) · ③ <i>since 5 years</i> (that's <b>for</b>) ·
+      ④ <i>Did you went?</i> (did + V1) · ⑤ <i>He work</i> (he/she/it needs <b>-s</b>).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧱 The Whole Tense System — 3 × 4 = 12 (formulas only)</h2>
+    <table>
+      <tr><th></th><th>SIMPLE<br><i>fact / habit</i></th><th>CONTINUOUS<br><i>in progress</i></th><th>PERFECT<br><i>done / links times</i></th><th>PERF. CONT.<br><i>how long</i></th></tr>
+      <tr><td><b>PRESENT</b></td><td>work / works<br><i>works daily</i></td><td>am/is/are + -ing<br><i>is working now</i></td><td>has/have + V3<br><i>has worked here</i></td><td>has/have been + -ing<br><i>has been working</i></td></tr>
+      <tr><td><b>PAST</b></td><td>V2<br><i>worked yesterday</i></td><td>was/were + -ing<br><i>was working at 8</i></td><td>had + V3<br><i>had worked by then</i></td><td>had been + -ing<br><i>had been working</i></td></tr>
+      <tr><td><b>FUTURE</b></td><td>will + V1<br><i>will work tomorrow</i></td><td>will be + -ing<br><i>will be working at 5</i></td><td>will have + V3<br><i>will have worked</i></td><td>will have been + -ing<br><i>will have been working</i></td></tr>
+    </table>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>The name IS the formula:</b> past + perfect + continuous =
+      <code>had</code> + <code>been</code> + <code>-ing</code> → <b>had been working</b>.<br>
+      Time changes the <b>helping verb only</b>: present = (base)/has-have · past = had/was-were · future = will.<br>
+      Aspects never change: simple = fact · continuous = be+ing · perfect = have+V3 · PC = have been+ing.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🗺️ Pick-the-Tense Flowchart (read the signal word first!)</h2>
+    <div class="diagram">
+      <div class="dg-cap">Two questions → any of the 12 tenses</div>
+      <svg viewBox="0 0 900 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="tense selection flowchart">
+        <rect class="box f" x="340" y="14" width="220" height="46" rx="10"/>
+        <text class="ongrad" x="450" y="42">START: pick the tense</text>
+        <path class="flow" d="M450,60 L450,82 L190,82 L190,104"/>
+        <path class="flow" d="M450,60 L450,104"/>
+        <path class="flow" d="M450,60 L450,82 L710,82 L710,104"/>
+        <rect class="box" x="80" y="104" width="220" height="66" rx="10"/>
+        <text class="big" x="190" y="130">① PAST</text>
+        <text class="sub" x="190" y="152">helpings: had / was-were</text>
+        <rect class="box p" x="340" y="104" width="220" height="66" rx="10"/>
+        <text class="big" x="450" y="130">① PRESENT</text>
+        <text class="sub" x="450" y="152">helpings: (base) / has-have</text>
+        <rect class="box g" x="600" y="104" width="220" height="66" rx="10"/>
+        <text class="big" x="710" y="130">① FUTURE</text>
+        <text class="sub" x="710" y="152">helping: will</text>
+        <path class="flow p" d="M190,170 L190,196 L450,196"/>
+        <path class="flow" d="M450,170 L450,196"/>
+        <path class="flow g" d="M710,170 L710,196 L450,196"/>
+        <rect class="box a" x="250" y="196" width="400" height="42" rx="10"/>
+        <text class="big" x="450" y="222">② HOW is the action?</text>
+        <path class="flow a" d="M320,238 L320,258 L127,258 L127,278"/>
+        <path class="flow a" d="M380,238 L380,278"/>
+        <path class="flow a" d="M520,238 L520,278"/>
+        <path class="flow a" d="M580,238 L580,258 L772,258 L772,278"/>
+        <rect class="box" x="30" y="278" width="195" height="120" rx="10"/>
+        <text class="big" x="127" y="304">SIMPLE</text>
+        <text class="sub" x="127" y="326">fact / habit / done</text>
+        <text class="sub" x="127" y="344">V1 · V2 · will+V1</text>
+        <text class="sub" x="127" y="368">every day · yesterday</text>
+        <text class="sub" x="127" y="384">tomorrow</text>
+        <rect class="box p" x="245" y="278" width="195" height="120" rx="10"/>
+        <text class="big" x="342" y="304">CONTINUOUS</text>
+        <text class="sub" x="342" y="326">in progress at a point</text>
+        <text class="sub" x="342" y="344">be + V-ing</text>
+        <text class="sub" x="342" y="368">now · when · while</text>
+        <text class="sub" x="342" y="384">this time tomorrow</text>
+        <rect class="box g" x="460" y="278" width="195" height="120" rx="10"/>
+        <text class="big" x="557" y="304">PERFECT</text>
+        <text class="sub" x="557" y="326">done; links two times</text>
+        <text class="sub" x="557" y="344">have/has/had + V3</text>
+        <text class="sub" x="557" y="368">just · yet · ever · never</text>
+        <text class="sub" x="557" y="384">by · since · for</text>
+        <rect class="box a" x="675" y="278" width="195" height="120" rx="10"/>
+        <text class="big" x="772" y="304">PERF. CONT.</text>
+        <text class="sub" x="772" y="326">duration up to a point</text>
+        <text class="sub" x="772" y="344">have/has/had + been + -ing</text>
+        <text class="sub" x="772" y="368">for · since · all day</text>
+        <text class="sub" x="772" y="384">how long</text>
+        <path class="flow" d="M450,398 L450,428"/>
+        <rect class="box f" x="150" y="428" width="600" height="76" rx="10"/>
+        <text class="ongrad big" x="450" y="456">Example build: She HAD BEEN WORKING</text>
+        <text class="sub" x="450" y="480">PAST (had) + PERFECT (been) + CONTINUOUS (-ing) — the name builds the formula!</text>
+      </svg>
+    </div>
+    <div class="callout exam"><span class="c-ico">🔑</span>
+      <div><b>Signal-word cheat sheet (fastest exam method — read the time word first):</b>
+      every day/usually/always → <b>pres. simple</b> · now/at the moment → <b>pres. cont.</b> ·
+      just/already/yet/ever/never/since/for (still true) → <b>pres. perfect</b> ·
+      yesterday/last…/ago/in 2019 → <b>past simple</b> · when/while + past → <b>past cont.</b> ·
+      by the time/before/after + two pasts → <b>past perfect</b> · tomorrow/next…/soon → <b>will</b> ·
+      by + future deadline → <b>future perfect</b> · for/since + how long → <b>…perfect continuous</b>.</div>
+    </div>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>since vs for · in vs since:</b> <b>since</b> + starting point (<i>since Monday, since 2020</i>) ·
+      <b>for</b> + duration (<i>for five years</i>). ❌ <i>since 5 years</i> ✅ <i>for 5 years</i>.<br>
+      <i>We worked here <b>in</b> 2019</i> (over, finished) vs <i>We've worked here <b>since</b> 2019</i> (still true) —
+      one small word flips the whole tense!</div>
+    </div>
+    <p><b>Full notes:</b> <a href="el170.html" style="color:var(--cyan)">EL170 → Tenses tab →</a></p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🏷️ Parts of Speech — one-page cheat sheet</h2>
+    <div class="diagram">
+      <div class="dg-cap">The 8 jobs at a glance (say it: IVAN CAPP)</div>
+      <svg viewBox="0 0 900 250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="eight parts of speech overview">
+        <rect class="box" x="20" y="20" width="200" height="92" rx="10"/>
+        <text class="big" x="120" y="48">NOUN</text>
+        <text class="sub" x="120" y="70">names person/place/thing/idea</text>
+        <text class="sub" x="120" y="90">Ali · Karachi · freedom</text>
+        <rect class="box p" x="235" y="20" width="200" height="92" rx="10"/>
+        <text class="big" x="335" y="48">PRONOUN</text>
+        <text class="sub" x="335" y="70">replaces a noun</text>
+        <text class="sub" x="335" y="90">he · she · it · they · my</text>
+        <rect class="box g" x="450" y="20" width="200" height="92" rx="10"/>
+        <text class="big" x="550" y="48">VERB</text>
+        <text class="sub" x="550" y="70">action or state of being</text>
+        <text class="sub" x="550" y="90">run · think · is · become</text>
+        <rect class="box a" x="665" y="20" width="215" height="92" rx="10"/>
+        <text class="big" x="772" y="48">ADJECTIVE</text>
+        <text class="sub" x="772" y="70">describes a noun</text>
+        <text class="sub" x="772" y="90">red · tall · happy · five</text>
+        <rect class="box a" x="20" y="132" width="200" height="92" rx="10"/>
+        <text class="big" x="120" y="160">ADVERB</text>
+        <text class="sub" x="120" y="182">describes verb/adj/adv</text>
+        <text class="sub" x="120" y="202">quickly · very · always</text>
+        <rect class="box" x="235" y="132" width="200" height="92" rx="10"/>
+        <text class="big" x="335" y="160">PREPOSITION</text>
+        <text class="sub" x="335" y="182">position / time / relation</text>
+        <text class="sub" x="335" y="202">in · on · at · with · between</text>
+        <rect class="box p" x="450" y="132" width="200" height="92" rx="10"/>
+        <text class="big" x="550" y="160">CONJUNCTION</text>
+        <text class="sub" x="550" y="182">joins words / clauses</text>
+        <text class="sub" x="550" y="202">and · but · because · if</text>
+        <rect class="box g" x="665" y="132" width="215" height="92" rx="10"/>
+        <text class="big" x="772" y="160">INTERJECTION</text>
+        <text class="sub" x="772" y="182">sudden emotion + !</text>
+        <text class="sub" x="772" y="202">Oh! · Wow! · Alas! · Ouch!</text>
+      </svg>
+    </div>
+    <table>
+      <tr><th>Trick</th><th>Use it like this</th></tr>
+      <tr><td><b>IVAN CAPP</b></td><td>recall the 8 names in order for a "name the parts of speech" question</td></tr>
+      <tr><td><b>Question test</b></td><td>who/what → noun · which/kind → adjective · how/when/where → adverb · joins? → conjunction · emotion!? → interjection</td></tr>
+      <tr><td><b>-ly test</b></td><td>quick → quickly: adjective + -ly = adverb (but friendly/lovely/early stay adjectives!)</td></tr>
+      <tr><td><b>Position test</b></td><td>before a noun → preposition or adjective · before a verb → adverb or helping verb</td></tr>
+      <tr><td><b>Chameleon rule</b></td><td>same word = different jobs by position: <i>book</i> (noun) vs <i>book it</i> (verb)</td></tr>
+      <tr><td><b>FANBOYS</b></td><td>For And Nor But Or Yet So = the 7 coordinating conjunctions; because/although/if = <b>sub</b>ordinating</td></tr>
+    </table>
+    <p><b>Full notes:</b> <a href="grammar-basics.html" style="color:var(--cyan)">Grammar Basics → Parts of Speech tab →</a></p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🔄 Flip Cards — 12 Tenses + 6 PoS (tap to flip)</h2>
+    <h3>Tenses</h3>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">T1</span><p>Every morning, she ___ tea. (drink)</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>drinks</b> — habit + she → present simple (+s).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">T2</span><p>Listen! Someone ___ the door. (knock)</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>is knocking</b> — Listen! = happening now → present continuous.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">T3</span><p>I ___ never ___ to Paris. (be)</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>have never been</b> — life experience (ever/never) → present perfect; V3 of be = been.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">T4</span><p>He ___ here since 2020. (work)</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>has been working</b> — since + duration still going → present perfect continuous.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">T5</span><p>We ___ the movie last night. (enjoy)</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>enjoyed</b> — finished past time (last night) → past simple (V2).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">T6</span><p>At 8 p.m. yesterday, they ___ dinner. (have)</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>were having</b> — in progress at a past moment → past continuous.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">T7</span><p>The train ___ before we reached the station. (leave)</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>had left</b> — earlier of two past events → past perfect (had + V3).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">T8</span><p>She ___ for three hours when the power went off. (study)</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>had been studying</b> — duration up to a past point → past perfect continuous.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">T9</span><p>I think it ___ tomorrow. (rain)</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>will rain</b> — prediction decided now → future simple (will + V1).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">T10</span><p>This time next week, I ___ on the beach. (lie)</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>will be lying</b> — in progress at a future moment → future continuous.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">T11</span><p>By 2027, I ___ my degree. (complete)</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>will have completed</b> — by + future deadline → future perfect.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">T12</span><p>By December, she ___ here for ten years. (work)</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>will have been working</b> — duration up to a future point → future perfect continuous.</p></div>
+      </div></div>
+    </div>
+    <h3>Parts of Speech</h3>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">P1</span><p>An <i>interesting</i> lecture — PoS of <i>interesting</i>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Adjective</b> — describes which kind of noun (lecture). Compare: <i>I am interested</i> (person = -ed).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">P2</span><p>"He runs quickly." — PoS of <i>quickly</i>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Adverb</b> — answers HOW? about the verb, and -ly is the adverb stamp.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">P3</span><p>"Ouch! That hurts." — PoS of <i>Ouch!</i>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Interjection</b> — sudden emotion, stands alone with an exclamation mark.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">P4</span><p>"Although he studied, he failed." — type of conjunction?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Subordinating</b> — it builds a dependent clause (not a FANBOYS coordinator).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">P5</span><p>"to" in <i>I want to sleep</i> vs <i>I gave it to Ali</i>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>1st = <b>infinitive marker</b> (to + verb) · 2nd = <b>preposition</b> (to + noun phrase). Chameleon word!</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">P6</span><p>Name 2 FANBOYS + 2 subordinators.</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>FANBOYS: <b>and, but, or, so, for, nor, yet</b> · subordinators: <b>because, although, if, when, while, since, until</b>.</p></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎤 Viva / Short-Answer — recite these out loud</h2>
+    <ul class="checklist">
+      <li>Name the 8 parts of speech. (IVAN CAPP)</li>
+      <li>Build "past perfect continuous" from its name — helping verbs included.</li>
+      <li>since vs for — one correct example each. What is the classic mistake?</li>
+      <li>Why is "I have seen him yesterday" wrong? What is the fix?</li>
+      <li>Two past events — which one takes past perfect? Example.</li>
+      <li>Adjective vs adverb — give the -ly test and one exception (friendly/early).</li>
+      <li>FANBOYS — name them. How is "because" different from "and"?</li>
+      <li>Give one chameleon word used as two parts of speech, with sentences.</li>
+    </ul>
+    <p><b>Deep notes:</b> <a href="el170.html" style="color:var(--cyan)">EL170 notes →</a> ·
+       <a href="grammar-basics.html" style="color:var(--cyan)">Grammar Basics →</a></p>
+  </div>
+
+</section>
+
+<!-- ======================= TEST ======================= -->
+<section class="tab-panel" id="test">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📝 Test Quiz — 20 MCQs (12 tenses + 8 parts of speech)</h2>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div>One option per question, then <b>Check Answers</b>. Explanations unlock after grading.
+      <b>Target: 16/20 (80%)+</b> before you sleep. Missed one? Read the explanation, then <b>Reset</b> and beat your score without notes.</div>
+    </div>
+
+    <form id="testForm" onsubmit="return false;">
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">1</span><span>She ___ in Karachi since 2019. (live)</span><span class="q-tag">Tenses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q1" value="a"><span>lives</span></label>
+          <label class="q-opt"><input type="radio" name="q1" value="b"><span>is living</span></label>
+          <label class="q-opt"><input type="radio" name="q1" value="c"><span>has lived</span></label>
+          <label class="q-opt"><input type="radio" name="q1" value="d"><span>lived</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C.</b> <b>since</b> + a starting point = the action still matters now → present perfect (has/have + V3). "Lived there <b>in</b> 2019" would be past simple because 2019 is finished.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">2</span><span>Look! The baby ___. (cry)</span><span class="q-tag">Tenses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q2" value="a"><span>cries</span></label>
+          <label class="q-opt"><input type="radio" name="q2" value="b"><span>is crying</span></label>
+          <label class="q-opt"><input type="radio" name="q2" value="c"><span>has cried</span></label>
+          <label class="q-opt"><input type="radio" name="q2" value="d"><span>cried</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> <b>Look!</b> points to right now → present continuous (am/is/are + V-ing).</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">3</span><span>By next year, we ___ our degree. (finish)</span><span class="q-tag">Tenses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q3" value="a"><span>will finish</span></label>
+          <label class="q-opt"><input type="radio" name="q3" value="b"><span>will have finished</span></label>
+          <label class="q-opt"><input type="radio" name="q3" value="c"><span>are finishing</span></label>
+          <label class="q-opt"><input type="radio" name="q3" value="d"><span>finished</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> <b>by</b> + a future deadline = finished before that point → future perfect (will have + V3).</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">4</span><span>He ___ his homework yesterday. (do)</span><span class="q-tag">Tenses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q4" value="a"><span>does</span></label>
+          <label class="q-opt"><input type="radio" name="q4" value="b"><span>did</span></label>
+          <label class="q-opt"><input type="radio" name="q4" value="c"><span>has done</span></label>
+          <label class="q-opt"><input type="radio" name="q4" value="d"><span>had done</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> <b>yesterday</b> is finished past time → past simple only. Never mix present perfect with finished-time words.</div>
+      </div>
+
+      <div class="q-block" data-answer="a">
+        <p class="q-title"><span class="q-badge">5</span><span>Water ___ at 100°C. (boil)</span><span class="q-tag">Tenses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q5" value="a"><span>boils</span></label>
+          <label class="q-opt"><input type="radio" name="q5" value="b"><span>is boiling</span></label>
+          <label class="q-opt"><input type="radio" name="q5" value="c"><span>has boiled</span></label>
+          <label class="q-opt"><input type="radio" name="q5" value="d"><span>boiled</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: A.</b> Universal truths always take <b>present simple</b>, no matter the surrounding tense ("He said water <b>boils</b> at 100°C").</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">6</span><span>I ___ TV when the lights went out. (watch)</span><span class="q-tag">Tenses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q6" value="a"><span>watch</span></label>
+          <label class="q-opt"><input type="radio" name="q6" value="b"><span>was watching</span></label>
+          <label class="q-opt"><input type="radio" name="q6" value="c"><span>watched</span></label>
+          <label class="q-opt"><input type="radio" name="q6" value="d"><span>have watched</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> Longer background action → <b>past continuous</b> (was watching); the interrupting event (lights went out) is past simple.</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">7</span><span>They ___ in Dubai for five years before they moved to Lahore. (live)</span><span class="q-tag">Tenses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q7" value="a"><span>lived</span></label>
+          <label class="q-opt"><input type="radio" name="q7" value="b"><span>have lived</span></label>
+          <label class="q-opt"><input type="radio" name="q7" value="c"><span>had lived</span></label>
+          <label class="q-opt"><input type="radio" name="q7" value="d"><span>were living</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C.</b> Two past events — the <b>earlier</b> one (the five years) takes <b>past perfect</b> (had + V3); the later one (moved) stays past simple.</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">8</span><span>This time tomorrow, we ___ on a plane. (sit)</span><span class="q-tag">Tenses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q8" value="a"><span>sit</span></label>
+          <label class="q-opt"><input type="radio" name="q8" value="b"><span>will sit</span></label>
+          <label class="q-opt"><input type="radio" name="q8" value="c"><span>will be sitting</span></label>
+          <label class="q-opt"><input type="radio" name="q8" value="d"><span>sat</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C.</b> "This time tomorrow" = an action <b>in progress at that future moment</b> → future continuous (will be + V-ing).</div>
+      </div>
+
+      <div class="q-block" data-answer="a">
+        <p class="q-title"><span class="q-badge">9</span><span>I have been ill ___ Monday. (choose the correct word)</span><span class="q-tag">Tenses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q9" value="a"><span>since</span></label>
+          <label class="q-opt"><input type="radio" name="q9" value="b"><span>for</span></label>
+          <label class="q-opt"><input type="radio" name="q9" value="c"><span>in</span></label>
+          <label class="q-opt"><input type="radio" name="q9" value="d"><span>on</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: A.</b> <b>since</b> + starting point (Monday) · <b>for</b> + duration (for five days). ❌ <i>since 5 years</i> is the classic mistake → ✅ <i>for 5 years</i>.</div>
+      </div>
+
+      <div class="q-block" data-answer="a">
+        <p class="q-title"><span class="q-badge">10</span><span>Which sentence is WRONG?</span><span class="q-tag">Tenses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q10" value="a"><span>I have seen him yesterday.</span></label>
+          <label class="q-opt"><input type="radio" name="q10" value="b"><span>I saw him yesterday.</span></label>
+          <label class="q-opt"><input type="radio" name="q10" value="c"><span>She moved here in 2020.</span></label>
+          <label class="q-opt"><input type="radio" name="q10" value="d"><span>He has lived here since 2020.</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: A.</b> Present perfect cannot sit inside a <b>finished</b> time (yesterday / ago / last week / in 2019) → fix: <i>I <b>saw</b> him yesterday.</i></div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">11</span><span>He ___ the answer since he was ten. (know)</span><span class="q-tag">Tenses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q11" value="a"><span>knows</span></label>
+          <label class="q-opt"><input type="radio" name="q11" value="b"><span>is knowing</span></label>
+          <label class="q-opt"><input type="radio" name="q11" value="c"><span>has known</span></label>
+          <label class="q-opt"><input type="radio" name="q11" value="d"><span>knew</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C.</b> Two traps at once: <b>know</b> is a stative verb → never continuous ("is knowing" ❌); <b>since</b> → present perfect (has known). "Knew since" is also wrong.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">12</span><span>Did you ___ to the party? (go)</span><span class="q-tag">Tenses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q12" value="a"><span>went</span></label>
+          <label class="q-opt"><input type="radio" name="q12" value="b"><span>go</span></label>
+          <label class="q-opt"><input type="radio" name="q12" value="c"><span>have gone</span></label>
+          <label class="q-opt"><input type="radio" name="q12" value="d"><span>gone</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> <b>did</b> already carries the past → the main verb stays in its base form (V1). ❌ "Did you went?" is the #1 beginner tense error.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">13</span><span>"She sings beautifully." — <i>beautifully</i> is an…</span><span class="q-tag">PoS</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q13" value="a"><span>adjective</span></label>
+          <label class="q-opt"><input type="radio" name="q13" value="b"><span>adverb</span></label>
+          <label class="q-opt"><input type="radio" name="q13" value="c"><span>noun</span></label>
+          <label class="q-opt"><input type="radio" name="q13" value="d"><span>verb</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> It answers HOW? about the verb <i>sings</i> and ends in -ly → adverb. An adjective would describe a noun ("a beautiful voice").</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">14</span><span>"The children played in the park." — <i>in</i> is a…</span><span class="q-tag">PoS</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q14" value="a"><span>adjective</span></label>
+          <label class="q-opt"><input type="radio" name="q14" value="b"><span>preposition</span></label>
+          <label class="q-opt"><input type="radio" name="q14" value="c"><span>conjunction</span></label>
+          <label class="q-opt"><input type="radio" name="q14" value="d"><span>article</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> It shows position and sits <b>before a noun phrase</b> ("the park") → preposition. Its PP "in the park" tells where they played.</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">15</span><span>"I tried but failed." — <i>but</i> is a…</span><span class="q-tag">PoS</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q15" value="a"><span>preposition</span></label>
+          <label class="q-opt"><input type="radio" name="q15" value="b"><span>adverb</span></label>
+          <label class="q-opt"><input type="radio" name="q15" value="c"><span>conjunction</span></label>
+          <label class="q-opt"><input type="radio" name="q15" value="d"><span>interjection</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C.</b> <b>but</b> joins two equal clauses → coordinating conjunction (one of the FANBOYS: For And Nor But Or Yet So).</div>
+      </div>
+
+      <div class="q-block" data-answer="a">
+        <p class="q-title"><span class="q-badge">16</span><span>Which word is an <b>interjection</b>?</span><span class="q-tag">PoS</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q16" value="a"><span>Alas!</span></label>
+          <label class="q-opt"><input type="radio" name="q16" value="b"><span>Therefore</span></label>
+          <label class="q-opt"><input type="radio" name="q16" value="c"><span>However</span></label>
+          <label class="q-opt"><input type="radio" name="q16" value="d"><span>Because</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: A.</b> Interjections stand alone with sudden emotion + usually "!": <i>Oh! Wow! Alas! Ouch!</i> Therefore/however are adverbs; because is a conjunction.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">17</span><span>In "give me the book", <i>me</i> is a…</span><span class="q-tag">PoS</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q17" value="a"><span>subject pronoun</span></label>
+          <label class="q-opt"><input type="radio" name="q17" value="b"><span>object pronoun</span></label>
+          <label class="q-opt"><input type="radio" name="q17" value="c"><span>possessive adjective</span></label>
+          <label class="q-opt"><input type="radio" name="q17" value="d"><span>preposition</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> It <b>receives</b> the action (after the verb) → object form. Subject would be "I": <i>I give you the book</i>. "My" would need a noun ("my book").</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">18</span><span>"A happy child" — <i>happy</i> is a…</span><span class="q-tag">PoS</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q18" value="a"><span>adverb</span></label>
+          <label class="q-opt"><input type="radio" name="q18" value="b"><span>noun</span></label>
+          <label class="q-opt"><input type="radio" name="q18" value="c"><span>adjective</span></label>
+          <label class="q-opt"><input type="radio" name="q18" value="d"><span>verb</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C.</b> It describes which kind of noun (child) and sits before it → adjective. Compare: "The child is happy" (after linking verb) and "The child smiled happily" (adverb = -ly).</div>
+      </div>
+
+      <div class="q-block" data-answer="a">
+        <p class="q-title"><span class="q-badge">19</span><span>In "Light travels very fast." — which word is the <b>noun</b>?</span><span class="q-tag">PoS</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q19" value="a"><span>Light</span></label>
+          <label class="q-opt"><input type="radio" name="q19" value="b"><span>travels</span></label>
+          <label class="q-opt"><input type="radio" name="q19" value="c"><span>very</span></label>
+          <label class="q-opt"><input type="radio" name="q19" value="d"><span>fast</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: A.</b> <b>Light</b> = the thing that travels (noun) · travels = verb · very &amp; fast = adverbs (how much / how). Chameleon check: "a light bag" would make light an adjective.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">20</span><span>"Although he studied, he failed." — <i>although</i> is a…</span><span class="q-tag">PoS</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q20" value="a"><span>coordinating conjunction</span></label>
+          <label class="q-opt"><input type="radio" name="q20" value="b"><span>subordinating conjunction</span></label>
+          <label class="q-opt"><input type="radio" name="q20" value="c"><span>preposition</span></label>
+          <label class="q-opt"><input type="radio" name="q20" value="d"><span>adverb</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> It attaches a <b>dependent</b> clause ("Although he studied") to the main clause. FANBOYS (and/but/or…) are the coordinating kind — they join equals.</div>
+      </div>
+
+      <div class="quiz-bar">
+        <button type="button" class="btn primary" id="quizSubmit">✅ Check Answers</button>
+        <button type="button" class="btn ghost" id="quizReset">↺ Reset</button>
+        <div class="score-pill" id="scoreOut" aria-live="polite"></div>
+      </div>
+
+    </form>
+
+    <p><b>Scored low?</b> Re-read the cheat sheets → <a href="#" onclick="document.querySelector('[data-tab=rev]').click();return false;" style="color:var(--cyan)">Revise Fast tab →</a>
+       · <b>Full notes:</b> <a href="el170.html" style="color:var(--cyan)">EL170 Tenses →</a> ·
+       <a href="grammar-basics.html" style="color:var(--cyan)">Grammar Basics PoS →</a></p>
+  </div>
+
+</section>
+
+<footer class="footer">
+  EL170 · FE Quiz Zone · <b>Tenses + Parts of Speech</b> · <a href="el170.html" style="color:inherit">EL170 notes →</a> · Fall 2026
+</footer>
+
+<button id="toTop" title="Back to top">↑</button>
+<script src="script.js"></script>
+<script>
+(function () {
+  var form = document.getElementById('testForm');
+  if (!form) return;
+  var blocks = [].slice.call(form.querySelectorAll('.q-block'));
+  var score = document.getElementById('scoreOut');
+
+  function gradeAll() {
+    var right = 0;
+    blocks.forEach(function (b) {
+      var ans = b.getAttribute('data-answer');
+      var chk = b.querySelector('input:checked');
+      b.classList.add('graded');
+      [].forEach.call(b.querySelectorAll('.q-opt'), function (o) {
+        var i = o.querySelector('input');
+        o.classList.remove('is-right', 'is-wrong');
+        if (i.value === ans) o.classList.add('is-right');
+        if (chk && i === chk && i.value !== ans) o.classList.add('is-wrong');
+      });
+      if (chk && chk.value === ans) right++;
+    });
+    var pct = Math.round(right * 100 / blocks.length);
+    var msg = pct >= 80 ? 'Quiz-ready — sleep well 🎉'
+            : pct >= 60 ? 'Good — read the red explanations, then Reset & retry.'
+            : 'Keep revising — read every explanation, redo the flips, then retry.';
+    score.innerHTML = 'Score: <b>' + right + ' / ' + blocks.length + '</b> (' + pct + '%) — ' + msg;
+    score.classList.add('show');
+    score.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  document.getElementById('quizSubmit').addEventListener('click', gradeAll);
+  document.getElementById('quizReset').addEventListener('click', function () {
+    form.reset();
+    blocks.forEach(function (b) {
+      b.classList.remove('graded');
+      [].forEach.call(b.querySelectorAll('.q-opt'), function (o) { o.classList.remove('is-right', 'is-wrong'); });
+    });
+    score.classList.remove('show');
+    score.innerHTML = '';
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+</script>
+</body>
+</html>

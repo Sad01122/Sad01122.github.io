@@ -58,10 +58,10 @@ for fname in html_files:
         if 'id="%s"' % target not in html:
             err("%s: data-tab target #%s missing" % (fname, target))
 
-    # exactly 8 theme options
+    # exactly 12 theme options
     n_themes = len(re.findall(r'class="theme-opt"', html))
-    if n_themes != 8:
-        err("%s: %d theme-opts (want 8)" % (fname, n_themes))
+    if n_themes != 12:
+        err("%s: %d theme-opts (want 12)" % (fname, n_themes))
 
     # internal hrefs resolve
     for href in set(re.findall(r'href="([^"#][^"]*)"', html)):

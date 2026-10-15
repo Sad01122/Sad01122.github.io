@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CS111L PFLAB Quiz Zone — Lab Quiz Prep</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="themes.css">
+
+<script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="bg-blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grid-overlay"></div>
+
+<nav class="topbar">
+  <a class="brand" href="index.html"><span class="logo">Σ</span> BS-CYS · NOTES HUB</a>
+<div class="nav-right">
+  <a class="back-btn" href="index.html">← All Subjects</a>
+  <div class="theme-wrap">
+    <button class="theme-btn" id="themeBtn" title="Switch theme (press T)"><span class="palette">🎨</span><span class="label">Theme</span></button>
+    <div class="theme-menu" id="themeMenu">
+      <button class="theme-opt" data-theme="midnight"><span class="sw sw-midnight"></span><b>Midnight Cyber</b><i>glassy dark · aurora blobs</i></button>
+      <button class="theme-opt" data-theme="matrix"><span class="sw sw-matrix"></span><b>Matrix Terminal</b><i>digital rain · scanlines · mono</i></button>
+      <button class="theme-opt" data-theme="paper"><span class="sw sw-paper"></span><b>Paper Notes</b><i>ruled page · ink · sticky notes</i></button>
+      <button class="theme-opt" data-theme="synthwave"><span class="sw sw-synthwave"></span><b>Synthwave</b><i>chrome · retro sun · grid floor</i></button>
+      <button class="theme-opt" data-theme="aurora"><span class="sw sw-aurora"></span><b>Aurora Light</b><i>soft pastel glass</i></button>
+      <button class="theme-opt" data-theme="cyberpunk"><span class="sw sw-cyberpunk"></span><b>Cyberpunk Neon</b><i>glitch boxes · orbitron · neon</i></button>
+      <button class="theme-opt" data-theme="dracula"><span class="sw sw-dracula"></span><b>Dracula Gothic</b><i>serif italics · purple glow</i></button>
+      <button class="theme-opt" data-theme="coffee"><span class="sw sw-coffee"></span><b>Coffee Warmth</b><i>cozy sepia · serif · warm</i></button>
+      <button class="theme-opt" data-theme="blueprint"><span class="sw sw-blueprint"></span><b>Blueprint</b><i>engineering grid · mono · dashed</i></button>
+      <button class="theme-opt" data-theme="vaporwave"><span class="sw sw-vaporwave"></span><b>Vaporwave</b><i>pastel mall · rounded · lilac</i></button>
+      <button class="theme-opt" data-theme="lava"><span class="sw sw-lava"></span><b>Volcano Lava</b><i>ember glow · fiery accents</i></button>
+      <button class="theme-opt" data-theme="frost"><span class="sw sw-frost"></span><b>Nordic Frost</b><i>icy minimal · clean grotesk</i></button>
+    </div>
+  </div>
+</div>
+</nav>
+
+<header class="subject-hero">
+  <span class="code-lg">CS111L · PFLAB QUIZ ZONE</span>
+  <h1><span>PFLAB — Important Questions &amp; Test Quiz</span></h1>
+  <p>Lab Weeks 1–5 combined (foundations → operators → decisions → loops). <b>Tab 1:</b> high-probability
+     questions with flip answers · <b>Tab 2:</b> scored 15-question MCQ test with explanations.
+     Press <b>1</b> / <b>2</b> to switch. Quiz tomorrow? Do both tabs tonight.</p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="imp"><span class="dot"></span> ⭐ Important Questions</button>
+  <button class="tab-btn" data-tab="test"><span class="dot"></span> 📝 Test Quiz (15 MCQs)</button>
+</div>
+
+<!-- ======================= IMPORTANT ======================= -->
+<section class="tab-panel active" id="imp">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>How to Use This Page</h2>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div>1) Tap every flip card until you can answer <b>before</b> flipping. 2) Recite the
+      short-answer list out loud. 3) Switch to the <b>Test Quiz</b> tab and aim for
+      <b>≥ 12 / 15 (80%)</b>. Missed questions? Read the explanation, then redo.</div>
+    </div>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Lab-viva traps:</b> <code>=</code> vs <code>==</code>, integer division, sentinel
+      <b>not</b> counted, counters reset <b>inside</b> the outer loop, <code>do-while</code> = ask at
+      least once. If a viva asks "why this loop?" — answer with the <b>loop-choice rule</b> below.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⭐ Week 1 — C++ Foundations</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Two lines every C++ program needs?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><code>#include &lt;iostream&gt;</code> (input/output) + <code>int main()</code> — execution <b>begins here</b>; <code>return 0;</code> = normal end.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p><code>cin &gt;&gt;</code> vs <code>cout &lt;&lt;</code>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b><code>cin &gt;&gt;</code> reads</b> keyboard input <i>into</i> a variable · <b><code>cout &lt;&lt;</code> sends</b> text/values to the screen. <code>endl</code> = new line + flush.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Program vs language? Syntax vs logic error?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Program</b> = instructions doing a task · <b>language</b> = notation (C++). <b>Syntax</b> = breaks grammar → won't compile · <b>logic</b> = compiles but wrong answer.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Pick the type: age, GPA, grade, active?, name, PI?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>age → <code>int</code> · GPA → <code>double</code> · grade → <code>char</code> · active → <code>bool</code> · name → <code>string</code> · PI → <code>const double PI = 3.14159;</code> (never changes).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>Why does <code>7 / 2</code> give 3, not 3.5?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Integer division</b> — both operands int → fraction discarded. Fix: make one operand double (<code>7.0 / 2</code> or <code>static_cast&lt;double&gt;(7) / 2</code>) → <b>3.5</b>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>Six-step programming workflow?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Understand → Plan (Input→Process→Output) → Code → Compile → Run &amp; Test → Debug.</b> Debug rule: change <b>one thing</b> at a time.</p></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⭐ Week 2 — Operators, Casting, Formatted Output</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p><code>17 % 5</code> = ? What does <code>%</code> do?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>2</b> — modulus = remainder (17 ÷ 5 → quotient 3, remainder 2). Works on <b>integers only</b>; great for parity: <code>n % 2 == 0</code> → even.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Trace: <code>x=20; x+=5; x-=3; x*=2; x/=4; x%=4;</code></p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>20 → <b>25</b> → <b>22</b> → <b>44</b> → <b>11</b> → <b>3</b>. Compound ops update the <i>existing</i> value — trace after every statement.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Implicit vs explicit conversion? What does <code>static_cast&lt;double&gt;(7) / 2</code> give?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Implicit</b> = compiler converts automatically (int→double). <b>Explicit</b> = you force it with <code>static_cast&lt;&gt;</code>. Result = <b>3.5</b> (now decimal division).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Formatted output: <code>setw</code>, <code>fixed</code>, <code>setprecision</code>, <code>boolalpha</code>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><code>setw(10)</code> = min width for the <b>next</b> item · <code>left/right</code> = alignment · <code>fixed + setprecision(2)</code> = exactly 2 decimals (87.45678 → <b>87.46</b>) · <code>boolalpha</code> prints <b>true/false</b> not 1/0. Header: <code>&lt;iomanip&gt;</code>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p><code>'5' - '0'</code> = ? <code>digit - '0'</code> trick?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>5 (int)</b> — char arithmetic uses ASCII: <code>'5'</code> is 53, <code>'0'</code> is 48 → 53−48 = 5. The standard character-to-integer conversion.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p><code>setprecision(4)</code> without <code>fixed</code> — decimal places or digits?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Without <code>fixed</code> it caps <b>significant digits</b> (123456 → 1.235e+05). <b>Pair it with <code>fixed</code></b> to mean decimal places.</p></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⭐ Week 3 — Characters, Strings &amp; Decisions</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p><code>cin &gt;&gt; name</code> vs <code>getline(cin, fullName)</code>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><code>cin &gt;&gt;</code> reads <b>one word</b> (stops at space) · <code>getline</code> reads the <b>whole line</b>. After <code>cin &gt;&gt; x</code> the leftover newline breaks getline → use <b><code>cin.ignore()</code></b> first.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p><code>&lt;cctype&gt;</code> quartet?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><code>isalpha</code> letter · <code>isdigit</code> digit · <code>isalnum</code> letter OR digit · <code>isspace</code> whitespace · plus <code>toupper</code> / <code>tolower</code>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p><code>=</code> vs <code>==</code> — the #1 mistake?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><code>age = 18</code> <b>assigns</b> (stores 18) · <code>age == 18</code> <b>compares</b> (true/false). <code>if (pass = correct)</code> stores and is always "true-ish" → classic bug.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p><code>&amp;&amp;</code>, <code>||</code>, <code>!</code> in one line?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b><code>&amp;&amp;</code></b> both must be true · <b><code>||</code></b> at least one true · <b><code>!</code></b> reverses. Short-circuit: <code>&amp;&amp;</code> stops at first false, <code>||</code> at first true.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>else-if ladder trace: <code>marks = 74</code>? Switch without break?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>74 ≥ 80 false → 74 ≥ 70 true → prints <b>"B"</b>, rest skipped (first true wins). Missing <code>break</code> in switch = <b>fall-through</b> into the next case.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>What is a flag? Valid range 0–100?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Flag</b> = bool remembering whether something happened (<code>bool validInput = true;</code> → set false on bad input). Range: <code>marks &gt;= 0 &amp;&amp; marks &lt;= 100</code> (never chained 0&lt;=m&lt;=100).</p></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⭐ Week 5 — Loops, Counters, Sentinels, Validation</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Loop-choice rule (viva favorite)?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Fixed count → <b><code>for</code></b> (10 inputs) · unknown count, stop-value → <b><code>while</code> + sentinel</b> (0 = stop) · must run at least once → <b><code>do-while</code></b> (PIN validation).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Sentinel loop — where does 0 go?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Nowhere</b> — 0 is the stop signal, NOT data. Check <code>if (severity == 0) break;</code> <b>before</b> <code>count++</code> / <code>total += …</code> or your totals are poisoned.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Task 4 bug: attempts counter declared outside the user loop?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>User 2 starts with attempts <b>already used</b> — no tries left. Fix: <code>int attempts = 0;</code> must live <b>inside</b> the outer loop (its life begins per user).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Exactly 10 iterations — which <code>for</code>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><code>for (int i = 1; i &lt;= 10; i++)</code> ✅ · <code>i = 0; i &lt;= 10</code> = 11 runs ❌ · <code>i &lt; 10</code> from 1 = 9 runs ❌. Count on paper: 1…10.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>Why <code>do-while</code> for PIN 1000–9999?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Question must be asked <b>at least once</b> → <code>do { read } while (pin &lt; 1000 || pin &gt; 9999);</code> — repeats <b>only while invalid</b>. A plain <code>while</code> might never run.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>Why <code>while (attempts &lt; 3)</code> + <code>break</code> for logins?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Count-controlled limit (max 3 tries) with an <b>early exit</b>: correct password → <code>break</code> (skip remaining tries). One <code>cin</code> inside the loop — never three copies.</p></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎤 Likely Short/Viva Answers (recite these)</h2>
+    <ul class="checklist">
+      <li><b>W1:</b> What is the difference between a syntax error and a logic error? Give one example each.</li>
+      <li><b>W1:</b> Trace IPO (Input → Process → Output) for a rectangle-area program.</li>
+      <li><b>W2:</b> Explain integer division with an example — how do you force decimals?</li>
+      <li><b>W2:</b> What does <code>%</code> return for <code>17 % 5</code>? Where do you use it?</li>
+      <li><b>W2:</b> Implicit vs explicit type conversion — what does <code>static_cast</code> do?</li>
+      <li><b>W3:</b> Why does <code>getline</code> skip input after <code>cin &gt;&gt;</code>? How do you fix it?</li>
+      <li><b>W3:</b> Explain <code>=</code> vs <code>==</code>, and the dangling-else fix with braces.</li>
+      <li><b>W3:</b> What is a flag? Show its use in input validation.</li>
+      <li><b>W5:</b> Difference: sentinel loop vs counter loop — which task used which, and why?</li>
+      <li><b>W5:</b> Fix the bug where the attempts counter sits outside the user loop.</li>
+      <li><b>W5:</b> Rewrite Task 5 using <code>while</code> — what extra step guarantees "ask at least once"?</li>
+      <li><b>W5:</b> Inputs 2,1,2,1,1 for Task 2 → Normal = ? Suspicious = ? (3 and 2)</li>
+    </ul>
+    <p><b>Lab notes:</b> <a href="cs111l.html" style="color:var(--cyan)">CS111L Weeks 1–5 →</a>
+       · <b>Theory:</b> <a href="cs111.html" style="color:var(--cyan)">CS111 notes →</a>
+       · <b>Revision:</b> <a href="rev-pf.html" style="color:var(--cyan)">PF Revision Sprint →</a></p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🌍 Did You Know — online facts about the tools you use</h2>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div>
+        <b>C++</b> was created by <b>Bjarne Stroustrup</b> at <b>Bell Labs in 1979</b> — first called
+        <b>"C with Classes"</b>, renamed <b>C++ in 1983</b> (the <code>++</code> operator means
+        "increment", so C++ = "C incremented"). <code>cout</code> = <b>c</b>haracter <b>out</b>put,
+        <code>cin</code> = <b>c</b>haracter <b>in</b>put. <b>C</b> (1972, Dennis Ritchie) →
+        <b>C++</b> (1979) → <b>Java</b> (1995, James Gosling) → <b>Python</b> (1991, Guido van
+        Rossum) — the family tree of what you're learning. Standard C++ versions (releases) run on
+        every major compiler: <code>g++</code> (GCC, free), Clang, MSVC.
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ======================= TEST ======================= -->
+<section class="tab-panel" id="test">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📝 Test Quiz — 15 MCQs (lab weeks 1, 2, 3 &amp; 5)</h2>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div>Pick one option per question, then hit <b>Check Answers</b>. Explanations unlock after
+      grading. <b>Target: 12/15 (80%)+</b>. Use <b>Reset</b> to retry — aim to beat your score without notes.</div>
+    </div>
+
+    <form id="testForm" onsubmit="return false;">
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">1</span><span>In C++, execution of a program always begins at…</span><span class="q-tag">Week 1</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q1" value="a"><span><code>#include &lt;iostream&gt;</code></span></label>
+          <label class="q-opt"><input type="radio" name="q1" value="b"><span><code>int main()</code></span></label>
+          <label class="q-opt"><input type="radio" name="q1" value="c"><span><code>return 0;</code></span></label>
+          <label class="q-opt"><input type="radio" name="q1" value="d"><span>The first <code>cout</code> line</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> The operating system calls <code>main()</code> — that's where execution starts. <code>#include</code> runs earlier (preprocessor), but the <i>program</i> begins in main.</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">2</span><span>A program compiles fine but prints the wrong result. This is a…</span><span class="q-tag">Week 1</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q2" value="a"><span>Syntax error</span></label>
+          <label class="q-opt"><input type="radio" name="q2" value="b"><span>Runtime error</span></label>
+          <label class="q-opt"><input type="radio" name="q2" value="c"><span>Logic error</span></label>
+          <label class="q-opt"><input type="radio" name="q2" value="d"><span>Compiler error</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C.</b> Syntax = breaks grammar → won't compile. Runtime = crashes while running (e.g., divide by zero). <b>Logic</b> = runs and finishes, but the answer is wrong — found by tracing/testing.</div>
+      </div>
+
+      <div class="q-block" data-answer="a">
+        <p class="q-title"><span class="q-badge">3</span><span><code>cout &lt;&lt; "Age: " &lt;&lt; age;</code> — what does it do?</span><span class="q-tag">Week 1</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q3" value="a"><span>Sends the text and the variable's value to the screen</span></label>
+          <label class="q-opt"><input type="radio" name="q3" value="b"><span>Reads a value from the keyboard into <code>age</code></span></label>
+          <label class="q-opt"><input type="radio" name="q3" value="c"><span>Stores the string "Age:" inside the variable</span></label>
+          <label class="q-opt"><input type="radio" name="q3" value="d"><span>Compile error — two outputs can't be chained</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: A.</b> <code>&lt;&lt;</code> chains output pieces together (insertion). <code>cin &gt;&gt;</code> is the opposite — it extracts keyboard input <i>into</i> variables.</div>
+      </div>
+
+      <div class="q-block" data-answer="d">
+        <p class="q-title"><span class="q-badge">4</span><span>Which data type fits <code>const double PI = 3.14159;</code> best — and why <code>const</code>?</span><span class="q-tag">Week 1</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q4" value="a"><span><code>int</code> — pi is a number</span></label>
+          <label class="q-opt"><input type="radio" name="q4" value="b"><span><code>char</code> — one symbol each</span></label>
+          <label class="q-opt"><input type="radio" name="q4" value="c"><span><code>string</code> — it has digits and a dot</span></label>
+          <label class="q-opt"><input type="radio" name="q4" value="d"><span><code>double</code> — decimal value that must never change</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: D.</b> PI needs decimal precision (<code>double</code>), and <code>const</code> locks it — any later attempt to change it fails to compile. <code>int</code> would truncate to 3.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">5</span><span><code>int a = 17, b = 5;</code> — the expression <code>a % b</code> evaluates to…</span><span class="q-tag">Week 2</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q5" value="a"><span>3</span></label>
+          <label class="q-opt"><input type="radio" name="q5" value="b"><span>2</span></label>
+          <label class="q-opt"><input type="radio" name="q5" value="c"><span>17</span></label>
+          <label class="q-opt"><input type="radio" name="q5" value="d"><span>Compile error — % needs doubles</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> <code>%</code> = remainder of integer division: 17 = 5 × 3 + <b>2</b>. (Quotient 3 is what <code>a / b</code> would give.) Modulus works on integers only.</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">6</span><span><code>int x = 20; x += 5; x -= 3; x *= 2; x /= 4; x %= 4;</code> — final x?</span><span class="q-tag">Week 2</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q6" value="a"><span>20</span></label>
+          <label class="q-opt"><input type="radio" name="q6" value="b"><span>11</span></label>
+          <label class="q-opt"><input type="radio" name="q6" value="c"><span>3</span></label>
+          <label class="q-opt"><input type="radio" name="q6" value="d"><span>4</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C.</b> Trace it: 20→25→22→44→11→ <b>3</b> (11 % 4 = 3). Each compound operator reads, computes, and stores back into the same variable.</div>
+      </div>
+
+      <div class="q-block" data-answer="a">
+        <p class="q-title"><span class="q-badge">7</span><span>To get <b>3.5</b> from integers 7 and 2 you must…</span><span class="q-tag">Week 2</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q7" value="a"><span><code>static_cast&lt;double&gt;(7) / 2</code> (or write 7.0 / 2)</span></label>
+          <label class="q-opt"><input type="radio" name="q7" value="b"><span>Write <code>7 / 2</code> — it already gives 3.5</span></label>
+          <label class="q-opt"><input type="radio" name="q7" value="c"><span>Use <code>7 % 2</code></span></label>
+          <label class="q-opt"><input type="radio" name="q7" value="d"><span>Add <code>fixed</code> before the expression</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: A.</b> int ÷ int = integer division (7/2 → 3, fraction dropped). Cast one operand to double → decimal division → <b>3.5</b>. <code>fixed/setprecision</code> only change <i>printing</i>, not math.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">8</span><span><code>cout &lt;&lt; fixed &lt;&lt; setprecision(2) &lt;&lt; 87.45678;</code> prints…</span><span class="q-tag">Week 2</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q8" value="a"><span>87.45678</span></label>
+          <label class="q-opt"><input type="radio" name="q8" value="b"><span>87.46</span></label>
+          <label class="q-opt"><input type="radio" name="q8" value="c"><span>87.45</span></label>
+          <label class="q-opt"><input type="radio" name="q8" value="d"><span>87</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> <code>fixed + setprecision(2)</code> = exactly <b>two digits after the decimal point</b>, rounded: 87.45678 → <b>87.46</b>. Without <code>fixed</code>, setprecision would count significant digits instead. Needs <code>&lt;iomanip&gt;</code>.</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">9</span><span>After <code>cin &gt;&gt; age;</code> you call <code>getline(cin, name);</code> and name comes back empty. Fix?</span><span class="q-tag">Week 3</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q9" value="a"><span>Reverse the order — getline first, then cin</span></label>
+          <label class="q-opt"><input type="radio" name="q9" value="b"><span>Use <code>cin &gt;&gt; name</code> instead of getline</span></label>
+          <label class="q-opt"><input type="radio" name="q9" value="c"><span>Insert <code>cin.ignore()</code> after <code>cin &gt;&gt; age</code> to discard the leftover newline</span></label>
+          <label class="q-opt"><input type="radio" name="q9" value="d"><span>Declare name as <code>char</code></span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C.</b> <code>cin &gt;&gt;</code> leaves the Enter-key newline in the buffer; <code>getline</code> then reads that empty line. <code>cin.ignore()</code> throws it away so getline reads the real input.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">10</span><span><code>marks = 74</code> with the ladder: ≥80 → "A", ≥70 → "B", ≥60 → "C", else…</span><span class="q-tag">Week 3</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q10" value="a"><span>"A" — 74 is close to 80</span></label>
+          <label class="q-opt"><input type="radio" name="q10" value="b"><span>"B" — first true condition wins, rest skipped</span></label>
+          <label class="q-opt"><input type="radio" name="q10" value="c"><span>"C" — lowest matching band wins</span></label>
+          <label class="q-opt"><input type="radio" name="q10" value="d"><span>All three branches run in order</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> The ladder tests top-down and stops at the <b>first true</b> branch: 74 ≥ 80 false → 74 ≥ 70 true → prints "B". This is why the strictest band (90/80) must come first.</div>
+      </div>
+
+      <div class="q-block" data-answer="d">
+        <p class="q-title"><span class="q-badge">11</span><span>Which expression accepts marks only from 0 to 100?</span><span class="q-tag">Week 3</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q11" value="a"><span><code>0 &lt;= marks &lt;= 100</code></span></label>
+          <label class="q-opt"><input type="radio" name="q11" value="b"><span><code>marks &gt;= 0 || marks &lt;= 100</code></span></label>
+          <label class="q-opt"><input type="radio" name="q11" value="c"><span><code>marks &gt;= 0 &amp;&amp; marks &lt;= 1000</code></span></label>
+          <label class="q-opt"><input type="radio" name="q11" value="d"><span><code>marks &gt;= 0 &amp;&amp; marks &lt;= 100</code></span></label>
+        </div>
+        <div class="q-exp"><b>Answer: D.</b> Range ends join with <b><code>&amp;&amp;</code></b>. Option A isn't valid C++ chaining (C++ has no Python-style chained comparison), B is almost always true, C allows 101–1000.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">12</span><span>In the sentinel loop, input <code>0</code> should…</span><span class="q-tag">Week 5</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q12" value="a"><span>Be added to <code>totalSeverity</code> like any other value</span></label>
+          <label class="q-opt"><input type="radio" name="q12" value="b"><span><code>break</code> the loop before counting — 0 is the stop signal, not data</span></label>
+          <label class="q-opt"><input type="radio" name="q12" value="c"><span>Set <code>count = 0</code> and restart</span></label>
+          <label class="q-opt"><input type="radio" name="q12" value="d"><span>Cause a compile error</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> The sentinel ends the loop and is <b>never</b> counted/added — check it first, then <code>break</code>. Counting it poisons both <code>count</code> and <code>totalSeverity</code>.</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">13</span><span>Which loop reads exactly 10 event codes?</span><span class="q-tag">Week 5</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q13" value="a"><span><code>for (int i = 0; i &lt;= 10; i++)</code></span></label>
+          <label class="q-opt"><input type="radio" name="q13" value="b"><span><code>for (int i = 1; i &lt; 10; i++)</code></span></label>
+          <label class="q-opt"><input type="radio" name="q13" value="c"><span><code>for (int i = 1; i &lt;= 10; i++)</code></span></label>
+          <label class="q-opt"><input type="radio" name="q13" value="d"><span><code>while (10)</code></span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C.</b> 1…10 inclusive = exactly 10 runs. A runs 11 times (0–10), B runs 9 times (1–9), D is an infinite loop (condition always non-zero).</div>
+      </div>
+
+      <div class="q-block" data-answer="a">
+        <p class="q-title"><span class="q-badge">14</span><span>In Task 4 (nested logins), placing <code>int attempts = 0;</code> <i>outside</i> the user loop causes…</span><span class="q-tag">Week 5</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q14" value="a"><span>User 2 to start with attempts already used → zero tries</span></label>
+          <label class="q-opt"><input type="radio" name="q14" value="b"><span>User 1 to get 6 attempts</span></label>
+          <label class="q-opt"><input type="radio" name="q14" value="c"><span>Nothing — counters work the same anywhere</span></label>
+          <label class="q-opt"><input type="radio" name="q14" value="d"><span>A compile error — nested loops can't count</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: A.</b> The counter never resets, so user 1's 3 tries carry over — users 2 and 3 are locked out instantly. Declare counters <b>inside</b> the outer loop, where their life begins.</div>
+      </div>
+
+      <div class="q-block" data-answer="d">
+        <p class="q-title"><span class="q-badge">15</span><span>Why is <code>do-while</code> the right loop for PIN validation (1000–9999)?</span><span class="q-tag">Week 5</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q15" value="a"><span>It runs faster than while for numbers</span></label>
+          <label class="q-opt"><input type="radio" name="q15" value="b"><span>It cannot contain an <code>if</code> statement</span></label>
+          <label class="q-opt"><input type="radio" name="q15" value="c"><span>It never asks the user twice</span></label>
+          <label class="q-opt"><input type="radio" name="q15" value="d"><span>The prompt must show at least once; the loop repeats only while the PIN is invalid</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: D.</b> <code>do-while</code> always executes its body once, then re-checks: <code>while (pin &lt; 1000 || pin &gt; 9999)</code>. A plain <code>while</code> could skip the first question entirely.</div>
+      </div>
+
+      <div class="quiz-bar">
+        <button type="button" class="btn primary" id="quizSubmit">✅ Check Answers</button>
+        <button type="button" class="btn ghost" id="quizReset">↺ Reset</button>
+        <div class="score-pill" id="scoreOut" aria-live="polite"></div>
+      </div>
+
+    </form>
+
+    <p><b>Scored low?</b> Re-read the lab notes → <a href="cs111l.html" style="color:var(--cyan)">CS111L Weeks 1–5 →</a>
+       · <b>Scored high?</b> Recite the <a href="#" onclick="document.querySelector('[data-tab=imp]').click();return false;" style="color:var(--amber)">Important Questions tab →</a></p>
+  </div>
+
+</section>
+
+<footer class="footer">
+  CS111L · PFLAB Quiz Zone · <b>Lab Weeks 1–5</b> · <a href="cs111l.html" style="color:inherit">Lab notes →</a> · Fall 2026
+</footer>
+
+<button id="toTop" title="Back to top">↑</button>
+<script src="script.js"></script>
+<script>
+(function () {
+  var form = document.getElementById('testForm');
+  if (!form) return;
+  var blocks = [].slice.call(form.querySelectorAll('.q-block'));
+  var score = document.getElementById('scoreOut');
+
+  function gradeAll() {
+    var right = 0;
+    blocks.forEach(function (b) {
+      var ans = b.getAttribute('data-answer');
+      var chk = b.querySelector('input:checked');
+      b.classList.add('graded');
+      [].forEach.call(b.querySelectorAll('.q-opt'), function (o) {
+        var i = o.querySelector('input');
+        o.classList.remove('is-right', 'is-wrong');
+        if (i.value === ans) o.classList.add('is-right');
+        if (chk && i === chk && i.value !== ans) o.classList.add('is-wrong');
+      });
+      if (chk && chk.value === ans) right++;
+    });
+    var pct = Math.round(right * 100 / blocks.length);
+    var msg = pct >= 80 ? 'Excellent! Quiz-ready 🎉'
+            : pct >= 60 ? 'Good — revise the red ones, then retry.'
+            : 'Keep revising — read every explanation, then retry.';
+    score.innerHTML = 'Score: <b>' + right + ' / ' + blocks.length + '</b> (' + pct + '%) — ' + msg;
+    score.classList.add('show');
+    score.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  document.getElementById('quizSubmit').addEventListener('click', gradeAll);
+  document.getElementById('quizReset').addEventListener('click', function () {
+    form.reset();
+    blocks.forEach(function (b) {
+      b.classList.remove('graded');
+      [].forEach.call(b.querySelectorAll('.q-opt'), function (o) { o.classList.remove('is-right', 'is-wrong'); });
+    });
+    score.classList.remove('show');
+    score.innerHTML = '';
+    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+</script>
+</body>
+</html>

@@ -7,7 +7,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ================= THEME MANAGER ================= */
-  const THEMES = ['midnight', 'matrix', 'paper', 'synthwave', 'aurora', 'cyberpunk', 'dracula', 'coffee'];
+  const THEMES = [...document.querySelectorAll('.theme-opt')].map(o => o.dataset.theme).filter(Boolean);
+  if (!THEMES.length) THEMES.push('midnight');
   const wrap = document.querySelector('.theme-wrap');
   const btn = document.getElementById('themeBtn');
 

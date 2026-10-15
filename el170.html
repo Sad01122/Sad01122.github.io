@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EL170 — Functional English · Clauses, Phrases &amp; Tenses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="themes.css">
+
+<script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="bg-blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grid-overlay"></div>
+
+<nav class="topbar">
+  <a class="brand" href="index.html"><span class="logo">Σ</span> BS-CYS · NOTES HUB</a>
+<div class="nav-right">
+  <a class="back-btn" href="index.html">← All Subjects</a>
+  <div class="theme-wrap">
+    <button class="theme-btn" id="themeBtn" title="Switch theme (press T)"><span class="palette">🎨</span><span class="label">Theme</span></button>
+    <div class="theme-menu" id="themeMenu">
+      <button class="theme-opt" data-theme="midnight"><span class="sw sw-midnight"></span><b>Midnight Cyber</b><i>glassy dark · aurora blobs</i></button>
+      <button class="theme-opt" data-theme="matrix"><span class="sw sw-matrix"></span><b>Matrix Terminal</b><i>digital rain · scanlines · mono</i></button>
+      <button class="theme-opt" data-theme="paper"><span class="sw sw-paper"></span><b>Paper Notes</b><i>ruled page · ink · sticky notes</i></button>
+      <button class="theme-opt" data-theme="synthwave"><span class="sw sw-synthwave"></span><b>Synthwave</b><i>chrome · retro sun · grid floor</i></button>
+      <button class="theme-opt" data-theme="aurora"><span class="sw sw-aurora"></span><b>Aurora Light</b><i>soft pastel glass</i></button>
+      <button class="theme-opt" data-theme="cyberpunk"><span class="sw sw-cyberpunk"></span><b>Cyberpunk Neon</b><i>glitch boxes · orbitron · neon</i></button>
+      <button class="theme-opt" data-theme="dracula"><span class="sw sw-dracula"></span><b>Dracula Gothic</b><i>serif italics · purple glow</i></button>
+      <button class="theme-opt" data-theme="coffee"><span class="sw sw-coffee"></span><b>Coffee Warmth</b><i>cozy sepia · serif · warm</i></button>
+      <button class="theme-opt" data-theme="blueprint"><span class="sw sw-blueprint"></span><b>Blueprint</b><i>engineering grid · mono · dashed</i></button>
+      <button class="theme-opt" data-theme="vaporwave"><span class="sw sw-vaporwave"></span><b>Vaporwave</b><i>pastel mall · rounded · lilac</i></button>
+      <button class="theme-opt" data-theme="lava"><span class="sw sw-lava"></span><b>Volcano Lava</b><i>ember glow · fiery accents</i></button>
+      <button class="theme-opt" data-theme="frost"><span class="sw sw-frost"></span><b>Nordic Frost</b><i>icy minimal · clean grotesk</i></button>
+    </div>
+  </div>
+</div>
+</nav>
+
+<header class="subject-hero">
+  <span class="code-lg">EL170 · THEORY</span>
+  <h1><span>Functional English — Grammar Core</span></h1>
+  <p>Beginner-friendly grammar with tips, tricks &amp; sentence examples.
+     <b>Tab 1:</b> clauses (independent vs dependent) · <b>Tab 2:</b> phrases (the 4 types) ·
+     <b>Tab 3:</b> the 12 tenses on one grid. Press <b>1</b> / <b>2</b> / <b>3</b> to switch.</p>
+  <p><a class="btn primary" href="quiz-el170.html">📝 FE Quiz</a>
+     <a class="btn ghost" href="grammar-basics.html" style="margin-left:8px;">✏️ Grammar</a>
+     <span style="color:var(--muted);font-size:.9rem;margin-left:8px;">quiz = tenses + parts of speech · grammar = adj · pronouns · preps</span></p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="clauses"><span class="dot"></span> Clauses</button>
+  <button class="tab-btn" data-tab="phrases"><span class="dot"></span> Phrases</button>
+  <button class="tab-btn" data-tab="tenses"><span class="dot"></span> 12 Tenses</button>
+</div>
+
+<!-- ======================= CLAUSES ======================= -->
+<section class="tab-panel active" id="clauses">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>The 10-Second Test — What Is a Clause?</h2>
+    <p><b>Clause = a group of words that has BOTH a subject AND a verb.</b></p>
+    <table>
+      <tr><th>Words</th><th>Subject?</th><th>Verb?</th><th>What is it?</th></tr>
+      <tr><td><b>Jim studied</b></td><td>Jim</td><td>studied</td><td>✅ clause</td></tr>
+      <tr><td><b>in the Sweet Shop</b></td><td>✗ (no doer)</td><td>✗</td><td>✅ phrase, not a clause</td></tr>
+      <tr><td><b>because Jim studied</b></td><td>Jim</td><td>studied</td><td>✅ clause (but dependent!)</td></tr>
+    </table>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>Trick:</b> ask <i>"WHO does the action?"</i> (subject) and <i>"WHAT is happening?"</i> (verb).
+      Both present → clause. Both words in your answer must be in the same group.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Independent vs Dependent Clause</h2>
+    <h3>Independent clause = it can live alone</h3>
+    <p>A group of words with subject + verb that expresses a <b>complete thought</b> — it <b>is a sentence</b>.</p>
+    <p><b>Jim studied in the Sweet Shop for his chemistry quiz.</b> ✅ complete — standalone.</p>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>"So what?" test:</b> read the group of words alone. If your mind asks <i>"…and then? What happened?"</i>
+      it is NOT complete → not independent.</div>
+    </div>
+    <h3>Dependent clause = it needs a partner</h3>
+    <p>Has subject + verb but does <b>NOT</b> express a complete thought — it <b>cannot</b> be a sentence.
+       Usually starts with a <b>dependent marker word</b>.</p>
+    <p><b>When Jim studied in the Sweet Shop for his chemistry quiz…</b> 😕 <i>So what?</i> → dependent.
+       Alone it dangles → that's a <b>fragment</b> error.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Dependent Marker Words — Grouped by Meaning</h2>
+    <table>
+      <tr><th>Group</th><th>Markers</th><th>Example</th></tr>
+      <tr><td>⏰ <b>TIME</b></td><td>after, before, when, whenever, while, since, until, once</td><td><b>After I submitted the assignment,</b> I slept.</td></tr>
+      <tr><td>❓ <b>REASON</b></td><td>because, as, since</td><td><b>Because it was raining,</b> we stayed inside.</td></tr>
+      <tr><td>⚖️ <b>CONDITION</b></td><td>if, unless, whether, even if</td><td><b>If you revise daily,</b> the quiz will feel easy.</td></tr>
+      <tr><td>🔄 <b>CONTRAST</b></td><td>although, though, even though, while</td><td><b>Although he studied all night,</b> he failed.</td></tr>
+      <tr><td>📍 <b>PLACE/OTHER</b></td><td>where, wherever, that, which, who</td><td>The book <b>that I borrowed</b> is late.</td></tr>
+    </table>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>Shortcut:</b> if the sentence <i>starts</i> with one of these markers, it's almost certainly a dependent
+      clause → you MUST attach it to a complete sentence. Grouping by <b>meaning</b> beats memorizing one giant list.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Joining Two Independent Clauses — Only 5 Legal Ways</h2>
+    <table>
+      <tr><th>#</th><th>Method</th><th>Example</th></tr>
+      <tr><td>1</td><td><b>Period</b> (two sentences)</td><td>I like this class. It is very interesting.</td></tr>
+      <tr><td>2</td><td><b>Semicolon ;</b> (close ideas)</td><td>I like this class; it is very interesting.</td></tr>
+      <tr><td>3</td><td><b>Comma + FANBOYS</b></td><td>I like this class<b>, and</b> it is very interesting.</td></tr>
+      <tr><td>4</td><td><b>Make one clause dependent</b></td><td>I like this class <b>because</b> it is very interesting.</td></tr>
+      <tr><td>5</td><td><b>Combine the ideas</b></td><td>This interesting class is one I like.</td></tr>
+    </table>
+    <div class="callout exam"><span class="c-ico">🔑</span>
+      <div><b>FANBOYS</b> = the 7 coordinating conjunctions: <b>F</b>or · <b>A</b>nd · <b>N</b>or · <b>B</b>ut ·
+      <b>O</b>r · <b>Y</b>et · <b>S</b>o. Comma goes <b>before</b> the FANBOYS word when it joins two complete sentences:
+      <i>Jim studied for his quiz, <b>but</b> it was hard to concentrate.</i></div>
+    </div>
+    <p><b>Independent marker words</b> (start a sentence, join with <code>;</code>): also, however, therefore, moreover,
+       nevertheless, consequently, finally, instead, then. Structure: <code>; + however, + sentence</code>.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>The Three Classic Errors (+ Every Fix)</h2>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>❌ Comma splice</b> — a comma alone joining two complete sentences.<br>
+      <b>Wrong:</b> I like this class, it is very interesting.<br>
+      <b>✅ Five fixes:</b>
+      1) I like this class<b>.</b> It is very interesting. ·
+      2) I like this class<b>;</b> it is very interesting. ·
+      3) I like this class<b>, and</b> it is very interesting. ·
+      4) I like this class <b>because</b> it is very interesting. ·
+      5) <b>Because</b> it is very interesting, I like this class.</div>
+    </div>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>❌ Fused sentence / run-on</b> — two sentences, NO punctuation.<br>
+      <b>Wrong:</b> My professor is intelligent I've learned a lot from her.<br>
+      <b>✅</b> …intelligent<b>.</b> I've learned… · …intelligent<b>;</b> I've learned… ·
+      …intelligent<b>, and</b> I've learned… · …intelligent<b>; moreover,</b> I've learned…</div>
+    </div>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>❌ Fragment</b> — a dependent clause pretending to be a sentence.<br>
+      <b>Wrong:</b> Because I forgot the exam was today.<br>
+      <b>✅</b> Because I forgot the exam was today<b>, I didn't study.</b> · I forgot the exam was today.</div>
+    </div>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>Detection trick:</b> two or more subject–verb pairs in one sentence with no punctuation → run-on.
+      Sentence <b>starts</b> with because/while/which/who/until… → check it's attached → else fragment.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Comma Golden Rule (memorize this one line)</h2>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Dependent clause FIRST → comma. Independent clause FIRST → NO comma.</b><br>
+      ✅ <b>After I finished,</b> I watched a movie. · ✅ I watched a movie <b>after I finished.</b><br>
+      Same for FANBOYS: complete-sentence<b>,</b> and complete-sentence.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🔄 Self-Quiz (tap to flip)</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Clause or phrase? — "the tall man in the corner"</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Phrase</b> — no subject+verb pair. ("in the corner" is also a phrase inside it.)</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Clause or phrase? — "She eats eggs"</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Independent clause</b> — She = subject, eats = verb, complete thought → a sentence. ✅</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Independent or dependent? — "When the bell rang"</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Dependent</b> — marker word <b>When</b> → needs a partner clause.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Fix the comma splice: "The test was hard, I still passed."</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>The test was hard<b>, so</b> I still passed. · …hard<b>;</b> I still passed. · …hard<b>.</b> I still passed. · …hard <b>because</b> I still passed. Pick any legal method.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>Fix the fragment: "Although she revised every day."</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Although she revised every day, she</b> still felt nervous. — attach the dependent clause to a complete sentence.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>Comma needed? "I will pass if I revise." vs "If I revise, I will pass."</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>First: <b>no comma</b> (independent first). Second: <b>comma</b> (dependent first). ✅</p></div>
+      </div></div>
+    </div>
+    <p><b>Remember (3 bullets):</b> clause = subject + verb; independent = complete thought; never glue two
+       sentences with just a comma; <b>dependent first → comma, independent first → no comma.</b></p>
+    <p><b>Source:</b> Purdue OWL + GMU Writing Center + Grammarly · <b>Related:</b> Phrases tab · Tenses tab</p>
+  </div>
+
+</section>
+
+<!-- ======================= PHRASES ======================= -->
+<section class="tab-panel" id="phrases">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>The One Test — Phrase vs Clause</h2>
+    <table>
+      <tr><th></th><th>Has subject + verb?</th><th>Can stand alone?</th><th>Example</th></tr>
+      <tr><td><b>Phrase</b></td><td>❌ never both</td><td>❌ never</td><td>in the morning · the tall man in a blue jacket</td></tr>
+      <tr><td><b>Clause</b></td><td>✅ always</td><td>independent ✅ / dependent ❌</td><td>She eats eggs · because she eats eggs</td></tr>
+    </table>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>Nesting trick:</b> 📦 <b>phrases live inside clauses, clauses live inside sentences.</b><br>
+      <i>She eats eggs in the morning.</i> → clause <i>She eats eggs</i> + phrase <i>in the morning</i>.<br>
+      <b>Fast test:</b> point at a group of words — <i>"WHO does the action?"</i> If no subject doing a verb → phrase.
+      <i>Meows so loudly</i> 😕 (who?) → phrase. <i>That cat meows so loudly</i> ✅ → clause.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>The HEAD Trick — Every Phrase Has One Boss Word</h2>
+    <div class="code-block">the  tall  man  in a blue jacket
+ ↓    ↓    ↑        ↓
+det  adj  HEAD   postmodifier</div>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Cover everything except the head</b> — what's left is the phrase's type &amp; job.<br>
+      <i>the tall man in a blue jacket</i> → cover modifiers → <b>man</b> (a noun) → <b>noun phrase</b>.<br>
+      <i>aware of the danger</i> → <b>aware</b> (an adjective) → <b>adjective phrase</b>.<br>
+      <i>very well</i> → <b>well</b> (an adverb) → <b>adverb phrase</b>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>The Four Phrase Types</h2>
+    <table>
+      <tr><th>Type</th><th>Formula</th><th>Example</th><th>Its job?</th></tr>
+      <tr><td>🧢 <b>Noun Phrase (NP)</b></td><td>(Det) + (Adj) + <b>HEAD NOUN</b> + (Post)</td><td>the tall man in a blue jacket · a feeling of isolation</td><td>Subject / object / object of preposition</td></tr>
+      <tr><td>📐 <b>Prepositional (PP)</b></td><td><b>Preposition</b> + noun phrase</td><td>under the table (WHERE) · after noon (WHEN) · on time (HOW)</td><td>Usually adverb job (answers where/when/how)</td></tr>
+      <tr><td>🎨 <b>Adjective (AdjP)</b></td><td>(Intensifier) + <b>ADJ</b> + (Complement) — no subject–verb</td><td>very cold · aware of the danger · a big square pink box</td><td>Which one? / what kind?</td></tr>
+      <tr><td>🌧️ <b>Adverb (AdvP)</b></td><td>(Intensifier) + <b>ADV</b> / prep phrase / infinitive</td><td>very well (HOW) · in the morning (WHEN) · to pass (WHY)</td><td>Modifies verb/adj/adv/clause</td></tr>
+    </table>
+    <div class="callout exam"><span class="c-ico">🔑</span>
+      <div><b>Job tests:</b> replace the phrase with <i>he/she/it</i> → still works = <b>noun's job</b>.
+      Ask <b>"which one? / what kind?"</b> → answer = <b>adjective's job</b> (<i>Cats from the alleys…</i> → WHICH cats?).
+      Ask <b>when/where/how/why</b> → answer = <b>adverb's job</b> (<i>She eats bread in the morning</i> = WHEN).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>The Trap: Adjective Phrase vs Adjective Clause</h2>
+    <table>
+      <tr><th></th><th>Adj <b>phrase</b></th><th>Adj <b>clause</b></th></tr>
+      <tr><td>subject + verb?</td><td>❌</td><td>✅</td></tr>
+      <tr><td>example</td><td><b>afraid of dogs</b></td><td><b>who didn't pass inspection</b></td></tr>
+      <tr><td>in a sentence</td><td>The dog <b>afraid of thunder</b> hid.</td><td>My car, <b>which didn't pass inspection</b>, broke down.</td></tr>
+    </table>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>Rule:</b> a clause has a mini-sentence inside it (subject+verb); a phrase doesn't. That's the whole test.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Common Mistakes (❌ wrong / ✅ right)</h2>
+    <ul class="checklist">
+      <li>❌ Standalone phrase = <b>fragment</b> — <i>In the morning.</i> (as a short answer to "when?" it's fine; as a sentence, no.) ✅ <i>I run <b>in the morning</b>.</i></li>
+      <li>❌ Double head — <i>The box is <b>on the table</b> is broken.</i> ✅ <i>The box <b>on the table</b> is broken.</i></li>
+      <li>❌ Fake subject in a phrase — <i>he in the morning</i>. ✅ clause needs a real verb: <i>he <b>runs</b> in the morning.</i></li>
+      <li>✅ Ending with a preposition (<i>Put it on.</i>) is fine in modern English — but <i>The table is on</i> is incomplete → ✅ <i>The table is <b>on the ground</b>.</i></li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🔄 Self-Quiz (tap to flip)</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Phrase or clause? — "ten sleepy sheep"</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Phrase</b> — no verb at all. (Noun phrase: det + adj + head.)</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Phrase or clause? — "children laughed"</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Clause</b> — children = subject, laughed = verb → independent. ✅</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Head word of "a feeling of isolation"?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>feeling</b> (a noun) — cover the rest and it still stands → noun phrase.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>What job does "from the alleys" do in "Cats from the alleys control the mice"?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Adjective job</b> — it answers WHICH cats. (Prepositional phrase doing an adjective's work.)</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>What job does "in the morning" do in "She eats bread in the morning"?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Adverb job</b> — it answers WHEN.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>Adj phrase or adj clause? — "who gave me this lovely gift"</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Clause</b> — who = subject, gave = verb → dependent adjective clause.</p></div>
+      </div></div>
+    </div>
+    <p><b>Remember (3 bullets):</b> no subject+verb pair → phrase · subject+verb present → clause ·
+       <b>find the head</b>, then name the job (noun / adjective / adverb) by the question it answers.</p>
+    <p><b>Source:</b> Phrases lecture + YourDictionary + Grammarly + LibreTexts · <b>Related:</b> Clauses tab · Tenses tab</p>
+  </div>
+
+</section>
+
+<!-- ======================= TENSES ======================= -->
+<section class="tab-panel" id="tenses">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 The Big Trick — It's Not 12 Rules, It's a 3 × 4 Grid</h2>
+    <table>
+      <tr><th></th><th><b>SIMPLE</b><br>(a fact)</th><th><b>CONTINUOUS</b><br>(in progress)</th><th><b>PERFECT</b><br>(already done)</th><th><b>PERF. CONTINUOUS</b><br>(how long)</th></tr>
+      <tr><td><b>PRESENT</b></td><td>I work</td><td>I am working</td><td>I have worked</td><td>I have been working</td></tr>
+      <tr><td><b>PAST</b></td><td>I worked</td><td>I was working</td><td>I had worked</td><td>I had been working</td></tr>
+      <tr><td><b>FUTURE</b></td><td>I will work</td><td>I will be working</td><td>I will have worked</td><td>I will have been working</td></tr>
+    </table>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>Three tricks inside the grid:</b><br>
+      1) <b>The name builds the formula:</b> <i>past perfect continuous</i> = past (<code>had</code>) + perfect (<code>been</code>) + continuous (<code>-ing</code>) → <code>had been working</code>.<br>
+      2) <b>Aspects never change meaning:</b> simple = fact/habit · continuous = be+ing (in progress) · perfect = have+V3 (done; links times) · PC = have been+ing (duration).<br>
+      3) <b>Time only changes the helping verb:</b> present = (nothing)/have · past = had/was-were · future = will.</div>
+    </div>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Picture trick — draw a timeline:</b> PAST —— 📍NOW ——→ FUTURE. Continuous = a <b>wavy line</b> (action
+      stretched out) · Perfect = an arrow <b>pointing back</b> (finished <i>before</i> another time) · Perfect continuous = wavy line + arrow (duration up to a point).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🟢 Present Tenses — Use · Formula · Signal · Trap</h2>
+    <table>
+      <tr><th>Tense</th><th>When to use</th><th>Formula</th><th>Signal words</th><th>Example</th></tr>
+      <tr><td><b>Present Simple</b></td><td>habits, facts, universal truths</td><td>V1 (+s/es he/she/it); do/does for Q/N</td><td>always, usually, every day, never</td><td>She reads books daily. The sun rises in the east.</td></tr>
+      <tr><td><b>Present Continuous</b></td><td>happening now, temporary actions, arrangements</td><td>am/is/are + V-ing</td><td>now, at the moment, right now</td><td>She is reading a novel now.</td></tr>
+      <tr><td><b>Present Perfect</b></td><td>completed actions with present relevance, experiences</td><td>has/have + V3</td><td>just, already, yet, ever, never, since, for</td><td>I have finished my homework.</td></tr>
+      <tr><td><b>Present Perfect Cont.</b></td><td>started in past, continues now (duration focus)</td><td>has/have been + V-ing</td><td>for, since, all day, how long</td><td>She has been teaching for five years.</td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Traps:</b> ❌ <i>I am teaching in university</i> (permanent) → ✅ <i>I <b>teach</b> at the university</i> ·
+      ❌ <i>He work</i> → ✅ <i>He work<b>s</b></i> · ❌ <i>I have seen him yesterday</i> → ✅ <i>I <b>saw</b> him yesterday</i> ·
+      ❌ <i>I am working here since 2015</i> → ✅ <i>I <b>have been</b> working here since 2015</i> ·
+      ❌ <i>I am living in Lahore</i> (permanent) → ✅ <i>I live in Lahore</i>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🟡 Past Tenses</h2>
+    <table>
+      <tr><th>Tense</th><th>When to use</th><th>Formula</th><th>Signal words</th><th>Example</th></tr>
+      <tr><td><b>Past Simple</b></td><td>completed action at a definite past time</td><td>V2; did for Q/N</td><td>yesterday, last week, ago, in 2010</td><td>He went to school yesterday.</td></tr>
+      <tr><td><b>Past Continuous</b></td><td>in progress at a past moment (background scene)</td><td>was/were + V-ing</td><td>while, when, at 8 p.m.</td><td>She was cooking dinner when I arrived.</td></tr>
+      <tr><td><b>Past Perfect</b></td><td>the "past of the past" — earlier of two past events</td><td>had + V3</td><td>by the time, before, already, after</td><td>He had left before I arrived.</td></tr>
+      <tr><td><b>Past Perfect Cont.</b></td><td>duration up to a past point</td><td>had been + V-ing</td><td>for, since, all morning</td><td>She had been studying for three hours before the exam started.</td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Traps:</b> ❌ <i>Did you went?</i> → ✅ <i>Did you <b>go</b>?</i> ·
+      ❌ <i>I finished my work before he came</i> → ✅ <i>I <b>had finished</b> my work before he came</i> (earlier of two past events) ·
+      ❌ <i>He was working there for two years before he left</i> → ✅ <i>He <b>had been working</b>…</i></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🔵 Future Tenses</h2>
+    <table>
+      <tr><th>Tense</th><th>When to use</th><th>Formula</th><th>Signal words</th><th>Example</th></tr>
+      <tr><td><b>Future Simple</b></td><td>decisions now, promises, predictions</td><td>will + V1</td><td>tomorrow, next week, soon</td><td>I will call you tomorrow.</td></tr>
+      <tr><td><b>Future Continuous</b></td><td>in progress at a future moment</td><td>will be + V-ing</td><td>this time tomorrow, at 5 p.m.</td><td>She will be waiting for you at 5 p.m.</td></tr>
+      <tr><td><b>Future Perfect</b></td><td>completed before a future point</td><td>will have + V3</td><td>by next week, by Friday, before</td><td>By next week, I will have completed the project.</td></tr>
+      <tr><td><b>Future Perfect Cont.</b></td><td>duration up to a future point (rarest)</td><td>will have been + V-ing</td><td>by next year, for a decade</td><td>By next year, she will have been teaching here for a decade.</td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Traps:</b> ❌ overusing <i>will</i> for fixed plans → ✅ <i>I <b>am meeting</b> her at 3 pm</i> (arranged) ·
+      ❌ <i>I will finish my homework by 8</i> → ✅ <i>I <b>will have finished</b> by 8</i> (deadline rule).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Signal-Word Cheat Sheet (fastest way to pick a tense)</h2>
+    <table>
+      <tr><th>You see…</th><th>Think</th></tr>
+      <tr><td>every day, usually, always, often, never</td><td><b>Present Simple</b></td></tr>
+      <tr><td>now, right now, at the moment</td><td><b>Present Continuous</b></td></tr>
+      <tr><td>just, already, yet, ever, never, <b>since</b>, <b>for</b> + still true</td><td><b>Present Perfect</b></td></tr>
+      <tr><td>yesterday, last…, ago, in 2020</td><td><b>Past Simple</b></td></tr>
+      <tr><td>when/while + past moment</td><td><b>Past Continuous</b></td></tr>
+      <tr><td>by the time, before, after + two past events</td><td><b>Past Perfect</b></td></tr>
+      <tr><td>tomorrow, next…, soon</td><td><b>Future (will)</b></td></tr>
+      <tr><td>by + future deadline</td><td><b>Future Perfect</b></td></tr>
+      <tr><td>for/since + how long at a point</td><td><b>… Perfect Continuous</b></td></tr>
+    </table>
+    <div class="callout exam"><span class="c-ico">🔑</span>
+      <div><b>"Can you name when?" test:</b> specific finished time → <b>past simple</b> (<i>I lived there in 2019</i>);
+      unspecified / still true now → <b>present perfect</b> (<i>I have lived here for 5 years</i>).
+      <b>for</b> = length of time · <b>since</b> = starting point (<i>since 2023</i>).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧩 Building Tricks — Questions, Negatives, -s</h2>
+    <ul class="checklist">
+      <li><b>First helping verb moves</b> in questions/negatives: <i>Has she been studying?</i> · <i>She hasn't been studying.</i></li>
+      <li>Only <b>simple present &amp; past</b> need do/does/did — every other tense already has an auxiliary: <i>Does she study? · Is she studying? · Will she study?</i></li>
+      <li><b>Third-person -s:</b> he/she/it → works, goes, teaches (#1 spoken-English mistake worldwide).</li>
+      <li>After <b>did</b>, use V1: <i>Did you go</i> ✅ — <i>Did you went</i> ❌.</li>
+      <li><b>Stative verbs</b> (know, understand, love, want, need, seem) → never continuous: <i>I understand</i> ✅ — <i>I am understanding</i> ❌.</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📚 Learn These First + Practice That Works</h2>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>Research-backed order:</b> 1) Present Simple → 2) Present Continuous → 3) Past Simple →
+      4) will / going to → 5) Present Perfect — <b>these five cover ~95% of everyday English.</b>
+      Then: Past Continuous → Past Perfect → Present Perfect Continuous → future continuous/perfect last
+      (rare, even for natives).</div>
+    </div>
+    <ul class="checklist">
+      <li><b>One-verb drill:</b> take <i>study</i> and fill every grid cell: I study · I am studying · I studied · I have studied… then repeat with verbs from YOUR life (work, play, cook).</li>
+      <li><b>Rewrite a paragraph</b> in the past, then in the future (forces tense switching).</li>
+      <li><b>Cover the examples</b> in the tables above and make your own sentence per tense — passive reading → active grammar.</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🔄 Self-Quiz (tap to flip)</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Sarah usually ____ to work at 8 a.m. (go)</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>goes</b> — habit + she → present simple with -s.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Be quiet! The baby ____. (sleep)</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>is sleeping</b> — happening right now → present continuous.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>I ____ that movie three times. (see)</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>have seen</b> — life experience, no specific past time → present perfect.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>We ____ dinner when the lights went out. (eat)</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>were eating</b> — in progress, interrupted by a past event → past continuous.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>He ____ the office before I arrived. (leave)</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>had left</b> — earlier of two past events → past perfect.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>By Friday, they ____ the project. (finish)</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>will have finished</b> — by + future deadline → future perfect.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q7</span><p>She ____ English for two hours — she needs a break. (study)</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>has been studying</b> — for + duration continuing now → present perfect continuous.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q8</span><p>Build "past perfect continuous" of work — using the name trick.</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>past (had) + perfect (been) + continuous (-ing) = <b>had been working</b> ✅</p></div>
+      </div></div>
+    </div>
+    <p><b>Remember (3 bullets):</b> <b>3 times × 4 aspects = 12 tenses</b> — the NAME gives you the FORMULA ·
+       signal words decide faster than rules · learn the <b>first five</b> deeply and fix the
+       <b>-s, did+V1, since vs for</b> traps.</p>
+    <p><b>Source:</b> course Tenses flow chart + International English Test + KSE Academy + LexFizz + Grammarly ·
+       <b>Related:</b> Clauses tab · Phrases tab</p>
+  </div>
+
+</section>
+
+<footer class="footer">
+  EL170 · Functional English · <b>Clauses · Phrases · Tenses</b> · <a href="index.html" style="color:inherit">Notes Hub →</a> · Fall 2026
+</footer>
+
+<button id="toTop" title="Back to top">↑</button>
+<script src="script.js"></script>
+</body>
+</html>
