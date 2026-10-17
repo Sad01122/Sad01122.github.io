@@ -44,12 +44,13 @@
 <header class="subject-hero">
   <span class="code-lg">CY104 · THEORY</span>
   <h1><span>Introduction to Cyber Security</span></h1>
-  <p>Foundations, CIA, principles, AAA &amp; attack frameworks · Dr. Muhammad Kamran</p>
+  <p>Foundations, AAA &amp; frameworks · Social engineering, scams &amp; insider threats · Dr. Muhammad Kamran</p>
 </header>
 
 <div class="tabs">
   <button class="tab-btn active" data-tab="lec1"><span class="dot"></span> Lecture 1 · Foundations</button>
   <button class="tab-btn" data-tab="lec2"><span class="dot"></span> Lecture 2 · AAA &amp; Frameworks</button>
+  <button class="tab-btn" data-tab="lec3"><span class="dot"></span> Lecture 3 · Social Engineering</button>
   <button class="tab-btn" data-tab="course"><span class="dot"></span> 📚 Course Contents</button>
 </div>
 
@@ -394,6 +395,237 @@
 
 </section>
 
+<!-- ======================= LECTURE 3 ======================= -->
+<section class="tab-panel" id="lec3">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Opening Problem — The "Dream Internship" DM</h2>
+    <p>A recruiter on LinkedIn offers a paid internship under a familiar brand → the message "expires in <b>10 minutes</b>" →
+       asks for CNIC, bank details and a <b>code just received on your phone (OTP)</b> → 40 minutes later your email is in a stranger's hands.
+       <b>Social engineering never hacks the computer — it hacks the decision.</b>
+       Trust, hurry and helpfulness are <i>normal</i> behavior; the attacker only changes the context.</p>
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>Attack vocabulary:</b> Pretext (recruiter + brand) → Pressure (10-min expiry) → Request (CNIC/bank/OTP) → Harm (email takeover).
+      <b>Safest intervention = before the OTP is shared</b> — after that, defense becomes recovery.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>The 5-Step Attack Chain — and Where to Break It</h2>
+    <div class="diagram">
+      <div class="dg-cap">Every social-engineering attack follows the same pipeline</div>
+      <svg viewBox="0 0 740 150">
+        <rect class="box pulse" x="8" y="26" width="120" height="54" rx="10"/>
+        <rect class="box p pulse" x="146" y="26" width="120" height="54" rx="10"/>
+        <rect class="box a pulse" x="284" y="26" width="120" height="54" rx="10"/>
+        <rect class="box r pulse" x="422" y="26" width="120" height="54" rx="10"/>
+        <rect class="box pulse" x="560" y="26" width="120" height="54" rx="10"/>
+        <path class="flow" d="M128 53 H146"/><path class="flow" d="M266 53 H284"/>
+        <path class="flow" d="M404 53 H422"/><path class="flow" d="M542 53 H560"/>
+        <path class="head p" d="M146 53 l-10 -5 v10 z"/><path class="head a" d="M284 53 l-10 -5 v10 z"/>
+        <path class="head a" d="M422 53 l-10 -5 v10 z"/><path class="head" d="M560 53 l-10 -5 v10 z"/>
+        <text x="68" y="48">1 · RESEARCH</text><text x="68" y="66" class="sub">public info</text>
+        <text x="206" y="48">2 · PRETEXT</text><text x="206" y="66" class="sub">believable story</text>
+        <text x="344" y="48">3 · CONTACT</text><text x="344" y="66" class="sub">email · call · DM</text>
+        <text x="482" y="48">4 · PRESSURE</text><text x="482" y="66" class="sub">urgency · fear · reward</text>
+        <text x="620" y="48">5 · ACTION</text><text x="620" y="66" class="sub">pay · share · install</text>
+        <path class="flow" d="M482 80 V104"/>
+        <rect class="box g pulse" x="402" y="104" width="160" height="38" rx="10"/>
+        <text x="482" y="121">BREAK HERE</text><text x="482" y="136" class="sub">pause + verify = attack dies</text>
+      </svg>
+    </div>
+    <ul>
+      <li><b>Why we fall — 4 shortcuts:</b> FAST (emotion acts before analysis) · ATTENTION (one urgent detail controls focus) ·
+          ASSUMPTION (story feels familiar) · COMPLIANCE (a tiny action is requested immediately).</li>
+      <li><b>Defense =</b> create time (Pause) + use a trusted verification path (call the official number) → the pressure evaporates and the story collapses.</li>
+    </ul>
+    <div class="callout trick"><span class="c-ico brain">🧠</span>
+      <div><b>Chain trick:</b> <b>R · P · C · P · A</b> — "<b>R</b>esearch the target, <b>P</b>retext a story, <b>C</b>ontact them, <b>P</b>ressure, <b>A</b>ction."
+      <b>PVLR</b> is applied exactly at step 4.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Methods — Same Trick, Different Channel</h2>
+    <table>
+      <tr><th>Method</th><th>Channel</th><th>How it works</th></tr>
+      <tr><td><b>Phishing</b></td><td>Mass email</td><td>Fake link/login page blasted to many targets at once</td></tr>
+      <tr><td><b>Spear phishing</b></td><td>1 researched target</td><td>Personalized with your real details — the internship DM case</td></tr>
+      <tr><td><b>Smishing</b></td><td>SMS</td><td>"Your parcel/bank needs verification — tap this link"</td></tr>
+      <tr><td><b>Vishing</b></td><td>Voice call</td><td>"I'm from IT/bank support, read me the code I just sent"</td></tr>
+      <tr><td><b>Quishing</b></td><td>QR code</td><td>The QR hides the real URL — you cannot see it before scanning; posters get covered with fake QRs</td></tr>
+      <tr><td><b>Pretexting</b></td><td>Any + a story</td><td>Invented role (auditor, boss, vendor) makes the request look necessary</td></tr>
+      <tr><td><b>Tailgating</b></td><td>Physical door</td><td>Unauthorized person follows you through a secure door ("can you hold it?")</td></tr>
+      <tr><td><b>Shoulder surfing</b></td><td>Physical view</td><td>Watches screen, keyboard or PIN — over your shoulder or a hidden camera</td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Exam favorites:</b> <b>V</b>ishing = <b>V</b>oice · <b>S</b>mishing = <b>S</b>MS · <b>Q</b>uishing = <b>Q</b>R ·
+      <b>Whaling</b> = spear phishing aimed at the big fish (CEO/CFO who can approve wire transfers).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🚩 Red Flags → ✅ Safe Move</h2>
+    <table>
+      <tr><th>🚩 What you see (flags get stronger in combination)</th><th>✅ What you do</th></tr>
+      <tr><td>Sender/domain mismatch — microsof.com, bank-secure.co, lookalike letters</td><td>Verify on the official site/app <b>you already have</b></td></tr>
+      <tr><td>"Expires in 10 minutes" · threat of suspension · prize waiting · "last warning"</td><td>Pause — urgency exists to stop you thinking</td></tr>
+      <tr><td>Request for <b>password, OTP, card PIN</b> or an advance-fee payment</td><td><b>No legitimate party ever asks for these</b> — refuse and report</td></tr>
+      <tr><td>Link text ≠ real destination (hover first) · unexpected attachment/QR</td><td>Don't open it "just to investigate"</td></tr>
+      <tr><td>Odd context — boss emailing at 3 a.m. to send a secret transfer</td><td>Confirm via a known number or in person</td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Influence levers attackers pull</b> — name the lever and it loses power:
+      <b>authority</b> (boss/IT) · <b>fear</b> ("account closes today") · <b>scarcity/urgency</b> (only 10 minutes) ·
+      <b>consensus</b> ("everyone already paid") · <b>familiarity</b> (looks exactly like your real bank) · <b>commitment</b> (small yes → big yes).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>PVLR — The Defensive Habit</h2>
+    <p style="text-align:center"><b>Verify • Pause • Report • Protect</b> — lecture motto</p>
+    <div class="diagram">
+      <div class="dg-cap">Four steps between the pressure and your decision</div>
+      <svg viewBox="0 0 740 110">
+        <rect class="box pulse" x="8" y="26" width="140" height="56" rx="10"/>
+        <rect class="box p pulse" x="178" y="26" width="140" height="56" rx="10"/>
+        <rect class="box a pulse" x="348" y="26" width="140" height="56" rx="10"/>
+        <rect class="box g pulse" x="518" y="26" width="140" height="56" rx="10"/>
+        <rect class="box g pulse" x="688" y="36" width="46" height="36" rx="8"/>
+        <path class="flow" d="M148 54 H178"/><path class="flow" d="M318 54 H348"/>
+        <path class="flow" d="M488 54 H518"/><path class="flow" d="M658 54 H688"/>
+        <path class="head p" d="M178 54 l-10 -5 v10 z"/><path class="head a" d="M348 54 l-10 -5 v10 z"/>
+        <path class="head g" d="M518 54 l-10 -5 v10 z"/><path class="head g" d="M688 54 l-10 -5 v10 z"/>
+        <text x="78" y="48">P · PAUSE</text><text x="78" y="66" class="sub">don't act under pressure</text>
+        <text x="248" y="48">V · VERIFY</text><text x="248" y="66" class="sub">call the known number</text>
+        <text x="418" y="48">L · LIMIT</text><text x="418" y="66" class="sub">share the minimum</text>
+        <text x="588" y="48">R · REPORT</text><text x="588" y="66" class="sub">alert org · keep evidence</text>
+        <text x="711" y="58">Safe</text>
+      </svg>
+    </div>
+    <p><b>BEC (Business Email Compromise):</b> the attacker watches real invoices, impersonates the vendor/boss, then sends
+       "new bank details". <b>Any payment change → call a known number and confirm verbally — never reply to the email.</b>
+       Scams reuse one pattern: impersonation → false promise → crisis pressure → payment trick → use of stolen access
+       (job, support/remote-access, prize, charity, marketplace frauds).</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Information Disorder — Mis / Dis / Mal</h2>
+    <table>
+      <tr><th>Type</th><th>True?</th><th>Intent to harm?</th><th>Example</th></tr>
+      <tr><td><b>Mis</b>information</td><td>No</td><td>No — honest mistake</td><td>Forwarded "campus closed tomorrow" that is simply false</td></tr>
+      <tr><td><b>Dis</b>information</td><td>No</td><td><b>Yes — deliberate</b></td><td>Fake/edited viral clip made to smear a person or swing opinion</td></tr>
+      <tr><td><b>Mal</b>information</td><td><b>Yes</b></td><td><b>Yes — used to harm</b></td><td>Genuine private message or leak used for blackmail</td></tr>
+    </table>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>Reality check:</b> popularity ≠ truth. A screenshot with no date, no source and no official notice —
+      however many shares — is still not proof. Ask: <b>WHO</b> posted · <b>WHAT</b> evidence links · <b>WHY</b> spread it · <b>WHEN</b> was it made.
+      In a crisis, verify from official channels before you forward.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Identity Theft — Steal Data → Act as You</h2>
+    <table>
+      <tr><th>Type</th><th>What the attacker does</th></tr>
+      <tr><td><b>Financial</b></td><td>Uses card/CNIC/bank details for payments, transfers, purchases</td></tr>
+      <tr><td><b>Account</b></td><td>Takes over email/social/gaming — impersonates you, resets other passwords</td></tr>
+      <tr><td><b>Synthetic</b></td><td>Mixes your real identifiers with invented data to build a brand-new fake identity</td></tr>
+    </table>
+    <ul>
+      <li><b>Data targeted:</b> CNIC · address · phone · email · credentials · card/bank · photos.
+          <b>Paths in:</b> phishing · breaches · public oversharing · shoulder surfing · insider copy.</li>
+      <li><b>⚠️ Warning signs:</b> unknown logins/devices · unexpected transactions · profile/email changes you didn't make ·
+          strange messages "you" sent · bank/university mail that never arrives.</li>
+    </ul>
+    <div class="pipeline">
+      <div class="pipe-step">🔒 Secure</div><span class="pipe-arrow">→</span>
+      <div class="pipe-step">📞 Contact</div><span class="pipe-arrow">→</span>
+      <div class="pipe-step">📄 Document</div><span class="pipe-arrow">→</span>
+      <div class="pipe-step">🛡 Monitor</div>
+    </div>
+    <p><b>Recovery in words:</b> change credentials &amp; revoke all sessions → call bank/provider/official authority →
+       save messages, dates and transaction IDs as evidence → watch accounts until the case closes.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Insider Threat — Trusted Access, Misused</h2>
+    <p><b>Lab case:</b> a lab assistant with legitimate access bulk-downloads the whole student dataset to a personal USB before leaving.
+       Nothing was "hacked" — the access was real. <b>Insider risk = permission + opportunity (+ motive: money, grievance, or plain mistake).</b></p>
+    <table>
+      <tr><th>Control</th><th>Applied to the case</th></tr>
+      <tr><td><b>Prevent</b></td><td>Least privilege (only the rows needed) · approval for bulk export · block personal USBs (device control)</td></tr>
+      <tr><td><b>Detect</b></td><td>Logging + alert on unusual download volume or out-of-hours activity</td></tr>
+      <tr><td><b>Respond</b></td><td>Revoke access immediately · preserve logs · investigate · notify affected students</td></tr>
+    </table>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>Earliest useful control = least privilege</b> (ties back to Lecture 02) — you can't misuse rights you were never given.
+      Same reason the old shared-lab account failed: everyone had everything, nobody could be attributed.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Memory Tricks</h2>
+    <ul class="trick-list">
+      <li><b>Attack chain</b> → <b>R-P-C-P-A</b>: Research · Pretext · Contact · Pressure · Action.
+        <span class="mem">"Rita's Pretext Convinces Paul After" — kill it at Pressure with PVLR.</span></li>
+      <li><b>PVLR</b> → <b>P</b>ause, <b>V</b>erify, <b>L</b>imit, <b>R</b>eport — always in that order.
+        <span class="mem">Never act before you verify: P comes before V… alphabetically and morally.</span></li>
+      <li><b>Mis / Dis / Mal</b> → <b>Mis</b>take (wrong, no intent) · <b>Dis</b>honest (wrong on purpose) · <b>Mal</b>ice (true, used to hurt).</li>
+      <li><b>Identity recovery</b> → <b>S-C-D-M</b>: Secure → Contact → Document → Monitor.
+        <span class="mem">"Stop the bleeding, Call everyone, Keep the proof, Watch the accounts."</span></li>
+      <li><b>Channel words</b> → <b>V</b>oice = <b>V</b>ishing · <b>S</b>MS = <b>S</b>mishing · <b>Q</b>R = <b>Q</b>uishing · <b>Whaling</b> = big fish.</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Lecture 3</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Social engineering in one sentence?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Psychological manipulation of people into revealing information or taking unsafe actions — it hacks <b>decisions</b>, not computers.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Phishing vs spear phishing?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Phishing = generic blast to many. Spear phishing = one target, personalized with researched details (the fake internship DM).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Vishing · smishing · quishing — one line each?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>V</b>oice call · <b>S</b>MS · <b>Q</b>R code — same deception, different channel.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Mis vs dis vs mal-information?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>False, no harm intent (mis) · false, deliberate (dis) · true, used to harm (mal).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>Identity theft — 3 types?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Financial</b> (payments) · <b>Account</b> (login takeover) · <b>Synthetic</b> (real + invented data mixed).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>What actually breaks the attack chain?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>PVLR at the pressure step:</b> pause, then verify through a separate known channel — no action taken = no compromise.</p></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Likely Exam Questions</h2>
+    <ol>
+      <li>Describe the social-engineering attack pattern (5 stages) and show how <b>PVLR</b> breaks it.</li>
+      <li>Differentiate phishing, spear phishing, smishing, vishing, quishing and pretexting — one example each.</li>
+      <li>What is identity theft? Give its types, three warning signs and the recovery steps.</li>
+      <li>Explain misinformation vs disinformation vs malinformation with an example of each.</li>
+      <li>The lab assistant copied the full student dataset — which controls <b>prevent, detect and respond</b>?</li>
+    </ol>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Defense playbook (research):</b> verify through the official number you already have (never one inside the message) ·
+      hover before you click · MFA everywhere + a password manager (no reuse) · nobody legitimate ever wants your password/OTP ·
+      report immediately and preserve the evidence — reporting protects everyone still on the attacker's list.</div>
+    </div>
+  </div>
+
+</section>
+
 <!-- ======================= COURSE CONTENTS ======================= -->
 <section class="tab-panel" id="course">
   <div class="note-card">
@@ -421,8 +653,8 @@
     <h2><span class="bar"></span>📚 15-Week Planner</h2>
     <div class="course-tl">
       <div class="course-week"><span class="wk">WEEK 1</span><div><h4>Introduction to Cyber Security</h4><p>Course intro · What is cyber security? · Basic cyber security model</p><div class="acts"><span>Pfleeger Ch.1</span><span>CLO-1</span></div></div></div>
-      <div class="course-week"><span class="wk">WEEK 2</span><div><h4>Principles · AAA · Threats &amp; Attack Frameworks</h4><p>Principles of cybersecurity · Authentication, Authorization &amp; Accounting · Threat actors, attack vectors &amp; frameworks</p><div class="acts"><span>Stallings Ch.1</span><span>CLO-1</span><span>★ you are here</span></div></div></div>
-      <div class="course-week"><span class="wk">WEEK 3</span><div><h4>Social Engineering</h4><p>Methods of social engineering · fraud, scams &amp; influence campaigns · identity theft · insider threat</p><div class="acts"><span>CS Fundamentals Ch.3</span><span>CLO-2</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 2</span><div><h4>Principles · AAA · Threats &amp; Attack Frameworks</h4><p>Principles of cybersecurity · Authentication, Authorization &amp; Accounting · Threat actors, attack vectors &amp; frameworks</p><div class="acts"><span>Stallings Ch.1</span><span>CLO-1</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 3</span><div><h4>Social Engineering</h4><p>Methods of social engineering · fraud, scams &amp; influence campaigns · identity theft · insider threat</p><div class="acts"><span>CS Fundamentals Ch.3</span><span>CLO-2</span><span>★ you are here</span></div></div></div>
       <div class="course-week"><span class="wk">WEEK 4</span><div><h4>Offensive Security</h4><p>Malware &amp; exploits · attack vectors (attachments, pop-ups, links, deception) · types of malware · malware attack lifecycle</p><div class="acts"><span>Cyber Sec for Dummies Ch.1-2</span><span>CLO-2</span></div></div></div>
       <div class="course-week"><span class="wk">WEEK 5</span><div><h4>Operating System Security</h4><p>Linux security · Windows security · OS hardening</p><div class="acts"><span>Stallings Ch.12</span><span>CLO-3</span></div></div></div>
       <div class="course-week"><span class="wk">WEEK 6</span><div><h4>Security in Networks</h4><p>Network concepts &amp; attacks · firewalls · VPNs · IDS/IPS · content filtering · threat intelligence · trusted computing</p><div class="acts"><span>Pfleeger Ch.6</span><span>CLO-2</span></div></div></div>
@@ -454,7 +686,7 @@
 </section>
 
 <footer class="footer">
-  CY104 · Introduction to Cyber Security · <b>Lectures 1–2 + Course Guide</b> · BS Cyber Security · Fall 2026
+  CY104 · Introduction to Cyber Security · <b>Lectures 1–3 + Course Guide</b> · BS Cyber Security · Fall 2026
 </footer>
 
 <button id="toTop" title="Back to top">↑</button>

@@ -444,11 +444,11 @@ body {
 .diagram .box.g { stroke: var(--green); }
 .diagram .box.a { stroke: var(--amber); }
 .diagram .box.r { stroke: var(--red); }
-.diagram .box.f { fill: var(--grad); stroke: none; }
+.diagram .box.f { fill: var(--cyan); fill-opacity: 0.28; stroke: var(--cyan); stroke-width: 1.8; }
 .diagram text { fill: var(--text); font-family: var(--font-head, Poppins, sans-serif); font-size: 13px; font-weight: 700; text-anchor: middle; }
 .diagram text.sub { fill: var(--muted); font-size: 10.5px; font-weight: 500; }
 .diagram text.big { font-size: 16px; font-weight: 900; }
-.diagram text.ongrad { fill: #05101f; }
+.diagram text.ongrad { fill: var(--text); }
 .diagram .flow { stroke: var(--cyan); stroke-width: 2.2; fill: none; stroke-dasharray: 9 7; animation: dash 1.1s linear infinite; }
 .diagram .flow.p { stroke: var(--purple); }
 .diagram .flow.g { stroke: var(--green); }
@@ -578,7 +578,7 @@ body {
 .anim-rainbow:hover { animation: rainbowShift 2.4s linear infinite; }
 .subject-card:hover .t-ico, .tip-card:hover .t-ico { animation: wiggle 0.5s ease-in-out; display: inline-block; }
 .diagram svg .box { transition: fill 0.3s ease, stroke 0.3s ease; }
-.diagram svg .box:hover { fill: rgba(34, 211, 238, 0.22); }
+.diagram svg .box:hover { fill: var(--cyan); fill-opacity: 0.45; }
 
 @media (prefers-reduced-motion: reduce) {
   .anim-float, .anim-glow, .anim-wiggle:hover, .anim-in, .anim-rainbow:hover { animation: none !important; }

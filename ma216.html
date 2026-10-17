@@ -44,11 +44,15 @@
 <header class="subject-hero">
   <span class="code-lg">MA216 · THEORY</span>
   <h1><span>Discrete Structures</span></h1>
-  <p>Lecture 1–2 · The Foundations: Logic and Proofs — propositions, connectives, truth tables &amp; bit operations</p>
+  <p>Lectures 1–9 · Full logic track — propositions, quantifiers, equivalences &amp; rules of inference</p>
 </header>
 
 <div class="tabs">
   <button class="tab-btn active" data-tab="lec12"><span class="dot"></span> Lecture 1–2 · Propositional Logic</button>
+  <button class="tab-btn" data-tab="lec34"><span class="dot"></span> Lecture 3–4 · Predicates &amp; Quantifiers</button>
+  <button class="tab-btn" data-tab="lec5"><span class="dot"></span> Lecture 5 · Logical Equivalences</button>
+  <button class="tab-btn" data-tab="lec67"><span class="dot"></span> Lecture 6–7 · Existential &amp; Negation</button>
+  <button class="tab-btn" data-tab="lec89"><span class="dot"></span> Lecture 8–9 · Rules of Inference</button>
 </div>
 
 <!-- ======================= LECTURE 1-2 ======================= -->
@@ -284,8 +288,445 @@
 
 </section>
 
+<!-- ======================= LECTURES 3-4 ======================= -->
+<section class="tab-panel" id="lec34">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Translating English → Logic: the Keyword Job</h2>
+    <p>Method: <b>mark atomic facts → give each a letter → box the connective keywords → assemble → sanity-check</b> with one scenario.</p>
+    <table>
+      <tr><th>English keyword</th><th>Logic form</th><th>Memory hook</th></tr>
+      <tr><td>"A if B"</td><td><b>B → A</b></td><td>"if" flips: B is the hypothesis</td></tr>
+      <tr><td>"A only if B"</td><td><b>A → B</b></td><td>B is the gate — it must hold, so it's the conclusion</td></tr>
+      <tr><td>"P unless Q"</td><td><b>¬Q → P</b></td><td>"unless" = "if not"</td></tr>
+      <tr><td>"A is necessary for B"</td><td><b>B → A</b></td><td>necessary = right side</td></tr>
+      <tr><td>"A is sufficient for B"</td><td><b>A → B</b></td><td>sufficient = left side</td></tr>
+    </table>
+    <table>
+      <tr><th>Worked example (slides)</th><th>Letters</th><th>Result</th></tr>
+      <tr><td>"You can access the Internet from campus <b>only if</b> you are a CS major or you are not a freshman."</td><td>a, c, f</td><td><b>a → (c ∨ ¬f)</b></td></tr>
+      <tr><td>"You cannot ride the roller coaster if you are under 4 ft <b>unless</b> you are older than 16."</td><td>q, r, s</td><td><b>(r ∧ ¬s) → ¬q</b></td></tr>
+      <tr><td>"The automated reply <b>cannot</b> be sent <b>when</b> the file system is full."</td><td>p, g</td><td><b>g → ¬p</b></td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>#1 class mistake:</b> treating <b>"only if"</b> like <b>"if"</b>. Read it as a gate: "A happens <i>only when</i> B" — B is the <b>necessary</b> condition on the right of →.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Consistency &amp; Boolean Web Search</h2>
+    <ul>
+      <li><b>Consistent specifications</b> = at least one truth assignment makes <b>all</b> of them true (no hidden contradiction).</li>
+      <li><b>Worked example:</b> p = "diagnostic stored in buffer", q = "retransmitted". Specs <code>p ∨ q</code>, <code>¬p</code>, <code>p → q</code> → start from the unit clause <b>¬p ⇒ p = F</b> → p ∨ q forces <b>q = T</b> → p→q is vacuously T. <b>Consistent (p=F, q=T).</b> Add <b>¬q</b> → contradiction with q=T → <b>inconsistent</b>.</li>
+      <li><b>Boolean search</b> = logic on words: NEW AND MEXICO AND UNIVERSITIES · (NEW AND MEXICO OR ARIZONA) AND UNIVERSITIES (AND binds tighter) · (MEXICO AND UNIVERSITIES) NOT NEW — Google writes NOT as <b>-</b>.</li>
+    </ul>
+    <div class="callout trick"><span class="c-ico brain">🧠</span>
+      <div><b>Consistency shortcut:</b> attack the <b>unit clauses</b> first (a lone ¬p tells you p = F instantly), then propagate — no full truth table needed for 2–3 variables.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Predicates &amp; How to Evaluate Them</h2>
+    <p><b>Definition.</b> A <b>predicate</b> = a sentence containing a finite number of variables that <b>becomes a statement</b> after specific values are substituted.
+       The <b>domain</b> = the set of all values that may be substituted.</p>
+    <table>
+      <tr><th>Predicate</th><th>Substitution</th><th>Statement</th><th>Truth</th></tr>
+      <tr><td>P(x): x &gt; 3</td><td>x = 4</td><td>4 &gt; 3</td><td><b>T</b></td></tr>
+      <tr><td>P(x): x &gt; 3</td><td>x = 2</td><td>2 &gt; 3</td><td><b>F</b></td></tr>
+      <tr><td>Q(x, y): x = y + 3</td><td>(1, 2)</td><td>1 = 2 + 3</td><td><b>F</b></td></tr>
+      <tr><td>Q(x, y): x = y + 3</td><td>(3, 0)</td><td>3 = 0 + 3</td><td><b>T</b></td></tr>
+      <tr><td>A(c, n): computer c on network n (MATH1 on CAMPUS2 only)</td><td>A(MATH1, CAMPUS1)</td><td>—</td><td><b>F</b></td></tr>
+      <tr><td>…same…</td><td>A(MATH1, CAMPUS2)</td><td>—</td><td><b>T</b></td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Universal Quantifier ∀ — One Counterexample Kills It</h2>
+    <div class="diagram">
+      <div class="dg-cap">∀x P(x) over a finite domain is just a big AND</div>
+      <svg viewBox="0 0 740 120">
+        <rect class="box f pulse" x="8" y="30" width="130" height="52" rx="10"/>
+        <rect class="box pulse" x="178" y="30" width="110" height="52" rx="10"/>
+        <rect class="box pulse" x="308" y="30" width="110" height="52" rx="10"/>
+        <rect class="box pulse" x="438" y="30" width="110" height="52" rx="10"/>
+        <rect class="box pulse" x="568" y="30" width="110" height="52" rx="10"/>
+        <rect class="box g pulse" x="698" y="40" width="36" height="32" rx="8"/>
+        <path class="flow" d="M138 56 H178"/><path class="flow" d="M288 56 H308"/>
+        <path class="flow" d="M418 56 H438"/><path class="flow" d="M548 56 H568"/>
+        <path class="flow" d="M678 56 H698"/>
+        <text x="73" y="50">∀x P(x)</text><text x="73" y="68" class="sub">domain {1,2,3,4}</text>
+        <text x="233" y="50">P(1)</text><text x="233" y="68" class="sub">1² &lt; 10 ✓</text>
+        <text x="363" y="50">P(2)</text><text x="363" y="68" class="sub">2² &lt; 10 ✓</text>
+        <text x="493" y="50">P(3)</text><text x="493" y="68" class="sub">3² &lt; 10 ✓</text>
+        <text x="623" y="50">P(4)</text><text x="623" y="68" class="sub">4² &lt; 10 ✗</text>
+        <text x="716" y="60">F</text>
+        <text x="370" y="108" class="sub">one false conjunction term = whole ∀ is false</text>
+      </svg>
+    </div>
+    <ul>
+      <li><b>Read ∀x P(x)</b> as "for all x" / "for every x" / "for each" / "given any" / "for arbitrary". An element with P false = <b>counterexample</b>.</li>
+      <li><b>∀x (x + 1 &gt; x)</b> over ℝ → <b>T</b> (holds for every real).</li>
+      <li><b>∀x (x &lt; 2)</b> over ℝ → <b>F</b>; counterexample x = 3.</li>
+      <li><b>∀x (x² &gt; 0)</b> over ℤ → <b>F</b>; counterexample x = 0 (0² = 0, not &gt; 0).</li>
+      <li><b>Domain matters:</b> ∀x(x² &gt; x) is <b>F over ℝ</b> (e.g. x = ½) but <b>T over ℤ</b> — x² &gt; x ⇔ x(x−1) &gt; 0 ⇔ x &lt; 0 or x &gt; 1, and no integer sits strictly between 0 and 1.</li>
+    </ul>
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>Exam habit:</b> hunting a counterexample? Try <b>boundaries first</b> — 0, 1, −1, ½. x = 0 kills x² &gt; 0; x = ½ kills x² &gt; x; x = 3 kills x &lt; 2.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Lectures 3–4</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>"A only if B" translates to?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>A → B</b> — "only if" introduces the <b>necessary</b> condition (the conclusion). "A if B" would be B → A.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>"P unless Q" ≈ ?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>¬Q → P</b> — unless means "if not". Roller-coaster slide: (r ∧ ¬s) → ¬q.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Consistent specifications — definition?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>There is <b>at least one</b> truth assignment making <b>all</b> of them true — no forced contradiction. Diagnostic example: p=F, q=T satisfies everything until you add ¬q.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>How do you falsify ∀x P(x)?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Give <b>one counterexample</b> — a single domain element where P is false. To prove it true, check every element (finite domain → big conjunction).</p></div>
+      </div></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ======================= LECTURE 5 ======================= -->
+<section class="tab-panel" id="lec5">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Tautology · Contradiction · Contingency · ≡</h2>
+    <table>
+      <tr><th>Personality</th><th>Definition</th><th>Example</th></tr>
+      <tr><td><b>Tautology</b></td><td>Always true, whatever the variables are</td><td>p ∨ ¬q (true in every row)</td></tr>
+      <tr><td><b>Contradiction</b></td><td>Always false</td><td>p ∧ ¬q (false in every row)</td></tr>
+      <tr><td><b>Contingency</b></td><td>Neither — depends on the inputs</td><td>p → q (only dies at T→F)</td></tr>
+    </table>
+    <p><b>Definition.</b> p and q are <b>logically equivalent</b> — written <b>p ≡ q</b> — when <b>p ↔ q is a tautology</b>, i.e. their final truth-table columns <b>match on every row</b>.</p>
+    <div class="callout trick"><span class="c-ico brain">🧠</span>
+      <div><b>Prove ≡ in 4 steps:</b> build both tables side by side → finish final columns → compare → identical ⇒ p ↔ q is always T ⇒ p ≡ q. (4 rows for 2 vars, 8 for 3 — never skip subformula columns.)</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>De Morgan's Laws — and Negating English</h2>
+    <table>
+      <tr><th>Law</th><th>Form</th><th>Read aloud</th></tr>
+      <tr><td>De Morgan 1</td><td><b>¬(p ∧ q) ≡ ¬p ∨ ¬q</b></td><td>"not both" = "at least one is not"</td></tr>
+      <tr><td>De Morgan 2</td><td><b>¬(p ∨ q) ≡ ¬p ∧ ¬q</b></td><td>"not either" = "neither"</td></tr>
+      <tr><td>n-variable form</td><td>¬(p₁∨…∨pₙ) ≡ ¬p₁∧…∧¬pₙ (and the ∧↔∨ mirror)</td><td>negation <b>flips every operator</b> and hits <b>every atom</b></td></tr>
+    </table>
+    <ul>
+      <li><b>Negate:</b> "Miguel has a cellphone <b>and</b> a laptop" → ¬p ∨ ¬q (he's missing at least one).</li>
+      <li><b>Negate:</b> "Heather <b>or</b> Steve will go to the concert" → ¬p ∧ ¬q (neither goes).</li>
+      <li><b>Conditional disguise (proved by table):</b> <b>p → q ≡ ¬p ∨ q</b> — every if-then is really an "or". From it follow the contrapositive <b>p→q ≡ ¬q→¬p</b> and <b>p ∨ q ≡ ¬p → q</b>.</li>
+      <li><b>Distributive (both directions):</b> p ∨ (q ∧ r) ≡ (p ∨ q) ∧ (p ∨ r) · p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r).</li>
+      <li><b>Absorption (easy to forget):</b> p ∨ (p ∧ q) ≡ p · p ∧ (p ∨ q) ≡ p — the lone p swallows the phrase containing p.</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Table 6 — The 10 Equivalence Families</h2>
+    <table>
+      <tr><th>Family</th><th>Equivalences</th></tr>
+      <tr><td><b>Identity</b></td><td>p ∧ T ≡ p · p ∨ F ≡ p</td></tr>
+      <tr><td><b>Domination</b></td><td>p ∨ T ≡ T · p ∧ F ≡ F</td></tr>
+      <tr><td><b>Idempotent</b></td><td>p ∨ p ≡ p · p ∧ p ≡ p</td></tr>
+      <tr><td><b>Double negation</b></td><td>¬(¬p) ≡ p</td></tr>
+      <tr><td><b>Commutative</b></td><td>p ∨ q ≡ q ∨ p · p ∧ q ≡ q ∧ p</td></tr>
+      <tr><td><b>Associative</b></td><td>(p ∨ q) ∨ r ≡ p ∨ (q ∨ r) · same for ∧</td></tr>
+      <tr><td><b>Distributive</b></td><td>p ∨ (q ∧ r) ≡ (p ∨ q) ∧ (p ∨ r) · p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r)</td></tr>
+      <tr><td><b>De Morgan</b></td><td>¬(p ∨ q) ≡ ¬p ∧ ¬q · ¬(p ∧ q) ≡ ¬p ∨ ¬q</td></tr>
+      <tr><td><b>Absorption</b></td><td>p ∨ (p ∧ q) ≡ p · p ∧ (p ∨ q) ≡ p</td></tr>
+      <tr><td><b>Negation</b></td><td>p ∨ ¬p ≡ T · p ∧ ¬p ≡ F</td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Family grouping trick:</b> Identity/Domination pair with <b>T</b> and <b>F</b> · Negation pairs are duals of each other · De Morgan + Distributive both "flip and spread" · Absorption = "lone p wins".</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Tables 7 &amp; 8 — Conditionals &amp; Biconditionals</h2>
+    <table>
+      <tr><th>Table 7 — conditionals</th></tr>
+      <tr><td>p → q ≡ ¬p ∨ q (the master rewrite)</td></tr>
+      <tr><td>p → q ≡ ¬q → ¬p (contrapositive — the only safe flip)</td></tr>
+      <tr><td>p ∨ q ≡ ¬p → q · p ∧ q ≡ ¬(p → ¬q) · ¬(p → q) ≡ p ∧ ¬q</td></tr>
+      <tr><td>(p→q) ∧ (p→r) ≡ p → (q∧r) · (p→r) ∧ (q→r) ≡ (p∨q) → r</td></tr>
+      <tr><td>(p→q) ∨ (p→r) ≡ p → (q∨r) · (p→r) ∨ (q→r) ≡ (p∧q) → r</td></tr>
+    </table>
+    <table>
+      <tr><th>Table 8 — biconditionals</th></tr>
+      <tr><td>p ↔ q ≡ (p → q) ∧ (q → p)  (both directions)</td></tr>
+      <tr><td>p ↔ q ≡ (p ∧ q) ∨ (¬p ∧ ¬q)  (same truth values)</td></tr>
+      <tr><td>p ↔ q ≡ ¬p ↔ ¬q  (flipping both sides keeps the ↔)</td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Classic non-equivalence:</b> p → q is <b>NOT</b> q → p (that's the <b>converse</b>). The only equivalent flip is the <b>contrapositive</b> ¬q → ¬p. If you forget a Table 7 row, rebuild it in 10 seconds from p→q ≡ ¬p∨q + De Morgan.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Lecture 5</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>p ≡ q means…?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>p ↔ q is a tautology</b> — their truth-table columns are identical on every row.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>De Morgan in one breath?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>¬(p ∧ q) ≡ ¬p ∨ ¬q · ¬(p ∨ q) ≡ ¬p ∧ ¬q — flip the operator, negate every atom. Works for n variables too.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>The conditional "master rewrite"?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>p → q ≡ ¬p ∨ q</b> — from it derive the contrapositive and every Table 7 row.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Absorption law?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>p ∨ (p ∧ q) ≡ p · p ∧ (p ∨ q) ≡ p — the lone p swallows the phrase containing p.</p></div>
+      </div></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ======================= LECTURES 6-7 ======================= -->
+<section class="tab-panel" id="lec67">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Existential Quantifier ∃ — "One Witness Is Enough"</h2>
+    <p><b>Definition 3.</b> The existential quantification of P(x) is the proposition
+       <b>"There exists an element x in the domain such that P(x)."</b> Notation <b>∃x P(x)</b>;
+       ∃ = the <b>existential quantifier</b>. Read as: "there is an x such that P(x)" · "there is <b>at least one</b> x" · "for some x P(x)".</p>
+    <table>
+      <tr><th>Example</th><th>Domain</th><th>Witness / failure</th><th>Truth</th></tr>
+      <tr><td>∃x (x &gt; 3)</td><td>ℝ</td><td>x = 4 works</td><td><b>T</b></td></tr>
+      <tr><td>∃x (x = x + 1)</td><td>ℝ</td><td>false for every x</td><td><b>F</b></td></tr>
+      <tr><td>∃x (x² &gt; 10)</td><td>{1, 2, 3, 4}</td><td>P(1)∨P(2)∨P(3)∨P(4); 16 &gt; 10 ✓</td><td><b>T</b></td></tr>
+    </table>
+    <ul>
+      <li><b>Finite domain → big OR:</b> ∃x P(x) ≡ P(x₁) ∨ P(x₂) ∨ … ∨ P(xₙ) — true iff <b>at least one</b> term is true.
+          (Lecture 3–4: ∀ was the big <b>AND</b>.)</li>
+      <li><b>Uniqueness quantifier ∃! (or ∃¹):</b> "there exists a <b>unique</b> x" / "exactly one" / "one and only one" —
+          e.g. ∃!x (x − 1 = 0) over ℝ (the one and only witness is x = 1).</li>
+    </ul>
+    <div class="callout trick"><span class="c-ico brain">🧠</span>
+      <div><b>∀ vs ∃:</b> ∀ = <b>AND-gate</b> (one counterexample kills it) · ∃ = <b>OR-gate</b> (one witness saves it).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Precedence &amp; Quantified Equivalence</h2>
+    <ul>
+      <li><b>Quantifiers bind tighter than every propositional operator.</b> ∀x P(x) ∨ Q(x) means <b>(∀x P(x)) ∨ Q(x)</b>,
+          <i>not</i> ∀x(P(x) ∨ Q(x)) — always parenthesize when mixing.</li>
+      <li><b>Definition 4.</b> Statements with predicates/quantifiers are <b>logically equivalent</b> (≡) iff they have the
+          <b>same truth value no matter which predicates and which domain</b> are used — no truth table can check "all predicates", hence the two-direction argument style.</li>
+      <li><b>Ex 14:</b> ∀x(P(x) ∧ Q(x)) ≡ ∀x P(x) ∧ ∀x Q(x) — prove → then ←, using a generic element a of the domain
+          (same a on both sides; predicates share the domain, so no conflict).</li>
+    </ul>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>∀ distributes over ∧ — but do not assume it distributes over ∨</b>, and ∃ has its own mirror habits.
+      Stick to the laws on the slides + quantifier De Morgan below.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>De Morgan for Quantifiers — Negating ∃ and ∀</h2>
+    <table>
+      <tr><th>Negation</th><th>Equivalent</th><th>When is the negation true?</th></tr>
+      <tr><td>¬∃x P(x)</td><td><b>∀x ¬P(x)</b></td><td>Every x fails P</td></tr>
+      <tr><td>¬∀x P(x)</td><td><b>∃x ¬P(x)</b></td><td>Some x fails P</td></tr>
+    </table>
+    <ul>
+      <li><b>Ex 15:</b> "There is an honest politician" ∃xH(x) → negation "Every politician is dishonest" ∀x¬H(x).
+          "All Americans eat cheeseburgers" ∀xC(x) → "Some American does not eat cheeseburgers" ∃x¬C(x).
+          <i>Caution: "All politicians are not honest" is ambiguous English — avoid it.</i></li>
+      <li><b>Ex 16:</b> ¬∀x(x² &gt; x) ≡ ∃x(x² ≤ x) · ¬∃x(x² = 2) ≡ ∀x(x² ≠ 2).</li>
+      <li><b>Ex 17:</b> ¬∀x(P(x) → Q(x)) ≡ ∃x ¬(P→Q) ≡ <b>∃x(P(x) ∧ ¬Q(x))</b> — quantifier swap + the Lecture 5 conditional-negation law.</li>
+    </ul>
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>Mechanical recipe:</b> swap ∀↔∃ → push ¬ inside → simplify the inside with propositional De Morgan / ¬(P→Q) ≡ P∧¬Q.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Translating English (Domain Matters!) &amp; Nested Quantifiers</h2>
+    <table>
+      <tr><th>English</th><th>Domain = the group</th><th>Domain = everyone</th></tr>
+      <tr><td>"Every student in this class has studied calculus."</td><td>∀x C(x)</td><td><b>∀x(S(x) → C(x))</b></td></tr>
+      <tr><td>"Some student in this class has visited Mexico."</td><td>∃x M(x)</td><td><b>∃x(S(x) ∧ M(x))</b></td></tr>
+      <tr><td>"Every student has visited Canada or Mexico."</td><td>∀x(C(x) ∨ M(x))</td><td><b>∀x(S(x) → (C(x) ∨ M(x)))</b></td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Two traps from the slides:</b> ∀x(S ∧ C) would claim <i>everyone</i> is a student AND studied calculus — wrong.
+      ∃x(S → M) is <b>vacuously true</b> for any person outside the class (F→T and F→F are both true) — existentials need <b>∧</b>, universals need <b>→</b>.</div>
+    </div>
+    <ul>
+      <li><b>Nested quantifiers</b> = a quantifier inside the scope of another. Example on the slides:
+          <b>∀x∃y (x + y = 0)</b> — "for every x there is a y that cancels it" (y = −x always exists in ℝ).</li>
+      <li>Two-place predicates (V(x, y) = "x visited country y") replace inventing M(x), C(x) when the pattern repeats.</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Lectures 6–7</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>∃x P(x) — three English readings?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>"There is an x with P(x)" · "at least one x" · "for some x, P(x)" — true iff <b>one witness</b> exists.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Negate quantifiers in one move?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Swap ∀↔∃ and negate inside: ¬∀xP ≡ ∃x¬P · ¬∃xP ≡ ∀x¬P.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>"Some student in class visited Mexico" over domain = all people?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>∃x(S(x) ∧ M(x))</b> — never ∃x(S→M): that's vacuously true for every non-student.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Read ∀x∃y(x + y = 0).</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>"For every x there exists a y with x + y = 0" — true over ℝ (y = −x). Nested: the ∃ sits inside the ∀.</p></div>
+      </div></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ======================= LECTURES 8-9 ======================= -->
+<section class="tab-panel" id="lec89">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Arguments — What "Valid" Really Means</h2>
+    <ul>
+      <li><b>Argument:</b> a sequence of statements ending in a <b>conclusion</b>; the rest are <b>premises</b>.</li>
+      <li><b>Valid argument:</b> it is <b>impossible</b> for all premises to be true and the conclusion false —
+          the conclusion <i>must</i> follow from the premises' truth.</li>
+      <li><b>Argument form:</b> the same shape with variables; premises p₁…pₙ, conclusion q → valid iff
+          <b>(p₁ ∧ … ∧ pₙ) → q is a tautology</b>.</li>
+      <li><b>Slide examples:</b> password→network (modus ponens shape) · Honda-or-Saturn + no-Honda → Saturn (disjunctive syllogism shape) ·
+          toasters of gold → gold are time machines → toasters are time machines (hypothetical syllogism shape).</li>
+    </ul>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Valid ≠ true conclusion.</b> The √2 argument (√2 &gt; 3 ⇒ (√2)² &gt; 3²) is a <b>valid modus ponens form</b>
+      but its premise is false — and the conclusion is false too. Form only says: <i>if</i> the premises were true, the conclusion couldn't be false.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Table 1 — The 8 Rules of Inference</h2>
+    <div class="diagram">
+      <div class="dg-cap">Modus ponens — the base rule everything is built on</div>
+      <svg viewBox="0 0 740 150">
+        <rect class="box pulse" x="8" y="20" width="150" height="46" rx="10"/>
+        <rect class="box p pulse" x="8" y="86" width="150" height="46" rx="10"/>
+        <rect class="box f pulse" x="250" y="53" width="160" height="46" rx="10"/>
+        <rect class="box g pulse" x="520" y="53" width="180" height="46" rx="10"/>
+        <path class="flow" d="M158 43 H205 V76 H250"/>
+        <path class="flow p" d="M158 109 H205 V76"/>
+        <path class="flow" d="M410 76 H520"/>
+        <path class="head" d="M520 76 l-10 -5 v10 z"/>
+        <text x="83" y="47">p</text><text x="83" y="62" class="sub">"it is snowing"</text>
+        <text x="83" y="111">p → q</text><text x="83" y="126" class="sub">"snow ⇒ skiing"</text>
+        <text x="330" y="70">PREMISES</text><text x="330" y="88" class="sub">both true</text>
+        <text x="610" y="70">∴ q</text><text x="610" y="88" class="sub">"we will go skiing"</text>
+        <text x="370" y="140" class="sub">tautology: (p ∧ (p → q)) → q — "mode that affirms"</text>
+      </svg>
+    </div>
+    <table>
+      <tr><th>Rule</th><th>Premises</th><th>∴ Conclusion</th><th>Nickname</th></tr>
+      <tr><td><b>Modus ponens</b></td><td>p, p → q</td><td>q</td><td>law of detachment</td></tr>
+      <tr><td><b>Modus tollens</b></td><td>¬q, p → q</td><td>¬p</td><td>mode that denies</td></tr>
+      <tr><td><b>Hypothetical syllogism</b></td><td>p → q, q → r</td><td>p → r</td><td>transitivity / chain</td></tr>
+      <tr><td><b>Disjunctive syllogism</b></td><td>p ∨ q, ¬p</td><td>q</td><td>OR-elimination</td></tr>
+      <tr><td><b>Addition</b></td><td>p</td><td>p ∨ q</td><td>—</td></tr>
+      <tr><td><b>Simplification</b></td><td>p ∧ q</td><td>p</td><td>—</td></tr>
+      <tr><td><b>Conjunction</b></td><td>p, q</td><td>p ∧ q</td><td>—</td></tr>
+      <tr><td><b>Resolution</b></td><td>p ∨ q, ¬p ∨ r</td><td>q ∨ r</td><td>theorem-prover engine</td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Building Longer Arguments (Ex 6–8) &amp; the Two Fallacies</h2>
+    <p><b>Ex 6 chain:</b> premises ¬p∧q, r→p, ¬r→s, s→t ∴ t</p>
+    <table>
+      <tr><th>Step</th><th>Reason</th></tr>
+      <tr><td>1. ¬p ∧ q</td><td>Premise</td></tr>
+      <tr><td>2. ¬p</td><td>Simplification from (1)</td></tr>
+      <tr><td>3. r → p</td><td>Premise</td></tr>
+      <tr><td>4. ¬r</td><td>Modus tollens from (2),(3)</td></tr>
+      <tr><td>5. ¬r → s</td><td>Premise</td></tr>
+      <tr><td>6. s</td><td>Modus ponens from (4),(5)</td></tr>
+      <tr><td>7. s → t</td><td>Premise</td></tr>
+      <tr><td>8. t</td><td>Modus ponens from (6),(7)</td></tr>
+    </table>
+    <ul>
+      <li><b>Ex 7:</b> rewrite p→q as its contrapositive ¬q→¬p, then two hypothetical syllogisms give ¬q→s
+          (email → program, ¬email → sleep, sleep → refreshed ∴ ¬program → refreshed).</li>
+      <li><b>Ex 8 resolution:</b> "Jasmine skis ∨ it's not snowing" + "it's snowing ∨ Bart plays hockey" ⇒ "Jasmine skis ∨ Bart plays hockey" (¬p∨q, p∨r ∴ q∨r).</li>
+      <li><b>Fallacy 1 — affirming the conclusion:</b> p→q, q ∴ p. Invalid: you can learn discrete math without doing every problem.</li>
+      <li><b>Fallacy 2 — denying the hypothesis:</b> p→q, ¬p ∴ ¬q. Invalid: skipping the problems doesn't prevent learning.</li>
+    </ul>
+    <div class="callout trick"><span class="c-ico brain">🧠</span>
+      <div><b>Names across books:</b> affirming the conclusion = <b>converse error</b> · denying the hypothesis = <b>inverse error</b>.
+      The <i>safe</i> flip is always the <b>contrapositive</b> (¬q → ¬p).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Table 2 — Rules of Inference for Quantified Statements</h2>
+    <table>
+      <tr><th>Rule</th><th>From</th><th>∴ To</th></tr>
+      <tr><td><b>Universal instantiation (UI)</b></td><td>∀x P(x)</td><td>P(c) for arbitrary c</td></tr>
+      <tr><td><b>Universal generalization (UG)</b></td><td>P(c) for arbitrary c</td><td>∀x P(x)</td></tr>
+      <tr><td><b>Existential instantiation (EI)</b></td><td>∃x P(x)</td><td>P(c) for some element c</td></tr>
+      <tr><td><b>Existential generalization (EG)</b></td><td>P(c) for some element c</td><td>∃x P(x)</td></tr>
+    </table>
+    <ul>
+      <li><b>Ex 11 (universal modus ponens):</b> ∀x(D(x)→C(x)), D(Marla) ∴ C(Marla) — step 2 UI gives D(Marla)→C(Marla), step 4 modus ponens.</li>
+      <li><b>Ex 12:</b> ∃x(C∧¬B), ∀x(C→P) ∴ ∃x(P∧¬B) — EI name the witness a → simplify → UI → MP → simplify → conjoin → EG (9 steps).</li>
+    </ul>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>From research:</b> <b>universal modus ponens</b> = UI+MP fused (∀x(P→Q), P(a) ∴ Q(a)) ·
+      <b>universal modus tollens</b> = UI+MT (∀x(P→Q), ¬Q(a) ∴ ¬P(a)) — the two most exam-relevant quantified moves.
+      <b>UG danger:</b> P(c) for one <i>particular</i> c licenses nothing — c must be <b>arbitrary</b> ("Lambert the lion" proves <i>some</i> lion, via EG, not <i>all</i> lions).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Lectures 8–9</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Valid argument in one sentence?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>It's <b>impossible</b> for all premises to be true and the conclusion false — form-wise (p₁∧…∧pₙ)→q is a tautology.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Modus tollens vs denying the hypothesis?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>MT: ¬q, p→q ∴ ¬p (valid). Denying the hypothesis: ¬p, p→q ∴ ¬q (fallacy — that's the inverse).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Resolution in one line?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>p ∨ q, ¬p ∨ r ∴ q ∨ r — cancel the complementary literal p/¬p and merge the rest.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>UI · UG · EI · EG — what does each do?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>UI: ∀ → instance (arbitrary c) · UG: arbitrary instance → ∀ · EI: ∃ → name a witness · EG: a witness → ∃.</p></div>
+      </div></div>
+    </div>
+  </div>
+
+</section>
+
 <footer class="footer">
-  MA216 · Discrete Structures · <b>Lecture 1–2 · Propositional Logic</b> · BS Cyber Security · Fall 2026
+  MA216 · Discrete Structures · <b>Lectures 1–9 · Propositions → Quantifiers → Equivalences → Inference</b> · BS Cyber Security · Fall 2026
 </footer>
 
 <button id="toTop" title="Back to top">↑</button>
