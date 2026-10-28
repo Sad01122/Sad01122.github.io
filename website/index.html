@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BS-CYS Notes Hub — Semester 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="themes.css">
+
+<script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="bg-blobs">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+</div>
+<div class="grid-overlay"></div>
+
+<nav class="topbar">
+  <a class="brand" href="index.html">
+    <span class="logo">Σ</span>
+    BS-CYS · NOTES HUB
+  </a>
+<div class="nav-right">
+  <span class="back-btn" style="cursor:default">Semester 1 · Fall 2026</span>
+  <div class="theme-wrap">
+    <button class="theme-btn" id="themeBtn" title="Switch theme (press T)"><span class="palette">🎨</span><span class="label">Theme</span></button>
+    <div class="theme-menu" id="themeMenu">
+      <button class="theme-opt" data-theme="midnight"><span class="sw sw-midnight"></span><b>Midnight Cyber</b><i>glassy dark · aurora blobs</i></button>
+      <button class="theme-opt" data-theme="matrix"><span class="sw sw-matrix"></span><b>Matrix Terminal</b><i>digital rain · scanlines · mono</i></button>
+      <button class="theme-opt" data-theme="paper"><span class="sw sw-paper"></span><b>Paper Notes</b><i>ruled page · ink · sticky notes</i></button>
+      <button class="theme-opt" data-theme="synthwave"><span class="sw sw-synthwave"></span><b>Synthwave</b><i>chrome · retro sun · grid floor</i></button>
+      <button class="theme-opt" data-theme="aurora"><span class="sw sw-aurora"></span><b>Aurora Light</b><i>soft pastel glass</i></button>
+      <button class="theme-opt" data-theme="cyberpunk"><span class="sw sw-cyberpunk"></span><b>Cyberpunk Neon</b><i>glitch boxes · orbitron · neon</i></button>
+      <button class="theme-opt" data-theme="dracula"><span class="sw sw-dracula"></span><b>Dracula Gothic</b><i>serif italics · purple glow</i></button>
+      <button class="theme-opt" data-theme="coffee"><span class="sw sw-coffee"></span><b>Coffee Warmth</b><i>cozy sepia · serif · warm</i></button>
+      <button class="theme-opt" data-theme="blueprint"><span class="sw sw-blueprint"></span><b>Blueprint</b><i>engineering grid · mono · dashed</i></button>
+      <button class="theme-opt" data-theme="vaporwave"><span class="sw sw-vaporwave"></span><b>Vaporwave</b><i>pastel mall · rounded · lilac</i></button>
+      <button class="theme-opt" data-theme="lava"><span class="sw sw-lava"></span><b>Volcano Lava</b><i>ember glow · fiery accents</i></button>
+      <button class="theme-opt" data-theme="frost"><span class="sw sw-frost"></span><b>Nordic Frost</b><i>icy minimal · clean grotesk</i></button>
+    </div>
+  </div>
+</div>
+</nav>
+
+<header class="hero">
+  <h1 class="anim-in">Your Semester, Beautifully Organized @Saad</h1>
+  <p class="sub anim-in anim-delay-1">Jump into any subject, pick your week, and revise with animated notes,
+     diagrams, memory tricks, worked examples and flip-card questions.
+     Press <b style="color:var(--cyan)">1</b> / <b style="color:var(--cyan)">2</b> /
+     <b style="color:var(--cyan)">3</b> to switch tabs, <b style="color:var(--cyan)">T</b> to cycle themes.</p>
+  <div class="stats anim-in anim-delay-2">
+    <span class="stat-chip"><b>9</b> Subjects</span>
+    <span class="stat-chip"><b>32</b> Note Packs</span>
+    <span class="stat-chip"><b>9</b> Quiz &amp; Revision</span>
+    <span class="stat-chip"><b>8</b> Subject Sites Live</span>
+    <span class="stat-chip"><b>7</b> Assignments Done</span>
+    <span class="stat-chip"><b>12</b> Themes 🎨</span>
+  </div>
+</header>
+
+<main class="subject-grid">
+
+  <a class="subject-card" href="cs111.html">
+    <span class="code">CS111 · THEORY</span>
+    <span class="icon">💻</span>
+    <h3>Programming Fundamentals</h3>
+    <p>Logic, algorithms, flowcharts, C++ structure, variables &amp; expressions.</p>
+    <div class="meta"><span>Weeks 1–4 live · Loops added</span><span class="badge-count">4 notes</span></div>
+  </a>
+
+  <a class="subject-card" href="cs111l.html">
+    <span class="code">CS111L · LAB</span>
+    <span class="icon">🧪</span>
+    <h3>Programming Fundamentals Lab</h3>
+    <p>C++ foundations, operators, type casting &amp; formatted output.</p>
+    <div class="meta"><span>Weeks 1–3 live</span><span class="badge-count">3 notes</span></div>
+  </a>
+
+  <a class="subject-card" href="cs181.html">
+    <span class="code">CS181 · THEORY</span>
+    <span class="icon">🌐</span>
+    <h3>Application of ICT</h3>
+    <p>ICT in daily life, computer history, hardware, data representation &amp; OS.</p>
+    <div class="meta"><span>Week 3 live · Quiz 1 = Number Systems</span><span class="badge-count">3 notes</span></div>
+  </a>
+
+  <a class="subject-card" href="cs181l.html">
+    <span class="code">CS181L · LAB</span>
+    <span class="icon">📝</span>
+    <h3>ICT Lab</h3>
+    <p>MS Word basics, Insert tab, design, layout, WordArt, equations &amp; PowerPoint.</p>
+    <div class="meta"><span>Weeks 1–2 &amp; 4 · Lab04 done</span><span class="badge-count">3 notes</span></div>
+  </a>
+
+  <a class="subject-card" href="cy104.html">
+    <span class="code">CY104 · THEORY</span>
+    <span class="icon">🔐</span>
+    <h3>Introduction to Cyber Security</h3>
+    <p>CIA triad, AAA &amp; attack frameworks · Social engineering, scams, identity &amp; insider threats.</p>
+    <div class="meta"><span>Lectures 1–3 · Course map</span><span class="badge-count">4 notes</span></div>
+  </a>
+
+  <a class="subject-card" href="cy104l.html">
+    <span class="code">CY104L · LAB</span>
+    <span class="icon">🛡️</span>
+    <h3>Cyber Security Lab</h3>
+    <p>Windows file types, CMD commands, virtualization &amp; Kali Linux.</p>
+    <div class="meta"><span>Labs 02–04 live · WSL screenshots</span><span class="badge-count">3 notes</span></div>
+  </a>
+
+  <a class="subject-card" href="el170.html">
+    <span class="code">EL170 · THEORY</span>
+    <span class="icon">📖</span>
+    <h3>Functional English</h3>
+    <p>Grammar core: clauses, the 4 phrase types, all 12 tenses, cross-culture (Iceberg · Onion · Hofstede) &amp; formal email writing — plus Grammar Basics, a scored FE Quiz and the <b>Mids → FE</b> zone.</p>
+    <div class="meta"><span>4 tabs + Grammar + FE Quiz + Mids</span><span class="badge-count">6 notes</span></div>
+  </a>
+
+  <a class="subject-card soon" href="#" onclick="return false;">
+    <span class="code">HU124 · THEORY</span>
+    <span class="icon">🕌</span>
+    <h3>Islamic Studies &amp; Ethics</h3>
+    <p>Courses on ethics and Islamic studies — notes incoming.</p>
+    <div class="meta"><span>No notes yet</span><span class="badge-count soon">Soon</span></div>
+  </a>
+
+  <a class="subject-card" href="ma216.html">
+    <span class="code">MA216 · THEORY</span>
+    <span class="icon">🧮</span>
+    <h3>Discrete Structures</h3>
+    <p>Propositions → quantifiers → equivalences → rules of inference → <b>methods of proof</b> (direct, contraposition, contradiction &amp; more).</p>
+    <div class="meta"><span>Lectures 1–9 live · Logic + Proofs track</span><span class="badge-count">5 notes</span></div>
+  </a>
+
+</main>
+
+<h2 class="section-title anim-in">🎯 Revision &amp; Quiz Zone</h2>
+<p class="section-sub anim-in anim-delay-1">Exam-ready sprints for your upcoming quizzes — condensed
+   revision pages plus flip-card "important questions" and scored practice tests for
+   <b>PF (Weeks 1–3)</b>, <b>PFLAB (Lab Weeks 1–5)</b>, <b>Discrete Structures</b>, <b>CY104 Cyber Security</b>
+   and <b>EL170 Mids → FE</b> (revise · mock test · sample paper).</p>
+
+<main class="subject-grid">
+
+  <a class="subject-card" href="rev-pf.html">
+    <span class="code">CS111 · REVISION</span>
+    <span class="icon">📘</span>
+    <h3>PF Revision — Weeks 1–3</h3>
+    <p>One sprint per week: 60-second summaries, must-know tables, gotchas &amp; flip drills.</p>
+    <div class="meta"><span>3 weeks · 15 flip drills</span><span class="badge-count">Revision</span></div>
+  </a>
+
+  <a class="subject-card" href="quiz-pf.html">
+    <span class="code">CS111 · QUIZ</span>
+    <span class="icon">🎯</span>
+    <h3>PF Quiz Zone</h3>
+    <p>⭐ 18 important questions with flip answers + scored 15-MCQ test with explanations.</p>
+    <div class="meta"><span>Target 12/15 to pass</span><span class="badge-count">15 MCQs</span></div>
+  </a>
+
+  <a class="subject-card" href="rev-ds.html">
+    <span class="code">MA216 · REVISION</span>
+    <span class="icon">📗</span>
+    <h3>DS Revision — Logic</h3>
+    <p>Propositions, every truth table, conditional tricks, precedence &amp; bit operations.</p>
+    <div class="meta"><span>Lecture 1–2 · 14 flip drills</span><span class="badge-count">Revision</span></div>
+  </a>
+
+  <a class="subject-card" href="quiz-ds.html">
+    <span class="code">MA216 · QUIZ</span>
+    <span class="icon">🧠</span>
+    <h3>DS Quiz Zone</h3>
+    <p>⭐ Important questions with flips + scored 12-MCQ test on propositional logic.</p>
+    <div class="meta"><span>Target 10/12 to pass</span><span class="badge-count">12 MCQs</span></div>
+  </a>
+
+  <a class="subject-card" href="rev-cy.html">
+    <span class="code">CY104 · REVISION</span>
+    <span class="icon">📘</span>
+    <h3>CY Revision — Lectures 1–2</h3>
+    <p>8 term categories with trick one-liners, easy Threat-vs-Risk comparisons, a 49-term glossary with click-to-define, pictures, CIA/AAA/risk &amp; 🌳 topic tree.</p>
+    <div class="meta"><span>2 lectures · 7 tabs · 12 flips</span><span class="badge-count">Revision</span></div>
+  </a>
+
+  <a class="subject-card" href="quiz-cy.html">
+    <span class="code">CY104 · QUIZ</span>
+    <span class="icon">🔐</span>
+    <h3>CY Quiz Zone</h3>
+    <p>⭐ 15 important questions with flip answers + scored 15-MCQ test with explanations.</p>
+    <div class="meta"><span>Target 12/15 to pass</span><span class="badge-count">15 MCQs</span></div>
+  </a>
+
+  <a class="subject-card" href="quiz-pflab.html">
+    <span class="code">CS111L · QUIZ</span>
+    <span class="icon">🧪</span>
+    <h3>PFLAB Quiz Zone</h3>
+    <p>⭐ 24 important questions across lab weeks 1–5 + scored 15-MCQ test with explanations.</p>
+    <div class="meta"><span>Target 12/15 to pass</span><span class="badge-count">15 MCQs</span></div>
+  </a>
+
+  <a class="subject-card" href="quiz-el170.html">
+    <span class="code">EL170 · QUIZ</span>
+    <span class="icon">📝</span>
+    <h3>FE Quiz Zone</h3>
+    <p>⭐ Tenses + Parts of Speech: tense-flow diagram, signal-word cheats, 18 flips + scored 20-MCQ test.</p>
+    <div class="meta"><span>Target 16/20 to pass · quiz tomorrow</span><span class="badge-count">20 MCQs</span></div>
+  </a>
+
+  <a class="subject-card" href="mids-fe.html">
+    <span class="code">EL170 · MIDS</span>
+    <span class="icon">🎯</span>
+    <h3>Mids → FE (Revise + Mock + Paper)</h3>
+    <p>All FE data in one place: clauses · phrases · tenses · PoS · cross-culture · formal email → 15-MCQ mock test + sample paper (non-formal→formal, paragraph, email, clauses→phrases, ICEBERG scenario).</p>
+    <div class="meta"><span>3 tabs · aim 12/15 on the mock</span><span class="badge-count">Mids Zone</span></div>
+  </a>
+
+</main>
+
+<footer class="footer">
+  Built for <b>BS Cyber Security · Semester 1</b> · Air University ·
+  Notes generated from your processed <b>_inbox</b> material
+</footer>
+
+<button id="toTop" title="Back to top">↑</button>
+<script src="script.js"></script>
+</body>
+</html>

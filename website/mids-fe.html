@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EL170 — Mids → FE · Revise, Mock Test &amp; Sample Paper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="themes.css">
+<style>
+  .reveal-btn { margin-top: 12px; }
+  .model-ans {
+    margin-top: 12px; padding: 14px 16px;
+    border: 1px dashed var(--cyan); border-radius: 12px;
+    background: rgba(34, 211, 238, 0.07);
+  }
+  .model-ans[hidden] { display: none; }
+  .model-ans h4 { margin: 0 0 6px; color: var(--cyan); }
+  .paper-head { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .paper-head span { border: 1px solid rgba(34,211,238,.35); border-radius: 999px; padding: 6px 14px; font-size: .88rem; }
+  .mcq-head { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .mcq-head span { border: 1px solid rgba(167,139,250,.4); border-radius: 999px; padding: 6px 14px; font-size: .88rem; }
+</style>
+<script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="bg-blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grid-overlay"></div>
+
+<nav class="topbar">
+  <a class="brand" href="index.html"><span class="logo">Σ</span> BS-CYS · NOTES HUB</a>
+<div class="nav-right">
+  <a class="back-btn" href="index.html">← All Subjects</a>
+  <div class="theme-wrap">
+    <button class="theme-btn" id="themeBtn" title="Switch theme (press T)"><span class="palette">🎨</span><span class="label">Theme</span></button>
+    <div class="theme-menu" id="themeMenu">
+      <button class="theme-opt" data-theme="midnight"><span class="sw sw-midnight"></span><b>Midnight Cyber</b><i>glassy dark · aurora blobs</i></button>
+      <button class="theme-opt" data-theme="matrix"><span class="sw sw-matrix"></span><b>Matrix Terminal</b><i>digital rain · scanlines · mono</i></button>
+      <button class="theme-opt" data-theme="paper"><span class="sw sw-paper"></span><b>Paper Notes</b><i>ruled page · ink · sticky notes</i></button>
+      <button class="theme-opt" data-theme="synthwave"><span class="sw sw-synthwave"></span><b>Synthwave</b><i>chrome · retro sun · grid floor</i></button>
+      <button class="theme-opt" data-theme="aurora"><span class="sw sw-aurora"></span><b>Aurora Light</b><i>soft pastel glass</i></button>
+      <button class="theme-opt" data-theme="cyberpunk"><span class="sw sw-cyberpunk"></span><b>Cyberpunk Neon</b><i>glitch boxes · orbitron · neon</i></button>
+      <button class="theme-opt" data-theme="dracula"><span class="sw sw-dracula"></span><b>Dracula Gothic</b><i>serif italics · purple glow</i></button>
+      <button class="theme-opt" data-theme="coffee"><span class="sw sw-coffee"></span><b>Coffee Warmth</b><i>cozy sepia · serif · warm</i></button>
+      <button class="theme-opt" data-theme="blueprint"><span class="sw sw-blueprint"></span><b>Blueprint</b><i>engineering grid · mono · dashed</i></button>
+      <button class="theme-opt" data-theme="vaporwave"><span class="sw sw-vaporwave"></span><b>Vaporwave</b><i>pastel mall · rounded · lilac</i></button>
+      <button class="theme-opt" data-theme="lava"><span class="sw sw-lava"></span><b>Volcano Lava</b><i>ember glow · fiery accents</i></button>
+      <button class="theme-opt" data-theme="frost"><span class="sw sw-frost"></span><b>Nordic Frost</b><i>icy minimal · clean grotesk</i></button>
+    </div>
+  </div>
+</div>
+</nav>
+
+<header class="subject-hero">
+  <span class="code-lg">EL170 · MIDS → FE</span>
+  <h1><span>Functional English — Mids Portion</span></h1>
+  <p><b>Everything for the FE mid-term on one page.</b>
+     <b>Tab 1:</b> revise fast — clauses · phrases · 12 tenses · parts of speech · cross-culture · formal email.
+     <b>Tab 2:</b> 🎭 mocked 15-MCQ test (scored with explanations).
+     <b>Tab 3:</b> 📄 sample paper with model answers (non-formal→formal · paragraph · formal email · PoS · tenses · clauses→phrases · ICEBERG scenario).
+     Press <b>1</b>–<b>3</b> to switch. Aim for <b>≥ 12/15</b> on the mock.</p>
+  <p><a class="btn primary" href="el170.html">📘 Full EL170 Notes</a>
+     <a class="btn ghost" href="quiz-el170.html" style="margin-left:8px;">📝 FE Quiz (20 MCQs)</a>
+     <a class="btn ghost" href="grammar-basics.html" style="margin-left:8px;">✏️ Grammar Basics</a>
+     <span style="color:var(--muted);font-size:.9rem;margin-left:8px;">mock + sample paper are inside this page ↓</span></p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="rev"><span class="dot"></span> 📚 Revise Fast</button>
+  <button class="tab-btn" data-tab="mock"><span class="dot"></span> 🎭 Mock Test (15 MCQs)</button>
+  <button class="tab-btn" data-tab="paper"><span class="dot"></span> 📄 Sample Paper</button>
+</div>
+
+<!-- ======================= REVISE ======================= -->
+<section class="tab-panel active" id="rev">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⏱️ The 40-Minute Mids Plan</h2>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>0–10 min:</b> read the6 cheat cards below (clauses → phrases → tenses → PoS → cross-culture → email).<br>
+      <b>10–20 min:</b> tap all <b>flip cards</b> until you answer <i>before</i> flipping.<br>
+      <b>20–35 min:</b> take the <b>Mock Test</b>, read every explanation for misses, retry until ≥ 12/15.<br>
+      <b>35–40 min:</b> open the <b>Sample Paper</b> and outline Q7 (the ICEBERG scenario) out loud.</div>
+    </div>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Top6 marks-losers:</b> ① <i>have went</i> (perfect needs V3) · ② comma splice (two sentences + one comma) ·
+      ③ <i>Because</i> clause called "independent" (a marker word makes it dependent) · ④ confusing <b>prepositional</b> with <b>adverb</b> phrases ·
+      ⑤ crediting the <b>Iceberg to Hofstede</b> (it's <b>Hall's</b>!) · ⑥ a formal email opened with <i>Hi/Hey</i>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧱 Clauses — Independent vs Dependent</h2>
+    <table>
+      <tr><th></th><th>Independent</th><th>Dependent</th></tr>
+      <tr><td><b>Has</b></td><td>subject + verb + <b>complete thought</b></td><td>subject + verb + a <b>marker word</b></td></tr>
+      <tr><td><b>Can stand alone?</b></td><td>Yes — it's a sentence</td><td>No — needs an independent partner</td></tr>
+      <tr><td><b>Example</b></td><td><i>the sun was shining</i></td><td><i>because the sun was shining</i></td></tr>
+    </table>
+    <p><b>Marker words by meaning:</b> TIME (after, before, when, while, since, until) · REASON (because, as, since) ·
+       CONDITION (if, unless, whether) · CONTRAST (although, though, even though).</p>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>FANBOYS</b> = For, And, Nor, But, Or, Yet, So → join two independent clauses with <b>comma + FANBOYS</b>.<br>
+      Transition words (however, therefore, moreover) join with <b>; + word,</b>.<br>
+      <b>5 fixes for a comma splice / run-on / fragment:</b> period · semicolon · comma+FANBOYS · make one clause dependent · combine into one sentence.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🏷️ Phrases — the 4 Types (no subject + verb inside!)</h2>
+    <table>
+      <tr><th>Type</th><th>Head word is a…</th><th>Answers…</th><th>Example</th></tr>
+      <tr><td><b>Noun phrase</b></td><td>noun</td><td><i>who/what</i></td><td><b>the tall boy</b> · <b>a glass of water</b></td></tr>
+      <tr><td><b>Prepositional phrase</b></td><td>preposition</td><td><i>where/when/how</i></td><td><b>under the table</b> · <b>in the morning</b></td></tr>
+      <tr><td><b>Adjective phrase</b></td><td>adjective</td><td>describes a noun</td><td><b>very tall</b> · <b>afraid of the dark</b></td></tr>
+      <tr><td><b>Adverb phrase</b></td><td>adverb</td><td>describes verb/adj/adv</td><td><b>very quickly</b> · <b>in a hurry</b></td></tr>
+    </table>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>The2-step test:</b>① Can you find a subject <i>and</i> a verb together? → then it's a <b>clause</b>.<br>
+      ② Find the <b>head word</b> (the most important word) → that head decides the phrase type.
+      ⚠️ "under the table" is a <b>prepositional</b> phrase even though it tells <i>where</i> (its job is adverb-like, but its head is a preposition).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🕐 The 12 Tenses — 3 × 4 = 12</h2>
+    <table>
+      <tr><th></th><th>SIMPLE<br><i>fact / habit</i></th><th>CONTINUOUS<br><i>in progress</i></th><th>PERFECT<br><i>done / links times</i></th><th>PERF. CONT.<br><i>how long</i></th></tr>
+      <tr><td><b>PRESENT</b></td><td>work / works<br><i>works daily</i></td><td>am/is/are + -ing<br><i>is working now</i></td><td>has/have + V3<br><i>has worked here</i></td><td>has/have been + -ing<br><i>has been working</i></td></tr>
+      <tr><td><b>PAST</b></td><td>V2<br><i>worked yesterday</i></td><td>was/were + -ing<br><i>was working at8</i></td><td>had + V3<br><i>had worked by then</i></td><td>had been + -ing<br><i>had been working</i></td></tr>
+      <tr><td><b>FUTURE</b></td><td>will + V1<br><i>will work tomorrow</i></td><td>will be + -ing<br><i>will be working at5</i></td><td>will have + V3<br><i>will have worked</i></td><td>will have been + -ing<br><i>will have been working</i></td></tr>
+    </table>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>The name IS the formula:</b> past + perfect + continuous = <code>had</code> + <code>been</code> + <code>-ing</code>.
+      Time changes only the <b>helping verb</b>; the aspect never changes.</div>
+    </div>
+    <p><b>Signal words:</b> every day/usually → <b>pres. simple</b> · now/look/at this moment → <b>pres. cont.</b> ·
+       yesterday/last year/ago → <b>past simple</b> · since/for/already/yet → <b>present perfect</b> ·
+       by the time/before/after (two pasts) → <b>past perfect</b> · tomorrow/next week → <b>future</b>.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🏷️ Parts of Speech — One-Page Cheat Sheet</h2>
+    <table>
+      <tr><th>#</th><th>PoS</th><th>Job</th><th>Signal / test</th><th>Examples</th></tr>
+      <tr><td>1</td><td><b>Noun</b></td><td>names a person/thing/place/idea</td><td>the/a/my + word</td><td>city, honesty, Ali</td></tr>
+      <tr><td>2</td><td><b>Pronoun</b></td><td>replaces a noun</td><td>stands in for a name</td><td>he, she, it, they, mine</td></tr>
+      <tr><td>3</td><td><b>Verb</b></td><td>shows action/state</td><td>can you conjugate it?</td><td>run, is, seemed</td></tr>
+      <tr><td>4</td><td><b>Adjective</b></td><td>describes a noun/pronoun</td><td>which/what kind?</td><td>tall, green, afraid</td></tr>
+      <tr><td>5</td><td><b>Adverb</b></td><td>describes verb/adj/other adv</td><td>often ends in <b>-ly</b>; how/when/where?</td><td>quickly, very, yesterday</td></tr>
+      <tr><td>6</td><td><b>Preposition</b></td><td>shows place/time/relationship</td><td>goes before a noun phrase</td><td>in, on, at, between, beneath</td></tr>
+      <tr><td>7</td><td><b>Conjunction</b></td><td>joins words/clauses</td><td>FANBOYS / because / although</td><td>and, but, because, if</td></tr>
+      <tr><td>8</td><td><b>Interjection</b></td><td>sudden feeling</td><td>exclamation mark</td><td>oh! wow! alas!</td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Chameleon words:</b> <i>light</i> (noun in "light travels" / adjective in "a light bag") ·
+      <i>happy</i> (adjective after a linking verb) vs <i>happily</i> (adverb) ·
+      "very tall boy" = adjective phrase (head = tall), but "under the table" = prepositional phrase (head = under).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧊🧅 Cross-Culture — Iceberg, Onion &amp; the6 Dimensions</h2>
+    <table>
+      <tr><th><b>Hall's Iceberg (1976)</b></th><th><b>Hofstede's Onion (1980/2010)</b></th></tr>
+      <tr><td>Above water (visible): dress, food, language, greetings, gestures</td><td>Outside layers = <b>Practices</b>: Symbols → Heroes → Rituals (change fast)</td></tr>
+      <tr><td>Below water (hidden): values, beliefs, attitude to authority/time/family</td><td>Core = <b>Values</b> (invisible, learned early, change slowly)</td></tr>
+      <tr><td>Key line: <i>most conflict comes from the hidden layer</i></td><td>Key line: <i>practices change faster than values</i></td></tr>
+    </table>
+    <div class="callout exam"><span class="c-ico">🔑</span>
+      <div><b>The famous mix-up:</b> the Iceberg belongs to <b>HALL, not Hofstede</b> — Hofstede's hidden-core picture is the
+      <b>onion</b>. Both say: <b>understand the values beneath the behaviour.</b> The10%/90% split is a metaphor, not data.</div>
+    </div>
+    <table>
+      <tr><th>Dimension</th><th>Kid question</th><th>🇵🇰 Pakistan</th><th>🇺🇸 USA</th></tr>
+      <tr><td><b>Individualism vs Collectivism</b></td><td>"I win" or "we win"?</td><td><b>14</b> (collectivist)</td><td><b>91</b> (individualist)</td></tr>
+      <tr><td><b>Uncertainty Avoidance</b></td><td>"Tell me EXACTLY the rules!"</td><td><b>70</b> (high)</td><td><b>46</b></td></tr>
+      <tr><td><b>Power Distance</b></td><td>Can juniors question the boss?</td><td><b>55</b></td><td><b>40</b></td></tr>
+      <tr><td>Also: Masculinity/Femininity · Long-/Short-term Orientation · Indulgence/Restraint</td><td colspan="3">Japan = highest masculinity + uncertainty avoidance</td></tr>
+    </table>
+    <p><b>Hall's context &amp; time:</b> high-context (PK, Japan — meaning in tone/silence/relationships, trust-based) vs
+       low-context (USA, Germany — meaning in explicit words, contracts) · polychronic (relationships beat schedules) vs
+       monochronic (punctuality).</p>
+    <p><b>7 PK-vs-global conflicts:</b> ① hierarchy &amp; silence · ② sifarish vs merit · ③ polite "no"
+       (<i>InshaAllah, dekhte hain</i>) · ④ time flexibility · ⑤ gender norms (Harassment Act2010) · ⑥ faith/Ramadan ·
+       ⑦ remote teams. <b>CQ</b> (Earley &amp; Ang) = Drive · Knowledge · Strategy · Action.</p>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div>Conflict = <b>misread signals, not bad intent</b> → <b>pause → hypothesise → adapt → confirm</b>.
+      Culture is a <b>tendency, not a stereotype</b>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📧 Formal Email — Frames, Registers, Phrases</h2>
+    <table>
+      <tr><th></th><th><b>Informal</b></th><th><b>Semi-formal</b></th><th><b>Formal</b></th></tr>
+      <tr><td><b>Reader</b></td><td>friends/close colleagues</td><td>known colleagues/managers</td><td>seniors, HR, new clients</td></tr>
+      <tr><td><b>Greeting</b></td><td>Hey Sam,</td><td>Hi Sara,</td><td>Dear Mr Khan, / Dear Sir or Madam,</td></tr>
+      <tr><td><b>Sign-off</b></td><td>Cheers,</td><td>Best regards,</td><td>Yours sincerely, / Kind regards,</td></tr>
+      <tr><td><b>Words</b></td><td>I'm, you're, slang</td><td>Could we…? polite</td><td>I am, I would (full forms)</td></tr>
+    </table>
+    <p><b>6-part anatomy:</b> ① subject line · ② greeting · ③ purpose in the first1–2 lines · ④ body (one idea per paragraph) ·
+       ⑤ closing ask <b>with a deadline</b> · ⑥ sign-off + signature.</p>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>5-step frame with BLUF = Bottom Line Up Front:</b>
+      Subject (<code>Leave request:19–21 October</code>) → Greeting → <b>Purpose first</b> ("I am writing to request…") →
+      Details + ask + deadline ("Please reply by Friday") → Close ("Kind regards").</div>
+    </div>
+    <p><b>You-attitude:</b> ✗ "We cannot refund without a receipt." → ✓ "Return the item with your receipt to receive a full refund."</p>
+    <p><b>Openers:</b> "Thank you for your email of14 June." · "I am writing to enquire about…" · "Further to our phone call…" ·
+       "As you requested, I am attaching…"<br>
+       <b>Closers:</b> "I look forward to hearing from you." · "Please feel free to contact me."</p>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Never in formal mail:</b> Hi/Hello opener · Cheers/Thanks!/TTYL closing · slang, emojis, ALL CAPS ·
+      text-speak (u, asap, thx) · comma splices · forget the attachment. <b>Do:</b> specific subject · proofread ·
+      check the recipient field · reply promptly.</div>
+    </div>
+    <p><b>6 email kinds:</b> internal · external · sales · routine · personalized · circulars.
+       <b>Letter types:</b> personal · inquiry (intro/body/conclusion) · complaint · sales (headline→intro→body→call to action).</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🔄 Flip Cards — Mids Drill (tap to flip)</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>"Because he was late, he missed the bus" — is "Because he was late" a clause or a phrase?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Dependent clause</b> — it has a subject (he) + verb (was) plus the marker <i>because</i>, so it can't stand alone.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>"the very tall boy" — phrase type and head word?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Adjective phrase</b>, head = <b>tall</b>. "Very" only intensifies it.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Formula: past + perfect + continuous?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>had + been + V-ing</b> → <i>had been working</i>. Time only changes the helping verb.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Two independent clauses + only one comma = ?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Comma splice.</b> Fix: period · semicolon · comma+FANBOYS · make one dependent.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>Iceberg = Hall or Hofstede? And PK14 vs USA91 = which dimension?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Hall's</b> Iceberg (Hofstede = onion). <b>14 vs91 = Individualism–Collectivism.</b> (70/46 = uncertainty avoidance,55/40 = power distance.)</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>What does BLUF stand for, and where does the purpose go?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Bottom Line Up Front</b> — purpose and action in the <b>first lines</b>, details after.</p></div>
+      </div></div>
+    </div>
+    <p><b>Scored low?</b> re-read the card above, then retry → <a href="#" onclick="document.querySelector('[data-tab=mock]').click();return false;" style="color:var(--cyan)">Mock Test →</a>
+       · <b>Full notes:</b> <a href="el170.html" style="color:var(--cyan)">EL170 →</a></p>
+  </div>
+
+</section>
+
+<!-- ======================= MOCK TEST ======================= -->
+<section class="tab-panel" id="mock">
+  <div class="note-card">
+    <h2><span class="bar"></span>🎭 Mids Mock Test — 15 MCQs</h2>
+    <div class="mcq-head">
+      <span>⏱️ ~15 min</span><span>🎯 aim ≥ 12/15</span><span>4 tenses · 3 clauses · 2 phrases · 2 PoS · 2 email · 2 cross-culture</span>
+      <span>✅ instant marking + explanations</span>
+    </div>
+
+    <form id="testForm">
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">1</span><span>She ___ to school every day. (go)</span><span class="q-tag">Tenses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q1" value="a"><span>go</span></label>
+          <label class="q-opt"><input type="radio" name="q1" value="b"><span>goes</span></label>
+          <label class="q-opt"><input type="radio" name="q1" value="c"><span>going</span></label>
+          <label class="q-opt"><input type="radio" name="q1" value="d"><span>gone</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B — goes.</b> "Every day" = habit → <b>present simple</b>, and he/she/it takes <b>-s</b>. ❌ <i>go</i> forgets the -s · <i>going</i> needs <i>is</i> · <i>gone</i> is V3.</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">2</span><span>By the time we reached the station, the train ___. (leave)</span><span class="q-tag">Tenses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q2" value="a"><span>left</span></label>
+          <label class="q-opt"><input type="radio" name="q2" value="b"><span>has left</span></label>
+          <label class="q-opt"><input type="radio" name="q2" value="c"><span>had left</span></label>
+          <label class="q-opt"><input type="radio" name="q2" value="d"><span>will leave</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C — had left.</b> Two past actions: the train left <b>before</b> we reached → the <b>earlier</b> one takes the <b>past perfect</b> (had + V3); the later one stays past simple.</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">3</span><span>I ___ my keys, so I cannot open the door now. (lose)</span><span class="q-tag">Tenses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q3" value="a"><span>lose</span></label>
+          <label class="q-opt"><input type="radio" name="q3" value="b"><span>lost</span></label>
+          <label class="q-opt"><input type="radio" name="q3" value="c"><span>have lost</span></label>
+          <label class="q-opt"><input type="radio" name="q3" value="d"><span>had lost</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C — have lost.</b> Past action with a <b>result right now</b> (I still can't get in) → <b>present perfect</b>. Pure past story time would be <i>lost</i>.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">4</span><span>Look! The kids ___ in the garden. (play)</span><span class="q-tag">Tenses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q4" value="a"><span>play</span></label>
+          <label class="q-opt"><input type="radio" name="q4" value="b"><span>are playing</span></label>
+          <label class="q-opt"><input type="radio" name="q4" value="c"><span>played</span></label>
+          <label class="q-opt"><input type="radio" name="q4" value="d"><span>have played</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B — are playing.</b> Signal word <b>"Look!"</b> = happening at this moment → <b>present continuous</b> (am/is/are + -ing).</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">5</span><span>"Because it rained heavily, the match was cancelled." — the underlined part is a…</span><span class="q-tag">Clauses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q5" value="a"><span>independent clause</span></label>
+          <label class="q-opt"><input type="radio" name="q5" value="b"><span>dependent clause</span></label>
+          <label class="q-opt"><input type="radio" name="q5" value="c"><span>prepositional phrase</span></label>
+          <label class="q-opt"><input type="radio" name="q5" value="d"><span>noun phrase</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B — dependent clause.</b> It has a subject (it) + verb (rained) → so it's a <b>clause</b>; the marker <b>because</b> makes it dependent (cannot stand alone).</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">6</span><span>I was very tired, ___ I kept working.</span><span class="q-tag">Clauses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q6" value="a"><span>so</span></label>
+          <label class="q-opt"><input type="radio" name="q6" value="b"><span>but</span></label>
+          <label class="q-opt"><input type="radio" name="q6" value="c"><span>because</span></label>
+          <label class="q-opt"><input type="radio" name="q6" value="d"><span>although</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B — but.</b> The two halves <b>contrast</b> (tired vs kept working). A comma + FANBOYS joins two independent clauses; <i>because/although</i> would need a full dependent clause after them.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">7</span><span>Which sentence is a <b>comma splice</b>?</span><span class="q-tag">Clauses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q7" value="a"><span>The sun set and the birds went home.</span></label>
+          <label class="q-opt"><input type="radio" name="q7" value="b"><span>The sun set, the birds went home.</span></label>
+          <label class="q-opt"><input type="radio" name="q7" value="c"><span>The sun set; the birds went home.</span></label>
+          <label class="q-opt"><input type="radio" name="q7" value="d"><span>Because the sun set, the birds went home.</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> Two independent clauses joined by <b>only a comma</b> = comma splice. ✅ (a) comma+FANBOYS · (c) semicolon · (d) one clause made dependent.</div>
+      </div>
+
+      <div class="q-block" data-answer="d">
+        <p class="q-title"><span class="q-badge">8</span><span>"The cat hid <b>under the table</b>." That phrase is a…</span><span class="q-tag">Phrases</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q8" value="a"><span>noun phrase</span></label>
+          <label class="q-opt"><input type="radio" name="q8" value="b"><span>adjective phrase</span></label>
+          <label class="q-opt"><input type="radio" name="q8" value="c"><span>adverb phrase</span></label>
+          <label class="q-opt"><input type="radio" name="q8" value="d"><span>prepositional phrase</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: D — prepositional phrase.</b> Head word = <b>under</b> (a preposition), followed by its object. It tells <i>where</i> (an adverb-like job), but the <b>head decides the name</b>.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">9</span><span>"The <b>very tall</b> boy." — the phrase is a…</span><span class="q-tag">Phrases</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q9" value="a"><span>noun phrase (head: boy)</span></label>
+          <label class="q-opt"><input type="radio" name="q9" value="b"><span>adjective phrase (head: tall)</span></label>
+          <label class="q-opt"><input type="radio" name="q9" value="c"><span>adverb phrase (head: very)</span></label>
+          <label class="q-opt"><input type="radio" name="q9" value="d"><span>prepositional phrase (head: in)</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> Inside the phrase, the head is <b>tall</b> (adjective) and <i>very</i> only intensifies it. <i>Boy</i> is outside the phrase — it's the noun the phrase describes.</div>
+      </div>
+
+      <div class="q-block" data-answer="a">
+        <p class="q-title"><span class="q-badge">10</span><span>In "She spoke honestly" — <i>honestly</i> is an…</span><span class="q-tag">Parts of Speech</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q10" value="a"><span>adverb — tells how she spoke</span></label>
+          <label class="q-opt"><input type="radio" name="q10" value="b"><span>adjective — describes "she"</span></label>
+          <label class="q-opt"><input type="radio" name="q10" value="c"><span>noun — names a thing</span></label>
+          <label class="q-opt"><input type="radio" name="q10" value="d"><span>preposition — shows place</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: A — adverb.</b> It describes the <b>verb</b> "spoke" (how?) and ends in <b>-ly</b>. Adjectives describe nouns/pronouns, not verbs.</div>
+      </div>
+
+      <div class="q-block" data-answer="a">
+        <p class="q-title"><span class="q-badge">11</span><span>Which of these words is a <b>preposition</b>?</span><span class="q-tag">Parts of Speech</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q11" value="a"><span>beneath</span></label>
+          <label class="q-opt"><input type="radio" name="q11" value="b"><span>rapid</span></label>
+          <label class="q-opt"><input type="radio" name="q11" value="c"><span>rapidly</span></label>
+          <label class="q-opt"><input type="radio" name="q11" value="d"><span>rapidity</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: A — beneath.</b> It shows place/relationship before a noun ("beneath the tree"). <i>Rapid</i> = adjective · <i>rapidly</i> = adverb (-ly) · <i>rapidity</i> = noun (-ity).</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">12</span><span>You do not know the recipient's name. The correct formal greeting is…</span><span class="q-tag">Email</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q12" value="a"><span>Hi there,</span></label>
+          <label class="q-opt"><input type="radio" name="q12" value="b"><span>Dear Sir or Madam,</span></label>
+          <label class="q-opt"><input type="radio" name="q12" value="c"><span>Hey manager,</span></label>
+          <label class="q-opt"><input type="radio" name="q12" value="d"><span>To everyone,</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> Formal mail never opens with <i>Hi/Hello/Hey</i>. If you know the name use <b>Dear Mr Smith,</b>; if not, <b>Dear Sir or Madam,</b> (or "To Whom It May Concern").</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">13</span><span>In the 5-step formal email frame, <b>BLUF</b> stands for…</span><span class="q-tag">Email</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q13" value="a"><span>Best Lines Under Format</span></label>
+          <label class="q-opt"><input type="radio" name="q13" value="b"><span>Bottom Line Up Front</span></label>
+          <label class="q-opt"><input type="radio" name="q13" value="c"><span>Brief Letter Using Formality</span></label>
+          <label class="q-opt"><input type="radio" name="q13" value="d"><span>Business Language Uniform Format</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B — Bottom Line Up Front.</b> Put your <b>purpose and the action first</b>, details after (Sehgal, HBR2016). Busy readers only read the first lines.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">14</span><span>The Cultural <b>Iceberg</b> model of culture was given by…</span><span class="q-tag">Cross-Culture</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q14" value="a"><span>Geert Hofstede</span></label>
+          <label class="q-opt"><input type="radio" name="q14" value="b"><span>Edward T. Hall</span></label>
+          <label class="q-opt"><input type="radio" name="q14" value="c"><span>Erin Meyer</span></label>
+          <label class="q-opt"><input type="radio" name="q14" value="d"><span>Abraham Maslow</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B — Hall (1976).</b> The classic mix-up is crediting Hofstede — his hidden-core picture is the <b>onion</b> (Symbols → Heroes → Rituals → Values).</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">15</span><span>Pakistan scores <b>14</b> and the USA <b>91</b> on which Hofstede dimension?</span><span class="q-tag">Cross-Culture</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q15" value="a"><span>Power Distance (55 vs 40)</span></label>
+          <label class="q-opt"><input type="radio" name="q15" value="b"><span>Uncertainty Avoidance (70 vs 46)</span></label>
+          <label class="q-opt"><input type="radio" name="q15" value="c"><span>Individualism vs Collectivism</span></label>
+          <label class="q-opt"><input type="radio" name="q15" value="d"><span>Masculinity vs Femininity</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C — Individualism vs Collectivism.</b> <b>14</b> = strongly collectivist (group before self) vs USA <b>91</b> = individualist. The other pairs are the distractors' own scores:70/46 = uncertainty avoidance,55/40 = power distance.</div>
+      </div>
+
+      <div class="quiz-bar">
+        <button type="button" class="btn primary" id="quizSubmit">✅ Check Answers</button>
+        <button type="button" class="btn ghost" id="quizReset">↺ Reset</button>
+        <div class="score-pill" id="scoreOut" aria-live="polite"></div>
+      </div>
+
+    </form>
+
+    <p><b>Scored low?</b> re-read the cheat cards → <a href="#" onclick="document.querySelector('[data-tab=rev]').click();return false;" style="color:var(--cyan)">Revise Fast tab →</a>
+       · <b>Then try:</b> <a href="#" onclick="document.querySelector('[data-tab=paper]').click();return false;" style="color:var(--cyan)">Sample Paper →</a>
+       · <b>Full notes:</b> <a href="el170.html" style="color:var(--cyan)">EL170 →</a></p>
+  </div>
+</section>
+
+<!-- ======================= SAMPLE PAPER ======================= -->
+<section class="tab-panel" id="paper">
+  <div class="note-card">
+    <h2><span class="bar"></span>📄 EL170 — Mids Sample Paper (Model Answers Inside)</h2>
+    <div class="paper-head">
+      <span><b>Time:</b> 2 hours 30 minutes</span><span><b>Total:</b> 100 marks</span>
+      <span><b>Q1</b> 15 · <b>Q2</b> 15 · <b>Q3</b> 20 · <b>Q4</b> 15 · <b>Q5</b> 15 · <b>Q6</b> 10 · <b>Q7</b> 10</span>
+      <span>Answer ALL questions</span>
+    </div>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>How to use this page:</b> attempt each question <b>on paper first</b>, then press the
+      <b>Reveal</b> button and compare your answer line by line. Anything you lost marks on →
+      go back to the <b>Revise Fast</b> tab.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q1 · Convert the non-formal sentences to formal <span style="color:var(--muted);font-size:.9rem">(15 marks — 5 each)</span></h2>
+    <p><b>(a)</b> "yo dude, send me that file asap!! thx"<br>
+       <b>(b)</b> "hey sir, i need leave tmrw n day after, lemme know ok?"<br>
+       <b>(c)</b> "u didnt reply to my mail lol, guess u dont care."</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answers</h4>
+      <p><b>(a)</b> "Dear Mr Ahmed,<br>Could you please send me the file by today? Thank you for your help.<br>Kind regards, Ali"</p>
+      <p><b>(b)</b> "Dear Sir,<br>I would like to request leave for tomorrow and the following day (20–21 October). I will complete my pending work before leaving.<br>Yours sincerely, Hamza"</p>
+      <p><b>(c)</b> "Dear Mr Khan,<br>I wrote to you on12 October and have not yet received a reply. Could you let me know when to expect one?<br>Best regards, Sana"</p>
+      <p><b>What examiners tick (5 each):</b> formal greeting (<i>Dear …</i>) · full forms (<i>I would like</i>, not <i>i need</i>) ·
+         no slang/text-speak (yo, dude, lol, tmrw) · polite request wording (<i>Could you please…</i>) · proper sign-off.</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q2 · Convert the paragraph <span style="color:var(--muted);font-size:.9rem">(15 marks)</span></h2>
+    <p>Convert the following <b>non-formal chat paragraph</b> into a <b>formal, well-structured paragraph</b>
+       (use BLUF: purpose first, then details, then the action + deadline).</p>
+    <div class="callout warn"><span class="c-ico">💬</span>
+      <div>"hey team so uh the website is gonna be late again lol. our guy got sick n the tests rnt done n the client keeps
+      ringing me. so dont ask me for it this friday, maybe next week?? lemme know if thats cool, thx!!"</div>
+    </div>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer</h4>
+      <p><b>Subject: Revised delivery date for the website</b></p>
+      <p>"Dear Team,<br>
+      I am writing to inform you that the website delivery will move from <b>Friday,23 October to Wednesday,28 October</b>.
+      The delay is due to the lead developer's illness and the pending testing, and the client has been notified of the
+      revised date.<br>
+      I will share a corrected test plan by tomorrow and complete all checks before the new deadline.
+      Please send me any concerns by Thursday so we can resolve them in time.<br>
+      Kind regards, Hamza Ali"</p>
+      <p><b>Why it scores15:</b> formal greeting · <b>BLUF</b> (new date in line1 of the body) · exact dates, no
+      <i>lol/asap/next week maybe</i> · one idea per paragraph · a clear action + deadline · polite close.</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q3 · Write a formal email <span style="color:var(--muted);font-size:.9rem">(20 marks)</span></h2>
+    <p>Write a <b>formal email of120–150 words</b> using the <b>5-step frame</b>. Choose <b>one</b>:</p>
+    <p><b>(A)</b> Request your HR Manager's approval to attend a "Project Management Workshop" — explain how it helps your team.<br>
+       <b>(B)</b> Complain to a supplier that Order No.4521 (arrived late before) is late again — state the facts, the impact, and the resolution you want with a deadline.</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer (Option A)</h4>
+      <p><b>Subject:</b> Request for training approval: Project Management Workshop</p>
+      <p>Dear Mr Khan,<br>
+      I am writing to request approval to attend the Project Management Workshop on5 November. It will help me manage our
+      Q4 client projects more effectively, and the course details are attached.<br>
+      I would be grateful for your decision by22 October so that I can complete the registration.<br>
+      Yours sincerely,<br>
+      Ayesha Malik, Project Coordinator</p>
+      <p><b>Marking breakdown (20):</b> subject line naming topic + action (3) · correct greeting with title + surname (3) ·
+         purpose in the first sentence — <b>BLUF</b> (4) · body with details and <b>deadline</b> (4) · polite sign-off +
+         name/role (3) · grammar, spelling, tone (3).</p>
+      <p><b>Option B skeleton:</b> Subject <i>Complaint: late delivery of Order No.4521</i> → Dear Sir or Madam →
+         facts up front (order number, dates, phone promise) → impact on the ward → "Please deliver by20 October or tell us a
+         new date; otherwise we will cancel and request a refund" → Sincerely.</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q4 · Parts of Speech <span style="color:var(--muted);font-size:.9rem">(15 marks — 3 each)</span></h2>
+    <p>Identify the parts of speech of the <b>bold</b> word in each sentence.</p>
+    <p><b>(a)</b> <b>Honestly</b>, the results were disappointing.<br>
+       <b>(b)</b> The <b>tall</b> building shook in the wind.<br>
+       <b>(c)</b> The keys are <b>between</b> the sofa and the table.<br>
+       <b>(d)</b> The <b>children</b> were laughing loudly.<br>
+       <b>(e)</b> She <b>completed</b> the task yesterday.</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answers</h4>
+      <table>
+        <tr><th>Item</th><th>Answer</th><th>Why (the test)</th></tr>
+        <tr><td>(a) Honestly</td><td><b>Adverb</b></td><td>describes the whole sentence/how; usually -ly</td></tr>
+        <tr><td>(b) tall</td><td><b>Adjective</b></td><td>describes a noun ("which building?")</td></tr>
+        <tr><td>(c) between</td><td><b>Preposition</b></td><td>shows place before a noun phrase</td></tr>
+        <tr><td>(d) children</td><td><b>Noun</b></td><td>names a thing/person — comes after "the"</td></tr>
+        <tr><td>(e) completed</td><td><b>Verb</b></td><td>shows action (did what?) — V2 of <i>complete</i></td></tr>
+      </table>
+      <p><b>Chameleon warning:</b> "She spoke <i>honestly</i>" vs "an <i>honest</i> answer" — always ask
+         <b>what job it does here</b>, not how it ends.</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q5 · Tenses — Practical <span style="color:var(--muted);font-size:.9rem">(15 marks — 3 each)</span></h2>
+    <p>Fill in the blanks with the <b>correct tense</b> of the verb in brackets.</p>
+    <p><b>(a)</b> Water ___ at100°C. (boil)<br>
+       <b>(b)</b> Look! The baby ___. (cry)<br>
+       <b>(c)</b> She ___ Lahore last year. (visit)<br>
+       <b>(d)</b> The train ___ before we reached the station. (leave)<br>
+       <b>(e)</b> I ___ him since2018. (know)</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answers + formulas</h4>
+      <table>
+        <tr><th>#</th><th>Answer</th><th>Signal → rule</th></tr>
+        <tr><td>(a)</td><td><b>boils</b></td><td>general truth → <b>present simple</b> (V5 / +s)</td></tr>
+        <tr><td>(b)</td><td><b>is crying</b></td><td>"Look!" = happening now → <b>present continuous</b> (am/is/are + -ing)</td></tr>
+        <tr><td>(c)</td><td><b>visited</b></td><td>"last year" = finished past time → <b>past simple</b> (V2)</td></tr>
+        <tr><td>(d)</td><td><b>had left</b></td><td>earlier of two pasts → <b>past perfect</b> (had + V3)</td></tr>
+        <tr><td>(e)</td><td><b>have known</b></td><td>"since + point" → <b>present perfect</b> (has/have + V3)</td></tr>
+      </table>
+      <p><b>Trap check:</b> ✗ <i>have went</i> (needs V3 <i>gone</i>) · ✗ <i>since5 years</i> (that's <b>for</b>) ·
+         ✗ <i>Did you went?</i> (did + V1) · ✗ <i>He work</i> (he/she/it → -s).</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q6 · Convert the clauses into phrases <span style="color:var(--muted);font-size:.9rem">(10 marks — 2 each)</span></h2>
+    <p>Convert each <b>clause</b> (it has a subject + verb) into a <b>phrase</b> (no subject + verb) <b>without changing the meaning</b>.</p>
+    <p><b>(a)</b> the book <u>which is on the table</u><br>
+       <b>(b)</b> the man <u>who is at the door</u><br>
+       <b>(c)</b> <u>because it was raining</u>, we stayed inside<br>
+       <b>(d)</b> the students <u>who are in my class</u><br>
+       <b>(e)</b> he is tired <u>because he worked all night</u></p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answers</h4>
+      <table>
+        <tr><th>#</th><th>Clause</th><th>→ Phrase</th></tr>
+        <tr><td>(a)</td><td>which is on the table</td><td><b>on the table</b> (prepositional phrase)</td></tr>
+        <tr><td>(b)</td><td>who is at the door</td><td><b>at the door</b> (prepositional phrase)</td></tr>
+        <tr><td>(c)</td><td>because it was raining</td><td><b>because of the rain</b> (prepositional phrase)</td></tr>
+        <tr><td>(d)</td><td>who are in my class</td><td><b>in my class</b> (prepositional phrase)</td></tr>
+        <tr><td>(e)</td><td>because he worked all night</td><td><b>after working all night</b> (prepositional phrase)</td></tr>
+      </table>
+      <p><b>The trick:</b> drop the <b>relative pronoun + be</b> (who/which/that + is/are) and keep the <b>head noun + the
+         remaining phrase</b>; turn <i>because + clause</i> into <i>because of + noun</i>. ✗ Never leave a subject+verb inside,
+         or it's still a clause!</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q7 · Scenario Question — Identify the ICEBERG Model Terms <span style="color:var(--muted);font-size:.9rem">(10 marks)</span></h2>
+    <div class="callout exam"><span class="c-ico">scenario</span>
+      <div>A Dutch manager joins a Pakistani company. At his first meeting he asks, "Anyone see a problem with this plan?"
+      — <b>no junior staff member speaks</b>; the senior manager speaks last and everyone simply agrees with him.
+      Staff stand when he enters and call him "Sir". The meeting begins with <b>chai</b> and ten minutes of asking about
+      each other's families. When he asks "Can we finish by Friday?", the team replies <b>"InshaAllah, we will try"</b> —
+      but nothing is delivered. The Dutch manager is angry: "They agreed to Friday!" The Pakistani team is hurt:
+      "He pressured us in front of everyone — have some respect."<br><br>
+      <b>(a)</b> Name the model that separates culture into visible and hidden parts, and sort the <b>bold</b> items above
+      into "above the surface" and "below the surface". <b>(4)</b><br>
+      <b>(b)</b> Which <b>Hofstede Onion</b> layer do the chai and family questions belong to? What about "respect for
+      elders/authority"? <b>(2)</b><br>
+      <b>(c)</b> Which <b>Hofstede dimension</b> and score gap best explains the silence and the title "Sir"? <b>(2)</b><br>
+      <b>(d)</b> Which of the <b>7 PK-vs-global conflicts</b> is the "InshaAllah" episode, and give the CQ-based fix? <b>(2)</b></div>
+    </div>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer</h4>
+      <p><b>(a) Hall's Cultural Iceberg (1976)</b> — behaviour we see vs values we can't:</p>
+      <table>
+        <tr><th>🌊 Above the surface (visible)</th><th>🧊 Below the surface (hidden)</th></tr>
+        <tr><td>Standing up · "Sir" · starting with chai · family talk · the words "InshaAllah, we will try"</td>
+            <td>Attitude to <b>authority</b> (juniors don't challenge) · <b>group harmony/consensus</b> ·
+            <b>face &amp; respect</b> (no public pressure) · the <b>indirect "no"</b> · relationship-first thinking</td></tr>
+      </table>
+      <p><b>(b) Onion:</b> chai rituals and family questions = <b>Rituals</b> (practices — visible, change fast);
+         "respect for elders/authority" = <b>Values</b> (the invisible core, learned early, change slowly).
+         Both sit in the hidden layer of the iceberg.</p>
+      <p><b>(c) Power Distance</b> — Pakistan <b>55</b> vs USA <b>40</b> (and the related <b>Individualism</b> gap,
+         <b>14 vs91</b>): juniors accept unequal power, disagree privately, and use titles; the Dutch read silence as
+         agreement and behave flatly (low power distance).</p>
+      <p><b>(d) Conflict #3 — saying "no" &amp; indirect feedback</b> ("InshaAllah / dekhte hain / try karenge" may be a
+         polite <b>no</b>). <b>Fix (CQ Strategy + Action):</b> pause → check the assumption → confirm commitments
+         <b>in writing</b>, rephrase "try" as <b>yes/no with conditions</b>, ask juniors <b>last or privately</b> — then
+         adapt your own style. Remember: <b>misread signals, not bad intent</b>.</p>
+      <p><b>Marking:</b> model named + correct sorting (4) · both onion layers right (2) · dimension + score (2) ·
+         conflict #3 + fix (2).</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>✅ After the Paper</h2>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>Lost marks on Q1–Q3?</b> → Email section of the Revise tab (registers, BLUF, you-attitude).<br>
+      <b>Q4–Q5?</b> → PoS cheat sheet + tense grid.<br>
+      <b>Q6?</b> → Phrases card (head-word test).<br>
+      <b>Q7?</b> → Iceberg/Onion card (and remember: Iceberg = <b>Hall</b>).</div>
+    </div>
+    <p><b>Related:</b> <a href="el170.html" style="color:var(--cyan)">EL170 full notes (clauses · phrases · tenses · cross-culture) →</a> ·
+       <a href="quiz-el170.html" style="color:var(--cyan)">FE Quiz (20 MCQs) →</a> ·
+       <b>Notes:</b> <code>MASTER-REVISION.md</code></p>
+  </div>
+
+</section>
+
+<footer class="footer">
+  EL170 · <b>Mids → FE</b> · Revise · Mock · Sample Paper · <a href="index.html" style="color:inherit">Notes Hub →</a> · <a href="el170.html" style="color:inherit">EL170 →</a> · Fall 2026
+</footer>
+
+<script src="script.js"></script>
+<script>
+(function () {
+  var form = document.getElementById('testForm');
+  if (form) {
+    var blocks = [].slice.call(form.querySelectorAll('.q-block'));
+    var score = document.getElementById('scoreOut');
+
+    function gradeAll() {
+      var right = 0;
+      blocks.forEach(function (b) {
+        var ans = b.getAttribute('data-answer');
+        var chk = b.querySelector('input:checked');
+        b.classList.add('graded');
+        [].forEach.call(b.querySelectorAll('.q-opt'), function (o) {
+          var i = o.querySelector('input');
+          o.classList.remove('is-right', 'is-wrong');
+          if (i.value === ans) o.classList.add('is-right');
+          if (chk && i === chk && i.value !== ans) o.classList.add('is-wrong');
+        });
+        if (chk && chk.value === ans) right++;
+      });
+      var pct = Math.round(right * 100 / blocks.length);
+      var msg = pct >= 80 ? 'Mids-ready — now do the Sample Paper 🎉'
+              : pct >= 60 ? 'Good — read every red explanation, Reset & retry.'
+              : 'Revise Fast tab first, then retry — you will get there.';
+      score.textContent = right + ' / ' + blocks.length + '  (' + pct + '%) — ' + msg;
+      score.classList.add('show');
+    }
+
+    document.getElementById('quizSubmit').addEventListener('click', gradeAll);
+    document.getElementById('quizReset').addEventListener('click', function () {
+      blocks.forEach(function (b) {
+        b.classList.remove('graded');
+        [].forEach.call(b.querySelectorAll('input'), function (i) { i.checked = false; });
+        [].forEach.call(b.querySelectorAll('.q-opt'), function (o) { o.classList.remove('is-right', 'is-wrong'); });
+      });
+      score.textContent = '';
+      score.classList.remove('show');
+    });
+  }
+
+  [].forEach.call(document.querySelectorAll('.reveal-btn'), function (btn) {
+    btn.addEventListener('click', function () {
+      var box = btn.parentNode.querySelector('.model-ans');
+      if (!box) return;
+      if (box.hasAttribute('hidden')) {
+        box.removeAttribute('hidden');
+        btn.textContent = '🙈 Hide model answer ▲';
+      } else {
+        box.setAttribute('hidden', '');
+        btn.textContent = '👁 Reveal model answer ▼';
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

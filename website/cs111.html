@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CS111 — Programming Fundamentals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="themes.css">
+
+<script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="bg-blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grid-overlay"></div>
+
+<nav class="topbar">
+  <a class="brand" href="index.html"><span class="logo">Σ</span> BS-CYS · NOTES HUB</a>
+<div class="nav-right">
+  <a class="back-btn" href="index.html">← All Subjects</a>
+  <div class="theme-wrap">
+    <button class="theme-btn" id="themeBtn" title="Switch theme (press T)"><span class="palette">🎨</span><span class="label">Theme</span></button>
+    <div class="theme-menu" id="themeMenu">
+      <button class="theme-opt" data-theme="midnight"><span class="sw sw-midnight"></span><b>Midnight Cyber</b><i>glassy dark · aurora blobs</i></button>
+      <button class="theme-opt" data-theme="matrix"><span class="sw sw-matrix"></span><b>Matrix Terminal</b><i>digital rain · scanlines · mono</i></button>
+      <button class="theme-opt" data-theme="paper"><span class="sw sw-paper"></span><b>Paper Notes</b><i>ruled page · ink · sticky notes</i></button>
+      <button class="theme-opt" data-theme="synthwave"><span class="sw sw-synthwave"></span><b>Synthwave</b><i>chrome · retro sun · grid floor</i></button>
+      <button class="theme-opt" data-theme="aurora"><span class="sw sw-aurora"></span><b>Aurora Light</b><i>soft pastel glass</i></button>
+      <button class="theme-opt" data-theme="cyberpunk"><span class="sw sw-cyberpunk"></span><b>Cyberpunk Neon</b><i>glitch boxes · orbitron · neon</i></button>
+      <button class="theme-opt" data-theme="dracula"><span class="sw sw-dracula"></span><b>Dracula Gothic</b><i>serif italics · purple glow</i></button>
+      <button class="theme-opt" data-theme="coffee"><span class="sw sw-coffee"></span><b>Coffee Warmth</b><i>cozy sepia · serif · warm</i></button>
+      <button class="theme-opt" data-theme="blueprint"><span class="sw sw-blueprint"></span><b>Blueprint</b><i>engineering grid · mono · dashed</i></button>
+      <button class="theme-opt" data-theme="vaporwave"><span class="sw sw-vaporwave"></span><b>Vaporwave</b><i>pastel mall · rounded · lilac</i></button>
+      <button class="theme-opt" data-theme="lava"><span class="sw sw-lava"></span><b>Volcano Lava</b><i>ember glow · fiery accents</i></button>
+      <button class="theme-opt" data-theme="frost"><span class="sw sw-frost"></span><b>Nordic Frost</b><i>icy minimal · clean grotesk</i></button>
+    </div>
+  </div>
+</div>
+</nav>
+
+<header class="subject-hero">
+  <span class="code-lg">CS111 · THEORY</span>
+  <h1><span>Programming Fundamentals</span></h1>
+  <p>Think → Plan → Express → Execute · Dr. Zakir Khan · Weeks 1–4</p>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="week1"><span class="dot"></span> Week 1 · Think Like a Programmer</button>
+  <button class="tab-btn" data-tab="week2"><span class="dot"></span> Week 2 · Data &amp; Expressions</button>
+  <button class="tab-btn" data-tab="week3"><span class="dot"></span> Week 3 · Decision Making</button>
+  <button class="tab-btn" data-tab="week4"><span class="dot"></span> Week 4 · Loops</button>
+</div>
+
+<!-- ======================= WEEK 1 ======================= -->
+<section class="tab-panel active" id="week1">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>The Big Idea: Logic Before Syntax</h2>
+    <p>Programming starts <strong>before</strong> the first line of code. You must understand the problem, plan
+       precise steps, then translate them into C++.</p>
+    <div class="pipeline">
+      <span class="pipe-step">🎯 Problem</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">📥 Inputs</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">🧠 Steps</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">📤 Output</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">🔎 Check</span>
+    </div>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Quick tip:</b> Explain your algorithm out loud for a simple task like "making tea".
+      If a step is vague ("add some water"), your algorithm is not precise enough yet.</div>
+    </div>
+
+    <h3>Program vs Programming Language</h3>
+    <table>
+      <tr><th>Term</th><th>Meaning</th><th>Example</th></tr>
+      <tr><td><b>Program</b></td><td>A specific set of instructions + data that performs one task</td><td>A program that reads two numbers and prints their sum</td></tr>
+      <tr><td><b>Language</b></td><td>The formal notation used to write instructions</td><td>C++, Java, Python</td></tr>
+    </table>
+    <p> analogy: the recipe is the <b>program</b>; English/Urdu is the <b>language</b> it's written in.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Algorithms &amp; Flowcharts</h2>
+    <p>An <strong>algorithm</strong> is a <em>finite, ordered and unambiguous</em> sequence of steps for solving a problem.
+       It needs: defined task → known input → precise steps → termination → output.</p>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div>"Keep checking the log until it looks safe" is <b>NOT</b> a valid algorithmic instruction —
+      "looks safe" is ambiguous and the stopping rule is unclear. Use measurable conditions instead.</div>
+    </div>
+
+    <h3>Four flowchart symbols every beginner must know</h3>
+    <table>
+      <tr><th>Shape</th><th>Name</th><th>Purpose</th></tr>
+      <tr><td>⬭ Oval</td><td>Terminator</td><td>Start / End of the process</td></tr>
+      <tr><td>▱ Parallelogram</td><td>I/O</td><td>Read data or display a result</td></tr>
+      <tr><td>▭ Rectangle</td><td>Process</td><td>Perform a calculation or action</td></tr>
+      <tr><td>◇ Diamond</td><td>Decision</td><td>Choose a path based on a condition</td></tr>
+    </table>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>Why visualize first?</b> Flowcharts make the sequence, processing and decisions visible so you can
+      verify logic <i>before</i> fighting with syntax.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Your First C++ Program</h2>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="cm">// Hello, Cyber Security!</span>
+<span class="kw">#include</span> &lt;iostream&gt;
+<span class="kw">using namespace</span> std;
+
+<span class="kw">int</span> <span class="fn">main</span>() {
+    cout &lt;&lt; <span class="str">"Hello, Cyber Security!"</span>;
+    <span class="kw">return</span> <span class="num">0</span>;
+}</div>
+    <ul>
+      <li><code>#include &lt;iostream&gt;</code> → request a header (handled <b>before</b> compilation)</li>
+      <li><code>using namespace std;</code> → skip writing <code>std::</code> everywhere</li>
+      <li><code>main()</code> → where execution begins; <code>{ }</code> → a block; <code>;</code> → ends statements</li>
+      <li><code>cout &lt;&lt;</code> → send to output; <code>return 0;</code> → normal completion</li>
+    </ul>
+
+    <h3>Compilation pipeline</h3>
+    <div class="pipeline">
+      <span class="pipe-step">1 · Source (.cpp)</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">2 · Preprocess</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">3 · Compile</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">4 · Link</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">5 · Executable</span>
+    </div>
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>Classic exam question:</b> Does the CPU execute <code>cout &lt;&lt; "Hello";</code> directly?
+      <b>No</b> — the CPU runs generated <i>machine instructions</i>, never the C++ text itself.</div>
+    </div>
+
+    <h3>Input · Process · Output</h3>
+    <p>The simplest execution model: <b>Input</b> data enters → <b>Process</b> transforms it → <b>Output</b> result leaves.
+       <code>cin &gt;&gt;</code> reads into a variable, <code>cout &lt;&lt;</code> sends it out. Don't confuse
+       <code>&lt;&lt;</code> with "less than" — meaning depends on context.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Data, Variables &amp; Expressions</h2>
+    <table>
+      <tr><th>Term</th><th>One-line meaning</th><th>Example</th></tr>
+      <tr><td><b>Variable</b></td><td>Named storage whose value can change</td><td><code>int attempts = 3;</code></td></tr>
+      <tr><td><b>Literal</b></td><td>Fixed value written directly in source</td><td><code>3</code>, <code>4.5</code>, <code>"admin"</code></td></tr>
+      <tr><td><b>Identifier</b></td><td>Programmer-chosen name</td><td><code>attempts</code>, <code>userName</code></td></tr>
+    </table>
+
+    <h3>Identifier rules</h3>
+    <ul>
+      <li>Starts with a <b>letter or underscore</b> — never a digit (<code>2factor</code> ❌)</li>
+      <li>Then only letters, digits, underscores — no spaces/hyphens (<code>user-name</code> ❌)</li>
+      <li>Keywords like <code>int</code> are reserved (<code>int</code> ❌)</li>
+    </ul>
+
+    <h3>Core data types</h3>
+    <table>
+      <tr><th>Type</th><th>Stores</th><th>Example</th></tr>
+      <tr><td><code>int</code></td><td>Whole numbers</td><td><code>0, 3, -15</code></td></tr>
+      <tr><td><code>float / double</code></td><td>Real numbers (double = more precision)</td><td><code>3.14, 0.75</code></td></tr>
+      <tr><td><code>bool</code></td><td>Logical state</td><td><code>true / false</code></td></tr>
+      <tr><td><code>string</code></td><td>Text (needs <code>#include &lt;string&gt;</code>)</td><td><code>"student01"</code></td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">📏</span>
+      <div><b>Don't memorize byte sizes!</b> Use <code>sizeof(int)</code> on your own system —
+      sizes are implementation-dependent. C++ only guarantees minimum ranges.</div>
+    </div>
+
+    <h3>Declaration vs Initialization vs Assignment</h3>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">int</span> attempts;          <span class="cm">// declaration  — create it</span>
+<span class="kw">int</span> attempts = <span class="num">3</span>;      <span class="cm">// initialization — first value</span>
+attempts = <span class="num">4</span>;           <span class="cm">// assignment     — replace later</span></div>
+    <p><b>Scope:</b> a variable declared inside <code>{ }</code> is only visible inside its block.
+       Smaller scopes = fewer accidental bugs.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Arithmetic &amp; Precedence</h2>
+    <table>
+      <tr><th>Operator</th><th>Meaning</th><th>Example</th></tr>
+      <tr><td><code>+ - * /</code></td><td>Add, subtract, multiply, divide</td><td><code>8 * 2 → 16</code></td></tr>
+      <tr><td><code>%</code></td><td>Remainder (modulus)</td><td><code>8 % 3 → 2</code></td></tr>
+    </table>
+    <div class="pipeline">
+      <span class="pipe-step">1 · ( ) Parentheses</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">2 · * / %</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">3 · + -</span>
+    </div>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">int</span> x = <span class="num">2</span> + <span class="num">3</span> * <span class="num">4</span>;     <span class="cm">// 14  (× before +)</span>
+<span class="kw">int</span> y = (<span class="num">2</span> + <span class="num">3</span>) * <span class="num">4</span>;   <span class="cm">// 20  (parentheses first)</span>
+<span class="kw">int</span> r = <span class="num">20</span> - <span class="num">6</span> / <span class="num">2</span> * <span class="num">3</span>; <span class="cm">// 11  (÷,× left→right, then −)</span></div>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Integer division:</b> <code>7 / 2 → 3</code>, not 3.5! Both operands are ints, so the fraction is
+      discarded. Need decimals? Use a <code>double</code> operand (<code>7.0 / 2</code>).</div>
+    </div>
+    <p><b>Constants:</b> prefer <code>const int MAX = 3;</code> (typed, compiler-checked) over
+       <code>#define MAX 3</code> (raw text replacement).</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🖼️ See It: Compilation, IPO &amp; Flowchart Symbols</h2>
+    <div class="diagram">
+      <div class="dg-cap">Source code never runs directly — the CPU only speaks machine code</div>
+      <svg viewBox="0 0 740 96">
+        <rect class="box pulse" x="8" y="24" width="118" height="52" rx="10"/>
+        <rect class="box p" x="166" y="24" width="118" height="52" rx="10"/>
+        <rect class="box p" x="324" y="24" width="118" height="52" rx="10"/>
+        <rect class="box p" x="482" y="24" width="118" height="52" rx="10"/>
+        <rect class="box g pulse" x="640" y="24" width="92" height="52" rx="10"/>
+        <path class="flow" d="M126 50 H166"/><path class="flow" d="M284 50 H324"/>
+        <path class="flow" d="M442 50 H482"/><path class="flow" d="M600 50 H640"/>
+        <text x="67" y="46">source.cpp</text><text x="67" y="63" class="sub">your text</text>
+        <text x="225" y="46">Preprocess</text><text x="225" y="63" class="sub">#include handled</text>
+        <text x="383" y="46">Compile</text><text x="383" y="63" class="sub">→ object code</text>
+        <text x="541" y="46">Link</text><text x="541" y="63" class="sub">joins libraries</text>
+        <text x="686" y="46">a.exe</text><text x="686" y="63" class="sub">machine code</text>
+      </svg>
+    </div>
+    <div class="diagram">
+      <div class="dg-cap">IPO model — how every program processes data</div>
+      <svg viewBox="0 0 740 84">
+        <rect class="box" x="8" y="16" width="220" height="52" rx="10"/>
+        <rect class="box p pulse" x="260" y="16" width="220" height="52" rx="10"/>
+        <rect class="box g" x="512" y="16" width="220" height="52" rx="10"/>
+        <path class="flow" d="M228 42 H260"/><path class="flow g" d="M480 42 H512"/>
+        <text x="118" y="46">INPUT</text><text x="118" y="62" class="sub">cin / keyboard</text>
+        <text x="370" y="46">PROCESS</text><text x="370" y="62" class="sub">calculations</text>
+        <text x="622" y="46">OUTPUT</text><text x="622" y="62" class="sub">cout / screen</text>
+      </svg>
+    </div>
+    <div class="diagram">
+      <div class="dg-cap">The 4 flowchart shapes you must draw</div>
+      <svg viewBox="0 0 740 100">
+        <ellipse class="box g" cx="90" cy="46" rx="72" ry="30"/>
+        <polygon class="box a" points="280,14 372,46 280,78 188,46"/>
+        <rect class="box p" x="404" y="20" width="150" height="52" rx="4"/>
+        <polygon class="box" points="660,14 732,46 660,78 588,46"/>
+        <text x="90" y="42">Start / End</text><text x="90" y="59" class="sub">(terminator)</text>
+        <text x="280" y="42">Decision</text><text x="280" y="59" class="sub">yes/no diamond</text>
+        <text x="479" y="42">Process</text><text x="479" y="59" class="sub">rectangle</text>
+        <text x="660" y="42">I/O</text><text x="660" y="59" class="sub">parallelogram</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Memory Tricks</h2>
+    <ul class="trick-list">
+      <li><b>IPO</b> → <b>I</b>nput → <b>P</b>rocess → <b>O</b>utput — like a kitchen: ingredients → cooking → meal.</li>
+      <li><b>Flowchart shapes</b> → "<b>O</b>ld <b>P</b>eople <b>D</b>rink <b>T</b>ea" — <b>O</b>val (start/end), <b>P</b>arallelogram (I/O), <b>D</b>iamond (decision), <b>T</b>he rectangle... remember <b>R</b>ectangle = process, arrows connect.
+        <span class="mem">Oval = ends · Diamond = question · Rectangle = work · Parallelogram = data.</span></li>
+      <li><b>Precedence</b> → "<b>PEMDAS</b>-lite": Parentheses → <b>* / %</b> → <b>+ −</b>. Same level? Left to right.</li>
+      <li><b>Integer division</b> → <code>7 / 2</code> is <b>3</b>, not 3.5 — int ÷ int <b>chops the decimal</b>. Want decimals? touch a <code>double</code>.</li>
+      <li><b>Compilation</b> → "<b>PCL</b>" — <b>P</b>reprocess → <b>C</b>ompile → <b>L</b>ink → exe.</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎬 Worked Example — Trace the expression</h2>
+    <div class="example">
+      <div class="ex-head"><span>🧩 <code style="color:inherit">int result = 10 + 3 * 2; then double d = 7 / 2;</code></span><button class="ex-next">Next step →</button></div>
+      <div class="ex-step"><span class="n">1</span><b>Look for operators:</b> <code>+</code> and <code>*</code> both present — precedence decides the order, not reading order.</div>
+      <div class="ex-step"><span class="n">2</span><b><code>*</code> beats <code>+</code>:</b> first compute <code>3 * 2 = 6</code>.</div>
+      <div class="ex-step"><span class="n">3</span><b>Then add:</b> <code>10 + 6 = 16</code> → <code>result</code> holds <b>16</b> (not 26!).</div>
+      <div class="ex-step"><span class="n">4</span><b>Next line — integer division:</b> <code>7 / 2</code> → both operands are <code>int</code> → result <b>3</b> (decimal chopped, never rounded).</div>
+      <div class="ex-step"><span class="n">5</span><b>Fix it:</b> <code>double d = 7 / 2;</code> still gives 3! You must touch a double <i>inside</i> the math: <code>7 / 2.0</code> or <code>(double)7 / 2</code> → <b>3.5</b>.</div>
+      <div class="ex-step"><span class="n">6</span><b>Exam habit:</b> circle the operators, mark precedence, evaluate left→right within a level, then check operand types.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚡ Quick Tips — Week 1</h2>
+    <div class="tips-grid">
+      <div class="tip-card"><span class="t-ico">🧠</span><h4>Trace before running</h4>
+        <p>Predict the output on paper first. If your prediction and the compiler disagree — one of you is wrong, and it's usually you.</p></div>
+      <div class="tip-card"><span class="t-ico">🏷️</span><h4>Names beat letters</h4>
+        <p><code>failedAttempts</code> beats <code>x</code>. Your future debugger self will thank you.</p></div>
+      <div class="tip-card"><span class="t-ico">🧼</span><h4>Readable = auditable</h4>
+        <p>Clean formatting isn't decoration — in security work, readable code is easier to audit for bugs.</p></div>
+      <div class="tip-card"><span class="t-ico">🔁</span><h4>One change at a time</h4>
+        <p>When debugging, change one thing, recompile, observe. Never change five things at once.</p></div>
+      <div class="tip-card"><span class="t-ico">⌨️</span><h4>Semicolons matter</h4>
+        <p>The #1 beginner error in Week 1: forgetting <code>;</code>. The compiler will point at the line <i>after</i> your mistake.</p></div>
+      <div class="tip-card"><span class="t-ico">📝</span><h4>Comment the WHY</h4>
+        <p>Good comments explain reasoning (<code>// avoid integer division</code>), not syntax (<code>// add 1</code>).</p></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Likely Exam Questions</h2>
+    <p style="color:var(--muted)">Click a card to reveal the answer. Press <b>R</b> to reset all.</p>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Question 1</span>
+          <p>What is the difference between a program and a programming language?</p>
+          <span class="flip-hint">↻ tap to flip</span></div>
+        <div class="flip-face flip-back"><span class="a-label">Answer</span>
+          <p>A <b>program</b> is a specific set of instructions performing a task. A <b>language</b> is the formal notation used to express such instructions.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Question 2</span>
+          <p>What are the stages between C++ source code and an executable?</p>
+          <span class="flip-hint">↻ tap to flip</span></div>
+        <div class="flip-face flip-back"><span class="a-label">Answer</span>
+          <p>Preprocess → Compile → Link → Executable. The executable contains machine-level instructions the OS can load.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Question 3</span>
+          <p>Evaluate: <code>int result = 20 - 6 / 2 * 3;</code></p>
+          <span class="flip-hint">↻ tap to flip</span></div>
+        <div class="flip-face flip-back"><span class="a-label">Answer</span>
+          <p><b>11.</b> ÷ and × beat −, evaluated left→right: 6/2=3, 3×3=9, 20−9=11.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Question 4</span>
+          <p>Is <code>user-name</code> a valid C++ identifier?</p>
+          <span class="flip-hint">↻ tap to flip</span></div>
+        <div class="flip-face flip-back"><span class="a-label">Answer</span>
+          <p><b>No.</b> The hyphen is the subtraction operator. Identifiers allow only letters, digits and underscore.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Question 5</span>
+          <p><code>int x = 5; x = x + 2;</code> — final value?</p>
+          <span class="flip-hint">↻ tap to flip</span></div>
+        <div class="flip-face flip-back"><span class="a-label">Answer</span>
+          <p><b>7.</b> Read old value 5, add 2, store 7 back into <code>x</code>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Question 6</span>
+          <p>Why might <code>double</code> beat <code>int</code> for a rate like 0.125?</p>
+          <span class="flip-hint">↻ tap to flip</span></div>
+        <div class="flip-face flip-back"><span class="a-label">Answer</span>
+          <p><code>int</code> stores only whole numbers; <code>double</code> represents fractional values needed for rates.</p></div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>✅ Week 1 Self-Check</h2>
+    <p style="color:var(--muted)">Click to tick off — progress is saved in your memory (not the cloud, you're in security class 😄)</p>
+    <ul class="checklist">
+      <li>I can explain logic before writing any code</li>
+      <li>I can draw a flowchart with the 4 basic symbols</li>
+      <li>I know every line of the "Hello" program</li>
+      <li>I can trace variables through declaration → assignment</li>
+      <li>I can predict integer division and precedence results</li>
+      <li>I know identifier rules and core data types</li>
+    </ul>
+    <p><b>Related lab:</b> <a href="cs111l.html" style="color:var(--cyan)">CS111L Programming Fundamentals Lab →</a></p>
+  </div>
+
+</section>
+
+<!-- ======================= WEEK 2 ======================= -->
+<section class="tab-panel" id="week2">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Week 2 — Data, Expressions, I/O &amp; Debugging</h2>
+    <p>Three sessions: <b>store</b> data (variables &amp; types) → <b>process</b> it (operators &amp;
+       expressions) → <b>trace &amp; debug</b> (I/O, conversion, hand tracing). Week 1 taught <i>how</i> a
+       program is written; Week 2 teaches how it <b>stores, manipulates, receives and displays</b> data.</p>
+    <div class="pipeline">
+      <span class="pipe-step">📦 Variables</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">🧮 Expressions</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">↔️ Conversion</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">🐞 Debug</span>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Session 04 — Variables, Literals &amp; Types</h2>
+    <p><b>Variable = a named memory box.</b> <code>int attempts = 3;</code> carries three pieces:
+       <b>type</b> (int) + <b>name</b> (attempts) + <b>value</b> (3).</p>
+    <table>
+      <tr><th>Action</th><th>Code</th><th>Meaning</th></tr>
+      <tr><td>Declaration</td><td><code>int age;</code></td><td>create the variable</td></tr>
+      <tr><td>Initialization</td><td><code>int age = 18;</code></td><td>create + first value</td></tr>
+      <tr><td>Assignment</td><td><code>age = 20;</code></td><td>replace the value (an <b>update</b>)</td></tr>
+    </table>
+    <ul class="checklist">
+      <li><b>Literals</b> = fixed values in code: <code>10</code> · <code>3.14</code> · <code>'A'</code> · <code>"Ali"</code> — no name attached</li>
+      <li><b>Identifier rules:</b> letters/digits/underscore · <b>no leading digit</b> · not a keyword · no spaces · case-sensitive (<code>age</code> ≠ <code>Age</code>)</li>
+      <li>Valid <code>userName</code>, <code>failed_attempts</code> ✅ · Invalid <code>2factor</code>, <code>login-count</code>, <code>int</code>, <code>user age</code> ❌</li>
+      <li><b>Beginner rule:</b> initialize variables before using them; prefer <code>failedAttempts</code> over <code>x</code></li>
+    </ul>
+    <table>
+      <tr><th>Type</th><th>Meaning</th><th>Example</th><th>Use</th></tr>
+      <tr><td><code>int</code></td><td>whole number</td><td><code>42</code></td><td>counts, attempts, age</td></tr>
+      <tr><td><code>float</code>/<code>double</code></td><td>decimal</td><td><code>3.75</code></td><td>average, percentage</td></tr>
+      <tr><td><code>char</code></td><td>single character</td><td><code>'Y'</code></td><td>grade, menu option</td></tr>
+      <tr><td><code>bool</code></td><td>true/false</td><td><code>true</code></td><td>security flag, status</td></tr>
+      <tr><td><code>string</code></td><td>text sequence</td><td><code>"admin"</code></td><td>name, username</td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>char vs string:</b> <code>'A'</code> single quotes (1 char) · <code>"A"</code> double quotes
+      (text). <b>sizeof</b> asks "how many bytes?" — sizes vary by system.
+      <b>Scope</b> = the region where a name is visible (inside <code>main()</code> it dies at the closing brace).
+      <b><code>const int MAX_ATTEMPTS = 3;</code></b> — named constant, assignment to it is an error (security policy limits!).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Session 05 — Operators &amp; Expressions</h2>
+    <p>An <b>expression</b> = values + operators that <b>produces a value</b>
+       (<code>marks + bonus</code> → evaluate → store or display).</p>
+    <table>
+      <tr><th>Op</th><th>Name</th><th>Example</th><th>Result</th></tr>
+      <tr><td><code>+ - * /</code></td><td>arithmetic</td><td><code>7 * 3</code></td><td>21</td></tr>
+      <tr><td><code>%</code></td><td>remainder</td><td><code>17 % 5</code></td><td><b>2</b></td></tr>
+      <tr><td><code>=</code></td><td>assignment (store)</td><td><code>x = x + 1</code></td><td>update, <b>not equality</b></td></tr>
+      <tr><td><code>+= -=</code></td><td>combined</td><td><code>score += 10</code></td><td><code>score = score + 10</code></td></tr>
+      <tr><td><code>++ --</code></td><td>inc/dec</td><td><code>count++</code></td><td><code>count = count + 1</code></td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Precedence:</b> C++ does <i>not</i> go left-to-right — <code>* / %</code> bind tighter than
+      <code>+ −</code>. <code>2 + 3 * 4</code> → 3×4=12 → <b>14</b> (not 20).
+      <b>Integer division:</b> int ÷ int discards the fraction — <code>7 / 2</code> → <b>3</b>,
+      <code>int avg = 5 / 2;</code> stores <b>2</b>. Make one operand <code>double</code> for decimals.</div>
+    </div>
+    <div class="callout tip"><span class="c-ico">🔎</span>
+      <div><b>Trace:</b> <code>(8 + 4) / 2 + 3 * 2</code> → parentheses (12) → ÷2=6 → 3×2=6 → 6+6=
+      <b>12</b>. <b>Negative remainder:</b> <code>-7 % 3</code> surprises beginners — test boundary values,
+      not only comfortable positives. Common errors: missing <code>;</code> · writing <code>x</code> instead
+      of <code>*</code> · <code>double avg = 5 / 2;</code> (still integer division → 2.0).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Session 06 — Conversion, I/O &amp; Debugging</h2>
+    <table>
+      <tr><th>Kind</th><th>Code</th><th>Rule</th></tr>
+      <tr><td>Implicit</td><td><code>double x = 5;</code></td><td>C++ converts automatically</td></tr>
+      <tr><td>Explicit</td><td><code>int y = static_cast&lt;int&gt;(3.9);</code></td><td>you request it → <b>3</b></td></tr>
+    </table>
+    <ul class="checklist">
+      <li><b>Truncation, not rounding:</b> <code>static_cast&lt;int&gt;(9.8)</code> → <b>9</b> (never 10)</li>
+      <li><b>I/O:</b> <code>cout &lt;&lt;</code> sends data out · <code>cin &gt;&gt;</code> reads data in — arrows follow the data</li>
+      <li><b>Cascade:</b> <code>cout &lt;&lt; "User: " &lt;&lt; user &lt;&lt; " Score: " &lt;&lt; score;</code> — label output, never print a bare number</li>
+      <li><b>Hand tracing:</b> read line → update state → record output → next line (marks=70, bonus=5 → total=75)</li>
+      <li><b>Debugging = investigation:</b> Observe → Trace → Hypothesize → Fix → Retest</li>
+    </ul>
+    <table>
+      <tr><th>Error type</th><th>Meaning</th><th>Example</th></tr>
+      <tr><td>Syntax</td><td>violates C++ grammar</td><td><code>cout &lt;&lt; "Hi"</code> (no <code>;</code>)</td></tr>
+      <tr><td>Logic</td><td>runs, wrong answer</td><td><code>avg = total / 2</code> with 3 quizzes</td></tr>
+      <tr><td>Type</td><td>wrong type surprise</td><td><code>int avg = 7 / 2;</code></td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Overflow &amp; Underflow — Two Counter Demos</h2>
+    <div class="diagram">
+      <div class="dg-cap">Mechanical odometer model — n-digit counter wraps like a tally wheel</div>
+      <svg viewBox="0 0 740 150">
+        <rect class="box pulse" x="8" y="16" width="228" height="46" rx="10"/>
+        <rect class="box a pulse" x="252" y="16" width="228" height="46" rx="10"/>
+        <rect class="box pulse" x="496" y="16" width="236" height="46" rx="10"/>
+        <rect class="box g pulse" x="8" y="76" width="228" height="46" rx="10"/>
+        <rect class="box pulse" x="252" y="76" width="228" height="46" rx="10"/>
+        <rect class="box p pulse" x="496" y="76" width="236" height="46" rx="10"/>
+        <text x="122" y="44">4 digits: 0000–9999</text>
+        <text x="366" y="44">range = 0 … 10ⁿ − 1</text>
+        <text x="614" y="44">2 digits: 00–99</text>
+        <text x="122" y="104">9999 + 1 → 0000</text>
+        <text x="366" y="104">OVERFLOW ⬆</text>
+        <text x="614" y="104">0000 − 1 → 9999 ⬇ UNDERFLOW</text>
+      </svg>
+    </div>
+    <ul class="checklist">
+      <li><b>Overflow:</b> result exceeds the type's maximum → wrong/unexpected value.
+        <b>Underflow:</b> falls below the minimum (floats also lose precision).</li>
+      <li><b>N bits → 2ᴺ patterns:</b> <code>uint8_t</code> = 0–255 (0…2ⁿ−1) · <code>int8_t</code> = −128…127 (−2ⁿ⁻¹…2ⁿ⁻¹−1)</li>
+      <li><b>Unsigned wraps (defined):</b> <code>uint8_t x = 255; x = x + 1;</code> → <b>0</b> (mod 2ᴺ)</li>
+      <li><b>Signed overflow = undefined behavior</b> in C++ — the demo's wrap-around is a two's-complement <i>teaching model</i>, not a guarantee</li>
+      <li>Fixed-width types (<code>int8_t</code>, <code>uint32_t</code>…) make bits explicit; check limits with <code>&lt;limits&gt;</code>: <code>numeric_limits&lt;int8_t&gt;::min()/max()</code></li>
+    </ul>
+    <div class="callout warn"><span class="c-ico">🔐</span>
+      <div><b>Cyber link:</b> type limits explain input-validation and memory-safety bugs — attempts,
+      flags, scores and usernames must be stored with the right type.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Memory Tricks</h2>
+    <ul class="trick-list">
+      <li><b><code>&lt;&lt;</code> out, <code>&gt;&gt;</code> in</b> — arrows follow the data stream.
+        <span class="mem">cout = stream out, cin = stream in.</span></li>
+      <li><b><code>=</code> pours, <code>==</code> compares</b> — assignment is an update, equality is a question (Week 3 preview).</li>
+      <li><b>int ÷ int stays int</b> — 5/2 = 2; make one operand double (×1.0) to get 2.5.</li>
+      <li><b>Precedence ladder:</b> <code>()</code> → <code>* / %</code> → <code>+ −</code>.</li>
+      <li><b>static_cast = chop, not round</b> — 9.8 → 9, 4.9 → 4.</li>
+      <li><b>Odometer wrap:</b> 9999+1 → 0000 — that <i>is</i> overflow, visualized.</li>
+      <li><b>8 bits = 256 patterns</b> (2⁸): unsigned 0–255, signed −128…127.</li>
+      <li><b>Debug loop:</b> Observe → Trace → Hypothesize → Fix → Retest ("OTHFR").</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚡ Quick Tips — Week 2</h2>
+    <div class="tips-grid">
+      <div class="tip-card"><span class="t-ico">✏️</span><h4>Trace every expression</h4>
+        <p>Write the variable state after each line — precedence bugs jump out on paper.</p></div>
+      <div class="tip-card"><span class="t-ico">🔢</span><h4>Test boundary values</h4>
+        <p>0, max, negative, one-before/after limits — comfortable positives hide overflow bugs.</p></div>
+      <div class="tip-card"><span class="t-ico">🏷️</span><h4>Label your output</h4>
+        <p><code>"Total = "</code> beats a naked number — helps users <i>and</i> your debugging.</p></div>
+      <div class="tip-card"><span class="t-ico">const</span><h4>Policy = const</h4>
+        <p>Fixed limits (max login attempts) as <code>const</code> — can't be changed by accident.</p></div>
+      <div class="tip-card"><span class="t-ico">🔄</span><h4>Init before use</h4>
+        <p>Uninitialized variables hold junk — always give a first value.</p></div>
+      <div class="tip-card"><span class="t-ico">🧪</span><h4>Assignment 1 after Session 06</h4>
+        <p>Covers Weeks 1–2 — trace it, explain it, test different inputs; don't just copy code.</p></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Week 2 Check</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Variable vs literal?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Variable</b> = named storage whose value can change · <b>literal</b> = fixed value written directly in code (<code>10</code>, <code>"Ali"</code>).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Why is <code>2user</code> invalid?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Identifiers <b>cannot start with a digit</b> — use <code>user2</code> instead.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p><code>10 + 2 * 3</code> → ?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>16</b> — multiplication has higher precedence than addition (2×3=6, then 10+6).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>What does <code>count++</code> do?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Increases <code>count</code> by 1 — short form of <code>count = count + 1;</code>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p><code>static_cast&lt;int&gt;(4.9)</code> → ?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>4</b> — conversion <b>truncates</b> the fraction; it does not round to 5.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>Why does <code>int avg = 5 / 2;</code> surprise?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Integer division gives <b>2</b>, not 2.5 — the fraction is discarded before storing.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q7</span><p>4-digit counter: 9999+1 and 0000−1?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>→ <b>0000</b> (overflow wrap) and → <b>9999</b> (underflow wrap). Range = 0…10ⁿ−1.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q8</span><p>Signed vs unsigned overflow?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Unsigned</b> wraps mod 2ᴺ (defined) · <b>signed overflow is undefined behavior</b> — the demo's wrap is just a teaching model.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q9</span><p>Syntax vs logic vs type error?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Syntax</b> = grammar violated (won't compile) · <b>logic</b> = runs but wrong answer · <b>type</b> = wrong data type surprise (<code>int avg = 7/2</code>).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q10</span><p>Why hand trace?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>To follow execution line by line, track variable values, predict output and find mistakes — the beginner's best debugging tool.</p></div>
+      </div></div>
+    </div>
+    <p><b>Related lab:</b> <a href="cs111l.html" style="color:var(--cyan)">CS111L Weeks 01–02 →</a>
+       · <b>Next:</b> Week 3 tab (decision making) →</p>
+  </div>
+
+</section>
+
+<!-- ======================= WEEK 3 ======================= -->
+<section class="tab-panel" id="week3">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Week 3 — Decisions: if, else &amp; Logic</h2>
+    <p>Programs stop being straight lines. A <b>decision</b> picks a branch at run time based on a
+       <b>condition</b> that evaluates to <code>true</code> or <code>false</code>.</p>
+    <div class="pipeline">
+      <span class="pipe-step">❓ Condition</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">🔀 true / false</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">✅ Branch A / B</span>
+    </div>
+    <table>
+      <tr><th>Relational ops</th><th>Meaning</th></tr>
+      <tr><td><code>==</code> <code>!=</code></td><td>equal · not equal (NOT <code>=</code> — that's assignment!)</td></tr>
+      <tr><td><code>&lt;</code> <code>&gt;</code> <code>&lt;=</code> <code>&gt;=</code></td><td>less · greater · less-or-equal · greater-or-equal</td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b><code>=</code> vs <code>==</code>:</b> single <code>=</code> <b>stores</b> a value; <code>==</code> <b>asks</b> if two
+      values are equal. Using <code>=</code> in an <code>if</code> is a classic bug (and usually a compiler error).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>if · if-else · nested · else-if ladder</h2>
+    <table>
+      <tr><th>Form</th><th>Shape</th><th>When it runs</th></tr>
+      <tr><td><b>if</b></td><td><code>if (cond) { A; }</code></td><td>A runs only if cond is true (else: <b>nothing</b>)</td></tr>
+      <tr><td><b>if-else</b></td><td><code>if (cond) A; else B;</code></td><td>exactly one branch runs</td></tr>
+      <tr><td><b>nested</b></td><td><code>if (a) { if (b) … }</code></td><td>inner runs only if BOTH are true</td></tr>
+      <tr><td><b>else-if</b></td><td><code>if…else if…else</code></td><td>tested top-down; <b>first true wins</b>; else = fallback</td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Order matters — the "ladder rule":</b> in <code>if (n&lt;0) … else if (n==0) … else …</code> the test
+      you check first can make later tests redundant. Ranges therefore <b>strictest first</b>:
+      <code>else if (score &gt;= 90)</code> before <code>score &gt;= 80</code>.</div>
+    </div>
+    <div class="callout warn"><span class="c-ico">🪤</span>
+      <div><b>Dangling else:</b> an <code>else</code> always binds to the <b>nearest unmatched <code>if</code></b>.
+      Ambiguous nests → use braces <code>{}</code> so it attaches where you meant.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Logical Operators &amp; Ranges</h2>
+    <table>
+      <tr><th>a</th><th>b</th><th>a &amp;&amp; b</th><th>a || b</th><th>!a</th></tr>
+      <tr><td>T</td><td>T</td><td><b>T</b></td><td><b>T</b></td><td>F</td></tr>
+      <tr><td>T</td><td>F</td><td>F</td><td><b>T</b></td><td>F</td></tr>
+      <tr><td>F</td><td>T</td><td>F</td><td><b>T</b></td><td><b>T</b></td></tr>
+      <tr><td>F</td><td>F</td><td>F</td><td>F</td><td><b>T</b></td></tr>
+    </table>
+    <p><b>Range test:</b> <code>x &gt;= 10 &amp;&amp; x &lt;= 90</code> — <b>both sides must be true</b>.
+       <code>10 &lt;= x &lt;= 90</code> does <b>not</b> work in C++ (it evaluates left-to-right as a bool).</p>
+    <p><b>Flags:</b> a <code>bool</code> variable that records a yes/no state
+       (<code>bool found = false;</code> … set <code>true</code> when something happens).</p>
+    <p><b>Short-circuit:</b> <code>&amp;&amp;</code> stops at the first <code>false</code> ·
+       <code>||</code> stops at the first <code>true</code> — the right side may never be evaluated.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Validation, Menus, switch &amp; ?: </h2>
+    <table>
+      <tr><th>Tool</th><th>Purpose</th><th>Cheat</th></tr>
+      <tr><td><b>Validation loop</b></td><td>Re-ask until input is legal</td><td><code>while (x &lt; 1 || x &gt; 6)</code></td></tr>
+      <tr><td><b>Menu</b></td><td>Present choices, act on selection</td><td>print options → read choice → if/switch</td></tr>
+      <tr><td><b>switch</b></td><td>Branch on an <b>int/char</b> value</td><td><code>case n:</code> … <code>break;</code> (missing break = <b>fall-through</b>!) <code>default:</code></td></tr>
+      <tr><td><b>?:</b></td><td>One-line if-else expression</td><td><code>cond ? a : b</code></td></tr>
+      <tr><td><b>char vs string</b></td><td>chars compare with <code>'=='</code>; strings use <code>==</code> via std::string (or <code>strcmp</code> for C-strings)</td><td><code>'A'</code> vs <code>"A"</code></td></tr>
+    </table>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>switch needs <code>break</code></b> (or <code>return</code>) — without it execution <b>falls through</b> into the
+      next case. <code>switch</code> works on integral types only; conditions/logic → use <code>if/else-if</code>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Memory Tricks</h2>
+    <ul class="trick-list">
+      <li><b>if = red light test</b> — green: run the block · red: skip past it.</li>
+      <li><b>else = the other shoe</b> — it only drops when the <code>if</code> didn't.</li>
+      <li><b>&amp;&amp; needs BOTH checks, || needs EITHER</b> — "honey, are you <i>and</i> home?" vs "pizza <i>or</i> burger?"</li>
+      <li><b>! = mirror</b> — true becomes false, false becomes true.</li>
+      <li><b>Strictest first</b> — once a high score matches, lower thresholds can't be reached; ladder keeps order.</li>
+      <li><b>break = STOP sign</b> — fall-through is the broken sign.</li>
+      <li><b><code>=</code> pours, <code>==</code> compares</b> — assign vs ask.</li>
+      <li><b>?: = mini if-else</b> — condition ? true-part : false-part.</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚡ Quick Tips — Week 3</h2>
+    <div class="tips-grid">
+      <div class="tip-card"><span class="t-ico">✏️</span><h4>Trace on paper first</h4>
+        <p>Write the input, walk each branch by hand, note which lines run — hand tracing catches ordering bugs.</p></div>
+      <div class="tip-card"><span class="t-ico">🧱</span><h4>Brace every nest</h4>
+        <p>Even single-statement blocks — kills the dangling-else trap and future edit surprises.</p></div>
+      <div class="tip-card"><span class="t-ico">🔁</span><h4>Validation pattern</h4>
+        <p>Read → test range → <code>while</code> invalid → re-prompt. Repeat for every user input.</p></div>
+      <div class="tip-card"><span class="t-ico">🎯</span><h4>Common errors</h4>
+        <p>assignment in condition · missing braces · fall-through switch · wrong comparison · off-by-one range ends.</p></div>
+      <div class="tip-card"><span class="t-ico">⌨️</span><h4>cin leaves the newline</h4>
+        <p>After <code>cin &gt;&gt;</code>, a stray <code>\n</code> can break later <code>getline</code> — clear it if mixing input styles.</p></div>
+      <div class="tip-card"><span class="t-ico">🧪</span><h4>Test the edges</h4>
+        <p>Check boundary values (89/90, 9/10) — conditions usually break at the borders.</p></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Week 3 Check</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p><code>=</code> vs <code>==</code>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><code>=</code> assigns a value · <code>==</code> compares two values (returns bool).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>What is short-circuit evaluation?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><code>&amp;&amp;</code> skips the rest after a <b>false</b>; <code>||</code> skips after a <b>true</b> — right side may never run.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Dangling else?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>An <code>else</code> binds to the <b>nearest unmatched if</b> — braces fix ambiguous nests.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Why "strictest first" for scores?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>First true branch wins; test <code>&gt;= 90</code> before <code>&gt;= 80</code> or every 95 lands in the 80 bucket.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>switch fall-through?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Missing <code>break</code> makes execution continue into the <b>next case</b> — intended for grouped cases, bug otherwise.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>Range test for 10 ≤ x ≤ 90?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><code>x &gt;= 10 &amp;&amp; x &lt;= 90</code> — chained comparisons don't work in C++.</p></div>
+      </div></div>
+    </div>
+    <p><b>Related lab:</b> <a href="cs111l.html" style="color:var(--cyan)">CS111L Week 03 (if/else programs) →</a>
+       · <b>Related:</b> <a href="ma216.html" style="color:var(--cyan)">MA216 propositional logic →</a></p>
+  </div>
+
+</section>
+
+<!-- ======================= WEEK 4 ======================= -->
+<section class="tab-panel" id="week4">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Why Loops? — Controlled Repetition</h2>
+    <p>Copying the same statement again and again makes code long, mistake-prone and painful to
+       change. A loop writes the logic <b>once</b> and repeats it under a condition.</p>
+    <div class="diagram">
+      <div class="dg-cap">The cycle of every loop — check, do, change</div>
+      <svg viewBox="0 0 740 110">
+        <rect class="box" x="8" y="30" width="120" height="52" rx="10"/>
+        <rect class="box pulse" x="176" y="30" width="128" height="52" rx="10"/>
+        <rect class="box g pulse" x="352" y="30" width="110" height="52" rx="10"/>
+        <rect class="box a pulse" x="510" y="30" width="118" height="52" rx="10"/>
+        <rect class="box r" x="646" y="30" width="88" height="52" rx="10"/>
+        <path class="flow" d="M128 56 H176"/><path class="flow" d="M304 56 H352"/>
+        <path class="flow" d="M462 56 H510"/><path class="flow" d="M628 56 H646"/>
+        <text x="68" y="52">Initialize</text><text x="68" y="70" class="sub">i = 1</text>
+        <text x="240" y="52">Condition</text><text x="240" y="70" class="sub">true?</text>
+        <text x="407" y="52">Body</text><text x="407" y="70" class="sub">run once</text>
+        <text x="569" y="52">Update</text><text x="569" y="70" class="sub">i++</text>
+        <text x="690" y="52">Exit</text><text x="690" y="70" class="sub">false</text>
+      </svg>
+    </div>
+    <ul class="checklist">
+      <li><b>Iteration:</b> one round of the loop body · <b>Counter:</b> variable tracking repetitions · <b>Update:</b> changing it so the loop can end.</li>
+      <li><b>Increment <code>++</code> / Decrement <code>--</code>:</b> add 1 / subtract 1.</li>
+      <li>A loop must always move toward "false" — otherwise it never ends.</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span><code>while</code> — Condition First (pre-test)</h2>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">int</span> i = <span class="num">1</span>;
+<span class="kw">while</span> (i &lt;= <span class="num">5</span>) {
+    cout &lt;&lt; i &lt;&lt; <span class="cm">" "</span>;
+    i++;                  <span class="cm">// update MUST exist inside the body</span>
+}</div>
+    <table>
+      <tr><th>Step</th><th>Condition</th><th>Action</th></tr>
+      <tr><td>i = 1</td><td>1 ≤ 5 true</td><td>print 1 → i becomes 2</td></tr>
+      <tr><td>i = 2</td><td>2 ≤ 5 true</td><td>print 2 → i becomes 3</td></tr>
+      <tr><td>i = 3..5</td><td>true each time</td><td>print 3, 4, 5</td></tr>
+      <tr><td>i = 6</td><td>6 ≤ 5 <b>false</b></td><td>loop stops → output <code>1 2 3 4 5</code></td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Infinite loop — the classic bug:</b> forgetting <code>i++</code> means the condition
+      stays true forever (hamster on a wheel). <b>Fix:</b> update inside the body. Also note
+      pre-test means <b>0 runs are possible</b>: <code>while (x &gt; 5)</code> starting at 5 never runs.</div>
+    </div>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="cm">// Input validation: keep asking while the coupon is wrong</span>
+<span class="kw">string</span> coupon;
+cin &gt;&gt; coupon;
+<span class="kw">while</span> (coupon != <span class="cm">"SAVE10"</span>) {
+    cout &lt;&lt; <span class="cm">"Invalid. Try again: "</span>;
+    cin &gt;&gt; coupon;
+}</div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span><code>do-while</code> vs <code>while</code> — The Only Difference Is <i>When</i> You Check</h2>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">do</span> {
+    <span class="cm">// body runs FIRST</span>
+} <span class="kw">while</span> (condition);   <span class="cm">// ← semicolon required!</span></div>
+    <table>
+      <tr><th></th><th><code>while</code></th><th><code>do-while</code></th></tr>
+      <tr><td><b>Check</b></td><td>pre-test (condition first)</td><td>post-test (body first)</td></tr>
+      <tr><td><b>Minimum runs</b></td><td><b>0</b></td><td><b>1</b></td></tr>
+      <tr><td><b>Use when</b></td><td>repetition depends on a condition (validation, unknown count)</td><td>display/collect once, then decide (menus, prompts)</td></tr>
+    </table>
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>Deck drills:</b> <code>int x = 1; while (x &lt; 4) { cout &lt;&lt; x; x++; }</code> → <b>123</b> ·
+      <code>int x = 5; while (x &gt; 5) {…}</code> → <b>0 iterations</b> · menu must appear first →
+      <b>do-while</b>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span><code>for</code> — The Compact Counter Loop</h2>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">1</span>; i &lt;= <span class="num">5</span>; i++)   <span class="cm">// init ; condition ; update</span>
+    cout &lt;&lt; i &lt;&lt; <span class="cm">" "</span>;</div>
+    <p><b>Anatomy:</b> <code>int i = 1</code> initialization · <code>i &lt;= 5</code> condition ·
+       <code>i++</code> update · the body. Same logic as <code>while</code>, packed into one line —
+       use it when the <b>count is known</b>.</p>
+    <table>
+      <tr><th>Situation</th><th>Choice</th></tr>
+      <tr><td>Repetition depends on a condition (unknown count)</td><td><code>while</code></td></tr>
+      <tr><td>Body must run at least once (menus, prompts)</td><td><code>do-while</code></td></tr>
+      <tr><td>Count known (print 1..10, fixed attempts)</td><td><code>for</code></td></tr>
+      <tr><td>Stop input when a special value arrives</td><td>sentinel loop</td></tr>
+      <tr><td>Rows, columns, grids, patterns</td><td>nested loops</td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div>Loop choice is a decision you make <b>before coding</b>: count known → <code>for</code> ·
+      must show once → <code>do-while</code> · only a condition → <code>while</code> · special stop → sentinel.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Sentinel-Controlled Loops</h2>
+    <p><b>Sentinel:</b> a special value (e.g. <code>-1</code>) that does <b>not</b> represent normal
+       data — it just tells the program "stop reading".</p>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">int</span> number, sum = <span class="num">0</span>;
+cin &gt;&gt; number;              <span class="cm">// 1. read BEFORE the loop</span>
+<span class="kw">while</span> (number != <span class="num">-1</span>) {
+    sum = sum + number;     <span class="cm">// 3. process only real data</span>
+    cin &gt;&gt; number;          <span class="cm">// 4. read AGAIN inside (missing = infinite loop)</span>
+}
+cout &lt;&lt; sum;                <span class="cm">// sentinel is NOT added</span></div>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>Trace inputs 5, 8, 2, −1 →</b> sum 5 → 13 → 15 → stop at −1 → output
+      <b>15</b>. The sentinel is a <i>control value, not data</i> — never include it in totals.
+      Algorithm: read first · loop while ≠ sentinel · process · read next inside.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Nested Loops — Rows Outside, Columns Inside</h2>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">for</span> (<span class="kw">int</span> row = <span class="num">1</span>; row &lt;= <span class="num">3</span>; row++) {       <span class="cm">// outer: 3 rows</span>
+    <span class="kw">for</span> (<span class="kw">int</span> col = <span class="num">1</span>; col &lt;= <span class="num">4</span>; col++) {   <span class="cm">// inner: 4 columns per row</span>
+        cout &lt;&lt; <span class="cm">"* "</span>;
+    }
+    cout &lt;&lt; endl;                         <span class="cm">// each row ends with endl</span>
+}</div>
+    <ul class="checklist">
+      <li>3 rows × 4 columns = <b>12 inner executions</b> → 3 lines of 4 stars (total work = rows × columns).</li>
+      <li>Triangle pattern: inner limit follows the row — <code>col &lt;= row</code> → <code>*</code>, <code>**</code>, <code>***</code>.</li>
+      <li>Chessboard/grids: outer = row, inner = column, an <code>if</code> inside decides the square.</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Debugging Loops + Decisions + Loops</h2>
+    <table>
+      <tr><th>Bug</th><th>What happens</th><th>Fix</th></tr>
+      <tr><td><b>Off-by-one</b> — <code>for (i=1; i&lt;5; …)</code></td><td>prints 1 2 3 4, not 1 to 5</td><td>use <code>i &lt;= 5</code> when the last value must run — ask "does it print the last value?"</td></tr>
+      <tr><td><b>Missing update</b> — <code>while (i&lt;=3) {…}</code> without <code>i++</code></td><td>infinite loop</td><td>put the update inside the body</td></tr>
+    </table>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="cm">// Login attempts (loop = repetition, if = action, break = stop early)</span>
+<span class="kw">int</span> attempts = <span class="num">1</span>;
+<span class="kw">while</span> (attempts &lt;= <span class="num">3</span>) {
+    cin &gt;&gt; password;
+    <span class="kw">if</span> (password == <span class="cm">"admin123"</span>) { cout &lt;&lt; <span class="cm">"Access granted"</span>; <span class="kw">break</span>; }
+    attempts++;
+}</div>
+    <p><b>Division of labour:</b> the loop decides <i>whether to continue</i> · the <code>if</code>
+       decides <i>what to do with this value</i> · counter variables can count events
+       (<code>if (event == "FAIL") failed++;</code>).</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Memory Tricks</h2>
+    <ul class="trick-list">
+      <li><b>while = "while true, keep going"</b> — condition first, may run 0 times.
+        <span class="mem">do-while = "do it, then ask" — runs at least once (don't forget the ;).</span></li>
+      <li><b>Loop cycle: condition → body → update → repeat</b> — "check, do, change".</li>
+      <li><b>Missing update = hamster on a wheel</b> — running, going nowhere → infinite loop.</li>
+      <li><b>Sentinel = stop sign, not data</b> — <code>-1</code> ends the sum, never joins it.
+        <span class="mem">Read-before, read-inside — the two reads of a sentinel loop.</span></li>
+      <li><b>Nested = rows outside, columns inside</b> — total = rows × columns.</li>
+      <li><b><code>&lt;</code> vs <code>&lt;=</code>:</b> <code>i &lt; 5</code> stops at 4 · <code>i &lt;= 5</code> stops at 5 — "off by one".</li>
+      <li>Selection one-liner: <b>count known → for · must show once → do-while · only condition → while · special stop → sentinel.</b></li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Week 4 — Quick Drills</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>while vs do-while in one line?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>while = pre-test</b> (0+ runs) · <b>do-while = post-test</b> (1+ runs, semicolon required).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Sum inputs 5, 8, 2, −1 with a sentinel — result?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>15</b> — the sentinel ends the loop but is <b>not added</b>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Which loop for a menu that must show first?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>do-while</b> — body runs before the condition, guaranteeing at least one display.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>3×4 nested loops — how many inner runs?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>12</b> — rows × columns (3 lines of 4 stars).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p><code>for (i=1; i&lt;5; i++)</code> prints?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>1 2 3 4</b> — off-by-one; use <code>i &lt;= 5</code> to include 5.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>#1 cause of infinite loops?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Missing update</b> — the condition variable never changes, so it never turns false.</p></div>
+      </div></div>
+    </div>
+    <p><b>Related:</b> <a href="cs111l.html" style="color:var(--cyan)">CS111L lab work →</a>
+       · <b>Test yourself:</b> <a href="quiz-pf.html" style="color:var(--amber)">PF Quiz Zone (Weeks 1–3) →</a></p>
+  </div>
+
+</section>
+
+<footer class="footer">
+  CS111 · Programming Fundamentals · <b>Weeks 1–4</b> · BS Cyber Security · Fall 2026
+</footer>
+
+<button id="toTop" title="Back to top">↑</button>
+<script src="script.js"></script>
+</body>
+</html>
