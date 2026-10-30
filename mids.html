@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MidZ — FE &amp; DS Mids Zone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="themes.css">
+<style>
+  .reveal-btn { margin-top: 12px; }
+  .model-ans {
+    margin-top: 12px; padding: 14px 16px;
+    border: 1px dashed var(--cyan); border-radius: 12px;
+    background: rgba(34, 211, 238, 0.07);
+  }
+  .model-ans[hidden] { display: none; }
+  .model-ans h4 { margin: 0 0 6px; color: var(--cyan); }
+  .paper-head { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .paper-head span { border: 1px solid rgba(34,211,238,.35); border-radius: 999px; padding: 6px 14px; font-size: .88rem; }
+  .mcq-head { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .mcq-head span { border: 1px solid rgba(167,139,250,.4); border-radius: 999px; padding: 6px 14px; font-size: .88rem; }
+  pre.gate { background: rgba(2,8,20,.55); border: 1px solid var(--card-border); border-radius: 10px;
+             padding: 12px 14px; overflow-x: auto; font-size: .92rem; line-height: 1.5; }
+  /* ---------- SUBJECT SWITCHER ---------- */
+  .subject-switch { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+                    max-width: 1060px; margin: -8px auto 12px; padding: 0 20px; }
+  .subject-pick {
+    flex: 1 1 290px; max-width: 460px;
+    display: flex; flex-direction: column; align-items: flex-start; gap: 3px;
+    background: var(--card); border: 1.5px solid var(--card-border); border-radius: 16px;
+    padding: 14px 20px; cursor: pointer; color: var(--text); text-align: left;
+    font-family: inherit; transition: 0.25s;
+  }
+  .subject-pick .sp-top { display: flex; align-items: center; gap: 10px; }
+  .subject-pick .sp-ico { font-size: 1.4rem; }
+  .subject-pick b { font-size: 1.02rem; font-weight: 800; }
+  .subject-pick i { color: var(--muted); font-size: 0.82rem; font-style: normal; }
+  .subject-pick:hover { transform: translateY(-3px); border-color: var(--cyan); }
+  .subject-pick.active { border-color: var(--cyan); background: rgba(34,211,238,0.09);
+                         box-shadow: 0 4px 18px rgba(34,211,238,0.14); }
+  .tabs.subj-fe .tab-btn[data-subject="ds"],
+  .tabs.subj-ds .tab-btn[data-subject="fe"] { display: none; }
+  .book-img { display: block; max-width: 100%; border-radius: 10px;
+              border: 1px solid var(--card-border); background: #fff; padding: 8px; margin: 10px 0 4px; }
+</style>
+<script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+</head>
+<body>
+
+<div id="progress"></div>
+<div class="bg-blobs"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<div class="grid-overlay"></div>
+
+<nav class="topbar">
+  <a class="brand" href="index.html"><span class="logo">Σ</span> BS-CYS · NOTES HUB</a>
+<div class="nav-right">
+  <a class="back-btn" href="index.html">← All Subjects</a>
+  <div class="theme-wrap">
+    <button class="theme-btn" id="themeBtn" title="Switch theme (press T)"><span class="palette">🎨</span><span class="label">Theme</span></button>
+    <div class="theme-menu" id="themeMenu">
+      <button class="theme-opt" data-theme="midnight"><span class="sw sw-midnight"></span><b>Midnight Cyber</b><i>glassy dark · aurora blobs</i></button>
+      <button class="theme-opt" data-theme="matrix"><span class="sw sw-matrix"></span><b>Matrix Terminal</b><i>digital rain · scanlines · mono</i></button>
+      <button class="theme-opt" data-theme="paper"><span class="sw sw-paper"></span><b>Paper Notes</b><i>ruled page · ink · sticky notes</i></button>
+      <button class="theme-opt" data-theme="synthwave"><span class="sw sw-synthwave"></span><b>Synthwave</b><i>chrome · retro sun · grid floor</i></button>
+      <button class="theme-opt" data-theme="aurora"><span class="sw sw-aurora"></span><b>Aurora Light</b><i>soft pastel glass</i></button>
+      <button class="theme-opt" data-theme="cyberpunk"><span class="sw sw-cyberpunk"></span><b>Cyberpunk Neon</b><i>glitch boxes · orbitron · neon</i></button>
+      <button class="theme-opt" data-theme="dracula"><span class="sw sw-dracula"></span><b>Dracula Gothic</b><i>serif italics · purple glow</i></button>
+      <button class="theme-opt" data-theme="coffee"><span class="sw sw-coffee"></span><b>Coffee Warmth</b><i>cozy sepia · serif · warm</i></button>
+      <button class="theme-opt" data-theme="blueprint"><span class="sw sw-blueprint"></span><b>Blueprint</b><i>engineering grid · mono · dashed</i></button>
+      <button class="theme-opt" data-theme="vaporwave"><span class="sw sw-vaporwave"></span><b>Vaporwave</b><i>pastel mall · rounded · lilac</i></button>
+      <button class="theme-opt" data-theme="lava"><span class="sw sw-lava"></span><b>Volcano Lava</b><i>ember glow · fiery accents</i></button>
+      <button class="theme-opt" data-theme="frost"><span class="sw sw-frost"></span><b>Nordic Frost</b><i>icy minimal · clean grotesk</i></button>
+    </div>
+  </div>
+</div>
+</nav>
+
+<header class="subject-hero">
+  <span class="code-lg">🎯 MIDZ · MIDS ZONE</span>
+  <h1><span>Mid-Zerm Revision — FE &amp; DS</span></h1>
+  <p><b>One button, both mids papers.</b> Pick a <b>subject</b> below to focus —
+     <b>📘 EL170 · Functional English</b> (clauses · phrases · 12 tenses · PoS · cross-culture · formal email → mock test + sample paper) or
+     <b>🧮 MA216 · Discrete Structures</b> (zero-to-hero logic: equivalences · De Morgan · circuits · converse/inverse · the confirmed Rules-of-Inference long question → sample papers).
+     Your subject choice is remembered; press <b>1</b>–<b>5</b> to jump between that subject's tabs.</p>
+  <p><a class="btn primary" href="el170.html">📘 Full EL170 Notes</a>
+     <a class="btn ghost" href="ma216.html" style="margin-left:8px;">🧮 Full DS Notes</a>
+     <span style="color:var(--muted);font-size:.9rem;margin-left:8px;">mock tests &amp; sample papers are inside this page ↓</span></p>
+</header>
+
+<div class="subject-switch" id="subjectSwitch" aria-label="Pick a subject to focus">
+  <button class="subject-pick" data-subject="fe" type="button">
+    <span class="sp-top"><span class="sp-ico">📘</span><b>EL170 · Functional English</b></span>
+    <i>Revise · 15-MCQ Mock Test · Sample Paper</i>
+  </button>
+  <button class="subject-pick" data-subject="ds" type="button">
+    <span class="sp-top"><span class="sp-ico">🧮</span><b>MA216 · Discrete Structures</b></span>
+    <i>Zero-to-Hero · 2 Sample Papers · straight from Rosen 7e</i>
+  </button>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="fe-rev" data-subject="fe"><span class="dot"></span> 📚 FE · Revise</button>
+  <button class="tab-btn" data-tab="fe-mock" data-subject="fe"><span class="dot"></span> 🎭 FE · Mock (15 MCQs)</button>
+  <button class="tab-btn" data-tab="fe-paper" data-subject="fe"><span class="dot"></span> 📄 FE · Sample Paper</button>
+  <button class="tab-btn" data-tab="ds-rev" data-subject="ds"><span class="dot"></span> 🧮 DS · Zero-to-Hero</button>
+  <button class="tab-btn" data-tab="ds-paper" data-subject="ds"><span class="dot"></span> 📝 DS · Sample Paper</button>
+  <button class="tab-btn" data-tab="ds-paper2" data-subject="ds"><span class="dot"></span> 📕 DS · Paper 2 (Rosen 7e)</button>
+</div>
+
+<!-- ======================= FE REVISE ======================= -->
+<section class="tab-panel active" id="fe-rev">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⏱️ The 40-Minute FE Mids Plan</h2>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>0–10 min:</b> read the 6 cheat cards below (clauses → phrases → tenses → PoS → cross-culture → email).<br>
+      <b>10–20 min:</b> tap all <b>flip cards</b> until you answer <i>before</i> flipping.<br>
+      <b>20–35 min:</b> take the <b>FE Mock Test</b>, read every explanation for misses, retry until ≥ 12/15.<br>
+      <b>35–40 min:</b> open the <b>FE Sample Paper</b> and outline Q7 (the ICEBERG scenario) out loud.</div>
+    </div>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Top 6 marks-losers:</b> ① <i>have went</i> (perfect needs V3) · ② comma splice (two sentences + one comma) ·
+      ③ <i>Because</i> clause called "independent" (a marker word makes it dependent) · ④ confusing <b>prepositional</b> with <b>adverb</b> phrases ·
+      ⑤ crediting the <b>Iceberg to Hofstede</b> (it's <b>Hall's</b>!) · ⑥ a formal email opened with <i>Hi/Hey</i>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧱 Clauses — Independent vs Dependent</h2>
+    <table>
+      <tr><th></th><th>Independent</th><th>Dependent</th></tr>
+      <tr><td><b>Has</b></td><td>subject + verb + <b>complete thought</b></td><td>subject + verb + a <b>marker word</b></td></tr>
+      <tr><td><b>Can stand alone?</b></td><td>Yes — it's a sentence</td><td>No — needs an independent partner</td></tr>
+      <tr><td><b>Example</b></td><td><i>the sun was shining</i></td><td><i>because the sun was shining</i></td></tr>
+    </table>
+    <p><b>Marker words by meaning:</b> TIME (after, before, when, while, since, until) · REASON (because, as, since) ·
+       CONDITION (if, unless, whether) · CONTRAST (although, though, even though).</p>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>FANBOYS</b> = For, And, Nor, But, Or, Yet, So → join two independent clauses with <b>comma + FANBOYS</b>.<br>
+      Transition words (however, therefore, moreover) join with <b>; + word,</b>.<br>
+      <b>5 fixes for a comma splice / run-on / fragment:</b> period · semicolon · comma+FANBOYS · make one clause dependent · combine into one sentence.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🏷️ Phrases — the 4 Types (no subject + verb inside!)</h2>
+    <table>
+      <tr><th>Type</th><th>Head word is a…</th><th>Answers…</th><th>Example</th></tr>
+      <tr><td><b>Noun phrase</b></td><td>noun</td><td><i>who/what</i></td><td><b>the tall boy</b> · <b>a glass of water</b></td></tr>
+      <tr><td><b>Prepositional phrase</b></td><td>preposition</td><td><i>where/when/how</i></td><td><b>under the table</b> · <b>in the morning</b></td></tr>
+      <tr><td><b>Adjective phrase</b></td><td>adjective</td><td>describes a noun</td><td><b>very tall</b> · <b>afraid of the dark</b></td></tr>
+      <tr><td><b>Adverb phrase</b></td><td>adverb</td><td>describes verb/adj/adv</td><td><b>very quickly</b> · <b>in a hurry</b></td></tr>
+    </table>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>The 2-step test:</b> ① Can you find a subject <i>and</i> a verb together? → then it's a <b>clause</b>.<br>
+      ② Find the <b>head word</b> (the most important word) → that head decides the phrase type.
+      ⚠️ "under the table" is a <b>prepositional</b> phrase even though it tells <i>where</i> (its job is adverb-like, but its head is a preposition).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🕐 The 12 Tenses — 3 × 4 = 12</h2>
+    <table>
+      <tr><th></th><th>SIMPLE<br><i>fact / habit</i></th><th>CONTINUOUS<br><i>in progress</i></th><th>PERFECT<br><i>done / links times</i></th><th>PERF. CONT.<br><i>how long</i></th></tr>
+      <tr><td><b>PRESENT</b></td><td>work / works<br><i>works daily</i></td><td>am/is/are + -ing<br><i>is working now</i></td><td>has/have + V3<br><i>has worked here</i></td><td>has/have been + -ing<br><i>has been working</i></td></tr>
+      <tr><td><b>PAST</b></td><td>V2<br><i>worked yesterday</i></td><td>was/were + -ing<br><i>was working at 8</i></td><td>had + V3<br><i>had worked by then</i></td><td>had been + -ing<br><i>had been working</i></td></tr>
+      <tr><td><b>FUTURE</b></td><td>will + V1<br><i>will work tomorrow</i></td><td>will be + -ing<br><i>will be working at 5</i></td><td>will have + V3<br><i>will have worked</i></td><td>will have been + -ing<br><i>will have been working</i></td></tr>
+    </table>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>The name IS the formula:</b> past + perfect + continuous = <code>had</code> + <code>been</code> + <code>-ing</code>.
+      Time changes only the <b>helping verb</b>; the aspect never changes.</div>
+    </div>
+    <p><b>Signal words:</b> every day/usually → <b>pres. simple</b> · now/look/at this moment → <b>pres. cont.</b> ·
+       yesterday/last year/ago → <b>past simple</b> · since/for/already/yet → <b>present perfect</b> ·
+       by the time/before/after (two pasts) → <b>past perfect</b> · tomorrow/next week → <b>future</b>.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🏷️ Parts of Speech — One-Page Cheat Sheet</h2>
+    <table>
+      <tr><th>#</th><th>PoS</th><th>Job</th><th>Signal / test</th><th>Examples</th></tr>
+      <tr><td>1</td><td><b>Noun</b></td><td>names a person/thing/place/idea</td><td>the/a/my + word</td><td>city, honesty, Ali</td></tr>
+      <tr><td>2</td><td><b>Pronoun</b></td><td>replaces a noun</td><td>stands in for a name</td><td>he, she, it, they, mine</td></tr>
+      <tr><td>3</td><td><b>Verb</b></td><td>shows action/state</td><td>can you conjugate it?</td><td>run, is, seemed</td></tr>
+      <tr><td>4</td><td><b>Adjective</b></td><td>describes a noun/pronoun</td><td>which/what kind?</td><td>tall, green, afraid</td></tr>
+      <tr><td>5</td><td><b>Adverb</b></td><td>describes verb/adj/other adv</td><td>often ends in <b>-ly</b>; how/when/where?</td><td>quickly, very, yesterday</td></tr>
+      <tr><td>6</td><td><b>Preposition</b></td><td>shows place/time/relationship</td><td>goes before a noun phrase</td><td>in, on, at, between, beneath</td></tr>
+      <tr><td>7</td><td><b>Conjunction</b></td><td>joins words/clauses</td><td>FANBOYS / because / although</td><td>and, but, because, if</td></tr>
+      <tr><td>8</td><td><b>Interjection</b></td><td>sudden feeling</td><td>exclamation mark</td><td>oh! wow! alas!</td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Chameleon words:</b> <i>light</i> (noun in "light travels" / adjective in "a light bag") ·
+      <i>happy</i> (adjective after a linking verb) vs <i>happily</i> (adverb) ·
+      "very tall boy" = adjective phrase (head = tall), but "under the table" = prepositional phrase (head = under).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧊🧅 Cross-Culture — Iceberg, Onion &amp; the 6 Dimensions</h2>
+    <table>
+      <tr><th><b>Hall's Iceberg (1976)</b></th><th><b>Hofstede's Onion (1980/2010)</b></th></tr>
+      <tr><td>Above water (visible): dress, food, language, greetings, gestures</td><td>Outside layers = <b>Practices</b>: Symbols → Heroes → Rituals (change fast)</td></tr>
+      <tr><td>Below water (hidden): values, beliefs, attitude to authority/time/family</td><td>Core = <b>Values</b> (invisible, learned early, change slowly)</td></tr>
+      <tr><td>Key line: <i>most conflict comes from the hidden layer</i></td><td>Key line: <i>practices change faster than values</i></td></tr>
+    </table>
+    <div class="callout exam"><span class="c-ico">🔑</span>
+      <div><b>The famous mix-up:</b> the Iceberg belongs to <b>HALL, not Hofstede</b> — Hofstede's hidden-core picture is the
+      <b>onion</b>. Both say: <b>understand the values beneath the behaviour.</b> The 10%/90% split is a metaphor, not data.</div>
+    </div>
+    <table>
+      <tr><th>Dimension</th><th>Kid question</th><th>🇵🇰 Pakistan</th><th>🇺🇸 USA</th></tr>
+      <tr><td><b>Individualism vs Collectivism</b></td><td>"I win" or "we win"?</td><td><b>14</b> (collectivist)</td><td><b>91</b> (individualist)</td></tr>
+      <tr><td><b>Uncertainty Avoidance</b></td><td>"Tell me EXACTLY the rules!"</td><td><b>70</b> (high)</td><td><b>46</b></td></tr>
+      <tr><td><b>Power Distance</b></td><td>Can juniors question the boss?</td><td><b>55</b></td><td><b>40</b></td></tr>
+      <tr><td>Also: Masculinity/Femininity · Long-/Short-term Orientation · Indulgence/Restraint</td><td colspan="3">Japan = highest masculinity + uncertainty avoidance</td></tr>
+    </table>
+    <p><b>Hall's context &amp; time:</b> high-context (PK, Japan — meaning in tone/silence/relationships, trust-based) vs
+       low-context (USA, Germany — meaning in explicit words, contracts) · polychronic (relationships beat schedules) vs
+       monochronic (punctuality).</p>
+    <p><b>7 PK-vs-global conflicts:</b> ① hierarchy &amp; silence · ② sifarish vs merit · ③ polite "no"
+       (<i>InshaAllah, dekhte hain</i>) · ④ time flexibility · ⑤ gender norms (Harassment Act 2010) · ⑥ faith/Ramadan ·
+       ⑦ remote teams. <b>CQ</b> (Earley &amp; Ang) = Drive · Knowledge · Strategy · Action.</p>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div>Conflict = <b>misread signals, not bad intent</b> → <b>pause → hypothesise → adapt → confirm</b>.
+      Culture is a <b>tendency, not a stereotype</b>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📧 Formal Email — Frames, Registers, Phrases</h2>
+    <table>
+      <tr><th></th><th><b>Informal</b></th><th><b>Semi-formal</b></th><th><b>Formal</b></th></tr>
+      <tr><td><b>Reader</b></td><td>friends/close colleagues</td><td>known colleagues/managers</td><td>seniors, HR, new clients</td></tr>
+      <tr><td><b>Greeting</b></td><td>Hey Sam,</td><td>Hi Sara,</td><td>Dear Mr Khan, / Dear Sir or Madam,</td></tr>
+      <tr><td><b>Sign-off</b></td><td>Cheers,</td><td>Best regards,</td><td>Yours sincerely, / Kind regards,</td></tr>
+      <tr><td><b>Words</b></td><td>I'm, you're, slang</td><td>Could we…? polite</td><td>I am, I would (full forms)</td></tr>
+    </table>
+    <p><b>6-part anatomy:</b> ① subject line · ② greeting · ③ purpose in the first 1–2 lines · ④ body (one idea per paragraph) ·
+       ⑤ closing ask <b>with a deadline</b> · ⑥ sign-off + signature.</p>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>5-step frame with BLUF = Bottom Line Up Front:</b>
+      Subject (<code>Leave request: 19–21 October</code>) → Greeting → <b>Purpose first</b> ("I am writing to request…") →
+      Details + ask + deadline ("Please reply by Friday") → Close ("Kind regards").</div>
+    </div>
+    <p><b>You-attitude:</b> ✗ "We cannot refund without a receipt." → ✓ "Return the item with your receipt to receive a full refund."</p>
+    <p><b>Openers:</b> "Thank you for your email of 14 June." · "I am writing to enquire about…" · "Further to our phone call…" ·
+       "As you requested, I am attaching…"<br>
+       <b>Closers:</b> "I look forward to hearing from you." · "Please feel free to contact me."</p>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Never in formal mail:</b> Hi/Hello opener · Cheers/Thanks!/TTYL closing · slang, emojis, ALL CAPS ·
+      text-speak (u, asap, thx) · comma splices · forget the attachment. <b>Do:</b> specific subject · proofread ·
+      check the recipient field · reply promptly.</div>
+    </div>
+    <p><b>6 email kinds:</b> internal · external · sales · routine · personalized · circulars.
+       <b>Letter types:</b> personal · inquiry (intro/body/conclusion) · complaint · sales (headline→intro→body→call to action).</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🔄 Flip Cards — FE Mids Drill (tap to flip)</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>"Because he was late, he missed the bus" — is "Because he was late" a clause or a phrase?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Dependent clause</b> — it has a subject (he) + verb (was) plus the marker <i>because</i>, so it can't stand alone.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>"the very tall boy" — phrase type and head word?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Adjective phrase</b>, head = <b>tall</b>. "Very" only intensifies it.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Formula: past + perfect + continuous?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>had + been + V-ing</b> → <i>had been working</i>. Time only changes the helping verb.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Two independent clauses + only one comma = ?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Comma splice.</b> Fix: period · semicolon · comma+FANBOYS · make one dependent.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>Iceberg = Hall or Hofstede? And PK 14 vs USA 91 = which dimension?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Hall's</b> Iceberg (Hofstede = onion). <b>14 vs 91 = Individualism–Collectivism.</b> (70/46 = uncertainty avoidance, 55/40 = power distance.)</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>What does BLUF stand for, and where does the purpose go?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Bottom Line Up Front</b> — purpose and action in the <b>first lines</b>, details after.</p></div>
+      </div></div>
+    </div>
+    <p><b>Scored low?</b> re-read the card above, then retry → <a href="#" onclick="document.querySelector('[data-tab=fe-mock]').click();return false;" style="color:var(--cyan)">FE Mock Test →</a>
+       · <b>Full notes:</b> <a href="el170.html" style="color:var(--cyan)">EL170 →</a></p>
+  </div>
+
+</section>
+<!-- ======================= FE MOCK ======================= -->
+<section class="tab-panel" id="fe-mock">
+  <div class="note-card">
+    <h2><span class="bar"></span>🎭 FE Mids Mock Test — 15 MCQs</h2>
+    <div class="mcq-head">
+      <span>⏱️ ~15 min</span><span>🎯 aim ≥ 12/15</span><span>4 tenses · 3 clauses · 2 phrases · 2 PoS · 2 email · 2 cross-culture</span>
+      <span>✅ instant marking + explanations</span>
+    </div>
+
+    <form id="testForm">
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">1</span><span>She ___ to school every day. (go)</span><span class="q-tag">Tenses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q1" value="a"><span>go</span></label>
+          <label class="q-opt"><input type="radio" name="q1" value="b"><span>goes</span></label>
+          <label class="q-opt"><input type="radio" name="q1" value="c"><span>going</span></label>
+          <label class="q-opt"><input type="radio" name="q1" value="d"><span>gone</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B — goes.</b> "Every day" = habit → <b>present simple</b>, and he/she/it takes <b>-s</b>. ❌ <i>go</i> forgets the -s · <i>going</i> needs <i>is</i> · <i>gone</i> is V3.</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">2</span><span>By the time we reached the station, the train ___. (leave)</span><span class="q-tag">Tenses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q2" value="a"><span>left</span></label>
+          <label class="q-opt"><input type="radio" name="q2" value="b"><span>has left</span></label>
+          <label class="q-opt"><input type="radio" name="q2" value="c"><span>had left</span></label>
+          <label class="q-opt"><input type="radio" name="q2" value="d"><span>will leave</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C — had left.</b> Two past actions: the train left <b>before</b> we reached → the <b>earlier</b> one takes the <b>past perfect</b> (had + V3); the later one stays past simple.</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">3</span><span>I ___ my keys, so I cannot open the door now. (lose)</span><span class="q-tag">Tenses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q3" value="a"><span>lose</span></label>
+          <label class="q-opt"><input type="radio" name="q3" value="b"><span>lost</span></label>
+          <label class="q-opt"><input type="radio" name="q3" value="c"><span>have lost</span></label>
+          <label class="q-opt"><input type="radio" name="q3" value="d"><span>had lost</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C — have lost.</b> Past action with a <b>result right now</b> (I still can't get in) → <b>present perfect</b>. Pure past story time would be <i>lost</i>.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">4</span><span>Look! The kids ___ in the garden. (play)</span><span class="q-tag">Tenses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q4" value="a"><span>play</span></label>
+          <label class="q-opt"><input type="radio" name="q4" value="b"><span>are playing</span></label>
+          <label class="q-opt"><input type="radio" name="q4" value="c"><span>played</span></label>
+          <label class="q-opt"><input type="radio" name="q4" value="d"><span>have played</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B — are playing.</b> Signal word <b>"Look!"</b> = happening at this moment → <b>present continuous</b> (am/is/are + -ing).</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">5</span><span>"Because it rained heavily, the match was cancelled." — the underlined part is a…</span><span class="q-tag">Clauses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q5" value="a"><span>independent clause</span></label>
+          <label class="q-opt"><input type="radio" name="q5" value="b"><span>dependent clause</span></label>
+          <label class="q-opt"><input type="radio" name="q5" value="c"><span>prepositional phrase</span></label>
+          <label class="q-opt"><input type="radio" name="q5" value="d"><span>noun phrase</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B — dependent clause.</b> It has a subject (it) + verb (rained) → so it's a <b>clause</b>; the marker <b>because</b> makes it dependent (cannot stand alone).</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">6</span><span>I was very tired, ___ I kept working.</span><span class="q-tag">Clauses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q6" value="a"><span>so</span></label>
+          <label class="q-opt"><input type="radio" name="q6" value="b"><span>but</span></label>
+          <label class="q-opt"><input type="radio" name="q6" value="c"><span>because</span></label>
+          <label class="q-opt"><input type="radio" name="q6" value="d"><span>although</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B — but.</b> The two halves <b>contrast</b> (tired vs kept working). A comma + FANBOYS joins two independent clauses; <i>because/although</i> would need a full dependent clause after them.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">7</span><span>Which sentence is a <b>comma splice</b>?</span><span class="q-tag">Clauses</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q7" value="a"><span>The sun set and the birds went home.</span></label>
+          <label class="q-opt"><input type="radio" name="q7" value="b"><span>The sun set, the birds went home.</span></label>
+          <label class="q-opt"><input type="radio" name="q7" value="c"><span>The sun set; the birds went home.</span></label>
+          <label class="q-opt"><input type="radio" name="q7" value="d"><span>Because the sun set, the birds went home.</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> Two independent clauses joined by <b>only a comma</b> = comma splice. ✅ (a) comma+FANBOYS · (c) semicolon · (d) one clause made dependent.</div>
+      </div>
+
+      <div class="q-block" data-answer="d">
+        <p class="q-title"><span class="q-badge">8</span><span>"The cat hid <b>under the table</b>." That phrase is a…</span><span class="q-tag">Phrases</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q8" value="a"><span>noun phrase</span></label>
+          <label class="q-opt"><input type="radio" name="q8" value="b"><span>adjective phrase</span></label>
+          <label class="q-opt"><input type="radio" name="q8" value="c"><span>adverb phrase</span></label>
+          <label class="q-opt"><input type="radio" name="q8" value="d"><span>prepositional phrase</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: D — prepositional phrase.</b> Head word = <b>under</b> (a preposition), followed by its object. It tells <i>where</i> (an adverb-like job), but the <b>head decides the name</b>.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">9</span><span>"The <b>very tall</b> boy." — the phrase is a…</span><span class="q-tag">Phrases</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q9" value="a"><span>noun phrase (head: boy)</span></label>
+          <label class="q-opt"><input type="radio" name="q9" value="b"><span>adjective phrase (head: tall)</span></label>
+          <label class="q-opt"><input type="radio" name="q9" value="c"><span>adverb phrase (head: very)</span></label>
+          <label class="q-opt"><input type="radio" name="q9" value="d"><span>prepositional phrase (head: in)</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> Inside the phrase, the head is <b>tall</b> (adjective) and <i>very</i> only intensifies it. <i>Boy</i> is outside the phrase — it's the noun the phrase describes.</div>
+      </div>
+
+      <div class="q-block" data-answer="a">
+        <p class="q-title"><span class="q-badge">10</span><span>In "She spoke honestly" — <i>honestly</i> is an…</span><span class="q-tag">Parts of Speech</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q10" value="a"><span>adverb — tells how she spoke</span></label>
+          <label class="q-opt"><input type="radio" name="q10" value="b"><span>adjective — describes "she"</span></label>
+          <label class="q-opt"><input type="radio" name="q10" value="c"><span>noun — names a thing</span></label>
+          <label class="q-opt"><input type="radio" name="q10" value="d"><span>preposition — shows place</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: A — adverb.</b> It describes the <b>verb</b> "spoke" (how?) and ends in <b>-ly</b>. Adjectives describe nouns/pronouns, not verbs.</div>
+      </div>
+
+      <div class="q-block" data-answer="a">
+        <p class="q-title"><span class="q-badge">11</span><span>Which of these words is a <b>preposition</b>?</span><span class="q-tag">Parts of Speech</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q11" value="a"><span>beneath</span></label>
+          <label class="q-opt"><input type="radio" name="q11" value="b"><span>rapid</span></label>
+          <label class="q-opt"><input type="radio" name="q11" value="c"><span>rapidly</span></label>
+          <label class="q-opt"><input type="radio" name="q11" value="d"><span>rapidity</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: A — beneath.</b> It shows place/relationship before a noun ("beneath the tree"). <i>Rapid</i> = adjective · <i>rapidly</i> = adverb (-ly) · <i>rapidity</i> = noun (-ity).</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">12</span><span>You do not know the recipient's name. The correct formal greeting is…</span><span class="q-tag">Email</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q12" value="a"><span>Hi there,</span></label>
+          <label class="q-opt"><input type="radio" name="q12" value="b"><span>Dear Sir or Madam,</span></label>
+          <label class="q-opt"><input type="radio" name="q12" value="c"><span>Hey manager,</span></label>
+          <label class="q-opt"><input type="radio" name="q12" value="d"><span>To everyone,</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B.</b> Formal mail never opens with <i>Hi/Hello/Hey</i>. If you know the name use <b>Dear Mr Smith,</b>; if not, <b>Dear Sir or Madam,</b> (or "To Whom It May Concern").</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">13</span><span>In the 5-step formal email frame, <b>BLUF</b> stands for…</span><span class="q-tag">Email</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q13" value="a"><span>Best Lines Under Format</span></label>
+          <label class="q-opt"><input type="radio" name="q13" value="b"><span>Bottom Line Up Front</span></label>
+          <label class="q-opt"><input type="radio" name="q13" value="c"><span>Brief Letter Using Formality</span></label>
+          <label class="q-opt"><input type="radio" name="q13" value="d"><span>Business Language Uniform Format</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B — Bottom Line Up Front.</b> Put your <b>purpose and the action first</b>, details after (Sehgal, HBR 2016). Busy readers only read the first lines.</div>
+      </div>
+
+      <div class="q-block" data-answer="b">
+        <p class="q-title"><span class="q-badge">14</span><span>The Cultural <b>Iceberg</b> model of culture was given by…</span><span class="q-tag">Cross-Culture</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q14" value="a"><span>Geert Hofstede</span></label>
+          <label class="q-opt"><input type="radio" name="q14" value="b"><span>Edward T. Hall</span></label>
+          <label class="q-opt"><input type="radio" name="q14" value="c"><span>Erin Meyer</span></label>
+          <label class="q-opt"><input type="radio" name="q14" value="d"><span>Abraham Maslow</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: B — Hall (1976).</b> The classic mix-up is crediting Hofstede — his hidden-core picture is the <b>onion</b> (Symbols → Heroes → Rituals → Values).</div>
+      </div>
+
+      <div class="q-block" data-answer="c">
+        <p class="q-title"><span class="q-badge">15</span><span>Pakistan scores <b>14</b> and the USA <b>91</b> on which Hofstede dimension?</span><span class="q-tag">Cross-Culture</span></p>
+        <div class="q-opts">
+          <label class="q-opt"><input type="radio" name="q15" value="a"><span>Power Distance (55 vs 40)</span></label>
+          <label class="q-opt"><input type="radio" name="q15" value="b"><span>Uncertainty Avoidance (70 vs 46)</span></label>
+          <label class="q-opt"><input type="radio" name="q15" value="c"><span>Individualism vs Collectivism</span></label>
+          <label class="q-opt"><input type="radio" name="q15" value="d"><span>Masculinity vs Femininity</span></label>
+        </div>
+        <div class="q-exp"><b>Answer: C — Individualism vs Collectivism.</b> <b>14</b> = strongly collectivist (group before self) vs USA <b>91</b> = individualist. The other pairs are the distractors' own scores: 70/46 = uncertainty avoidance, 55/40 = power distance.</div>
+      </div>
+
+      <div class="quiz-bar">
+        <button type="button" class="btn primary" id="quizSubmit">✅ Check Answers</button>
+        <button type="button" class="btn ghost" id="quizReset">↺ Reset</button>
+        <div class="score-pill" id="scoreOut" aria-live="polite"></div>
+      </div>
+
+    </form>
+
+    <p><b>Scored low?</b> re-read the cheat cards → <a href="#" onclick="document.querySelector('[data-tab=fe-rev]').click();return false;" style="color:var(--cyan)">FE Revise tab →</a>
+       · <b>Then try:</b> <a href="#" onclick="document.querySelector('[data-tab=fe-paper]').click();return false;" style="color:var(--cyan)">FE Sample Paper →</a>
+       · <b>Full notes:</b> <a href="el170.html" style="color:var(--cyan)">EL170 →</a></p>
+  </div>
+</section>
+<!-- ======================= FE SAMPLE PAPER ======================= -->
+<section class="tab-panel" id="fe-paper">
+  <div class="note-card">
+    <h2><span class="bar"></span>📄 EL170 — Mids Sample Paper (Model Answers Inside)</h2>
+    <div class="paper-head">
+      <span><b>Time:</b> 2 hours 30 minutes</span><span><b>Total:</b> 100 marks</span>
+      <span><b>Q1</b> 15 · <b>Q2</b> 15 · <b>Q3</b> 20 · <b>Q4</b> 15 · <b>Q5</b> 15 · <b>Q6</b> 10 · <b>Q7</b> 10</span>
+      <span>Answer ALL questions</span>
+    </div>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>How to use this page:</b> attempt each question <b>on paper first</b>, then press the
+      <b>Reveal</b> button and compare your answer line by line. Anything you lost marks on →
+      go back to the <b>FE Revise</b> tab.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q1 · Convert the non-formal sentences to formal <span style="color:var(--muted);font-size:.9rem">(15 marks — 5 each)</span></h2>
+    <p><b>(a)</b> "yo dude, send me that file asap!! thx"<br>
+       <b>(b)</b> "hey sir, i need leave tmrw n day after, lemme know ok?"<br>
+       <b>(c)</b> "u didnt reply to my mail lol, guess u dont care."</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answers</h4>
+      <p><b>(a)</b> "Dear Mr Ahmed,<br>Could you please send me the file by today? Thank you for your help.<br>Kind regards, Ali"</p>
+      <p><b>(b)</b> "Dear Sir,<br>I would like to request leave for tomorrow and the following day (20–21 October). I will complete my pending work before leaving.<br>Yours sincerely, Hamza"</p>
+      <p><b>(c)</b> "Dear Mr Khan,<br>I wrote to you on 12 October and have not yet received a reply. Could you let me know when to expect one?<br>Best regards, Sana"</p>
+      <p><b>What examiners tick (5 each):</b> formal greeting (<i>Dear …</i>) · full forms (<i>I would like</i>, not <i>i need</i>) ·
+         no slang/text-speak (yo, dude, lol, tmrw) · polite request wording (<i>Could you please…</i>) · proper sign-off.</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q2 · Convert the paragraph <span style="color:var(--muted);font-size:.9rem">(15 marks)</span></h2>
+    <p>Convert the following <b>non-formal chat paragraph</b> into a <b>formal, well-structured paragraph</b>
+       (use BLUF: purpose first, then details, then the action + deadline).</p>
+    <div class="callout warn"><span class="c-ico">💬</span>
+      <div>"hey team so uh the website is gonna be late again lol. our guy got sick n the tests rnt done n the client keeps
+      ringing me. so dont ask me for it this friday, maybe next week?? lemme know if thats cool, thx!!"</div>
+    </div>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer</h4>
+      <p><b>Subject: Revised delivery date for the website</b></p>
+      <p>"Dear Team,<br>
+      I am writing to inform you that the website delivery will move from <b>Friday, 23 October to Wednesday, 28 October</b>.
+      The delay is due to the lead developer's illness and the pending testing, and the client has been notified of the
+      revised date.<br>
+      I will share a corrected test plan by tomorrow and complete all checks before the new deadline.
+      Please send me any concerns by Thursday so we can resolve them in time.<br>
+      Kind regards, Hamza Ali"</p>
+      <p><b>Why it scores 15:</b> formal greeting · <b>BLUF</b> (new date in line 1 of the body) · exact dates, no
+      <i>lol/asap/next week maybe</i> · one idea per paragraph · a clear action + deadline · polite close.</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q3 · Write a formal email <span style="color:var(--muted);font-size:.9rem">(20 marks)</span></h2>
+    <p>Write a <b>formal email of 120–150 words</b> using the <b>5-step frame</b>. Choose <b>one</b>:</p>
+    <p><b>(A)</b> Request your HR Manager's approval to attend a "Project Management Workshop" — explain how it helps your team.<br>
+       <b>(B)</b> Complain to a supplier that Order No. 4521 (arrived late before) is late again — state the facts, the impact, and the resolution you want with a deadline.</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer (Option A)</h4>
+      <p><b>Subject:</b> Request for training approval: Project Management Workshop</p>
+      <p>Dear Mr Khan,<br>
+      I am writing to request approval to attend the Project Management Workshop on 5 November. It will help me manage our
+      Q4 client projects more effectively, and the course details are attached.<br>
+      I would be grateful for your decision by 22 October so that I can complete the registration.<br>
+      Yours sincerely,<br>
+      Ayesha Malik, Project Coordinator</p>
+      <p><b>Marking breakdown (20):</b> subject line naming topic + action (3) · correct greeting with title + surname (3) ·
+         purpose in the first sentence — <b>BLUF</b> (4) · body with details and <b>deadline</b> (4) · polite sign-off +
+         name/role (3) · grammar, spelling, tone (3).</p>
+      <p><b>Option B skeleton:</b> Subject <i>Complaint: late delivery of Order No. 4521</i> → Dear Sir or Madam →
+         facts up front (order number, dates, phone promise) → impact on the ward → "Please deliver by 20 October or tell us a
+         new date; otherwise we will cancel and request a refund" → Sincerely.</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q4 · Parts of Speech <span style="color:var(--muted);font-size:.9rem">(15 marks — 3 each)</span></h2>
+    <p>Identify the parts of speech of the <b>bold</b> word in each sentence.</p>
+    <p><b>(a)</b> <b>Honestly</b>, the results were disappointing.<br>
+       <b>(b)</b> The <b>tall</b> building shook in the wind.<br>
+       <b>(c)</b> The keys are <b>between</b> the sofa and the table.<br>
+       <b>(d)</b> The <b>children</b> were laughing loudly.<br>
+       <b>(e)</b> She <b>completed</b> the task yesterday.</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answers</h4>
+      <table>
+        <tr><th>Item</th><th>Answer</th><th>Why (the test)</th></tr>
+        <tr><td>(a) Honestly</td><td><b>Adverb</b></td><td>describes the whole sentence/how; usually -ly</td></tr>
+        <tr><td>(b) tall</td><td><b>Adjective</b></td><td>describes a noun ("which building?")</td></tr>
+        <tr><td>(c) between</td><td><b>Preposition</b></td><td>shows place before a noun phrase</td></tr>
+        <tr><td>(d) children</td><td><b>Noun</b></td><td>names a thing/person — comes after "the"</td></tr>
+        <tr><td>(e) completed</td><td><b>Verb</b></td><td>shows action (did what?) — V2 of <i>complete</i></td></tr>
+      </table>
+      <p><b>Chameleon warning:</b> "She spoke <i>honestly</i>" vs "an <i>honest</i> answer" — always ask
+         <b>what job it does here</b>, not how it ends.</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q5 · Tenses — Practical <span style="color:var(--muted);font-size:.9rem">(15 marks — 3 each)</span></h2>
+    <p>Fill in the blanks with the <b>correct tense</b> of the verb in brackets.</p>
+    <p><b>(a)</b> Water ___ at 100°C. (boil)<br>
+       <b>(b)</b> Look! The baby ___. (cry)<br>
+       <b>(c)</b> She ___ Lahore last year. (visit)<br>
+       <b>(d)</b> The train ___ before we reached the station. (leave)<br>
+       <b>(e)</b> I ___ him since 2018. (know)</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answers + formulas</h4>
+      <table>
+        <tr><th>#</th><th>Answer</th><th>Signal → rule</th></tr>
+        <tr><td>(a)</td><td><b>boils</b></td><td>general truth → <b>present simple</b> (V5 / +s)</td></tr>
+        <tr><td>(b)</td><td><b>is crying</b></td><td>"Look!" = happening now → <b>present continuous</b> (am/is/are + -ing)</td></tr>
+        <tr><td>(c)</td><td><b>visited</b></td><td>"last year" = finished past time → <b>past simple</b> (V2)</td></tr>
+        <tr><td>(d)</td><td><b>had left</b></td><td>earlier of two pasts → <b>past perfect</b> (had + V3)</td></tr>
+        <tr><td>(e)</td><td><b>have known</b></td><td>"since + point" → <b>present perfect</b> (has/have + V3)</td></tr>
+      </table>
+      <p><b>Trap check:</b> ✗ <i>have went</i> (needs V3 <i>gone</i>) · ✗ <i>since 5 years</i> (that's <b>for</b>) ·
+         ✗ <i>Did you went?</i> (did + V1) · ✗ <i>He work</i> (he/she/it → -s).</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q6 · Convert the clauses into phrases <span style="color:var(--muted);font-size:.9rem">(10 marks — 2 each)</span></h2>
+    <p>Convert each <b>clause</b> (it has a subject + verb) into a <b>phrase</b> (no subject + verb) <b>without changing the meaning</b>.</p>
+    <p><b>(a)</b> the book <u>which is on the table</u><br>
+       <b>(b)</b> the man <u>who is at the door</u><br>
+       <b>(c)</b> <u>because it was raining</u>, we stayed inside<br>
+       <b>(d)</b> the students <u>who are in my class</u><br>
+       <b>(e)</b> he is tired <u>because he worked all night</u></p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answers</h4>
+      <table>
+        <tr><th>#</th><th>Clause</th><th>→ Phrase</th></tr>
+        <tr><td>(a)</td><td>which is on the table</td><td><b>on the table</b> (prepositional phrase)</td></tr>
+        <tr><td>(b)</td><td>who is at the door</td><td><b>at the door</b> (prepositional phrase)</td></tr>
+        <tr><td>(c)</td><td>because it was raining</td><td><b>because of the rain</b> (prepositional phrase)</td></tr>
+        <tr><td>(d)</td><td>who are in my class</td><td><b>in my class</b> (prepositional phrase)</td></tr>
+        <tr><td>(e)</td><td>because he worked all night</td><td><b>after working all night</b> (prepositional phrase)</td></tr>
+      </table>
+      <p><b>The trick:</b> drop the <b>relative pronoun + be</b> (who/which/that + is/are) and keep the <b>head noun + the
+         remaining phrase</b>; turn <i>because + clause</i> into <i>because of + noun</i>. ✗ Never leave a subject+verb inside,
+         or it's still a clause!</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q7 · Scenario Question — Identify the ICEBERG Model Terms <span style="color:var(--muted);font-size:.9rem">(10 marks)</span></h2>
+    <div class="callout exam"><span class="c-ico">scenario</span>
+      <div>A Dutch manager joins a Pakistani company. At his first meeting he asks, "Anyone see a problem with this plan?"
+      — <b>no junior staff member speaks</b>; the senior manager speaks last and everyone simply agrees with him.
+      Staff stand when he enters and call him "Sir". The meeting begins with <b>chai</b> and ten minutes of asking about
+      each other's families. When he asks "Can we finish by Friday?", the team replies <b>"InshaAllah, we will try"</b> —
+      but nothing is delivered. The Dutch manager is angry: "They agreed to Friday!" The Pakistani team is hurt:
+      "He pressured us in front of everyone — have some respect."<br><br>
+      <b>(a)</b> Name the model that separates culture into visible and hidden parts, and sort the <b>bold</b> items above
+      into "above the surface" and "below the surface". <b>(4)</b><br>
+      <b>(b)</b> Which <b>Hofstede Onion</b> layer do the chai and family questions belong to? What about "respect for
+      elders/authority"? <b>(2)</b><br>
+      <b>(c)</b> Which <b>Hofstede dimension</b> and score gap best explains the silence and the title "Sir"? <b>(2)</b><br>
+      <b>(d)</b> Which of the <b>7 PK-vs-global conflicts</b> is the "InshaAllah" episode, and give the CQ-based fix? <b>(2)</b></div>
+    </div>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer</h4>
+      <p><b>(a) Hall's Cultural Iceberg (1976)</b> — behaviour we see vs values we can't:</p>
+      <table>
+        <tr><th>🌊 Above the surface (visible)</th><th>🧊 Below the surface (hidden)</th></tr>
+        <tr><td>Standing up · "Sir" · starting with chai · family talk · the words "InshaAllah, we will try"</td>
+            <td>Attitude to <b>authority</b> (juniors don't challenge) · <b>group harmony/consensus</b> ·
+            <b>face &amp; respect</b> (no public pressure) · the <b>indirect "no"</b> · relationship-first thinking</td></tr>
+      </table>
+      <p><b>(b) Onion:</b> chai rituals and family questions = <b>Rituals</b> (practices — visible, change fast);
+         "respect for elders/authority" = <b>Values</b> (the invisible core, learned early, change slowly).
+         Both sit in the hidden layer of the iceberg.</p>
+      <p><b>(c) Power Distance</b> — Pakistan <b>55</b> vs USA <b>40</b> (and the related <b>Individualism</b> gap,
+         <b>14 vs 91</b>): juniors accept unequal power, disagree privately, and use titles; the Dutch read silence as
+         agreement and behave flatly (low power distance).</p>
+      <p><b>(d) Conflict #3 — saying "no" &amp; indirect feedback</b> ("InshaAllah / dekhte hain / try karenge" may be a
+         polite <b>no</b>). <b>Fix (CQ Strategy + Action):</b> pause → check the assumption → confirm commitments
+         <b>in writing</b>, rephrase "try" as <b>yes/no with conditions</b>, ask juniors <b>last or privately</b> — then
+         adapt your own style. Remember: <b>misread signals, not bad intent</b>.</p>
+      <p><b>Marking:</b> model named + correct sorting (4) · both onion layers right (2) · dimension + score (2) ·
+         conflict #3 + fix (2).</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>✅ After the FE Paper</h2>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>Lost marks on Q1–Q3?</b> → Email section of the FE Revise tab (registers, BLUF, you-attitude).<br>
+      <b>Q4–Q5?</b> → PoS cheat sheet + tense grid.<br>
+      <b>Q6?</b> → Phrases card (head-word test).<br>
+      <b>Q7?</b> → Iceberg/Onion card (and remember: Iceberg = <b>Hall</b>).</div>
+    </div>
+    <p><b>Related:</b> <a href="el170.html" style="color:var(--cyan)">EL170 full notes (clauses · phrases · tenses · cross-culture) →</a> ·
+       <a href="quiz-el170.html" style="color:var(--cyan)">FE Quiz (20 MCQs) →</a> ·
+       <b>Notes:</b> <code>MASTER-REVISION.md</code></p>
+  </div>
+
+</section>
+<!-- ======================= DS ZERO-TO-HERO ======================= -->
+<section class="tab-panel" id="ds-rev">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 DS Mids Paper Game Plan (6 Questions)</h2>
+    <table>
+      <tr><th>Q#</th><th>Likely topic (from your hints)</th><th>How this tab prepares you</th></tr>
+      <tr><td><b>Q1–Q2</b></td><td><b>Expressions</b> — English ⇄ symbols, compound propositions</td><td>"Expressions" card</td></tr>
+      <tr><td><b>Q2–Q3</b></td><td><b>Logical equivalence</b> + <b>De Morgan's &amp; other laws</b></td><td>"Equivalence Laws" + "Prove equivalence" cards</td></tr>
+      <tr><td><b>Q3–Q4</b></td><td><b>Converse · Inverse</b> (and contrapositive) — which is equivalent?</td><td>"Converse/Inverse" card</td></tr>
+      <tr><td><b>Q4–Q5</b></td><td><b>Digital circuits</b> — gates, circuit ⇄ expression, simplification</td><td>"Digital Circuits" card</td></tr>
+      <tr><td><b>Q6 ⭐ LONG</b></td><td><b>Rules of Inference on premises</b> OR <b>Quantifiers</b> — <b>CONFIRMED to appear</b></td><td>"Rules of Inference" + "Quantifiers" cards — do these <b>twice</b>!</td></tr>
+    </table>
+    <div class="callout exam"><span class="c-ico">🔑</span>
+      <div><b>The strategy:</b> Q6 is <b>guaranteed</b> — so tonight, practise one <b>premises derivation</b> and one
+      <b>quantified proof</b> until you can write them from memory with the <b>Step | Reason</b> table. That's 30-ish marks
+      secured before you even start the paper. The short questions (equivalence, circuits, converse/inverse) are
+      <b>repetitive skills</b> — 20 minutes of drills each beats re-reading theory.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🍼 Level 0 — Start From Zero: Propositions &amp; Truth Tables</h2>
+    <ul>
+      <li><b>Proposition</b> = a sentence that is <b>either True or False, no third option</b>.
+          ✅ "2 + 2 = 4" (T) · "Islamabad is the capital" (T) · "The moon is made of cheese" (F).
+          ❌ NOT propositions: "What time is it?" · "Close the door!" · "x + 2 = 5" (no truth value until x is given).</li>
+      <li>We write propositions as <b>p, q, r…</b> and join them with <b>connectives</b>.</li>
+      <li><b>The 5 connectives:</b> <b>¬p</b> (not) · <b>p ∧ q</b> (and) · <b>p ∨ q</b> (or) · <b>p → q</b> (if…then) · <b>p ↔ q</b> (if and only if).</li>
+    </ul>
+    <table>
+      <tr><th>p</th><th>q</th><th>¬p</th><th>p ∧ q</th><th>p ∨ q</th><th>p → q</th><th>p ↔ q</th></tr>
+      <tr><td>T</td><td>T</td><td>F</td><td><b>T</b></td><td>T</td><td><b>T</b></td><td><b>T</b></td></tr>
+      <tr><td>T</td><td>F</td><td>F</td><td>F</td><td>T</td><td><b>F</b> ⚠️</td><td>F</td></tr>
+      <tr><td>F</td><td>T</td><td>T</td><td>F</td><td>T</td><td>T</td><td>F</td></tr>
+      <tr><td>F</td><td>F</td><td>T</td><td>F</td><td>F</td><td>T</td><td><b>T</b></td></tr>
+    </table>
+    <div class="callout trick"><span class="c-ico brain">🧠</span>
+      <div><b>Only 2 rows ever matter for a trap:</b> → is <b>false only at T→F</b>; ↔ is <b>true only when p and q match</b> (TT or FF).
+      ∧ is false if <i>either</i> is false · ∨ is false only if <i>both</i> are false. Everything else is generous! 😉</div>
+    </div>
+    <p><b>Terminology:</b> <b>hypothesis/antecedent</b> = the p side of p→q · <b>conclusion/consequent</b> = the q side.
+       A <b>tautology</b> = always T · <b>contradiction</b> = always F · <b>contingency</b> = sometimes T, sometimes F.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🔁 Converse · Inverse · Contrapositive (your hint topic!)</h2>
+    <p>Start from any "if…then": <b>p → q</b> ("If it rains, the ground is wet").</p>
+    <table>
+      <tr><th>Name</th><th>Shape</th><th>English</th><th>Equivalent to p→q?</th></tr>
+      <tr><td><b>Original</b></td><td>p → q</td><td>If it rains, the ground is wet</td><td>—</td></tr>
+      <tr><td><b>Converse</b></td><td>q → p</td><td>If the ground is wet, it rained</td><td>❌ <b>No</b></td></tr>
+      <tr><td><b>Inverse</b></td><td>¬p → ¬q</td><td>If it does NOT rain, the ground is NOT wet</td><td>❌ <b>No</b> (same lie as converse)</td></tr>
+      <tr><td><b>Contrapositive</b></td><td>¬q → ¬p</td><td>If the ground is NOT wet, it did NOT rain</td><td>✅ <b>YES — always!</b></td></tr>
+    </table>
+    <div class="callout exam"><span class="c-ico">🔑</span>
+      <div><b>The golden rule (almost always asked!):</b> the <b>contrapositive</b> is <b>logically equivalent</b> to the original.
+      The <b>converse and inverse are equivalent to <i>each other</i></b> — but <b>NOT</b> to the original.
+      Quick memory: <b>"Contra- = correct flip · Con- = the wrong way · In- = same wrong way as Con-."</b></div>
+    </div>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Why:</b> p→q ≡ ¬q→¬p — flip <i>and</i> negate both sides once = safe. Just flipping (converse) or just negating (inverse)
+      gives a <b>different statement</b>. Trap example: "If an animal is a cat, it has 3 legs" (false!) — its converse
+      "if it has 3 legs it's a cat" is also false, but the contrapositive "if it does NOT have 3 legs it is NOT a cat" is
+      safely true with the original.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚖️ The Equivalence Laws — De Morgan &amp; Friends (your hint topic!)</h2>
+    <p><b>Two expressions are logically equivalent</b> (written ≡) when they have the <b>identical truth table columns</b> — they're
+       "the same sentence wearing different words".</p>
+    <table>
+      <tr><th>Law</th><th>Rule</th><th>Plain English</th></tr>
+      <tr><td><b>Double negation</b></td><td>¬(¬p) ≡ p</td><td>two negatives make a positive</td></tr>
+      <tr><td><b>De Morgan 1 ⭐</b></td><td>¬(p ∧ q) ≡ <b>¬p ∨ ¬q</b></td><td>"not (A and B)" = "not-A OR not-B"</td></tr>
+      <tr><td><b>De Morgan 2 ⭐</b></td><td>¬(p ∨ q) ≡ <b>¬p ∧ ¬q</b></td><td>"not (A or B)" = "not-A AND not-B"</td></tr>
+      <tr><td><b>Commutative</b></td><td>p ∧ q ≡ q ∧ p · p ∨ q ≡ q ∨ p</td><td>order doesn't matter</td></tr>
+      <tr><td><b>Associative</b></td><td>(p ∧ q) ∧ r ≡ p ∧ (q ∧ r) (same for ∨)</td><td>grouping doesn't matter</td></tr>
+      <tr><td><b>Distributive</b></td><td>p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r)<br>p ∨ (q ∧ r) ≡ (p ∨ q) ∧ (p ∨ r)</td><td>∧ distributes over ∨ (and vice versa) — like × over +</td></tr>
+      <tr><td><b>Implication ⭐</b></td><td>p → q ≡ <b>¬p ∨ q</b></td><td>"if p then q" secretly means "no-p or q"!</td></tr>
+      <tr><td><b>Contrapositive</b></td><td>p → q ≡ ¬q → ¬p</td><td>the safe flip</td></tr>
+      <tr><td><b>Biconditional</b></td><td>p ↔ q ≡ (p → q) ∧ (q → p)</td><td>"iff" = both directions at once</td></tr>
+      <tr><td><b>Identity</b></td><td>p ∧ T ≡ p · p ∨ F ≡ p</td><td>the neutral element</td></tr>
+      <tr><td><b>Domination</b></td><td>p ∨ T ≡ T · p ∧ F ≡ F</td><td>the boss wins</td></tr>
+      <tr><td><b>Idempotent</b></td><td>p ∧ p ≡ p · p ∨ p ≡ p</td><td>repeating changes nothing</td></tr>
+      <tr><td><b>Absorption ⭐</b></td><td>p ∨ (p ∧ q) ≡ p · p ∧ (p ∨ q) ≡ p</td><td>the little one gets absorbed</td></tr>
+      <tr><td><b>Negation</b></td><td>p ∨ ¬p ≡ T · p ∧ ¬p ≡ F</td><td>either-yes-or-no = T; both = impossible</td></tr>
+    </table>
+    <div class="callout trick"><span class="c-ico brain">🧠</span>
+      <div><b>De Morgan in one breath:</b> "Break the bracket, <b>flip the sign</b> (∧↔∨), negate every letter."
+      ¬(p ∧ q) → ¬p ∨ ¬q · ¬(p ∨ q) → ¬p ∧ ¬q. 🚫 The #1 student error: flipping ∧ to ∨ but <b>forgetting to negate p and q</b>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>✅ How to PROVE Two Expressions Are Equivalent</h2>
+    <p><b>Method 1 — Truth tables (always works, always full marks):</b> build one table with <b>both</b> columns side by side.
+       If the two columns match in <b>every row</b> → equivalent. If even <b>one row</b> differs → NOT equivalent.</p>
+    <table>
+      <tr><th>p</th><th>q</th><th>¬p</th><th>¬p ∨ q</th><th>p → q</th></tr>
+      <tr><td>T</td><td>T</td><td>F</td><td><b>T</b></td><td><b>T</b></td></tr>
+      <tr><td>T</td><td>F</td><td>F</td><td><b>F</b></td><td><b>F</b></td></tr>
+      <tr><td>F</td><td>T</td><td>T</td><td><b>T</b></td><td><b>T</b></td></tr>
+      <tr><td>F</td><td>F</td><td>T</td><td><b>T</b></td><td><b>T</b></td></tr>
+    </table>
+    <p>Columns identical → <b>p → q ≡ ¬p ∨ q</b> (the Implication Law) ✔ — write this table in the exam and you're done.</p>
+    <p><b>Method 2 — Laws (neater, shorter):</b> rewrite one side step by step using the laws until it becomes the other side.
+       Example: ¬(p → q) ≡ ¬(¬p ∨ q) <i>[Implication]</i> ≡ ¬¬p ∧ ¬q <i>[De Morgan 2]</i> ≡ <b>p ∧ ¬q</b> <i>[Double negation]</i> ✔</p>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Exam tip:</b> if the question says "<b>using laws</b>", Method 2 is required (name each law in brackets!). If it says
+      "verify/show", Method 1 is safest. Never write "they look the same" — the examiner wants the <b>table or the steps</b>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🚪 Digital Circuits — Logic Becomes Hardware (your hint topic!)</h2>
+    <p>Every connective is a <b>gate</b> in a chip. Same logic, different drawing. ✏️ You get asked to (a) <b>draw</b> a circuit for an
+       expression, or (b) <b>write the expression</b> for a given circuit, then simplify.</p>
+    <table>
+      <tr><th>Gate</th><th>Symbol name</th><th>Expression</th><th>Truth in one line</th></tr>
+      <tr><td><b>AND</b></td><td>→-shaped back</td><td>p ∧ q</td><td>both must be 1</td></tr>
+      <tr><td><b>OR</b></td><td>curved back</td><td>p ∨ q</td><td>at least one 1</td></tr>
+      <tr><td><b>NOT</b></td><td>triangle + bubble</td><td>¬p</td><td>flips the bit</td></tr>
+      <tr><td><b>NAND</b></td><td>AND + bubble</td><td>¬(p ∧ q)</td><td>"not-both"</td></tr>
+      <tr><td><b>NOR</b></td><td>OR + bubble</td><td>¬(p ∨ q)</td><td>"neither"</td></tr>
+      <tr><td><b>XOR</b></td><td>OR + double curve</td><td>p ⊕ q = (p ∧ ¬q) ∨ (¬p ∧ q)</td><td>exactly one 1</td></tr>
+    </table>
+    <pre class="gate">Example:  (p ∧ q) ∨ ¬r   —  draw left to right:
+
+  p ──┐ AND ──┐
+  q ──┘       ├─ OR ──→ output
+  r ──[NOT]───┘</pre>
+    <ul>
+      <li><b>Circuit → expression:</b> follow the wires from <b>left to right</b>; each gate = one connective.
+          NOT on a wire → ¬ · bubble on a gate = NOT around that gate.</li>
+      <li><b>Simplify the circuit = simplify the expression:</b> (p ∧ q) ∨ (p ∧ ¬q) = p ∧ (q ∨ ¬q) = p ∧ T = <b>p</b> —
+          two gates and a whole wire can be deleted! (Distributive + Negation + Identity — yes, the <b>same laws</b> you learned above.)</li>
+      <li><b>De Morgan in circuits:</b> a NAND gate is just a NOT placed after an AND — so <b>¬(p ∧ q) = ¬p ∨ ¬q</b> means
+          "push the bubble back through the gate and flip AND↔OR". This is how real chips are built (NAND/NOR are cheapest!).</li>
+    </ul>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Mini-exam drill:</b> "Draw a circuit for <b>¬(p ∨ q) ∧ r</b>" → OR(p,q) → NOT → AND with r.
+      "Write the expression" for a circuit that ANDs p with the OR of ¬q and r → <b>p ∧ (¬q ∨ r)</b>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📝 Expressions — English ⇄ Symbols (your hint topic!)</h2>
+    <table>
+      <tr><th>English words</th><th>Symbol</th><th>Example</th></tr>
+      <tr><td>and, but, also, moreover</td><td>∧</td><td>"It is raining <b>and</b> cold" → p ∧ q</td></tr>
+      <tr><td>or (inclusive)</td><td>∨</td><td>"tea or coffee" → p ∨ q</td></tr>
+      <tr><td>either…or (exclusive)</td><td>⊕</td><td>"<b>Either</b> Ali <b>or</b> Sara did it (not both)" → p ⊕ q</td></tr>
+      <tr><td>if…then</td><td>→</td><td>"If it rains, match cancelled" → p → q</td></tr>
+      <tr><td>only if</td><td>→ (backwards!)</td><td>"You pass <b>only if</b> you study" → <b>pass → study</b></td></tr>
+      <tr><td>unless</td><td>∨ with a negation</td><td>"Leave <b>unless</b> I say stay" → <b>stay ∨ leave</b> (or ¬stay → leave)</td></tr>
+      <tr><td>when / whenever</td><td>→</td><td>"I smile <b>when</b> I win" → win → smile</td></tr>
+      <tr><td>iff / if and only if</td><td>↔</td><td>"A number is even <b>iff</b> it is divisible by 2"</td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>The 3 classic traps:</b> ① <b>"only if"</b> points the arrow the <b>other</b> way ("p only if q" = p → q, NOT q → p) ·
+      ② <b>"unless"</b> = OR (negate one side) — don't panic, just test "if the unless-part is false, must the other be true?" ·
+      ③ <b>"p is necessary for q"</b> = q → p · "<b>p is sufficient for q</b>" = p → q.</div>
+    </div>
+    <p><b>Worked example:</b> "You can graduate (g) only if you pass all courses (c) and pay your fees (f)."
+       → <b>g → (c ∧ f)</b> ✅ (only-if = arrowhead on itself). Negation practice: ¬(c ∧ f) ≡ <b>¬c ∨ ¬f</b> (De Morgan!).</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🚂 Rules of Inference — THE CONFIRMED LONG QUESTION (Q6!)</h2>
+    <p>An <b>argument</b> = premises (the "given"s) + a <b>conclusion</b> after ∴. It is <b>valid</b> when it's
+       <b>impossible</b> for all premises to be true and the conclusion false — the conclusion <i>must</i> follow.</p>
+    <table>
+      <tr><th>Rule</th><th>Premises</th><th>∴ Conclusion</th><th>Kid name</th></tr>
+      <tr><td><b>Modus ponens</b></td><td>p, p → q</td><td>q</td><td>"say yes, get the result"</td></tr>
+      <tr><td><b>Modus tollens</b></td><td>¬q, p → q</td><td>¬p</td><td>"no result → no trigger"</td></tr>
+      <tr><td><b>Hypothetical syllogism</b></td><td>p → q, q → r</td><td>p → r</td><td>"domino chain"</td></tr>
+      <tr><td><b>Disjunctive syllogism</b></td><td>p ∨ q, ¬p</td><td>q</td><td>"eliminate one door"</td></tr>
+      <tr><td><b>Addition</b></td><td>p</td><td>p ∨ q</td><td>"A true → A-or-B true"</td></tr>
+      <tr><td><b>Simplification</b></td><td>p ∧ q</td><td>p</td><td>"open the combo pack"</td></tr>
+      <tr><td><b>Conjunction</b></td><td>p, q</td><td>p ∧ q</td><td>"tape two facts together"</td></tr>
+      <tr><td><b>Resolution</b></td><td>p ∨ q, ¬p ∨ r</td><td>q ∨ r</td><td>"cancel the matching pair"</td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>The two fallacies (INVALID — examiners love them):</b>
+      <b>Affirming the conclusion:</b> p → q, q ∴ p ❌ (q can be true for other reasons) ·
+      <b>Denying the hypothesis:</b> p → q, ¬p ∴ ¬q ❌. Both break at the row <b>p = F, q = T</b> — show that row and you've disproved validity.</div>
+    </div>
+    <p><b>⭐ WORKED LONG QUESTION — always in Step | Reason format:</b></p>
+    <p><b>Premises:</b> ① r → p ② ¬p ∧ q ③ ¬r → s ④ s → t. <b>Prove: ∴ t</b></p>
+    <table>
+      <tr><th>Step</th><th>Statement</th><th>Reason</th></tr>
+      <tr><td>1</td><td>¬p ∧ q</td><td>Premise ②</td></tr>
+      <tr><td>2</td><td>¬p</td><td>Simplification from (1)</td></tr>
+      <tr><td>3</td><td>r → p</td><td>Premise ①</td></tr>
+      <tr><td>4</td><td>¬r</td><td>Modus tollens from (2),(3)</td></tr>
+      <tr><td>5</td><td>¬r → s</td><td>Premise ③</td></tr>
+      <tr><td>6</td><td>s</td><td>Modus ponens from (4),(5)</td></tr>
+      <tr><td>7</td><td>s → t</td><td>Premise ④</td></tr>
+      <tr><td>8</td><td>t</td><td>Modus ponens from (6),(7) ∎</td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>How to attack any premises question:</b> ① write the premises as symbols · ② look at the <b>conclusion</b> —
+      what letter must appear alone? (here: t) · ③ hunt the premise that can <b>produce</b> t (here s → t, so you need s) ·
+      ④ keep working <b>backwards</b> until every needed piece is a premise. One rule per line, always name the reason.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📐 Quantifiers — the backup long question (∀ and ∃)</h2>
+    <ul>
+      <li><b>∀x P(x)</b> = "P(x) for <b>every</b> x in the domain" · <b>∃x P(x)</b> = "P(x) for <b>at least one</b> x".</li>
+      <li><b>They are opposites:</b> ¬∀xP(x) ≡ ∃x¬P(x) ("not everyone" = "someone isn't") ·
+          ¬∃xP(x) ≡ ∀x¬P(x) ("nobody" = "everyone isn't"). <b>(Quantifier De Morgan — very likely asked!)</b></li>
+      <li><b>Translate:</b> "Every student passed" = ∀x(S(x) → P(x)) · "Some student failed" = ∃x(S(x) ∧ ¬P(x)).
+          ⚠️ ∀ uses <b>→</b> and ∃ uses <b>∧</b> — using the wrong one is the top lost-mark in this topic.</li>
+    </ul>
+    <table>
+      <tr><th>Rule</th><th>From</th><th>To</th><th>Kid version</th></tr>
+      <tr><td><b>UI</b> (universal instantiation)</td><td>∀x P(x)</td><td>P(c), any c you like</td><td>"every kid loves chocolate → pick ANY kid, he loves it"</td></tr>
+      <tr><td><b>UG</b> (universal generalization)</td><td>P(c) for an <b>arbitrary</b> c</td><td>∀x P(x)</td><td>"true for a randomly-picked kid → true for ALL"</td></tr>
+      <tr><td><b>EI</b> (existential instantiation)</td><td>∃x P(x)</td><td>P(c), c = fresh mystery name</td><td>"someone ate the cookie — call him 'c', we don't know who"</td></tr>
+      <tr><td><b>EG</b> (existential generalization)</td><td>P(c) for some c</td><td>∃x P(x)</td><td>"Ali loves chocolate → SOMEONE does"</td></tr>
+    </table>
+    <p><b>⭐ The two super-combos (most likely quantified long question):</b></p>
+    <p><b>Universal modus ponens:</b> ∀x(P(x) → Q(x)), P(a) <b>∴ Q(a)</b> — "Every row that passes validation is loaded.
+       Row 482 passed ∴ row 482 is loaded."<br>
+       <b>Universal modus tollens:</b> ∀x(P(x) → Q(x)), ¬Q(a) <b>∴ ¬P(a)</b> — "Every valid row loads; row 519 did NOT load ∴ it did not pass."</p>
+    <p><b>Worked short proof:</b> Premises: ∃x(S(x) ∧ ¬C(x)), ∀x(S(x) → I(x)). <b>∴ ∃x(I(x) ∧ ¬C(x))</b></p>
+    <table>
+      <tr><th>Step</th><th>Statement</th><th>Reason</th></tr>
+      <tr><td>1</td><td>∃x(S(x) ∧ ¬C(x))</td><td>Premise</td></tr>
+      <tr><td>2</td><td>S(a) ∧ ¬C(a)</td><td>EI on (1) — a = fresh name</td></tr>
+      <tr><td>3</td><td>S(a)</td><td>Simplification on (2)</td></tr>
+      <tr><td>4</td><td>∀x(S(x) → I(x))</td><td>Premise</td></tr>
+      <tr><td>5</td><td>S(a) → I(a)</td><td>UI on (4) — the SAME a</td></tr>
+      <tr><td>6</td><td>I(a)</td><td>Modus ponens on (3),(5)</td></tr>
+      <tr><td>7</td><td>¬C(a)</td><td>Simplification on (2)</td></tr>
+      <tr><td>8</td><td>I(a) ∧ ¬C(a)</td><td>Conjunction on (6),(7)</td></tr>
+      <tr><td>9</td><td>∃x(I(x) ∧ ¬C(x))</td><td>EG on (8) ∎</td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Golden order:</b> do <b>EI first</b> (so the name is fresh), then <b>UI at that same name</b>.
+      ⚠️ And never treat ∃ like ∀: "some sensor is faulty" does <b>not</b> let you name sensor 07!</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🔄 Flip Cards — DS Mids Drill (tap to flip)</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>¬(p ∧ q) = ? (De Morgan)</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>¬p ∨ ¬q</b> — break the bracket, flip ∧↔∨, negate every letter.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Which of converse / inverse / contrapositive is equivalent to the original?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Contrapositive only</b> (¬q→¬p). Converse and inverse are equivalent to <i>each other</i>, not to the original.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>p → q in disguise (implication law)?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>¬p ∨ q</b> — "if p then q" really means "no-p, or q".</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>"p only if q" = ?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>p → q</b> — "only if" points the arrow at itself. (And "p is necessary for q" also = q → p.)</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>Modus ponens vs modus tollens?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>MP: p, p→q ∴ q (uses the then-part) · MT: ¬q, p→q ∴ ¬p (kills the then-part).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>NAND gate = which expression? And De Morgan's use in circuits?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>¬(p ∧ q)</b> = ¬p ∨ ¬q — push the bubble back through the gate and flip AND↔OR.</p></div>
+      </div></div>
+    </div>
+    <p><b>Ready?</b> try the <a href="#" onclick="document.querySelector('[data-tab=ds-paper]').click();return false;" style="color:var(--cyan)">DS Sample Paper (6 questions) →</a>
+       · <a href="#" onclick="document.querySelector('[data-tab=ds-paper2]').click();return false;" style="color:var(--cyan)">Paper 2 — Rosen 7e verbatim →</a>
+       · <b>Full notes:</b> <a href="ma216.html" style="color:var(--cyan)">MA216 →</a></p>
+  </div>
+
+</section>
+<!-- ======================= DS SAMPLE PAPER ======================= -->
+<section class="tab-panel" id="ds-paper">
+  <div class="note-card">
+    <h2><span class="bar"></span>📝 DS — Mids Sample Paper (6 Questions · Model Answers Inside)</h2>
+    <div class="paper-head">
+      <span><b>Time:</b> 2 hours 30 minutes</span><span><b>Total:</b> 100 marks</span>
+      <span><b>6 questions</b> exactly like your paper pattern</span>
+      <span><b>Q6 = Rules of Inference / Quantifiers ⭐CONFIRMED</b></span>
+      <span>Answer ALL questions</span>
+    </div>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>How to use this page:</b> attempt each question <b>on paper first</b> (truth tables / gate drawings included!),
+      then press <b>Reveal</b> and compare line by line. Anything you lost marks on → back to the
+      <b>DS Zero-to-Hero</b> tab.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q1 · Expressions — English ⇄ Symbols <span style="color:var(--muted);font-size:.9rem">(15 marks — 3 each)</span></h2>
+    <p>Let <b>p</b>: "It is raining", <b>q</b>: "the match is cancelled", <b>r</b>: "the ground is wet".
+       Write each sentence in symbolic logic.</p>
+    <p><b>(a)</b> It is raining and the match is not cancelled.<br>
+       <b>(b)</b> If it is raining, then the ground is wet.<br>
+       <b>(c)</b> The match is cancelled only if it is raining.<br>
+       <b>(d)</b> It is not raining unless the ground is wet.<br>
+       <b>(e)</b> The ground is wet if and only if it is raining or the match is cancelled.</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answers</h4>
+      <table>
+        <tr><th>#</th><th>Answer</th><th>Rule used</th></tr>
+        <tr><td>(a)</td><td><b>p ∧ ¬q</b></td><td>"and" = ∧ · "not" = ¬</td></tr>
+        <tr><td>(b)</td><td><b>p → r</b></td><td>"if…then" = →</td></tr>
+        <tr><td>(c)</td><td><b>q → p</b></td><td>⚠️ "only if" points the arrow at <b>itself</b> — NOT p → q!</td></tr>
+        <tr><td>(d)</td><td><b>¬p ∨ r</b> (equivalently ¬r → p)</td><td>"unless" = inclusive OR with a negation</td></tr>
+        <tr><td>(e)</td><td><b>r ↔ (p ∨ q)</b></td><td>"iff" = ↔ · "or" = ∨ (brackets matter!)</td></tr>
+      </table>
+      <p><b>Marking (3 each):</b> correct connective (2) + correct order/brackets/negation (1). Common slip: (c) reversed —
+         <i>only if</i> ≠ <i>if</i>.</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q2 · Logical Equivalence — Verify with a Truth Table <span style="color:var(--muted);font-size:.9rem">(15 marks)</span></h2>
+    <p>Using a <b>truth table</b>, show that the following pair is (or is not) logically equivalent:</p>
+    <div class="callout warn"><span class="c-ico">❓</span>
+      <div><b>(p → q) ∧ (p → r)</b> &nbsp;<b>and</b>&nbsp; <b>p → (q ∧ r)</b></div>
+    </div>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer — one table, both target columns</h4>
+      <table>
+        <tr><th>p</th><th>q</th><th>r</th><th>p→q</th><th>p→r</th><th><b>(p→q)∧(p→r)</b></th><th>q∧r</th><th><b>p→(q∧r)</b></th></tr>
+        <tr><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td><b>T</b></td><td>T</td><td><b>T</b></td></tr>
+        <tr><td>T</td><td>T</td><td>F</td><td>T</td><td>F</td><td><b>F</b></td><td>F</td><td><b>F</b></td></tr>
+        <tr><td>T</td><td>F</td><td>T</td><td>F</td><td>T</td><td><b>F</b></td><td>F</td><td><b>F</b></td></tr>
+        <tr><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td><td><b>F</b></td><td>F</td><td><b>F</b></td></tr>
+        <tr><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td><td><b>T</b></td><td>T</td><td><b>T</b></td></tr>
+        <tr><td>F</td><td>T</td><td>F</td><td>T</td><td>T</td><td><b>T</b></td><td>F</td><td><b>T</b></td></tr>
+        <tr><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td><td><b>T</b></td><td>F</td><td><b>T</b></td></tr>
+        <tr><td>F</td><td>F</td><td>F</td><td>T</td><td>T</td><td><b>T</b></td><td>F</td><td><b>T</b></td></tr>
+      </table>
+      <p><b>Conclusion:</b> the two bold columns are identical in all 8 rows → the statements are
+         <b>logically equivalent</b> ✔ (∎).</p>
+      <p><b>Marking:</b> 3 variables = 8 rows in correct TT/TF/FT/FF order (3) · → columns right (3) ·
+         both target columns right (4) · identical/not-identical observation (2) · conclusion with ∎ (3).</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q3 · De Morgan &amp; the Laws — Simplify <span style="color:var(--muted);font-size:.9rem">(15 marks — 5 each)</span></h2>
+    <p>Simplify each expression as far as possible, <b>name every law you use</b> in brackets.</p>
+    <p><b>(a)</b> ¬(p ∨ ¬q)<br>
+       <b>(b)</b> (p ∧ q) ∨ (p ∧ ¬q)<br>
+       <b>(c)</b> ¬(¬p ∧ q) ∧ p</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answers with laws named</h4>
+      <p><b>(a)</b> ¬(p ∨ ¬q) ≡ <b>¬p ∧ ¬¬q</b> <i>(De Morgan 2)</i> ≡ <b>¬p ∧ q</b> <i>(Double negation)</i> ∎</p>
+      <p><b>(b)</b> (p ∧ q) ∨ (p ∧ ¬q) ≡ <b>p ∧ (q ∨ ¬q)</b> <i>(Distributive — backwards)</i> ≡ p ∧ T <i>(Negation: q ∨ ¬q ≡ T)</i> ≡ <b>p</b> <i>(Identity)</i> ∎</p>
+      <p><b>(c)</b> ¬(¬p ∧ q) ≡ <b>p ∨ ¬q</b> <i>(De Morgan 1)</i> → (p ∨ ¬q) ∧ p ≡ <b>p</b> <i>(Absorption: (p ∨ x) ∧ p ≡ p)</i> ∎</p>
+      <p><b>Marking (5 each):</b> correct first step (2) · correct law names (2) · fully simplified final answer (1).
+         ⚠️ Losing marks usually means forgetting to negate <b>every</b> letter in De Morgan.</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q4 · Digital Circuits <span style="color:var(--muted);font-size:.9rem">(15 marks)</span></h2>
+    <p><b>(a)</b> Draw the logic circuit for the expression <b>¬(p ∨ q) ∧ r</b>. <b>(6)</b><br>
+       <b>(b)</b> Write the Boolean expression for this circuit: inputs p and q go into a NAND gate; its output is ORed with ¬r. <b>(4)</b><br>
+       <b>(c)</b> Simplify the expression <b>(p ∧ q) ∨ (p ∧ ¬q)</b> using Boolean laws, and state how many gates the simplified
+       circuit needs compared with the original. <b>(5)</b></p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answers</h4>
+      <p><b>(a)</b> OR(p, q) → NOT → AND with r:</p>
+      <pre class="gate">  p ──┐ OR ──[NOT]──┐
+  q ──┘             ├─ AND ──→ output
+  r ────────────────┘</pre>
+      <p><b>(b)</b> NAND(p,q) gives <b>¬(p ∧ q)</b>; ORing with ¬r gives
+         <b>¬(p ∧ q) ∨ ¬r</b> ≡ <b>¬p ∨ ¬q ∨ ¬r</b> <i>(De Morgan 1 on the first term)</i> — a single 3-input OR gate!</p>
+      <p><b>(c)</b> (p ∧ q) ∨ (p ∧ ¬q) ≡ p ∧ (q ∨ ¬q) ≡ p ∧ T ≡ <b>p</b> — the whole circuit collapses to
+         <b>a single wire</b> (0 gates). Original needed 2 ANDs + 1 OR + 1 NOT = 4 gates.</p>
+      <p><b>Marking:</b> (a) OR then NOT then AND drawn with correct wires (6) · (b) correct expression (3) + De Morgan
+         simplification bonus (1) · (c) 3 steps with law names (4) + gate count (1).</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q5 · Converse · Inverse · Contrapositive <span style="color:var(--muted);font-size:.9rem">(20 marks)</span></h2>
+    <p>Consider the statement: <b>"If a function is differentiable, then it is continuous."</b> (p: differentiable, q: continuous)</p>
+    <p><b>(a)</b> Write its <b>converse</b>, <b>inverse</b> and <b>contrapositive</b> in English. <b>(6)</b><br>
+       <b>(b)</b> Which of the three is <b>logically equivalent</b> to the original? Justify in one line. <b>(4)</b><br>
+       <b>(c)</b> Using the <b>implication law</b> and a truth table, verify that the original ≡ its contrapositive. <b>(10)</b></p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answers</h4>
+      <p><b>(a)</b> <b>Converse:</b> "If a function is continuous, then it is differentiable." (q → p)<br>
+         <b>Inverse:</b> "If a function is not differentiable, then it is not continuous." (¬p → ¬q)<br>
+         <b>Contrapositive:</b> "If a function is not continuous, then it is not differentiable." (¬q → ¬p)</p>
+      <p><b>(b)</b> Only the <b>contrapositive</b> — because p → q ≡ ¬q → ¬p (flip <i>and</i> negate both sides).
+         (Fun fact: the converse "continuous ⇒ differentiable" is actually <b>false</b> — |x| is continuous at 0 but not
+         differentiable! A counterexample kills a statement instantly.)</p>
+      <table>
+        <tr><th>p</th><th>q</th><th>¬p</th><th>¬q</th><th><b>p → q</b></th><th><b>¬q → ¬p</b></th></tr>
+        <tr><td>T</td><td>T</td><td>F</td><td>F</td><td><b>T</b></td><td><b>T</b></td></tr>
+        <tr><td>T</td><td>F</td><td>F</td><td>T</td><td><b>F</b></td><td><b>F</b></td></tr>
+        <tr><td>F</td><td>T</td><td>T</td><td>F</td><td><b>T</b></td><td><b>T</b></td></tr>
+        <tr><td>F</td><td>F</td><td>T</td><td>T</td><td><b>T</b></td><td><b>T</b></td></tr>
+      </table>
+      <p>Columns identical in every row → <b>p → q ≡ ¬q → ¬p</b> ∎ (Also note: converse and inverse columns are identical
+         to <i>each other</i>, not to the original.)</p>
+      <p><b>Marking:</b> (a) 2 each, English + symbol both needed (6) · (b) contrapositive + justification (4) ·
+         (c) 4-row table correct (5) + columns compared (2) + conclusion ∎ (3).</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q6 ⭐ LONG · Rules of Inference on Premises <span style="color:var(--muted);font-size:.9rem">(25 marks — the CONFIRMED question)</span></h2>
+    <p>Use the <b>rules of inference</b> to show that the conclusion follows from the premises.
+       Present your answer as a <b>Step | Statement | Reason</b> table.</p>
+    <div class="callout exam"><span class="c-ico">question</span>
+      <div><b>Premises:</b><br>
+      ① <b>¬p ∧ q</b> &nbsp; ② <b>r → p</b> &nbsp; ③ <b>¬r → s</b> &nbsp; ④ <b>s → t</b><br><br>
+      <b>∴ t</b> &nbsp; ("the dashboard refreshes by 08:00")</div>
+    </div>
+    <p style="color:var(--muted);font-size:.9rem;"><b>Bonus part (if your paper mixes the two):</b> given
+       ∀x(P(x) → Q(x)) and P(a), conclude Q(a) — name the two rules fused together.</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer — the full derivation</h4>
+      <table>
+        <tr><th>Step</th><th>Statement</th><th>Reason</th></tr>
+        <tr><td>1</td><td>¬p ∧ q</td><td>Premise ①</td></tr>
+        <tr><td>2</td><td>¬p</td><td><b>Simplification</b> from (1)</td></tr>
+        <tr><td>3</td><td>r → p</td><td>Premise ②</td></tr>
+        <tr><td>4</td><td>¬r</td><td><b>Modus tollens</b> from (2),(3)</td></tr>
+        <tr><td>5</td><td>¬r → s</td><td>Premise ③</td></tr>
+        <tr><td>6</td><td>s</td><td><b>Modus ponens</b> from (4),(5)</td></tr>
+        <tr><td>7</td><td>s → t</td><td>Premise ④</td></tr>
+        <tr><td>8</td><td>t</td><td><b>Modus ponens</b> from (6),(7) ∎</td></tr>
+      </table>
+      <p><b>Bonus:</b> ∀x(P(x) → Q(x)), P(a) ∴ Q(a) = <b>Universal Modus Ponens</b> = <b>UI</b> (instantiate the ∀ at a)
+         fused with <b>Modus Ponens</b>.</p>
+      <p><b>Marking (25):</b> premises translated/written (3) · step 2 Simplification (3) · step 4 Modus tollens (5 — the key
+         step most students miss) · step 6 Modus ponens (4) · step 8 Modus ponens + ∎ (4) · clean Step|Reason format with
+         every line justified (6). <b>No reason = no marks</b>, even if the statement is right!</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>✅ After the DS Paper</h2>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>Lost marks on Q1?</b> → Expressions card ("only if" / "unless" traps).<br>
+      <b>Q2?</b> → Prove-equivalence card (always draw BOTH columns, then compare).<br>
+      <b>Q3?</b> → Equivalence Laws table (De Morgan: flip sign AND negate letters).<br>
+      <b>Q4?</b> → Digital Circuits card (left-to-right wires; bubble = NOT).<br>
+      <b>Q5?</b> → Converse/Inverse card (only contrapositive is equivalent).<br>
+      <b>Q6?</b> → Rules of Inference card — rewrite the derivation until it's muscle memory. <b>This one is CONFIRMED, so it's worth the most prep time.</b></div>
+    </div>
+    <p><b>Related:</b> <a href="ma216.html" style="color:var(--cyan)">MA216 full notes (logic → inference → proofs) →</a> ·
+       <a href="rev-ds.html" style="color:var(--cyan)">DS Revision — Logic →</a> ·
+       <a href="quiz-ds.html" style="color:var(--cyan)">DS Quiz (12 MCQs) →</a></p>
+  </div>
+
+</section>
+
+<!-- ======================= DS SAMPLE PAPER 2 — ROSEN 7E VERBATIM ======================= -->
+<section class="tab-panel" id="ds-paper2">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📕 DS — Mids Sample Paper 2 · every question verbatim from Rosen 7th Edition</h2>
+    <div class="paper-head">
+      <span><b>Time:</b> 2 hours 30 minutes</span><span><b>Total:</b> 100 marks</span>
+      <span><b>6 questions</b> — your exact paper pattern</span>
+      <span><b>Q6 = Rules of Inference ⭐CONFIRMED</b></span>
+      <span>Syllabus: Rosen 7e §1.1–1.6 only</span>
+    </div>
+    <table>
+      <tr><th>Q</th><th>Topic (your paper hints)</th><th>Exact source in Rosen 7e</th><th>Marks</th></tr>
+      <tr><td><b>Q1</b></td><td>Expressions — English ⇄ symbols</td><td>§1.1 Exercise 11 (a–g)</td><td>15</td></tr>
+      <tr><td><b>Q2</b></td><td>Logical equivalence — truth table</td><td>§1.3 Exercise 23</td><td>15</td></tr>
+      <tr><td><b>Q3</b></td><td>Laws — De Morgan's law + negations</td><td>§1.3 Exercises 6 &amp; 7</td><td>15</td></tr>
+      <tr><td><b>Q4</b></td><td>Digital circuits</td><td>§1.2 Exercises 40 &amp; 42</td><td>15</td></tr>
+      <tr><td><b>Q5</b></td><td>Converse · Inverse · Contrapositive</td><td>§1.1 Exercise 27 (a–c)</td><td>20</td></tr>
+      <tr><td><b>Q6 ⭐</b></td><td>Rules of Inference on premises <b>+ Quantifiers</b></td><td>§1.6 Exercises 6 &amp; 27</td><td>25</td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>How to use this page:</b> attempt every question <b>on paper first</b> (draw the circuit, build the tables,
+      write the Step | Reason derivation), then press <b>Reveal</b> and compare line by line with the model answer.
+      Anything you lost marks on → back to the <b>DS Zero-to-Hero</b> tab, card by card.</div>
+    </div>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Nothing on this page is invented:</b> all 6 questions are real exercises from Rosen's
+      <i>Discrete Mathematics and Its Applications</i>, <b>7th edition</b>, Sections <b>1.1–1.6</b> — which is exactly your
+      mids syllabus. Exercise numbers are printed on every card so you can cross-check them in the book.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q1 · Expressions — English ⇄ Symbols <span style="color:var(--muted);font-size:.9rem">(15 marks · Rosen 7e §1.1 Ex. 11)</span></h2>
+    <p>Let <b>p</b>: "It is below freezing" and <b>q</b>: "It is snowing".
+       Write each of these propositions using <b>p</b>, <b>q</b> and logical connectives (including negations).</p>
+    <p><b>(a)</b> It is below freezing and snowing.<br>
+       <b>(b)</b> It is below freezing but not snowing.<br>
+       <b>(c)</b> It is not below freezing and it is not snowing.<br>
+       <b>(d)</b> It is either snowing or below freezing (or both).<br>
+       <b>(e)</b> If it is below freezing, it is also snowing.<br>
+       <b>(f)</b> Either it is below freezing or it is snowing, but it is not snowing if it is below freezing.<br>
+       <b>(g)</b> That it is below freezing is necessary and sufficient for it to be snowing.</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answers</h4>
+      <table>
+        <tr><th>#</th><th>Answer</th><th>Trigger word → connective</th></tr>
+        <tr><td>(a)</td><td><b>p ∧ q</b></td><td>"and" = ∧</td></tr>
+        <tr><td>(b)</td><td><b>p ∧ ¬q</b></td><td>"but" is still just AND — it only changes the feeling, not the logic</td></tr>
+        <tr><td>(c)</td><td><b>¬p ∧ ¬q</b></td><td>"not … and … not" = two negations joined by ∧ (≡ ¬(p ∨ q) by De Morgan)</td></tr>
+        <tr><td>(d)</td><td><b>p ∨ q</b></td><td>"either … or" plus the hint "<b>(or both)</b>" = <b>inclusive</b> or (an exclusive "one or the other, not both" would be ⊕)</td></tr>
+        <tr><td>(e)</td><td><b>p → q</b></td><td>"if p, then q" — hypothesis first</td></tr>
+        <tr><td>(f)</td><td><b>(p ∨ q) ∧ (p → ¬q)</b></td><td>two clauses joined by "but" (∧); "it is not snowing <b>if</b> it is below freezing" = <b>p → ¬q</b> — <b>X if Y</b> makes <b>Y</b> the hypothesis!</td></tr>
+        <tr><td>(g)</td><td><b>p ↔ q</b></td><td>"necessary for" = arrow pointing back (q → p), "sufficient for" = arrow pointing forward (p → q); both together = ↔</td></tr>
+      </table>
+      <p><b>Marking (15):</b> 2 marks each for (a)–(f) — correct connective 1.5 + correct order/negation 0.5 — and 3 marks for (g)
+         (q → p and p → q worth 1.5 each). <b>Most-missed:</b> (f) reversed into q → ¬p, and (d) written as ⊕.</p>
+      <p><b>Trap check:</b> ✗ "but" written as → · ✗ (f) forgetting the opening "either … or" so only half the sentence is translated ·
+         ✗ (g) writing only → (that's just "sufficient").</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q2 · Logical Equivalence — Verify with a Truth Table <span style="color:var(--muted);font-size:.9rem">(15 marks · Rosen 7e §1.3 Ex. 23)</span></h2>
+    <p>Show that these two compound propositions are <b>logically equivalent</b>:</p>
+    <div class="callout warn"><span class="c-ico">❓</span>
+      <div><b>(p → r) ∧ (q → r)</b> &nbsp;<b>and</b>&nbsp; <b>(p ∨ q) → r</b></div>
+    </div>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer — one table, both target columns</h4>
+      <table>
+        <tr><th>p</th><th>q</th><th>r</th><th>p→r</th><th>q→r</th><th><b>(p→r)∧(q→r)</b></th><th>p∨q</th><th><b>(p∨q)→r</b></th></tr>
+        <tr><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td><b>T</b></td><td>T</td><td><b>T</b></td></tr>
+        <tr><td>T</td><td>T</td><td>F</td><td>F</td><td>F</td><td><b>F</b></td><td>T</td><td><b>F</b></td></tr>
+        <tr><td>T</td><td>F</td><td>T</td><td>T</td><td>T</td><td><b>T</b></td><td>T</td><td><b>T</b></td></tr>
+        <tr><td>T</td><td>F</td><td>F</td><td>F</td><td>T</td><td><b>F</b></td><td>T</td><td><b>F</b></td></tr>
+        <tr><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td><td><b>T</b></td><td>T</td><td><b>T</b></td></tr>
+        <tr><td>F</td><td>T</td><td>F</td><td>T</td><td>F</td><td><b>F</b></td><td>T</td><td><b>F</b></td></tr>
+        <tr><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td><td><b>T</b></td><td>F</td><td><b>T</b></td></tr>
+        <tr><td>F</td><td>F</td><td>F</td><td>T</td><td>T</td><td><b>T</b></td><td>F</td><td><b>T</b></td></tr>
+      </table>
+      <p><b>Conclusion:</b> the two bold columns match in <b>all 8 rows</b> → the statements are
+         <b>logically equivalent</b> ∎</p>
+      <p><b>Bonus — the same proof using laws</b> (neater, if the question says "using laws"):<br>
+         (p → r) ∧ (q → r) ≡ (¬p ∨ r) ∧ (¬q ∨ r) <i>(Implication)</i> ≡ (¬p ∧ ¬q) ∨ r <i>(Distributive — reversed)</i>
+         ≡ ¬(p ∨ q) ∨ r <i>(De Morgan)</i> ≡ <b>(p ∨ q) → r</b> <i>(Implication)</i> ∎</p>
+      <p><b>Marking (15):</b> 8 rows in correct order with 3 variables (4) · the two → columns right (3) ·
+         both target columns right (4) · "identical in every row" observation (2) · conclusion with ∎ (2).</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q3 · De Morgan's Law + Negations <span style="color:var(--muted);font-size:.9rem">(15 marks · Rosen 7e §1.3 Ex. 6 &amp; 7)</span></h2>
+    <p><b>(a)</b> Use a truth table to verify the <b>first De Morgan law</b>: &nbsp; <b>¬(p ∧ q) ≡ ¬p ∨ ¬q</b> <span style="color:var(--muted)">(7 marks)</span><br>
+       <b>(b)</b> Use <b>De Morgan's laws</b> to find the negation of each of these statements <span style="color:var(--muted)">(2 marks each)</span>:</p>
+    <p>&nbsp;&nbsp;&nbsp;<b>(i)</b> Jan is rich and happy.<br>
+       &nbsp;&nbsp;&nbsp;<b>(ii)</b> Carlos will bicycle or run tomorrow.<br>
+       &nbsp;&nbsp;&nbsp;<b>(iii)</b> Mei walks or takes the bus to class.<br>
+       &nbsp;&nbsp;&nbsp;<b>(iv)</b> Ibrahim is smart and hard working.</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer (a) — the table that proves it</h4>
+      <table>
+        <tr><th>p</th><th>q</th><th>p ∧ q</th><th><b>¬(p ∧ q)</b></th><th>¬p</th><th>¬q</th><th><b>¬p ∨ ¬q</b></th></tr>
+        <tr><td>T</td><td>T</td><td>T</td><td><b>F</b></td><td>F</td><td>F</td><td><b>F</b></td></tr>
+        <tr><td>T</td><td>F</td><td>F</td><td><b>T</b></td><td>F</td><td>T</td><td><b>T</b></td></tr>
+        <tr><td>F</td><td>T</td><td>F</td><td><b>T</b></td><td>T</td><td>F</td><td><b>T</b></td></tr>
+        <tr><td>F</td><td>F</td><td>F</td><td><b>T</b></td><td>T</td><td>T</td><td><b>T</b></td></tr>
+      </table>
+      <p>The two bold columns are identical in every row → <b>¬(p ∧ q) ≡ ¬p ∨ ¬q</b> verified ∎</p>
+      <h4>Model answers (b) — negations via De Morgan</h4>
+      <table>
+        <tr><th>#</th><th>Statement</th><th>Step 1 — break the bracket, flip ∧↔∨</th><th>Negation (plain English)</th></tr>
+        <tr><td>(i)</td><td>Jan is rich <b>and</b> happy</td><td>¬rich ∨ ¬happy</td><td><b>Jan is not rich or not happy</b> (or both)</td></tr>
+        <tr><td>(ii)</td><td>Carlos will bicycle <b>or</b> run</td><td>¬bicycle ∧ ¬run</td><td><b>Carlos will neither bicycle nor run tomorrow</b></td></tr>
+        <tr><td>(iii)</td><td>Mei walks <b>or</b> takes the bus</td><td>¬walks ∧ ¬bus</td><td><b>Mei neither walks nor takes the bus to class</b></td></tr>
+        <tr><td>(iv)</td><td>Ibrahim is smart <b>and</b> hard working</td><td>¬smart ∨ ¬hardworking</td><td><b>Ibrahim is not smart or not hard working</b></td></tr>
+      </table>
+      <p><b>Marking:</b> (a) 7 — rows (2) · ¬(p∧q) column (2) · ¬p∨¬q column (2) · identical-columns conclusion ∎ (1).
+         (b) 2 each — flipped connective (1) + every letter negated, stated in correct English (1).</p>
+      <p><b>#1 lost mark:</b> flipping ∧ to ∨ but <b>forgetting to negate the letters</b> — e.g. writing "not (rich or happy)" is
+         the statement itself, <i>not</i> its negation. Say it out loud: <b>"break the bracket, flip the sign, negate every letter."</b></p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q4 · Digital Circuits <span style="color:var(--muted);font-size:.9rem">(15 marks · Rosen 7e §1.2 Ex. 40 &amp; 42)</span></h2>
+    <p><b>(a)</b> Find the <b>output</b> of each of these combinatorial circuits. <span style="color:var(--muted)">(7 marks — 3 + 4)</span></p>
+    <img class="book-img" src="img/rosen7e_q40.png" alt="Rosen 7e Section 1.2 Exercise 40: combinatorial circuits a) and b)">
+    <p style="color:var(--muted);font-size:.85rem;">Exhibit from Rosen 7e, §1.2 Exercise 40 — printed here for your revision.</p>
+    <p><b>(b)</b> Construct a combinatorial circuit using <b>inverters, OR gates, and AND gates</b> that produces the output
+       <b>(p ∧ ¬r) ∨ (¬q ∧ r)</b> from input bits p, q, and r. <span style="color:var(--muted)">(8 marks)</span></p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answers (a) — trace gate by gate, left to right</h4>
+      <p><b>i (top circuit):</b> p goes through an inverter → ¬p · q through an inverter → ¬q · both feed an OR gate →
+         <b>¬p ∨ ¬q</b> — which by De Morgan is the same as <b>¬(p ∧ q)</b>: this drawing is literally a <b>NAND gate</b> in disguise! 🎯</p>
+      <p><b>ii (bottom circuit):</b> walk the wires in order:<br>
+         inner AND = <b>¬p ∧ q</b> → OR with the straight p = <b>p ∨ (¬p ∧ q)</b> → final inverter = <b>¬(p ∨ (¬p ∧ q))</b> ∎<br>
+         <i>(bonus simplification)</i> ≡ ¬p ∧ ¬(¬p ∧ q) <i>(De Morgan)</i> ≡ ¬p ∧ (p ∨ ¬q) <i>(De Morgan + double negation)</i>
+         ≡ (¬p ∧ p) ∨ (¬p ∧ ¬q) <i>(Distributive)</i> ≡ F ∨ (¬p ∧ ¬q) <i>(Negation)</i> ≡ <b>¬p ∧ ¬q</b> <i>(Identity)</i> —
+         the whole circuit collapses to "neither p nor q"!</p>
+      <h4>Model answer (b) — the drawing</h4>
+      <pre class="gate">  p ─────────────┐ AND ────┐
+                  │         │
+  r ──[NOT]──────┘         ├── OR ──→ output
+                           │
+  q ──[NOT]──────┐         │
+                 │ AND ────┘
+  r ─────────────┘</pre>
+      <p><b>How to build it (left → right):</b> ① read the expression and find the <b>outermost connective</b> = the last gate
+         (<b>∨</b> → one OR gate on the right). ② Its two inputs are the two branches: <b>p ∧ ¬r</b> (top AND, fed by p and an
+         inverter on r) and <b>¬q ∧ r</b> (bottom AND, fed by an inverter on q and r straight). ③ r is wired <b>twice</b> —
+         once through an inverter, once plain. Every ¬ = one inverter, every ∧ = one AND, every ∨ = one OR.</p>
+      <p><b>Marking (15):</b> (a-i) 3 — ¬p, ¬q and the OR identified · (a-ii) 4 — correct raw output ¬(p ∨ (¬p ∧ q)) (3) + correct
+         simplification to ¬p ∧ ¬q with law names (1) · (b) 8 — two inverters (2) · two AND gates (2) · one OR gate (1) ·
+         correct wiring of all five signals (3).</p>
+      <p><b>Trap check:</b> ✗ drawing the final gate of (b) as AND instead of OR · ✗ wiring r only once ·
+         ✗ forgetting the inverter on p and q in (a-i) — the circles on the triangles ARE the nots.</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q5 · Converse · Inverse · Contrapositive <span style="color:var(--muted);font-size:.9rem">(20 marks · Rosen 7e §1.1 Ex. 27)</span></h2>
+    <p>State the <b>converse</b>, <b>contrapositive</b>, and <b>inverse</b> of each of these conditional statements
+       <span style="color:var(--muted)">(rewrite each first as "if p, then q" — that rewrite is where the marks start)</span>:</p>
+    <p><b>(a)</b> If it snows today, I will ski tomorrow.<br>
+       <b>(b)</b> I come to class whenever there is going to be a quiz.<br>
+       <b>(c)</b> A positive integer is a prime only if it has no divisors other than 1 and itself.</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answers — first the if–then rewrite, then the three flips</h4>
+      <table>
+        <tr><th></th><th>Original (if–then)</th><th>Converse (q → p)</th><th>Inverse (¬p → ¬q)</th><th>Contrapositive (¬q → ¬p)</th></tr>
+        <tr><td><b>(a)</b></td>
+            <td>If it snows today (p), I will ski tomorrow (q)</td>
+            <td>If I ski tomorrow, it snowed today</td>
+            <td>If it does not snow today, I will not ski tomorrow</td>
+            <td><b>If I do not ski tomorrow, it did not snow today</b></td></tr>
+        <tr><td><b>(b)</b></td>
+            <td><b>If</b> there is going to be a quiz (p), <b>then</b> I come to class (q) — "whenever" = the quiz is the hypothesis</td>
+            <td>If I come to class, there is going to be a quiz</td>
+            <td>If there is not going to be a quiz, I do not come to class</td>
+            <td><b>If I do not come to class, there is not going to be a quiz</b></td></tr>
+        <tr><td><b>(c)</b></td>
+            <td>If a positive integer is prime (p), then it has no divisors other than 1 and itself (q) — <b>"only if" points at itself: p → q</b></td>
+            <td>If a positive integer has no divisors other than 1 and itself, then it is prime</td>
+            <td>If a positive integer is not prime, then it has a divisor other than 1 and itself</td>
+            <td><b>If a positive integer has a divisor other than 1 and itself, then it is not prime</b></td></tr>
+      </table>
+      <div class="callout exam"><span class="c-ico">🔑</span>
+        <div><b>The golden rule (always asked):</b> only the <b>contrapositive</b> is logically equivalent to the original —
+        because you both <b>flip and negate</b>. Converse and inverse are equivalent to <b>each other</b>, never to the original.
+        Memory hook: <b>flip + negate = correct · flip only = converse · negate only = inverse.</b></div>
+      </div>
+      <p><b>Marking (20):</b> 18 marks for 3 statements × 3 forms (2 each — English meaning must be right, not just the symbols)
+         + 2 marks for the correct if–then rewrites in (b) and (c).</p>
+      <p><b>Trap check:</b> ✗ "whenever" treated as the conclusion (it's the <b>hypothesis</b>: P whenever Q = Q → P) ·
+         ✗ "only if" written backwards (P only if Q = <b>P → Q</b>, the arrowhead sits on Q's side, exactly like "if") ·
+         ✗ inventing a "not" that isn't there — inverse/contrapositive negate <b>both</b> sides, nothing else changes.</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q6 ⭐ LONG · Rules of Inference on Premises + Quantifiers <span style="color:var(--muted);font-size:.9rem">(25 marks · Rosen 7e §1.6 Ex. 6 &amp; 27 — the CONFIRMED question)</span></h2>
+    <p><b>(a)</b> Use <b>rules of inference</b> to show that the hypotheses imply the conclusion.
+       Present your answer as a <b>Step | Statement | Reason</b> table — one rule per line, every line justified.</p>
+    <div class="callout exam"><span class="c-ico">question</span>
+      <div><b>Hypotheses:</b><br>
+      H1: "If it does not rain or if it is not foggy, then the sailing race will be held and the lifesaving demonstration will go on."<br>
+      H2: "If the sailing race is held, then the trophy will be awarded."<br>
+      H3: "The trophy was not awarded."<br><br>
+      <b>∴ "It rained."</b></div>
+    </div>
+    <p style="color:var(--muted);font-size:.9rem;"><b>(b) Quantifier version</b> (your paper says premises <b>or</b> quantifiers —
+       practise both): Use rules of inference to show that if <b>∀x(P(x) → (Q(x) ∧ S(x)))</b> and <b>∀x(P(x) ∧ R(x))</b> are true,
+       then <b>∀x(R(x) ∧ S(x))</b> is true.</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer (a) — translate first, then chain the rules</h4>
+      <p><b>Symbols:</b> r = it rains · f = it is foggy · s = sailing race is held · d = lifesaving demo goes on · t = trophy awarded.<br>
+         <b>H1:</b> (¬r ∨ ¬f) → (s ∧ d) &nbsp; <b>H2:</b> s → t &nbsp; <b>H3:</b> ¬t &nbsp;&nbsp; <b>∴ r</b></p>
+      <table>
+        <tr><th>Step</th><th>Statement</th><th>Reason</th></tr>
+        <tr><td>1</td><td>s → t</td><td>Hypothesis H2</td></tr>
+        <tr><td>2</td><td>¬t</td><td>Hypothesis H3</td></tr>
+        <tr><td>3</td><td>¬s</td><td><b>Modus tollens</b> from (1), (2)</td></tr>
+        <tr><td>4</td><td>¬s ∨ ¬d</td><td><b>Addition</b> from (3)</td></tr>
+        <tr><td>5</td><td>¬(s ∧ d)</td><td><b>De Morgan's law</b> from (4)</td></tr>
+        <tr><td>6</td><td>(¬r ∨ ¬f) → (s ∧ d)</td><td>Hypothesis H1</td></tr>
+        <tr><td>7</td><td>¬(¬r ∨ ¬f)</td><td><b>Modus tollens</b> from (5), (6)</td></tr>
+        <tr><td>8</td><td>¬¬r ∧ ¬¬f</td><td><b>De Morgan's law</b> from (7)</td></tr>
+        <tr><td>9</td><td>r ∧ f</td><td><b>Double negation</b> from (8)</td></tr>
+        <tr><td>10</td><td>r</td><td><b>Simplification</b> from (9) ∎</td></tr>
+      </table>
+      <p><b>Attack strategy (works on every premises question):</b> look at the <b>conclusion</b> (here: the letter <b>r</b> alone)
+         → hunt the premise that can <b>produce</b> it (H1 ends in s ∧ d, so you'd need ¬(¬r ∨ ¬f), i.e. kill the s ∧ d side)
+         → work <b>backwards</b> until every missing piece is a hypothesis. H3 kills H2 → kills H1's conclusion → frees r.</p>
+      <p><b>Marking (15):</b> premises translated (2) · step 3 Modus tollens (3) · steps 4–5 Addition + De Morgan (3) ·
+         step 7 Modus tollens — the key step most students miss (3) · steps 8–9 De Morgan + double negation (2) ·
+         step 10 Simplification + ∎ (1) · clean Step|Reason with every line justified (1).</p>
+      <div class="callout warn"><span class="c-ico">⚠️</span>
+        <div><b>No reason = no marks</b>, even when the statement is right. And the classic slip at step 5:
+        ¬(s ∧ d) is <b>¬s ∨ ¬d</b>, never ¬s ∧ ¬d — flipping the sign <i>and</i> negating both, or nothing happens.</div>
+      </div>
+      <h4>Model answer (b) — the quantified proof (10 marks)</h4>
+      <table>
+        <tr><th>Step</th><th>Statement</th><th>Reason</th></tr>
+        <tr><td>1</td><td>∀x(P(x) ∧ R(x))</td><td>Premise 2</td></tr>
+        <tr><td>2</td><td>P(a) ∧ R(a)</td><td><b>Universal instantiation (UI)</b> from (1) — a is an arbitrary element</td></tr>
+        <tr><td>3</td><td>P(a)</td><td><b>Simplification</b> from (2)</td></tr>
+        <tr><td>4</td><td>∀x(P(x) → (Q(x) ∧ S(x)))</td><td>Premise 1</td></tr>
+        <tr><td>5</td><td>P(a) → (Q(a) ∧ S(a))</td><td><b>UI</b> from (4) — <b>the same a</b> as step 2</td></tr>
+        <tr><td>6</td><td>Q(a) ∧ S(a)</td><td><b>Modus ponens</b> from (3), (5)</td></tr>
+        <tr><td>7</td><td>S(a)</td><td><b>Simplification</b> from (6)</td></tr>
+        <tr><td>8</td><td>R(a) ∧ P(a)</td><td><b>Commutativity</b> from (2) — flip first, because R(a) sits on the right</td></tr>
+        <tr><td>9</td><td>R(a)</td><td><b>Simplification</b> from (8)</td></tr>
+        <tr><td>10</td><td>R(a) ∧ S(a)</td><td><b>Conjunction</b> from (9), (7)</td></tr>
+        <tr><td>11</td><td>∀x(R(x) ∧ S(x))</td><td><b>Universal generalization (UG)</b> from (10) — a was arbitrary ∎</td></tr>
+      </table>
+      <p><b>Marking (10):</b> UI twice at the <b>same name</b> (2) · Simplification → P(a) (1) · Modus ponens (2) · S(a) (1) ·
+         commutativity trick + R(a) (1) · Conjunction (1) · UG + ∎ (1).</p>
+      <div class="callout tip"><span class="c-ico">💡</span>
+        <div><b>Golden orders:</b> do <b>UI before you need it</b> and always at <b>the same element a</b> — instantiating at
+        different letters is the #1 quantifier bug. UG is only legal because <b>a was arbitrary</b> (no ∃ touched it —
+        if a name ever came from an <b>EI</b>, you may <b>never</b> generalize it back to ∀). If the piece you need sits on the
+        <b>right</b> of a ∧, flip it with <b>commutativity</b> (an equivalence of the premise) before simplifying.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>✅ After Paper 2</h2>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>Lost marks on Q1?</b> → Expressions card in Zero-to-Hero ("only if" / "unless" / "if" arrows).<br>
+      <b>Q2?</b> → Prove-equivalence card — always draw BOTH target columns, then compare row by row.<br>
+      <b>Q3?</b> → Equivalence Laws card — "break the bracket, flip the sign, negate every letter".<br>
+      <b>Q4?</b> → Digital Circuits card — outermost connective = last gate; bubbles/¬ = inverters.<br>
+      <b>Q5?</b> → Converse/Inverse card — only the contrapositive survives; "whenever" = hypothesis, "only if" = arrow at itself.<br>
+      <b>Q6?</b> → Rules of Inference + Quantifier cards — rewrite the two Step|Reason tables until they're muscle memory.
+      <b>This question is CONFIRMED, so it earns the most prep time.</b></div>
+    </div>
+    <p><b>Related:</b> <a href="#" onclick="document.querySelector('[data-tab=ds-rev]').click();return false;" style="color:var(--cyan)">DS Zero-to-Hero →</a> ·
+       <a href="#" onclick="document.querySelector('[data-tab=ds-paper]').click();return false;" style="color:var(--cyan)">DS Sample Paper 1 →</a> ·
+       <a href="ma216.html" style="color:var(--cyan)">MA216 full notes →</a> ·
+       <a href="rev-ds.html" style="color:var(--cyan)">DS Revision — Logic →</a> ·
+       <a href="quiz-ds.html" style="color:var(--cyan)">DS Quiz (12 MCQs) →</a> ·
+       <b>Source:</b> <code>_inbox/Rosen-1-1.6.pdf</code> (Rosen 7e, §§1.1–1.6, moved to <code>MA216-DiscreteStructures/lectures/raw/</code>)</p>
+  </div>
+
+</section>
+
+<footer class="footer">
+  🎯 <b>MidZ</b> · FE (Revise · Mock · Paper) + DS (Zero-to-Hero · 2 Sample Papers · Rosen 7e verbatim) · <a href="index.html" style="color:inherit">Notes Hub →</a> · <a href="el170.html" style="color:inherit">EL170 →</a> · <a href="ma216.html" style="color:inherit">MA216 →</a> · Fall 2026
+</footer>
+
+<script src="script.js"></script>
+<script>
+(function () {
+  var form = document.getElementById('testForm');
+  if (form) {
+    var blocks = [].slice.call(form.querySelectorAll('.q-block'));
+    var score = document.getElementById('scoreOut');
+
+    function gradeAll() {
+      var right = 0;
+      blocks.forEach(function (b) {
+        var ans = b.getAttribute('data-answer');
+        var chk = b.querySelector('input:checked');
+        b.classList.add('graded');
+        [].forEach.call(b.querySelectorAll('.q-opt'), function (o) {
+          var i = o.querySelector('input');
+          o.classList.remove('is-right', 'is-wrong');
+          if (i.value === ans) o.classList.add('is-right');
+          if (chk && i === chk && i.value !== ans) o.classList.add('is-wrong');
+        });
+        if (chk && chk.value === ans) right++;
+      });
+      var pct = Math.round(right * 100 / blocks.length);
+      var msg = pct >= 80 ? 'Mids-ready — now do the Sample Paper 🎉'
+              : pct >= 60 ? 'Good — read every red explanation, Reset & retry.'
+              : 'FE Revise tab first, then retry — you will get there.';
+      score.textContent = right + ' / ' + blocks.length + '  (' + pct + '%) — ' + msg;
+      score.classList.add('show');
+    }
+
+    document.getElementById('quizSubmit').addEventListener('click', gradeAll);
+    document.getElementById('quizReset').addEventListener('click', function () {
+      blocks.forEach(function (b) {
+        b.classList.remove('graded');
+        [].forEach.call(b.querySelectorAll('input'), function (i) { i.checked = false; });
+        [].forEach.call(b.querySelectorAll('.q-opt'), function (o) { o.classList.remove('is-right', 'is-wrong'); });
+      });
+      score.textContent = '';
+      score.classList.remove('show');
+    });
+  }
+
+  [].forEach.call(document.querySelectorAll('.reveal-btn'), function (btn) {
+    btn.addEventListener('click', function () {
+      var box = btn.parentNode.querySelector('.model-ans');
+      if (!box) return;
+      if (box.hasAttribute('hidden')) {
+        box.removeAttribute('hidden');
+        btn.textContent = '🙈 Hide model answer ▲';
+      } else {
+        box.setAttribute('hidden', '');
+        btn.textContent = '👁 Reveal model answer ▼';
+      }
+    });
+  });
+})();
+</script>
+<script>
+/* ---------- SUBJECT FOCUS SWITCHER ---------- */
+(function () {
+  var picks = [].slice.call(document.querySelectorAll('.subject-pick'));
+  var tabsBox = document.querySelector('.tabs');
+  if (!picks.length || !tabsBox) return;
+  var btns = [].slice.call(tabsBox.querySelectorAll('.tab-btn'));
+  var panels = [].slice.call(document.querySelectorAll('.tab-panel'));
+
+  function setSubject(sub) {
+    picks.forEach(function (p) { p.classList.toggle('active', p.dataset.subject === sub); });
+    tabsBox.classList.remove('subj-fe', 'subj-ds');
+    tabsBox.classList.add('subj-' + sub);
+    btns.forEach(function (b) { b.classList.remove('active'); });
+    panels.forEach(function (p) { p.classList.remove('active'); });
+    var first = btns.filter(function (b) { return b.dataset.subject === sub; })[0];
+    if (first) {
+      first.classList.add('active');
+      var panel = document.getElementById(first.dataset.tab);
+      if (panel) {
+        panel.classList.add('active');
+        [].forEach.call(panel.querySelectorAll('.note-card, .tip-card'), function (el) { el.classList.add('visible'); });
+      }
+    }
+    try { localStorage.setItem('cys-midz-subject', sub); } catch (e) {}
+  }
+
+  picks.forEach(function (p) {
+    p.addEventListener('click', function () {
+      setSubject(p.dataset.subject);
+      scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  var savedSub = 'fe';
+  try { savedSub = localStorage.getItem('cys-midz-subject') || 'fe'; } catch (e) {}
+  setSubject(savedSub === 'ds' ? 'ds' : 'fe');
+
+  /* digits 1-9 must only hit VISIBLE tabs (shared script.js indexes all tabs) */
+  document.addEventListener('keydown', function (e) {
+    if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
+    if (/^[1-9]$/.test(e.key)) {
+      e.preventDefault();
+      e.stopPropagation();
+      var vis = btns.filter(function (b) { return b.offsetParent !== null; });
+      var b = vis[+e.key - 1];
+      if (b) b.click();
+    }
+  }, true);
+})();
+</script>
+</body>
+</html>

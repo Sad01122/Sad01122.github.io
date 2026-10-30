@@ -52,7 +52,7 @@
   <button class="tab-btn" data-tab="lec34"><span class="dot"></span> Lecture 3–4 · Predicates &amp; Quantifiers</button>
   <button class="tab-btn" data-tab="lec5"><span class="dot"></span> Lecture 5 · Logical Equivalences</button>
   <button class="tab-btn" data-tab="lec67"><span class="dot"></span> Lecture 6–7 · Existential &amp; Negation</button>
-  <button class="tab-btn" data-tab="lec89"><span class="dot"></span> Lecture 8–9 · Rules of Inference</button>
+  <button class="tab-btn" data-tab="lec89"><span class="dot"></span> Lecture 8–9 · Inference &amp; Proofs</button>
 </div>
 
 <!-- ======================= LECTURE 1-2 ======================= -->
@@ -605,19 +605,38 @@
 <section class="tab-panel" id="lec89">
 
   <div class="note-card">
+    <h2><span class="bar"></span>🗺️ Big Picture — Two Weeks, One Skill</h2>
+    <table>
+      <tr><th>Week</th><th>Topic</th><th>Superpower</th></tr>
+      <tr><td><b>Week 3 (Lec 8–9, Part A)</b></td><td>Rules of inference &amp; arguments</td><td>Chain small proven shapes to push truth forward</td></tr>
+      <tr><td><b>Week 4 (Lec 8–9, Part B)</b></td><td>Methods of proof</td><td>Prove things <i>forever</i> — no testing needed</td></tr>
+    </table>
+    <p>Part A teaches the <b>tiny rules</b>; Part B is what you get when you write a long chain of them formally — a <b>proof</b>. Same skill, two sizes. 🍼→🎓</p>
+  </div>
+
+  <div class="note-card">
     <h2><span class="bar"></span>Arguments — What "Valid" Really Means</h2>
     <ul>
       <li><b>Argument:</b> a sequence of statements ending in a <b>conclusion</b>; the rest are <b>premises</b>.</li>
       <li><b>Valid argument:</b> it is <b>impossible</b> for all premises to be true and the conclusion false —
-          the conclusion <i>must</i> follow from the premises' truth.</li>
+          the conclusion <i>must</i> follow from the premises' truth. Like dominoes: tip the first, the last <i>has</i> to fall.</li>
       <li><b>Argument form:</b> the same shape with variables; premises p₁…pₙ, conclusion q → valid iff
-          <b>(p₁ ∧ … ∧ pₙ) → q is a tautology</b>.</li>
+          <b>(p₁ ∧ … ∧ pₙ) → q is a tautology</b>. Validity is about <b>shape</b>, not about whether the statements happen to be true.</li>
       <li><b>Slide examples:</b> password→network (modus ponens shape) · Honda-or-Saturn + no-Honda → Saturn (disjunctive syllogism shape) ·
           toasters of gold → gold are time machines → toasters are time machines (hypothetical syllogism shape).</li>
     </ul>
     <div class="callout warn"><span class="c-ico">⚠️</span>
       <div><b>Valid ≠ true conclusion.</b> The √2 argument (√2 &gt; 3 ⇒ (√2)² &gt; 3²) is a <b>valid modus ponens form</b>
       but its premise is false — and the conclusion is false too. Form only says: <i>if</i> the premises were true, the conclusion couldn't be false.</div>
+    </div>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Valid vs sound (the pipe analogy):</b> an argument is a pipe.
+      <b>Valid</b> = the pipe has <b>no holes</b> ✔️ · <b>Sound</b> = no holes <b>AND</b> you poured <b>true premises</b> in 🎯.
+      Garbage in → <i>valid</i> garbage out. Exams check two things: every step is a valid form, and every premise is actually true.</div>
+    </div>
+    <div class="callout trick"><span class="c-ico brain">🧠</span>
+      <div><b>Why not truth tables?</b> n variables = <b>2ⁿ rows</b> (10 vars → 1024 rows 😩), but the argument might be only 8 lines.
+      So we prove a few tiny shapes once and <b>chain</b> them — those shapes are the rules below.</div>
     </div>
   </div>
 
@@ -642,16 +661,20 @@
       </svg>
     </div>
     <table>
-      <tr><th>Rule</th><th>Premises</th><th>∴ Conclusion</th><th>Nickname</th></tr>
-      <tr><td><b>Modus ponens</b></td><td>p, p → q</td><td>q</td><td>law of detachment</td></tr>
-      <tr><td><b>Modus tollens</b></td><td>¬q, p → q</td><td>¬p</td><td>mode that denies</td></tr>
-      <tr><td><b>Hypothetical syllogism</b></td><td>p → q, q → r</td><td>p → r</td><td>transitivity / chain</td></tr>
-      <tr><td><b>Disjunctive syllogism</b></td><td>p ∨ q, ¬p</td><td>q</td><td>OR-elimination</td></tr>
-      <tr><td><b>Addition</b></td><td>p</td><td>p ∨ q</td><td>—</td></tr>
-      <tr><td><b>Simplification</b></td><td>p ∧ q</td><td>p</td><td>—</td></tr>
-      <tr><td><b>Conjunction</b></td><td>p, q</td><td>p ∧ q</td><td>—</td></tr>
-      <tr><td><b>Resolution</b></td><td>p ∨ q, ¬p ∨ r</td><td>q ∨ r</td><td>theorem-prover engine</td></tr>
+      <tr><th>Rule</th><th>Premises</th><th>∴ Conclusion</th><th>Kid name</th></tr>
+      <tr><td><b>Modus ponens</b></td><td>p, p → q</td><td>q</td><td>"say yes, get the result"</td></tr>
+      <tr><td><b>Modus tollens</b></td><td>¬q, p → q</td><td>¬p</td><td>"no result → no trigger"</td></tr>
+      <tr><td><b>Hypothetical syllogism</b></td><td>p → q, q → r</td><td>p → r</td><td>"domino chain" (middle q disappears)</td></tr>
+      <tr><td><b>Disjunctive syllogism</b></td><td>p ∨ q, ¬p</td><td>q</td><td>"eliminate one door"</td></tr>
+      <tr><td><b>Addition</b></td><td>p</td><td>p ∨ q</td><td>"A true → 'A or B' true too"</td></tr>
+      <tr><td><b>Simplification</b></td><td>p ∧ q</td><td>p</td><td>"open the combo pack"</td></tr>
+      <tr><td><b>Conjunction</b></td><td>p, q</td><td>p ∧ q</td><td>"tape two facts together"</td></tr>
+      <tr><td><b>Resolution</b></td><td>p ∨ q, ¬p ∨ r</td><td>q ∨ r</td><td>"cancel the matching pair" ⭐SAT-solver engine</td></tr>
     </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Exam speed-run:</b> translate each sentence to p, q, r… → look at the <b>shape</b> → match this table. Done. ✅
+      "The column is numeric, therefore numeric <i>or</i> categorical" = Addition · "duplicated <i>and</i> missing a key, therefore duplicated" = Simplification.</div>
+    </div>
   </div>
 
   <div class="note-card">
@@ -672,9 +695,19 @@
       <li><b>Ex 7:</b> rewrite p→q as its contrapositive ¬q→¬p, then two hypothetical syllogisms give ¬q→s
           (email → program, ¬email → sleep, sleep → refreshed ∴ ¬program → refreshed).</li>
       <li><b>Ex 8 resolution:</b> "Jasmine skis ∨ it's not snowing" + "it's snowing ∨ Bart plays hockey" ⇒ "Jasmine skis ∨ Bart plays hockey" (¬p∨q, p∨r ∴ q∨r).</li>
-      <li><b>Fallacy 1 — affirming the conclusion:</b> p→q, q ∴ p. Invalid: you can learn discrete math without doing every problem.</li>
-      <li><b>Fallacy 2 — denying the hypothesis:</b> p→q, ¬p ∴ ¬q. Invalid: skipping the problems doesn't prevent learning.</li>
+      <li><b>Fallacy 1 — affirming the conclusion:</b> p→q, q ∴ p. Invalid: q can be true for <i>other</i> reasons.</li>
+      <li><b>Fallacy 2 — denying the hypothesis:</b> p→q, ¬p ∴ ¬q. Invalid: ¬p doesn't stop q from being true.</li>
     </ul>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>The fraud-rule trap (how these fool everyone):</b> Rule: "If fraudulent (p), the model declines it (q)."
+      A transaction <b>was declined</b> → "so it was fraudulent!" ⚠️ = affirming the conclusion (declines also come from expired cards / timeouts).
+      "Not fraudulent, so not declined" ⚠️ = denying the hypothesis.
+      <br><b>Both break in exactly one place — the F,T row:</b> p = <b>F</b>, q = <b>T</b> makes p→q <b>T</b> (premises "true") while the conclusion dies. That single row is your invalidity proof on an exam.</div>
+    </div>
+    <div class="callout trick"><span class="c-ico brain">🧠</span>
+      <div><b>How computers argue:</b> <b>forward chaining</b> = modus ponens in a loop — a rule engine repeats "hypothesis already a known fact? → add the conclusion" until nothing new appears.
+      <b>Resolution</b> merges clauses down to the <b>empty clause ⊥</b> = a <i>proof of unsatisfiability</i> — the engine inside every SAT solver / theorem prover.</div>
+    </div>
     <div class="callout trick"><span class="c-ico brain">🧠</span>
       <div><b>Names across books:</b> affirming the conclusion = <b>converse error</b> · denying the hypothesis = <b>inverse error</b>.
       The <i>safe</i> flip is always the <b>contrapositive</b> (¬q → ¬p).</div>
@@ -691,13 +724,160 @@
       <tr><td><b>Existential generalization (EG)</b></td><td>P(c) for some element c</td><td>∃x P(x)</td></tr>
     </table>
     <ul>
+      <li><b>UI (pick anyone):</b> "every kid loves chocolate → <i>pick any kid</i>, say Ali → Ali loves chocolate." c can be <b>anyone you like</b>.</li>
+      <li><b>UG (only for arbitrary):</b> proved it for a kid chosen <b>completely at random</b> → true for <i>every</i> kid. ⚠️ If you secretly used "he's the class monitor", you may <b>not</b> say "every".</li>
+      <li><b>EI (mystery name):</b> "someone ate the cookie — call that person <b>c</b>, we have no idea who." c is a <b>fresh unknown</b>, not a name you choose!</li>
+      <li><b>EG (one witness):</b> Ali loves chocolate → <i>at least one</i> kid does. Trivial but legal.</li>
       <li><b>Ex 11 (universal modus ponens):</b> ∀x(D(x)→C(x)), D(Marla) ∴ C(Marla) — step 2 UI gives D(Marla)→C(Marla), step 4 modus ponens.</li>
-      <li><b>Ex 12:</b> ∃x(C∧¬B), ∀x(C→P) ∴ ∃x(P∧¬B) — EI name the witness a → simplify → UI → MP → simplify → conjoin → EG (9 steps).</li>
+      <li><b>Ex 12 (9-step classic):</b> ∃x(C∧¬B), ∀x(C→P) ∴ ∃x(P∧¬B) — EI name the witness a → simplify → UI → MP → simplify → conjoin → EG. 🔑 <b>EI first</b> (fresh name), then UI at that <i>same</i> name.</li>
     </ul>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Two classic quantifier errors:</b> ① <b>Treating ∃ like ∀</b> — "some sensor is faulty" does <i>not</i> let you name sensor 07! ∃ only gives a mystery witness.
+      ② <b>Reusing one witness name</b> for two ∃ premises — from ∃xP(x), ∃xQ(x) you must instantiate P(c) and Q(d) with <b>different</b> fresh names, or you'd "prove" one row is both duplicate <i>and</i> null.</div>
+    </div>
     <div class="callout tip"><span class="c-ico">💡</span>
       <div><b>From research:</b> <b>universal modus ponens</b> = UI+MP fused (∀x(P→Q), P(a) ∴ Q(a)) ·
-      <b>universal modus tollens</b> = UI+MT (∀x(P→Q), ¬Q(a) ∴ ¬P(a)) — the two most exam-relevant quantified moves.
-      <b>UG danger:</b> P(c) for one <i>particular</i> c licenses nothing — c must be <b>arbitrary</b> ("Lambert the lion" proves <i>some</i> lion, via EG, not <i>all</i> lions).</div>
+      <b>universal modus tollens</b> = UI+MT (∀x(P→Q), ¬Q(a) ∴ ¬P(a)) — the two most exam-relevant quantified moves ("every valid row loads; row 519 didn't load → it didn't pass validation").
+      <b>UG danger:</b> P(c) for one <i>particular</i> c licenses nothing — "Lambert the lion is fierce" proves <i>some</i> lion (EG ✓), not <i>all</i> lions (✗).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎓 Part B — What Even Is a "Proof"? (zero step)</h2>
+    <table>
+      <tr><th>Word</th><th>Kid meaning</th></tr>
+      <tr><td><b>Theorem</b></td><td>A statement someone <b>proved</b> true (a proven promise)</td></tr>
+      <tr><td><b>Proof</b></td><td>A valid argument from axioms/definitions/earlier theorems — leaves <b>zero wiggle room</b></td></tr>
+      <tr><td><b>Axiom</b></td><td>We <i>agree</i> it's true without proof (the starting blocks)</td></tr>
+      <tr><td><b>Lemma</b></td><td>A <b>helper</b> theorem proved only to be used inside a bigger proof</td></tr>
+      <tr><td><b>Corollary</b></td><td>A truth that <b>falls out</b> of a theorem with no extra work</td></tr>
+      <tr><td><b>Conjecture</b></td><td>Everyone <i>believes</i> it — but <b>nobody has proved</b> it yet</td></tr>
+    </table>
+    <ul>
+      <li><b>The hidden "for every":</b> "if x &gt; y then x² &gt; y²" secretly means <b>∀x∀y</b>. Every proof does the dance:
+          <b>①</b> "Let x be <b>arbitrary</b>" (a mystery person) → <b>②</b> argue using <i>nothing special</i> about them → <b>③</b> finish → <b>UG</b> → true for <i>everyone</i>.</li>
+      <li><b>📏 Your engine for the first proofs:</b> n even ⇔ n = 2k · n odd ⇔ n = 2k+1 (for some integer k). Whenever a proof says "n is odd", it means "n = 2k+1" — <b>unpack it!</b></li>
+    </ul>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Testing ≠ Proving (the big idea of the whole week):</b> testing runs <i>some</i> inputs ("it worked on my data") ·
+      proving covers <b>every possible input — past, present, future</b> ("it <b>cannot</b> fail").
+      Example: "this pipeline never outputs a negative amount" — last month's data doesn't rule out next month's surprise.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Method 1 — Direct Proof (just walk forward 👣)</h2>
+    <p><b>Recipe:</b> to prove <b>p → q</b>, assume p, then use definitions/algebra/known facts to <i>force</i> q. The bad row (T→F) never happens.</p>
+    <table>
+      <tr><th>Claim</th><th>Proof (3 lines!)</th></tr>
+      <tr><td>n odd ⇒ n² odd</td><td>n = 2k+1 → n² = 4k²+4k+1 = <b>2(2k²+2k)+1</b> → odd by definition ∎</td></tr>
+      <tr><td>sum of two evens is even</td><td>m = 2a, n = 2b → m+n = <b>2(a+b)</b> → even ∎</td></tr>
+      <tr><td>product of two squares is a square</td><td>m = s², n = t² → mn = s²t² = <b>(st)²</b> ∎</td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Why engineers care:</b> a system that shards by even/odd ids can merge two Shard-0 keys by adding them —
+      this 3-line proof says the new key <b>always</b> stays in Shard-0, forever, no matter how big the table grows. One proof replaces a million re-tests.</div>
+    </div>
+    <div class="callout trick"><span class="c-ico brain">🧠</span>
+      <div><b>When to use direct:</b> the hypothesis hands you <b>something concrete to compute with</b> ("n is odd", "n = 2k", "x &gt; y").</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Method 2 — Contraposition (walk backwards 🔙)</h2>
+    <p>p→q ≡ <b>¬q→¬p</b> (Lecture 5 — <i>the same statement wearing different shoes</i>). Assume the <b>conclusion is false</b> and push until the hypothesis pops out.</p>
+    <table>
+      <tr><th>Claim</th><th>Why direct dies / contrapositive sails</th></tr>
+      <tr><td>3n+2 odd ⇒ n odd</td><td>Direct: 3n = 2k−1 and… nothing 😵 · Contrapositive: n <i>not</i> odd → n = 2k → 3n+2 = <b>2(3k+1)</b> = even = ¬odd ✔ ∎</td></tr>
+      <tr><td>n = a·b ⇒ a ≤ √n <b>or</b> b ≤ √n</td><td>Assume false: a &gt; √n <i>and</i> b &gt; √n (De Morgan) → ab &gt; n ≠ n 💥 → conclusion holds ∎</td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>The real-world payoff — trial division stops at √n:</b> if n = a·b, <b>at least one factor ≤ √n</b>, so testing past √n is wasted work.
+      For n ≈ 10¹²: a loop of a <b>trillion</b> steps becomes a <b>million</b> (√10¹² = 10⁶) — instant vs never-finishes.
+      🔑 Trustworthy <i>only because it's proved</i>, not because "it worked on test numbers".</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Method 3 — Contradiction (assume the opposite &amp; watch it explode 💥)</h2>
+    <p><b>Recipe:</b> to prove P, <b>assume ¬P</b>, chain legal steps until something <b>impossible</b> appears (r ∧ ¬r). For p→q: assume <b>p ∧ ¬q</b> and explode.</p>
+    <table>
+      <tr><th>Claim</th><th>The explosion</th></tr>
+      <tr><td>22 days ⇒ ≥ 4 share a weekday</td><td>Suppose each weekday ≤ 3 times → ≤ 7×3 = <b>21</b> days — but we have <b>22</b>! 💥 (pigeonhole 👟)</td></tr>
+      <tr><td><b>√2 is irrational</b> (the all-time classic)</td><td>Suppose √2 = a/b in lowest terms → a² = 2b² → a even → a = 2c → b² = 2c² → <b>b even too</b> → not lowest terms 💥 ∎</td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Hash buckets = the same argument:</b> n keys into k buckets (n &gt; k) → some bucket holds <b>≥ ⌈n/k⌉</b> keys.
+      A hash collision is <b>guaranteed by mathematics</b> — a bad hash only spreads the <i>unavoidable</i> collisions unevenly.</div>
+    </div>
+    <div class="callout trick"><span class="c-ico brain">🧠</span>
+      <div><b>Contradiction vs contraposition:</b> any contraposition proof can be rewritten as contradiction (and vice versa) — teachers accept either.
+      Same claim: assume <i>both</i> "3n+2 odd" <i>and</i> "n not odd" → 3n+2 even 💥.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Methods 4 &amp; 5 — Equivalence Cycles 🔗 &amp; Counterexamples 🍎</h2>
+    <p><b>Equivalence:</b> to prove p ↔ q → prove <b>both</b> p→q <i>and</i> q→p. To prove p₁,…,pₙ all equivalent → prove a <b>cycle</b> p₁→p₂→…→pₙ→p₁ (only <b>n</b> implications instead of n²−n pairs!).</p>
+    <table>
+      <tr><th>Shard-0 trio (n an integer)</th><th>Move</th></tr>
+      <tr><td>n even ⇒ n−1 odd</td><td>direct: n = 2k → n−1 = 2(k−1)+1 ✔</td></tr>
+      <tr><td>n−1 odd ⇒ n² even</td><td>direct: n−1 = 2k+1 → n = 2k+2 → n² = 2(2k²+4k+2) ✔</td></tr>
+      <tr><td>n² even ⇒ n even</td><td>contraposition: odd ⇒ odd² (Method 1) ✔ — cycle closed ∎</td></tr>
+    </table>
+    <p><b>Counterexample:</b> to destroy a <b>∀</b> statement you need only <b>ONE</b> element where it fails (¬∀xP(x) ≡ ∃x¬P(x), Lecture 6).</p>
+    <ul>
+      <li>"Every positive integer is a sum of two squares" → <b>3</b> kills it (0+0, 0+1, 1+1 never make 3) 💀.</li>
+      <li>"The mean is always ≥ the median" → dataset <b>{0, 9, 10}</b>: mean 6.33 &lt; median 9 💀.</li>
+    </ul>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>The 3x+1 conjecture — why testing never proves:</b> verified by computer for <b>every number up to ~5.48×10¹⁸</b>… and still <b>no proof exists</b>.
+      🔑 A loop that stopped in every test you ran has <b>not</b> been proved to always stop. (Same for "four squares is true" — finding a pattern is <i>not</i> proving it.)</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Vacuous &amp; Trivial Proofs 📦 &amp; the Traps 🕳️</h2>
+    <table>
+      <tr><th>Kind</th><th>How</th><th>When</th></tr>
+      <tr><td><b>Vacuous proof</b></td><td>Show the <b>if-part (p) is false</b> → p→q automatically true</td><td>"an implication about nothing"</td></tr>
+      <tr><td><b>Trivial proof</b></td><td>Show the <b>then-part (q) is true</b> regardless</td><td>q is already known true</td></tr>
+    </table>
+    <ul>
+      <li><b>Vacuous example:</b> "if 10 ≤ n ≤ 15 <i>and</i> n is a perfect square, then n is a perfect cube." Squares in [10,15]? 3²=9, 4²=16 — <b>none</b>! Hypothesis never satisfiable → <b>vacuously true</b> ✅ (weird but logical).</li>
+    </ul>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>The empty-table trap:</b> "every session has a matching user id" — if the <code>sessions</code> table is <b>empty</b> (fresh deployment), the rule is <b>vacuously true</b>.
+      An automated test saying <b>PASS</b> on an empty table proves <b>nothing</b>! Assert the rule <i>and</i> COUNT(*) &gt; 0.</div>
+    </div>
+    <p><b>Three classic traps in proofs:</b></p>
+    <ul>
+      <li><b>Division by zero</b> — the famous "1 = 2" cancels (a−b) = 0 💀. 💻 Same bug: standardising with z = (x−μ)/σ <b>explodes on a constant column</b> (σ = 0).</li>
+      <li><b>Fallacies sneaking in</b> — "n &gt; 0 ⇐ n² &gt; 0 and n &gt; 0" = affirming the conclusion (n = −1 kills it).</li>
+      <li><b>Circular reasoning</b> — proving "n² even ⇒ n even" by writing "let n = 2k" = <b>exactly what you were proving!</b> ⚠️ You may only assume the <i>hypothesis</i>, never the conclusion.</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Which Method Do I Pick? &amp; Proving Algorithms Correct</h2>
+    <p>To prove <b>∀x (P(x) → Q(x))</b>: <b>①</b> take an arbitrary x · <b>②</b> P(x) computable? → <b>Direct</b> · <b>③</b> stuck &amp; ¬Q(x) easier? → <b>Contraposition</b> · <b>④</b> still stuck → <b>Contradiction</b> · <b>⑤</b> suspect it's false? → hunt a <b>counterexample</b>.</p>
+    <div class="callout trick"><span class="c-ico brain">🧠</span>
+      <div><b>You already debug this way!</b> <i>Direct:</i> "upload worked → count should match, let me check" (cause→effect) ·
+      <i>Contrapositive:</i> "output fails this way — which step makes exactly this symptom?" (effect→cause) ·
+      <i>Contradiction:</i> "suppose the config is correct — then this value could never appear… but it did 💥".</div>
+    </div>
+    <p><b>Correctness proof — does this routine really return the maximum, for ANY list?</b></p>
+    <pre>procedure max(a[1..n])
+  m := a[1]
+  for i := 2 to n
+     if a[i] &gt; m then m := a[i]
+  return m</pre>
+    <p><b>Claim:</b> the returned m ≥ aⱼ for <b>every</b> j. <b>Lemma:</b> m <b>never decreases</b> (it's only replaced by a strictly larger value).</p>
+    <p><b>Proof (contradiction):</b> suppose final m &lt; aⱼ for some j. Right after step j, m ≥ aⱼ (either aⱼ &gt; m → m was set to aⱼ, or aⱼ ≤ m already).
+       By the Lemma, m never drops → final m ≥ aⱼ 💥 contradiction → claim holds ∎</p>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div>🔑 Loops for <i>any</i> number of repetitions usually need one more tool — <b>mathematical induction (Week 10)</b> —
+      but "assume failure, chase the contradiction" is exactly what this proof used. This is the doorway to <b>formal verification</b>: proving software meets its spec for <i>every</i> possible input.</div>
     </div>
   </div>
 
@@ -706,19 +886,27 @@
     <div class="flip-grid">
       <div class="flip-card"><div class="flip-inner">
         <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Valid argument in one sentence?</p><span class="flip-hint">↻ tap</span></div>
-        <div class="flip-face flip-back"><span class="a-label">A</span><p>It's <b>impossible</b> for all premises to be true and the conclusion false — form-wise (p₁∧…∧pₙ)→q is a tautology.</p></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>It's <b>impossible</b> for all premises to be true and the conclusion false — form-wise (p₁∧…∧pₙ)→q is a tautology. <b>Sound</b> = valid + true premises.</p></div>
       </div></div>
       <div class="flip-card"><div class="flip-inner">
         <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Modus tollens vs denying the hypothesis?</p><span class="flip-hint">↻ tap</span></div>
-        <div class="flip-face flip-back"><span class="a-label">A</span><p>MT: ¬q, p→q ∴ ¬p (valid). Denying the hypothesis: ¬p, p→q ∴ ¬q (fallacy — that's the inverse).</p></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>MT: ¬q, p→q ∴ ¬p (valid). Denying the hypothesis: ¬p, p→q ∴ ¬q (fallacy — that's the inverse). Both fallacies break only at the <b>F,T row</b>.</p></div>
       </div></div>
       <div class="flip-card"><div class="flip-inner">
         <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Resolution in one line?</p><span class="flip-hint">↻ tap</span></div>
-        <div class="flip-face flip-back"><span class="a-label">A</span><p>p ∨ q, ¬p ∨ r ∴ q ∨ r — cancel the complementary literal p/¬p and merge the rest.</p></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>p ∨ q, ¬p ∨ r ∴ q ∨ r — cancel the complementary literal p/¬p and merge the rest. Resolving down to ⊥ = a <b>proof of unsatisfiability</b> (SAT solvers).</p></div>
       </div></div>
       <div class="flip-card"><div class="flip-inner">
         <div class="flip-face flip-front"><span class="q-label">Q4</span><p>UI · UG · EI · EG — what does each do?</p><span class="flip-hint">↻ tap</span></div>
-        <div class="flip-face flip-back"><span class="a-label">A</span><p>UI: ∀ → instance (arbitrary c) · UG: arbitrary instance → ∀ · EI: ∃ → name a witness · EG: a witness → ∃.</p></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>UI: ∀ → instance (any c) · UG: arbitrary instance → ∀ · EI: ∃ → fresh mystery name · EG: a witness → ∃. 🔑 EI first, then UI at the <i>same</i> name.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>Direct vs contraposition vs contradiction?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Direct:</b> assume p, derive Q · <b>Contraposition:</b> assume ¬q, derive ¬p (same statement!) · <b>Contradiction:</b> assume p ∧ ¬q, derive r ∧ ¬r 💥.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>Testing vs proving?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Testing covers what <i>you tried</i>; proving covers <b>every possible input, past &amp; future</b> — "it worked on my data" vs "it <b>cannot</b> fail" (3x+1: tested to 5.48×10¹⁸, still unproved!).</p></div>
       </div></div>
     </div>
   </div>
@@ -726,7 +914,7 @@
 </section>
 
 <footer class="footer">
-  MA216 · Discrete Structures · <b>Lectures 1–9 · Propositions → Quantifiers → Equivalences → Inference</b> · BS Cyber Security · Fall 2026
+  MA216 · Discrete Structures · <b>Lectures 1–9 · Propositions → Quantifiers → Equivalences → Inference → Proofs</b> · BS Cyber Security · Fall 2026
 </footer>
 
 <button id="toTop" title="Back to top">↑</button>
