@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" width="1000" height="640" font-family="Poppins, 'Segoe UI', sans-serif">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#22d3ee"/>
+    </marker>
+    <marker id="arp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a78bfa"/>
+    </marker>
+  </defs>
+
+  <rect width="1000" height="640" rx="18" fill="#0b1220"/>
+  <text x="500" y="38" text-anchor="middle" fill="#e7eefb" font-size="23" font-weight="800">SDLC MODELS AT A GLANCE</text>
+  <text x="500" y="62" text-anchor="middle" fill="#8fa3c0" font-size="12.5">A process model is the roadmap - the SDLC is the territory</text>
+
+  <!-- ================= PANEL A : WATERFALL ================= -->
+  <rect x="24" y="80" width="300" height="396" rx="14" fill="#121c31" stroke="#26344f"/>
+  <text x="174" y="108" text-anchor="middle" fill="#22d3ee" font-size="14" font-weight="800">1 - WATERFALL</text>
+
+  <g text-anchor="middle" font-size="12" font-weight="600" fill="#e7eefb">
+    <rect x="62" y="124" width="224" height="42" rx="9" fill="#182741" stroke="#22d3ee"/>
+    <text x="174" y="150">Requirements analysis</text>
+
+    <rect x="62" y="182" width="224" height="42" rx="9" fill="#182741" stroke="#22d3ee"/>
+    <text x="174" y="208">System &amp; software design</text>
+
+    <rect x="62" y="240" width="224" height="42" rx="9" fill="#182741" stroke="#22d3ee"/>
+    <text x="174" y="266">Implementation + unit test</text>
+
+    <rect x="62" y="298" width="224" height="42" rx="9" fill="#182741" stroke="#22d3ee"/>
+    <text x="174" y="324">Integration + system test</text>
+
+    <rect x="62" y="356" width="224" height="42" rx="9" fill="#182741" stroke="#22d3ee"/>
+    <text x="174" y="382">Operation &amp; maintenance</text>
+  </g>
+  <g stroke="#22d3ee" stroke-width="2" marker-end="url(#ar)">
+    <line x1="174" y1="166" x2="174" y2="180"/>
+    <line x1="174" y1="224" x2="174" y2="238"/>
+    <line x1="174" y1="282" x2="174" y2="296"/>
+    <line x1="174" y1="340" x2="174" y2="354"/>
+  </g>
+  <text x="174" y="424" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="700">ONE direction, no overlap -</text>
+  <text x="174" y="441" text-anchor="middle" fill="#8fa3c0" font-size="10.5">going back up is expensive</text>
+  <text x="174" y="461" text-anchor="middle" fill="#8fa3c0" font-size="10.5">best: fixed, well-known requirements</text>
+
+  <!-- ================= PANEL B : V MODEL ================= -->
+  <rect x="340" y="80" width="344" height="396" rx="14" fill="#121c31" stroke="#26344f"/>
+  <text x="512" y="108" text-anchor="middle" fill="#a78bfa" font-size="14" font-weight="800">2 - V-MODEL</text>
+
+  <!-- V spine -->
+  <path d="M408 166 L500 332 L592 166" fill="none" stroke="#a78bfa" stroke-width="2" stroke-dasharray="7 6"/>
+
+  <g text-anchor="middle" font-size="11.5" font-weight="600" fill="#e7eefb">
+    <rect x="354" y="128" width="132" height="38" rx="8" fill="#1b2540" stroke="#22d3ee"/>
+    <text x="420" y="152">Requirements</text>
+
+    <rect x="372" y="192" width="132" height="38" rx="8" fill="#1b2540" stroke="#22d3ee"/>
+    <text x="438" y="216">System design</text>
+
+    <rect x="390" y="256" width="132" height="38" rx="8" fill="#1b2540" stroke="#22d3ee"/>
+    <text x="456" y="280">Module design</text>
+
+    <rect x="438" y="324" width="124" height="34" rx="8" fill="#2a2450" stroke="#a78bfa"/>
+    <text x="500" y="346">CODE</text>
+
+    <rect x="538" y="256" width="132" height="38" rx="8" fill="#1b2540" stroke="#34d399"/>
+    <text x="604" y="280">Unit testing</text>
+
+    <rect x="520" y="192" width="132" height="38" rx="8" fill="#1b2540" stroke="#34d399"/>
+    <text x="586" y="216">Integration test</text>
+
+    <rect x="502" y="128" width="132" height="38" rx="8" fill="#1b2540" stroke="#34d399"/>
+    <text x="568" y="152">Acceptance test</text>
+  </g>
+
+  <!-- pairing hints -->
+  <g stroke="#8fa3c0" stroke-width="1" stroke-dasharray="3 4" opacity="0.7">
+    <line x1="486" y1="147" x2="502" y2="147"/>
+    <line x1="504" y1="211" x2="520" y2="211"/>
+    <line x1="522" y1="275" x2="538" y2="275"/>
+  </g>
+
+  <text x="512" y="382" text-anchor="middle" fill="#22d3ee" font-size="11" font-weight="700">LEFT = VERIFY (prevent defects)</text>
+  <text x="512" y="399" text-anchor="middle" fill="#34d399" font-size="11" font-weight="700">RIGHT = VALIDATE (detect defects)</text>
+  <text x="512" y="424" text-anchor="middle" fill="#8fa3c0" font-size="10.5">every build phase has a twin test phase</text>
+  <text x="512" y="441" text-anchor="middle" fill="#8fa3c0" font-size="10.5">best: safety-critical, strict documentation</text>
+  <text x="512" y="461" text-anchor="middle" fill="#8fa3c0" font-size="10.5">still rigid - requirements must be stable</text>
+
+  <!-- ================= PANEL C : SPIRAL ================= -->
+  <rect x="692" y="80" width="284" height="396" rx="14" fill="#121c31" stroke="#26344f"/>
+  <text x="834" y="108" text-anchor="middle" fill="#fbbf24" font-size="14" font-weight="800">3 - SPIRAL</text>
+
+  <g fill="none" stroke="#fbbf24" stroke-width="1.6" opacity="0.85">
+    <circle cx="834" cy="268" r="30"/>
+    <circle cx="834" cy="268" r="54" stroke-dasharray="6 5"/>
+    <circle cx="834" cy="268" r="78" stroke-dasharray="6 5"/>
+    <circle cx="834" cy="268" r="102" stroke-dasharray="6 5"/>
+  </g>
+  <circle cx="834" cy="268" r="6" fill="#fbbf24"/>
+
+  <g text-anchor="middle" font-size="10.5" font-weight="700" fill="#e7eefb">
+    <text x="790" y="150">1 - PLAN</text>
+    <text x="930" y="176">2 - RISK</text>
+    <text x="930" y="190" font-size="8.5" fill="#8fa3c0" font-weight="600">ANALYSIS</text>
+    <text x="884" y="404">3 - ENGINEER</text>
+    <text x="742" y="352">4 - EVALUATE</text>
+  </g>
+  <text x="790" y="165" text-anchor="middle" fill="#8fa3c0" font-size="9">objectives, alternatives</text>
+  <text x="884" y="418" text-anchor="middle" fill="#8fa3c0" font-size="8.5">build + test this loop</text>
+
+  <text x="834" y="438" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700">each loop = one prototype/release</text>
+  <text x="834" y="453" text-anchor="middle" fill="#8fa3c0" font-size="9">explicit risk management · best for large, high-risk projects</text>
+
+  <!-- ================= BOTTOM SELECTOR ================= -->
+  <text x="500" y="504" text-anchor="middle" fill="#8fa3c0" font-size="11" font-weight="700" letter-spacing="1.4">CHOOSE BY: REQUIREMENT STABILITY - RISK LEVEL - NEED FOR EARLY FEEDBACK</text>
+
+  <g font-size="11.5">
+    <rect x="24" y="518" width="230" height="84" rx="11" fill="#121c31" stroke="#26344f"/>
+    <text x="139" y="542" text-anchor="middle" fill="#22d3ee" font-weight="800">WATERFALL</text>
+    <text x="139" y="562" text-anchor="middle" fill="#c7d3e6">fixed scope, short project,</text>
+    <text x="139" y="579" text-anchor="middle" fill="#c7d3e6">clear + stable requirements</text>
+
+    <rect x="264" y="518" width="230" height="84" rx="11" fill="#121c31" stroke="#26344f"/>
+    <text x="379" y="542" text-anchor="middle" fill="#a78bfa" font-weight="800">V-MODEL</text>
+    <text x="379" y="562" text-anchor="middle" fill="#c7d3e6">safety / reliability critical,</text>
+    <text x="379" y="579" text-anchor="middle" fill="#c7d3e6">strict documentation</text>
+
+    <rect x="504" y="518" width="230" height="84" rx="11" fill="#121c31" stroke="#26344f"/>
+    <text x="619" y="542" text-anchor="middle" fill="#fbbf24" font-weight="800">SPIRAL</text>
+    <text x="619" y="562" text-anchor="middle" fill="#c7d3e6">large, expensive, high risk,</text>
+    <text x="619" y="579" text-anchor="middle" fill="#c7d3e6">requirements keep changing</text>
+
+    <rect x="744" y="518" width="232" height="84" rx="11" fill="#121c31" stroke="#26344f"/>
+    <text x="860" y="542" text-anchor="middle" fill="#34d399" font-weight="800">AGILE / SCRUM</text>
+    <text x="860" y="562" text-anchor="middle" fill="#c7d3e6">changing requirements,</text>
+    <text x="860" y="579" text-anchor="middle" fill="#c7d3e6">fast feedback, small sprints</text>
+  </g>
+
+  <text x="500" y="624" text-anchor="middle" fill="#8fa3c0" font-size="10">Plan-driven models fight change. Agile expects it. Spiral prices it.</text>
+</svg>

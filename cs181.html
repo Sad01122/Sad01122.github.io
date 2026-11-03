@@ -44,13 +44,15 @@
 <header class="subject-hero">
   <span class="code-lg">CS181 · THEORY</span>
   <h1><span>Application of ICT</span></h1>
-  <p>Dr. Zaki Masood · Information, Communication &amp; Computer Fundamentals · Weeks 1–3</p>
+  <p>Dr. Zaki Masood · Information, Communication &amp; Computer Fundamentals · Weeks 1–7</p>
 </header>
 
 <div class="tabs">
   <button class="tab-btn active" data-tab="week1"><span class="dot"></span> Week 1 · Intro to ICT</button>
   <button class="tab-btn" data-tab="week2"><span class="dot"></span> Week 2 · Computer Fundamentals</button>
   <button class="tab-btn" data-tab="week3"><span class="dot"></span> Week 3 · Number Systems · 🎯 Quiz 1</button>
+  <button class="tab-btn" data-tab="week4"><span class="dot"></span> Week 4–5 · Software Engineering</button>
+  <button class="tab-btn" data-tab="week6"><span class="dot"></span> Week 6–7 · Computer Networks</button>
   <button class="tab-btn" data-tab="course"><span class="dot"></span> 📚 Course Contents</button>
 </div>
 
@@ -499,6 +501,700 @@
 
 </section>
 
+<!-- ======================= WEEK 4-5 · SOFTWARE ENGINEERING ======================= -->
+<section class="tab-panel" id="week4">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧭 Software Engineering — the Bigger Picture</h2>
+    <p><b>Science</b> studies the world by observation and experiment. <b>Engineering</b> applies science and maths to
+       analyse, design, build, test and improve real-world solutions. <b>Software engineering</b> applies those
+       engineering principles to the <b>development, operation and maintenance</b> of software systems.</p>
+    <p>Software is never built in isolation — every line of code sits inside a larger ecosystem of users, hardware,
+       networks and business rules. SE covers the <b>whole lifecycle</b>, from the first requirement to retirement.</p>
+    <table>
+      <tr><th>Why SE is needed</th><th>What it controls</th></tr>
+      <tr><td><b>Complexity</b></td><td>Thousands of interacting parts, modules and people</td></tr>
+      <tr><td><b>Risk</b></td><td>Plan before building; fail cheaply on paper</td></tr>
+      <tr><td><b>Changing requirements</b></td><td>Customers discover what they want as they see it</td></tr>
+      <tr><td><b>Quality &amp; reliability</b></td><td>Reviews, testing, standards</td></tr>
+      <tr><td><b>Long-term maintenance</b></td><td>Most lifetime cost comes <i>after</i> delivery</td></tr>
+    </table>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>Memory hook — “3 P + T + C”:</b> <b>P</b>eople · <b>P</b>rocess · <b>P</b>roduct + <b>T</b>ools &amp; technology +
+      project <b>C</b>onstraints. Most students stop at “people and tools” — list all five.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>💾 Software, Process &amp; Process Model</h2>
+    <p><b>Software = instructions + data structures + documentation.</b> All three, not just code:</p>
+    <table>
+      <tr><th>Part</th><th>Meaning</th><th>Example</th></tr>
+      <tr><td><b>Instructions</b></td><td>Programs that provide features, functions and performance</td><td>app logic, <code>main.cpp</code></td></tr>
+      <tr><td><b>Data structures</b></td><td>How the program stores and manipulates information</td><td>arrays, tables, databases</td></tr>
+      <tr><td><b>Documentation</b></td><td>Describes operation and use</td><td>user manual, API docs</td></tr>
+    </table>
+    <p><b>Four types:</b> <b>System</b> (OS, drivers, utilities) · <b>Application</b> (Word, browsers, games) ·
+       <b>Programming</b> (compilers, IDEs, debuggers) · <b>Malware</b> (hostile — <i>not</i> a legitimate category; say so for the extra mark).</p>
+    <h3>Software process = 4 generic activities</h3>
+    <div class="pipeline">
+      <span class="pipe-step">1 · Specification</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">2 · Design &amp; implementation</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">3 · Validation</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">4 · Evolution</span>
+    </div>
+    <p>A <b>process model</b> is the <b>roadmap</b> that shows how those activities are organised — Waterfall, V-model,
+       Spiral, Agile, incremental, iterative, evolutionary, prototyping.</p>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Incremental vs iterative:</b> incremental builds <b>wider</b> (more features each round);
+      iterative builds <b>deeper</b> (same features, better each round). “Incremental = breadth, iterative = depth.”</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🔄 SDLC — Definition, Value &amp; Model Family</h2>
+    <p><b>SDLC</b> = the process used by the software industry to <b>design, develop and test high-quality software</b>.
+       Core phases: <b>Plan → Requirements → Design → Implement → Test → Deploy → Maintain</b>.</p>
+    <table>
+      <tr><th>Why SDLC matters</th><th>What it gives you</th></tr>
+      <tr><td>Improves software quality</td><td>Repeatable phases, reviews, test gates</td></tr>
+      <tr><td>Reduces risks and errors</td><td>Problems surface before they become expensive</td></tr>
+      <tr><td>Controls time and cost</td><td>Planned scope, budget and milestones</td></tr>
+      <tr><td>Ensures customer satisfaction</td><td>Requirements checked against delivery</td></tr>
+    </table>
+    <table>
+      <tr><th>Model</th><th>One-line idea</th><th>Best for</th></tr>
+      <tr><td><b>Waterfall</b></td><td>Linear sequence, no overlap</td><td>Fixed, clear, short projects</td></tr>
+      <tr><td><b>V-model</b></td><td>Waterfall + a test twin for every phase</td><td>Safety / reliability-critical work</td></tr>
+      <tr><td><b>Incremental</b></td><td>Deliver in pieces, each adding features</td><td>Early partial delivery</td></tr>
+      <tr><td><b>Iterative</b></td><td>Repeat and refine the same system</td><td>Evolving understanding</td></tr>
+      <tr><td><b>Evolutionary</b></td><td>Build, learn, evolve over many releases</td><td>Long-lived products</td></tr>
+      <tr><td><b>Prototyping</b></td><td>Build a prototype to clarify requirements</td><td>Unclear requirements, UI-heavy work</td></tr>
+      <tr><td><b>Spiral</b></td><td>Risk-driven loops</td><td>Large, expensive, high-risk projects</td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🖼️ See It: The Four Models on One Canvas</h2>
+    <div class="diagram">
+      <div class="dg-cap">Waterfall · V-model · Spiral — and the “choose by” strip</div>
+      <img src="img/cs181_sdlc_models.svg" alt="Diagram comparing waterfall, V-model, spiral and agile, with a choose-by-requirements-risk-feedback strip" style="width:100%;height:auto;display:block">
+    </div>
+    <p><b>How to read it:</b> waterfall flows <b>down only</b>; the V-model folds the same phases <b>up</b> into matching tests;
+       the spiral keeps looping outward, and <b>every loop starts with risk</b>.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🌊 Waterfall — Phases, Pros &amp; Limits</h2>
+    <table>
+      <tr><th>#</th><th>Phase</th><th>What happens</th></tr>
+      <tr><td>1</td><td><b>Requirements analysis &amp; definition</b></td><td>Services, constraints and goals agreed <b>with users</b> → system specification</td></tr>
+      <tr><td>2</td><td><b>System &amp; software design</b></td><td>Architecture (hardware/software/people/network split) + modules, classes, data structures, interfaces, algorithms</td></tr>
+      <tr><td>3</td><td><b>Implementation &amp; unit testing</b></td><td>Design → code; each unit verified against its specification</td></tr>
+      <tr><td>4</td><td><b>Integration &amp; system testing</b></td><td>Units integrated and tested as a complete system, then delivered</td></tr>
+      <tr><td>5</td><td><b>Operation &amp; maintenance</b></td><td><b>Longest phase</b> — fix errors, update features for new needs</td></tr>
+    </table>
+    <table>
+      <tr><th>✅ Advantages</th><th>❌ Disadvantages</th></tr>
+      <tr><td>Simple, easy to understand and use</td><td><b>Hard to accommodate change</b> once underway</td></tr>
+      <tr><td>Easy to manage: deliverables + review per phase</td><td>Difficult to respond to changing requirements</td></tr>
+      <tr><td>Phases do not overlap — clean sign-off</td><td><b>No working software until late</b></td></tr>
+      <tr><td>Works for small projects with clear, fixed requirements</td><td>Not suitable for complex or long-term projects</td></tr>
+    </table>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>Waterfall in one line:</b> “Stairs, not a lift — you can only go down, and going back up costs a fortune.”
+      <b>Applicability checklist:</b> requirements fixed · product stable · technology understood · project short.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>✅ V-Model — Every Phase Has a Test Twin</h2>
+    <p>The V-model is a <b>variation of waterfall</b> drawn as a <b>V</b>. The <b>left side verifies</b> artefacts to prevent
+       defects early; the <b>bottom</b> turns the approved design into code; the <b>right side validates</b> the running software.</p>
+    <table>
+      <tr><th>Development phase (left)</th><th>↔</th><th>Test phase (right)</th></tr>
+      <tr><td>Requirements analysis</td><td>↔</td><td><b>Acceptance testing</b></td></tr>
+      <tr><td>System / architecture design</td><td>↔</td><td><b>System testing</b></td></tr>
+      <tr><td>Module / detailed design</td><td>↔</td><td><b>Integration testing</b></td></tr>
+      <tr><td>Coding</td><td>→</td><td><b>Unit testing</b> (bottom of the V)</td></tr>
+    </table>
+    <table>
+      <tr><th>✅ Advantages</th><th>❌ Disadvantages</th></tr>
+      <tr><td><b>Early defect prevention</b> at every phase</td><td><b>Rigid</b> — not flexible for change</td></tr>
+      <tr><td>Clear structure, well-defined deliverables</td><td>Changes costly once a phase is complete</td></tr>
+      <tr><td><b>Early test planning</b> — from the requirements stage</td><td><b>No early prototype</b>; software appears late</td></tr>
+      <tr><td>High quality assurance; easy to manage</td><td>Not for complex or evolving projects</td></tr>
+    </table>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>Applicability:</b> requirements clear, stable and well-defined · small-to-medium project · <b>high reliability/safety</b>
+      required · strict documentation and quality standards.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🌀 Spiral — the Risk Specialist</h2>
+    <p>The spiral <b>combines change avoidance with change tolerance</b>: it assumes change comes from project risk and adds
+       <b>explicit risk-management activities</b>. Its defining feature is the <b>explicit recognition of risk</b>; the system
+       grows outward in loops until the final operational product is ready.</p>
+    <table>
+      <tr><th>Quadrant</th><th>Question</th></tr>
+      <tr><td><b>1 · Objectives / alternatives</b></td><td>What are we trying to achieve? What options exist?</td></tr>
+      <tr><td><b>2 · Risk analysis</b></td><td>What could go wrong? How do we reduce it? <i>(the heart of the model)</i></td></tr>
+      <tr><td><b>3 · Engineering</b></td><td>Build and test this loop’s version</td></tr>
+      <tr><td><b>4 · Evaluation</b></td><td>Customer reviews it; plan the next loop</td></tr>
+    </table>
+    <table>
+      <tr><th>✅ Advantages</th><th>❌ Disadvantages</th></tr>
+      <tr><td>Reduces risk at <b>every phase</b></td><td><b>Duration/budget hard to predict</b></td></tr>
+      <tr><td>Ideal for <b>high-budget, complicated</b> systems</td><td>More complicated to manage</td></tr>
+      <tr><td><b>Late requirement changes</b> fit naturally</td><td><b>High cost</b> — bad for small projects</td></tr>
+      <tr><td>Customers see working versions early</td><td>Success depends on accurate <b>risk assessment</b></td></tr>
+      <tr><td>Continuous refinement improves reliability</td><td>Needs <b>highly experienced</b> professionals</td></tr>
+    </table>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>Spiral in one line:</b> “A risk radar — every circle asks ‘what could go wrong next?’ before building.”
+      Best for <b>large, expensive, high-risk, evolving</b> projects with frequent releases.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚡ Agile &amp; Scrum — Built for Change</h2>
+    <p><b>Agile</b> = rapid and adaptive response to change, effective communication, the customer <b>inside</b> the team
+       (no “us and them”), flexible planning, and <b>incremental delivery of working software</b> as fast as feasible.</p>
+    <table>
+      <tr><th>We value (left)…</th><th>…over (right)</th></tr>
+      <tr><td><b>Individuals and interactions</b></td><td>processes and tools</td></tr>
+      <tr><td><b>Working software</b></td><td>comprehensive documentation</td></tr>
+      <tr><td><b>Customer collaboration</b></td><td>contract negotiation</td></tr>
+      <tr><td><b>Responding to change</b></td><td>following a plan</td></tr>
+    </table>
+    <p><b>Scrum = 3 roles · 4 meetings · 3 artifacts</b> — deliver working software after every <b>sprint</b> (1–4 weeks).</p>
+    <table>
+      <tr><th>3 roles</th><th>4 meetings</th><th>3 artifacts</th></tr>
+      <tr><td><b>Product Owner</b> (what + priority)<br><b>Scrum Master</b> (process, removes blockers)<br><b>Scrum Team</b> (builds it)</td>
+          <td>Sprint &amp; release <b>planning</b><br><b>Daily Scrum</b> (15 min)<br><b>Sprint Review</b><br><b>Retrospective</b></td>
+          <td><b>Product Backlog</b><br><b>Sprint Backlog</b><br><b>Impediments List</b></td></tr>
+    </table>
+    <div class="pipeline">
+      <span class="pipe-step">Product backlog</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">Sprint planning</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">Sprint (daily scrum)</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">Working increment</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">Review + retro</span>
+    </div>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Exam trap:</b> Agile does not say documentation, plans or contracts are worthless — it says the <b>left items are valued more</b>.
+      Quote the closing line: “while there is value in the items on the right, we value the items on the left more.”</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Choosing a Model — Comparison + Scenarios</h2>
+    <table>
+      <tr><th>Criterion</th><th>Waterfall</th><th>V-model</th><th>Spiral</th><th>Agile / Scrum</th></tr>
+      <tr><td><b>Change tolerance</b></td><td>Very low</td><td>Low</td><td>High (risk loops)</td><td>Very high</td></tr>
+      <tr><td><b>Risk handling</b></td><td>Implicit</td><td>Verification-led</td><td><b>Explicit analysis</b></td><td>Continuous feedback</td></tr>
+      <tr><td><b>Working software</b></td><td>Late</td><td>Late</td><td>Early prototypes</td><td><b>Every sprint</b></td></tr>
+      <tr><td><b>Documentation</b></td><td>Heavy</td><td>Very heavy</td><td>Moderate–heavy</td><td>“Just enough”</td></tr>
+      <tr><td><b>Cost predictability</b></td><td>High</td><td>High</td><td><b>Low</b></td><td>Medium</td></tr>
+      <tr><td><b>Best size</b></td><td>Small</td><td>Small–medium</td><td><b>Large</b></td><td>Any, especially evolving</td></tr>
+    </table>
+    <table>
+      <tr><th>Scenario</th><th>Best model</th><th>Why</th></tr>
+      <tr><td>Bank payroll, rules fixed by law, short schedule</td><td><b>Waterfall</b></td><td>Stable, well-understood requirements</td></tr>
+      <tr><td>Medical device or aircraft control software</td><td><b>V-model</b></td><td>Safety + strict documentation + test twins</td></tr>
+      <tr><td>Satellite platform, huge budget, many unknowns</td><td><b>Spiral</b></td><td>Large, high-risk, evolving</td></tr>
+      <tr><td>Startup fitness app, weekly competitor releases</td><td><b>Agile / Scrum</b></td><td>Rapid change, need working software fast</td></tr>
+    </table>
+    <div class="callout exam"><span class="c-ico">📝</span>
+      <div><b>Class activity (Smart Fitness App):</b> problems = ① customers keep adding features ② competitors ship fast
+      ③ heavy documentation slows developers. Plan-driven fails because change is expensive after sign-off and no working software appears early.
+      Fix with two Agile values: <b>responding to change</b> + <b>working software over comprehensive documentation</b>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📐 Design &amp; PDLC — From Model to Flowchart</h2>
+    <p><b>Software design</b> specifies what the new system will look like and how it will work; a <b>model</b> is built before coding.</p>
+    <table>
+      <tr><th>Design output</th><th>What it contains</th></tr>
+      <tr><td><b>Data dictionary</b></td><td>All data in the system: names, types, sizes, relationships</td></tr>
+      <tr><td><b>DFD / class diagrams</b></td><td>Data movement between processes/stores, or classes + relationships (UML)</td></tr>
+      <tr><td><b>Input/output designs</b></td><td>Screens, forms, reports, validation rules</td></tr>
+      <tr><td><b>Cost/benefit analysis</b></td><td><b>Tangible</b> (money, staff) + <b>intangible</b> (morale, brand, satisfaction) vs costs</td></tr>
+      <tr><td><b>Documentation</b></td><td>Design + specifications from the design phase</td></tr>
+    </table>
+    <p><b>PDLC tools:</b> <b>structure charts</b> (program organisation/module hierarchy) and <b>flowcharts</b> (step-by-step data processing).</p>
+    <table>
+      <tr><th>Symbol</th><th>Shape</th><th>Meaning</th></tr>
+      <tr><td>Start / End</td><td><b>Oval</b></td><td>Terminal point</td></tr>
+      <tr><td>Input / Output</td><td><b>Parallelogram</b></td><td>Read data / display result</td></tr>
+      <tr><td>Process</td><td><b>Rectangle</b></td><td>Calculation or assignment</td></tr>
+      <tr><td>Decision</td><td><b>Diamond</b></td><td>Yes/No branch using relational operators (&gt;, &lt;, =, ≠, ≥, ≤)</td></tr>
+      <tr><td>Connector</td><td><b>Circle</b></td><td>Jump to another part of the chart</td></tr>
+      <tr><td>Flow</td><td><b>Arrow</b></td><td>Direction of control</td></tr>
+    </table>
+    <p><b>Three control structures:</b> <b>sequence</b> (A → B → C) · <b>selection</b> (if/else diamond) · <b>iteration</b> (loop while a condition holds).</p>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>Shape chant:</b> “Oval opens and closes · parallelogram passes data · rectangle does work · diamond decides.”</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🔍 Verification vs Validation — the 5-Mark Table</h2>
+    <table>
+      <tr><th></th><th>Verification</th><th>Validation</th></tr>
+      <tr><td><b>Question</b></td><td><b>“Are we building the product right?”</b></td><td><b>“Are we building the right product?”</b></td></tr>
+      <tr><td><b>Goal</b></td><td>Built according to requirements and design specs</td><td>Actually meets user needs; specs were correct</td></tr>
+      <tr><td><b>Evaluates</b></td><td>Plans, requirement specs, design specs, code, test cases</td><td>The <b>actual product / software</b></td></tr>
+      <tr><td><b>Nature</b></td><td><b>Static</b> — no execution</td><td><b>Dynamic</b> — software is run</td></tr>
+      <tr><td><b>Activities</b></td><td><b>Reviews · walkthroughs · inspections</b></td><td><b>Unit · integration · system · (acceptance) testing</b></td></tr>
+      <tr><td><b>Cost</b></td><td>Cheap — defects caught early</td><td>More expensive — after the build</td></tr>
+    </table>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>V/V trick:</b> <b>V</b>erification → <b>V</b>ery early, checks the <b>spec</b>, static. <b>V</b>alidation → <b>V</b>alue to the user,
+      <b>V</b>room-vroom (it runs). Or simply: <b>“build it right” vs “build the right thing.”</b></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧪 Testing vs Debugging · Black Box vs White Box</h2>
+    <div class="callout exam"><span class="c-ico">📝</span>
+      <div><b>Myers:</b> “Testing is the process of executing a program with the intention of finding errors.”<br>
+      <b>Dijkstra:</b> “Testing can show the presence of bugs, but is hopelessly inadequate for showing their absence.”</div>
+    </div>
+    <table>
+      <tr><th></th><th>Testing</th><th>Debugging</th></tr>
+      <tr><td><b>Job</b></td><td><b>Identify</b> the defect without correcting it</td><td><b>Identify, isolate and fix</b> it</td></tr>
+      <tr><td><b>Who</b></td><td>QA/testers, developers, managers, end users</td><td>The <b>developer</b> who wrote the code</td></tr>
+      <tr><td><b>Where</b></td><td>Every test level, through the lifecycle</td><td>After a failure — part of white-box/unit work</td></tr>
+      <tr><td><b>Output</b></td><td>Defect report / failed test</td><td>Corrected code + retest</td></tr>
+    </table>
+    <table>
+      <tr><th></th><th>Black-box testing</th><th>White-box testing</th></tr>
+      <tr><td><b>Code knowledge</b></td><td>Not required — internal workings hidden</td><td>Full knowledge of code and structure</td></tr>
+      <tr><td><b>Focus</b></td><td><b>What</b> it does: inputs → outputs</td><td><b>How</b> it does it: logic, paths, loops</td></tr>
+      <tr><td><b>Other names</b></td><td>Closed-box, data-driven, <b>functional</b></td><td>Glass-box, <b>structural</b>, code-based</td></tr>
+      <tr><td><b>Coverage</b></td><td>Least exhaustive, least time-consuming</td><td><b>Most exhaustive</b>, most time-consuming</td></tr>
+      <tr><td><b>Algorithm testing</b></td><td>Not suited</td><td><b>Suited</b></td></tr>
+      <tr><td><b>Weakness</b></td><td>Hidden code errors; hard to locate the cause</td><td>Cannot spot <b>missing requirements</b></td></tr>
+    </table>
+    <p><b>Test levels:</b> <b>Unit → Integration → System → Acceptance (UAT)</b> — “small to big, then to the user.”
+       <b>Manual</b> testing uses test plans/scenarios/cases; <b>automation</b> uses another tool (Selenium, coverage monitoring, load testing).</p>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>“Testers find, developers fix.”</b> Black box = <b>user’s eyes</b>; white box = <b>developer’s eyes</b>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🖼️ See It: The Software Quality Map</h2>
+    <div class="diagram">
+      <div class="dg-cap">V&amp;V → testing vs debugging → black/white box → QA vs QC</div>
+      <img src="img/cs181_testing_map.svg" alt="Map of software quality showing verification versus validation, testing versus debugging, black-box versus white-box testing, and QA versus QC" style="width:100%;height:auto;display:block">
+    </div>
+    <p><b>Read it top to bottom:</b> quality splits into <b>prevention</b> (verification) and <b>detection</b> (validation); detection splits into
+       <b>finding</b> (testing) and <b>fixing</b> (debugging); the method depends on whether you can see the code; and QA/QC are the
+       process/product halves of the same idea.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🏅 Quality, QA &amp; QC</h2>
+    <p><b>ISO 9000:2000:</b> quality = <i>“the degree to which a set of inherent characteristics fulfils requirements.”</i>
+       Two practical definitions: <b>conformance to requirements</b> (processes/products meet written specs) and
+       <b>fitness for use</b> (can be used as intended).</p>
+    <table>
+      <tr><th></th><th>Quality Assurance (QA)</th><th>Quality Control (QC)</th></tr>
+      <tr><td><b>Approach</b></td><td><b>Prevent</b> errors</td><td><b>Detect</b> errors</td></tr>
+      <tr><td><b>When</b></td><td>Defined <b>before production</b>, across the whole cycle</td><td>Checks whether defined requirements are met</td></tr>
+      <tr><td><b>Focus</b></td><td>The <b>process</b></td><td>The <b>product</b></td></tr>
+      <tr><td><b>Examples</b></td><td><b>Benchmarking</b>, <b>quality audits</b>, standards, training</td><td>Inspections, testing, defect tracking, corrective action</td></tr>
+    </table>
+    <p><b>Benchmarking</b> = compare your practices/products with other projects to generate improvement ideas.
+       <b>Quality audit</b> = structured review of quality activities to capture <b>lessons learned</b>.</p>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>QA vs QC:</b> <b>A</b>void vs <b>C</b>atch. QA is the <b>fence at the top of the cliff</b>; QC is the <b>ambulance at the bottom</b>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚡ Quick Tips — Software Engineering</h2>
+    <div class="tips-grid">
+      <div class="tip-card"><span class="t-ico">🧠</span><h4>3 P + T + C</h4>
+        <p>People, Process, Product, Tools, Constraints — the full answer to “what affects SE success?”</p></div>
+      <div class="tip-card"><span class="t-ico">🌊</span><h4>Waterfall = stairs</h4>
+        <p>One direction, no overlap, late software. Fixed requirements only.</p></div>
+      <div class="tip-card"><span class="t-ico">✅</span><h4>V = verify ↓ validate ↑</h4>
+        <p>Every build phase has a test twin. Requirements pair with acceptance testing.</p></div>
+      <div class="tip-card"><span class="t-ico">🌀</span><h4>Spiral = risk</h4>
+        <p>If the question says “risk” or “large, expensive, evolving” — answer spiral.</p></div>
+      <div class="tip-card"><span class="t-ico">⚡</span><h4>Scrum = 3-4-3</h4>
+        <p>3 roles, 4 meetings, 3 artifacts. Sprints deliver a working increment.</p></div>
+      <div class="tip-card"><span class="t-ico">🔍</span><h4>Find vs fix</h4>
+        <p>Testing finds, debugging fixes. QA prevents, QC detects.</p></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Software Engineering</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>What are the five factors of SE success?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>People · Process · Product · Tools &amp; Technology · Project constraints</b> (“3 P + T + C”).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Waterfall — which phase is the longest?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Operation &amp; maintenance</b> — the system is in real use; errors fixed and features updated.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>In the V-model, which test pairs with requirements?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Acceptance testing</b> — requirements ↔ acceptance, system design ↔ system test, module design ↔ integration test.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Which model makes risk an explicit phase?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Spiral</b> — every loop starts with risk analysis; best for large, high-risk, evolving projects.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>Verification vs validation — one line each?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Verification = build the product right</b> (static: reviews). <b>Validation = build the right product</b> (dynamic: run it).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>Testing vs debugging — who does which?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Testing</b> finds defects (QA/testers, users, developers). <b>Debugging</b> locates and fixes them (the developer).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q7</span><p>QA vs QC — prevent or detect?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>QA prevents</b> (process: benchmarking, audits, standards). <b>QC detects</b> (product: inspections, testing, defect tracking).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q8</span><p>Scrum roles, meetings and artifacts?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>3-4-3:</b> PO · Scrum Master · Team | planning · daily · review · retrospective | product backlog · sprint backlog · impediments.</p></div>
+      </div></div>
+    </div>
+    <p><b>Related lab:</b> <a href="cs181l.html" style="color:var(--cyan)">CS181L ICT Lab →</a>
+       · <b>Note:</b> <code>Week4-5_SoftwareEngineering_SDLC_Testing.md</code></p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📝 Likely Exam Questions</h2>
+    <ol>
+      <li><b>Define software engineering and explain why it is needed.</b> → definition + complexity, risk, change, quality, maintenance.</li>
+      <li><b>Differentiate verification and validation.</b> → question · evaluates · static/dynamic · activities.</li>
+      <li><b>Compare Waterfall, V-model and Spiral.</b> → change tolerance, risk, working software, documentation, best project.</li>
+      <li><b>Draw and explain the V-model.</b> → left phases, bottom coding, right test twins, verify/validate labels.</li>
+      <li><b>List the four Agile values and explain Scrum’s 3-4-3.</b></li>
+      <li><b>Testing vs debugging · black box vs white box · QA vs QC.</b> → the three tables above.</li>
+      <li><b>Which model would you choose for [scenario]? Justify.</b> → requirement stability, risk, change frequency.</li>
+    </ol>
+  </div>
+
+</section>
+
+<!-- ======================= WEEK 6-7 · COMPUTER NETWORKS ======================= -->
+<section class="tab-panel" id="week6">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🌐 What Is a Computer Network?</h2>
+    <p><b>A computer network is a group of interconnected devices that communicate and share data or resources.</b></p>
+    <p>Devices include <b>computers, smartphones, servers, printers, cameras, sensors and security devices</b>. Communication
+       travels over <b>wired media</b> (Ethernet cable) or <b>wireless media</b> (Wi-Fi). Examples: home Wi-Fi, university network,
+       banking network, the Internet.</p>
+    <table>
+      <tr><th>Type</th><th>Scope</th><th>Example</th></tr>
+      <tr><td><b>PAN</b></td><td>Personal, ~10 m</td><td>Bluetooth earbuds ↔ phone</td></tr>
+      <tr><td><b>LAN</b></td><td>Building / campus</td><td>University lab, home Wi-Fi</td></tr>
+      <tr><td><b>MAN</b></td><td>City</td><td>Cable network across Multan</td></tr>
+      <tr><td><b>WAN</b></td><td>Country / global</td><td>The Internet, bank branch network</td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Cybersecurity link:</b> attacks, authentication, data transfer and security monitoring all happen <b>across networks</b>.
+      “PAN-LAN-MAN-WAN” = expanding circles: person → building → city → world.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📡 Data Communication — 5 Components</h2>
+    <p><b>Data communication</b> = the exchange of data between two or more devices through a communication medium.
+       Devices must follow <b>agreed rules</b> so the information is understood correctly. Goals: <b>accurate · timely · reliable</b>.</p>
+    <table>
+      <tr><th>#</th><th>Component</th><th>Job</th><th>Smartphone example</th></tr>
+      <tr><td>1</td><td><b>Sender</b></td><td>Originates the data</td><td>Student’s smartphone</td></tr>
+      <tr><td>2</td><td><b>Receiver</b></td><td>Receives the data</td><td>Friend’s smartphone</td></tr>
+      <tr><td>3</td><td><b>Message</b></td><td>The information communicated</td><td>Text, image or file</td></tr>
+      <tr><td>4</td><td><b>Transmission medium</b></td><td>Path that carries the data</td><td>Wi-Fi / mobile network</td></tr>
+      <tr><td>5</td><td><b>Protocol</b></td><td>Rules that control communication</td><td>Network + app protocols</td></tr>
+    </table>
+    <div class="pipeline">
+      <span class="pipe-step">Sender</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">Encoder / transmitter</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">Transmission medium</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">Receiver / decoder</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">Destination</span>
+    </div>
+    <p>In real networks, <b>intermediate devices</b> inspect, forward, route or balance traffic. <b>Data</b> is the meaning;
+       a <b>signal</b> is its physical representation (voltage, light, radio); <b>transmission</b> is the signal’s journey.</p>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>5 components = S-R-M-M-P</b> — Sender, Receiver, Message, Medium, Protocol. Or “Some Rules Make Messages Pass.”</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📜 Protocols &amp; the Rules of Communication</h2>
+    <p>A <b>protocol</b> is a set of rules that devices follow to communicate successfully. It defines how data is
+       <b>formatted, addressed, transmitted, received and interpreted</b>. Without common rules, two devices may be physically
+       connected but <b>unable to communicate correctly</b>.</p>
+    <table>
+      <tr><th>Protocol</th><th>Job</th><th>Everyday example</th></tr>
+      <tr><td><b>HTTP / HTTPS</b></td><td>Web communication (HTTPS encrypts)</td><td>Opening a website</td></tr>
+      <tr><td><b>TCP</b></td><td>Reliable transport: ordering + retransmission</td><td>File download, web page</td></tr>
+      <tr><td><b>UDP</b></td><td>Fast, connectionless transport</td><td>Live video, DNS, games</td></tr>
+      <tr><td><b>IP</b></td><td>Addressing + packet delivery between networks</td><td>Every Internet packet</td></tr>
+      <tr><td><b>Ethernet / Wi-Fi</b></td><td>Local network communication</td><td>Cable / wireless LAN</td></tr>
+    </table>
+    <div class="callout good"><span class="c-ico">🔐</span>
+      <div><b>Cyber link:</b> HTTPS protects data <b>while it is transmitted</b> — confidentiality + integrity. The padlock is a
+      protocol promise, not a decoration. A protocol is a <b>shared language + etiquette</b>: connected but no shared rules = no communication.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>↔️ Direction of Data Flow — Simplex · Half · Full</h2>
+    <table>
+      <tr><th>Mode</th><th>Direction</th><th>Both at once?</th><th>Example</th><th>Picture</th></tr>
+      <tr><td><b>Simplex</b></td><td><b>One way only</b></td><td>—</td><td>Keyboard → computer</td><td>One-way street</td></tr>
+      <tr><td><b>Half-duplex</b></td><td>Both ways, <b>take turns</b></td><td>❌</td><td><b>Walkie-talkie</b></td><td>Single-lane bridge</td></tr>
+      <tr><td><b>Full-duplex</b></td><td>Both ways <b>simultaneously</b></td><td>✅</td><td>Telephone / voice call</td><td>Dual carriageway</td></tr>
+    </table>
+    <p><b>Simplex:</b> the receiver cannot send back through the same arrangement. <b>Half-duplex:</b> both can transmit but must
+       take turns (“over”). <b>Full-duplex:</b> both transmit and receive at once — usually separate channels or echo cancellation.</p>
+    <div class="callout exam"><span class="c-ico">📝</span>
+      <div><b>Transmission security = CIA:</b> <b>Confidentiality</b> (can unauthorised users read it?) · <b>Integrity</b> (can it be altered
+      undetected?) · <b>Availability</b> (are services accessible?). <b>HTTPS</b> protects web traffic against many forms of interception and tampering.</div>
+    </div>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>Sorting trick:</b> “Can both talk at once?” No + one talks → simplex · No + take turns → half-duplex · Yes → full-duplex.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🖼️ See It: Laptop → Switch → Router → Internet → Load Balancer → Server</h2>
+    <div class="diagram">
+      <div class="dg-cap">The six-hop request path — and the return path</div>
+      <img src="img/cs181_network_path.svg" alt="Diagram of a request path from a laptop NIC through a switch or access point, router, internet, load balancer and web servers, with the response return path" style="width:100%;height:auto;display:block">
+    </div>
+    <p><b>Path chant:</b> <b>NIC → switch/AP → router → Internet → load balancer → server → back.</b> The return route can differ
+       from the outbound route.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🔌 Devices 1 — NIC · Modem · Hub · Bridge</h2>
+    <table>
+      <tr><th>Device</th><th>Job</th><th>Key facts</th></tr>
+      <tr><td><b>NIC</b><br><span style="color:var(--muted)">Network Interface Card/Controller</span></td>
+          <td>Gives a device network connectivity</td>
+          <td>Ethernet or Wi-Fi · holds the <b>MAC address</b> · sends/receives <b>frames</b>. MAC is <b>not strong authentication</b> — visible and spoofable.</td></tr>
+      <tr><td><b>Modem</b><br><span style="color:var(--muted)">MOdulator-DEModulator</span></td>
+          <td>Converts between digital data and signals for a communication service</td>
+          <td>Connects local network to <b>ISP/access network</b> · cable, DSL, fibre (ONT) · home boxes combine modem + router + switch + AP · <b>change default credentials</b>.</td></tr>
+      <tr><td><b>Hub</b></td><td>Connects multiple Ethernet devices</td>
+          <td><b>Repeats</b> frames to all ports — no intelligent forwarding · shared medium → unnecessary traffic · <b>obsolete</b>.</td></tr>
+      <tr><td><b>Bridge</b></td><td>Connects/segments LAN portions at the <b>data-link layer</b></td>
+          <td>Reads <b>MAC addresses</b> · separates <b>collision domains</b> · a switch is essentially a <b>multi-port bridge</b>.</td></tr>
+    </table>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>NIC</b> = front door + MAC doorplate · <b>modem</b> = translator (digital ↔ analogue/optical) · <b>hub</b> = person shouting in a room · <b>bridge</b> = door between two rooms.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🔀 Devices 2 — Switch · Router · Load Balancer</h2>
+    <table>
+      <tr><th>Device</th><th>Job</th><th>Key facts</th></tr>
+      <tr><td><b>Switch</b></td><td>Connects devices inside a <b>LAN</b></td>
+          <td>Forwards <b>Ethernet frames</b> to the right port · learns a <b>MAC address table</b> · reduces traffic vs hub · managed switches add <b>VLANs, port security, monitoring</b>.</td></tr>
+      <tr><td><b>Router</b></td><td>Connects <b>different networks</b></td>
+          <td>Forwards <b>packets</b> using <b>IP + routing table</b> · acts as <b>gateway</b> · home routers add NAT, firewall, DHCP, Wi-Fi · <b>critical security boundary</b>.</td></tr>
+      <tr><td><b>Load balancer</b></td><td>Distributes requests across servers</td>
+          <td>Prevents bottlenecks · improves <b>performance, scalability, availability</b> · <b>health checks</b> skip failed servers · may terminate <b>TLS</b>.</td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Never mix these up:</b> a <b>switch</b> uses <b>MAC/frames</b> and stays inside one LAN. A <b>router</b> uses <b>IP/packets</b> and
+      connects <b>different networks</b>. A <b>hub</b> uses neither — it just repeats.</div>
+    </div>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>“Switch by MAC, route by IP.”</b> Switch = local post office · router = intercity courier · load balancer = restaurant host.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📋 Comparing the Main Devices (the table to memorise)</h2>
+    <table>
+      <tr><th>Device</th><th>Main job</th><th>Typical scope</th><th>Key idea</th></tr>
+      <tr><td><b>NIC</b></td><td>Connects a host to a network</td><td>Individual device</td><td>Network interface</td></tr>
+      <tr><td><b>Modem</b></td><td>Converts/conditions signals for access service</td><td>Access link</td><td>Modulation / demodulation</td></tr>
+      <tr><td><b>Switch</b></td><td>Forwards LAN frames</td><td>LAN</td><td><b>MAC addresses</b></td></tr>
+      <tr><td><b>Router</b></td><td>Forwards packets between networks</td><td>Multiple networks</td><td><b>IP / routing</b></td></tr>
+      <tr><td><b>Hub / distributor</b></td><td>Repeats signals to ports</td><td>Legacy LAN</td><td>No intelligent forwarding</td></tr>
+      <tr><td><b>Bridge</b></td><td>Connects LAN segments</td><td>LAN</td><td>MAC-based bridging</td></tr>
+      <tr><td><b>Load balancer</b></td><td>Distributes requests</td><td>Server / application environment</td><td>Availability &amp; scaling</td></tr>
+    </table>
+    <h3>How they work together — 6 steps</h3>
+    <ol>
+      <li><b>NIC</b> gives the laptop network connectivity and sends traffic.</li>
+      <li><b>Switch or access point</b> forwards the traffic inside the local network.</li>
+      <li><b>Router/gateway</b> forwards packets toward the Internet.</li>
+      <li><b>Internet</b> — multiple routers forward packets toward the destination network.</li>
+      <li><b>Load balancer</b> selects a healthy web server.</li>
+      <li><b>Response</b> travels back to the student’s device.</li>
+    </ol>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🛡️ Cybersecurity Perspective — Every Hop Is Attack Surface</h2>
+    <table>
+      <tr><th>Device</th><th>Possible problems</th></tr>
+      <tr><td><b>Endpoint / NIC</b></td><td>Malware, unauthorised access, <b>spoofing</b>, insecure configuration</td></tr>
+      <tr><td><b>Switch</b></td><td>Unauthorised devices, <b>VLAN misconfiguration</b>, traffic interception attempts</td></tr>
+      <tr><td><b>Router</b></td><td>Weak passwords, outdated firmware, incorrect <b>firewall/ACL</b> rules, route manipulation</td></tr>
+      <tr><td><b>Modem / ISP equipment</b></td><td>Insecure administration, <b>exposed management interfaces</b></td></tr>
+      <tr><td><b>Load balancer</b></td><td>Application attacks, configuration errors, <b>TLS/certificate</b> issues, <b>denial of service</b></td></tr>
+      <tr><td><b>Servers</b></td><td>Missing patches, excessive privileges, weak logging</td></tr>
+    </table>
+    <p><b>General principle:</b> every network device is part of the <b>attack surface</b> and should be securely configured,
+       monitored and updated. <b>Patch · password · permission · port</b> — the four controls to mention for any device.</p>
+    <div class="callout exam"><span class="c-ico">📝</span>
+      <div><b>CIA mapping:</b> sniffing → confidentiality · ARP/MAC spoofing → integrity · DDoS → availability ·
+      weak router admin → all three · TLS misconfiguration → confidentiality + integrity.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📱 Networking Applications</h2>
+    <table>
+      <tr><th>Application</th><th>What it does</th><th>Examples / notes</th></tr>
+      <tr><td><b>The Internet</b></td><td>Global network of networks</td><td>Web, email, streaming, cloud</td></tr>
+      <tr><td><b>Telephone service</b></td><td>Voice communication</td><td>POTS (fixed line) · cellular (base stations/cells) · satellite phones · <b>dual-mode</b> (cellular + Wi-Fi calling)</td></tr>
+      <tr><td><b>TV &amp; radio</b></td><td>One-to-many media distribution</td><td>Terrestrial, cable, satellite, IPTV</td></tr>
+      <tr><td><b>GPS</b></td><td>Satellites + receiver determine <b>exact location</b></td><td>Navigation · surveyors, farmers, fishermen · vehicle guidance · military · <b>geocaching</b></td></tr>
+      <tr><td><b>Monitoring systems</b></td><td>Status or location of people, vehicles, assets</td><td><b>RFID</b> (object status) · GPS monitoring (location) · medical/home-health monitors · sensor networks</td></tr>
+      <tr><td><b>Multimedia networking</b></td><td>Distributes digital multimedia over a home/local network</td><td>Sharing across TVs/phones/computers · streaming/casting</td></tr>
+      <tr><td><b>Videoconferencing</b></td><td>Face-to-face meetings over a network</td><td>Online conferencing · <b>telepresence</b></td></tr>
+      <tr><td><b>Collaborative computing</b></td><td>Workgroup computing</td><td>Shared docs, screens, tasks (Teams, Workspace)</td></tr>
+      <tr><td><b>Telecommuting</b></td><td>Working remotely over the network</td><td>VPN + video + cloud apps</td></tr>
+      <tr><td><b>Telemedicine</b></td><td>Medical information and services over networks</td><td>Remote monitoring/consultation · diagnosis · <b>telesurgery</b> (robot-assisted) · space exploration</td></tr>
+    </table>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>Applications mnemonic:</b> <b>I-T-T-G-M-M-V-C-T</b> — Internet, Telephone, TV/radio, GPS, Monitoring, Multimedia, Videoconference, Collaborative, Telemedicine.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧱 OSI in 60 Seconds — Quiz 2 Preview</h2>
+    <p>OSI is the ISO’s <b>7-layer reference model</b> (1984) for systems interconnection. It is the <b>teaching model</b>;
+       <b>TCP/IP</b> is what the Internet actually runs. Learn the layers, then attach one device to each.</p>
+    <table>
+      <tr><th>#</th><th>Layer</th><th>Job</th><th>PDU</th><th>Protocols / devices</th></tr>
+      <tr><td>7</td><td><b>Application</b></td><td>User-facing services</td><td>data</td><td>HTTP, HTTPS, DNS, SMTP, FTP, SSH</td></tr>
+      <tr><td>6</td><td><b>Presentation</b></td><td>Translate, encrypt, compress</td><td>data</td><td>TLS/SSL, JPEG, MP4, ASCII/Unicode</td></tr>
+      <tr><td>5</td><td><b>Session</b></td><td>Open/manage/close dialogues</td><td>data</td><td>RPC, NetBIOS, sockets</td></tr>
+      <tr><td>4</td><td><b>Transport</b></td><td>End-to-end delivery, ports, reliability</td><td><b>segments</b></td><td>TCP, UDP · <b>load balancer (L4)</b></td></tr>
+      <tr><td>3</td><td><b>Network</b></td><td>Logical addressing + routing</td><td><b>packets</b></td><td>IP, ICMP, OSPF, RIP · <b>router</b></td></tr>
+      <tr><td>2</td><td><b>Data Link</b></td><td>Framing, MAC, error detection</td><td><b>frames</b></td><td>Ethernet, Wi-Fi, ARP · <b>switch, bridge, NIC</b></td></tr>
+      <tr><td>1</td><td><b>Physical</b></td><td>Bits as voltage/light/radio</td><td><b>bits</b></td><td>Cable, fibre, radio · <b>hub, repeater</b></td></tr>
+    </table>
+    <p><b>TCP/IP 4 layers:</b> Application (OSI 5–7) · Transport (4) · Internet (3) · Network Access (1–2).</p>
+    <div class="callout trick"><span class="c-ico">🧠</span>
+      <div><b>1→7:</b> “<b>P</b>lease <b>D</b>o <b>N</b>ot <b>T</b>hrow <b>S</b>ausage <b>P</b>izza <b>A</b>way.”<br>
+      <b>7→1:</b> “<b>A</b>ll <b>P</b>eople <b>S</b>eem <b>T</b>o <b>N</b>eed <b>D</b>ata <b>P</b>rocessing.”<br>
+      <b>Device rule:</b> switch by <b>MAC</b> (L2), route by <b>IP</b> (L3).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🖼️ See It: OSI vs TCP/IP + Device Layers</h2>
+    <div class="diagram">
+      <div class="dg-cap">Seven OSI layers beside four TCP/IP layers, with the device that lives at each level</div>
+      <img src="img/cs181_osi_stack.svg" alt="Diagram of the OSI seven-layer model beside the TCP/IP four-layer model, listing protocols and devices including hub, switch, router and load balancer" style="width:100%;height:auto;display:block">
+    </div>
+    <p><b>One-line summary:</b> hub/repeater <b>L1</b> · switch/bridge/NIC <b>L2</b> · router <b>L3</b> · load balancer <b>L4 or L7</b>.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚡ Quick Tips — Computer Networks</h2>
+    <div class="tips-grid">
+      <div class="tip-card"><span class="t-ico">📡</span><h4>S-R-M-M-P</h4>
+        <p>Sender, Receiver, Message, Medium, Protocol — the 5 components in order.</p></div>
+      <div class="tip-card"><span class="t-ico">↔️</span><h4>One-way / bridge / dual</h4>
+        <p>Simplex = one-way street · half-duplex = single-lane bridge · full-duplex = dual carriageway.</p></div>
+      <div class="tip-card"><span class="t-ico">🔀</span><h4>Switch vs router</h4>
+        <p>Switch stays inside the LAN with MAC. Router connects networks with IP.</p></div>
+      <div class="tip-card"><span class="t-ico">📣</span><h4>Hub shouts, switch whispers</h4>
+        <p>Hub repeats to everyone; switch forwards only to the right port.</p></div>
+      <div class="tip-card"><span class="t-ico">🧱</span><h4>1-2-3-4/7</h4>
+        <p>Hub L1 · switch/bridge/NIC L2 · router L3 · load balancer L4/L7.</p></div>
+      <div class="tip-card"><span class="t-ico">🛡️</span><h4>Every hop is attack surface</h4>
+        <p>Patch, password, permission, port — and map each threat to C-I-A.</p></div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Flip Cards — Computer Networks</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Five components of data communication?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Sender · Receiver · Message · Transmission medium · Protocol</b> (S-R-M-M-P).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Walkie-talkie is which duplex mode?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Half-duplex</b> — both sides can transmit, but only one at a time.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Switch vs router — addressing?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Switch = MAC addresses, frames, inside a LAN.</b> <b>Router = IP addresses, packets, between networks.</b></p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>What does a modem actually do?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Modulates/demodulates</b> — converts digital data to signals for the ISP/access link and back.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>Why use a load balancer?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Distributes requests across servers, does <b>health checks</b>, improves <b>performance, scalability and availability</b>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>Which device works at Layer 2?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Switch, bridge and NIC</b> — they deal with <b>frames and MAC addresses</b>. Hub = L1, router = L3.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q7</span><p>What are the three goals of data communication?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Accurate, timely and reliable</b> delivery (A-T-R).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q8</span><p>Name the 7 OSI layers, top to bottom.</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Application · Presentation · Session · Transport · Network · Data Link · Physical</b> (“All People Seem To Need Data Processing”).</p></div>
+      </div></div>
+    </div>
+    <p><b>Related lab:</b> <a href="cs181l.html" style="color:var(--cyan)">CS181L ICT Lab →</a>
+       · <b>Note:</b> <code>Week6-7_ComputerNetworks_DataComm_Devices.md</code></p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📝 Likely Exam Questions</h2>
+    <ol>
+      <li><b>Define a computer network and give four examples.</b> → definition + home, university, banking, Internet.</li>
+      <li><b>Define data communication and its three goals.</b> → exchange via a medium + accurate, timely, reliable.</li>
+      <li><b>List and explain the five components of data communication.</b> → S-R-M-M-P + smartphone example.</li>
+      <li><b>What is a protocol? Why is it needed?</b> → rules + connected-but-silent example.</li>
+      <li><b>Differentiate simplex, half-duplex and full-duplex.</b> → keyboard / walkie-talkie / telephone.</li>
+      <li><b>Differentiate hub, switch and router.</b> → repeat / MAC-forward / IP-forward.</li>
+      <li><b>Explain the role of NIC, modem and load balancer.</b></li>
+      <li><b>Explain how a request travels from a laptop to a web server.</b> → the six hops + return path.</li>
+      <li><b>Where can security problems occur?</b> → device table + CIA mapping.</li>
+      <li><b>Name four networking applications and explain one.</b> → GPS, telemedicine, monitoring, videoconferencing.</li>
+      <li><b>Name the 7 OSI layers and the device at each layer.</b> → mnemonic + 1-2-3-4/7 rule.</li>
+    </ol>
+  </div>
+
+</section>
+
 <!-- ======================= COURSE CONTENTS ======================= -->
 <section class="tab-panel" id="course">
   <div class="note-card">
@@ -555,7 +1251,7 @@
 </section>
 
 <footer class="footer">
-  CS181 · Application of ICT · <b>Week 1 &amp; 2</b> · BS Cyber Security · Fall 2026
+  CS181 · Application of ICT · <b>Weeks 1–7</b> · Software Engineering &amp; Networks · BS Cyber Security · Fall 2026
 </footer>
 
 <button id="toTop" title="Back to top">↑</button>

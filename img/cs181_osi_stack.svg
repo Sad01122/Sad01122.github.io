@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 620" width="1100" height="620" font-family="Poppins, 'Segoe UI', sans-serif">
+  <rect width="1100" height="620" rx="18" fill="#0b1220"/>
+  <text x="550" y="38" text-anchor="middle" fill="#e7eefb" font-size="23" font-weight="800">OSI 7 LAYERS vs TCP/IP - AND WHERE DEVICES LIVE</text>
+  <text x="550" y="61" text-anchor="middle" fill="#8fa3c0" font-size="12.5">OSI is the teaching model; TCP/IP is what the Internet actually runs</text>
+
+  <!-- column headings -->
+  <g font-size="11" font-weight="800" letter-spacing="1.2" text-anchor="middle">
+    <text x="165" y="88" fill="#22d3ee">OSI LAYER</text>
+    <text x="480" y="88" fill="#a78bfa">JOB · PDU</text>
+    <text x="832" y="88" fill="#34d399">PROTOCOLS · DEVICES</text>
+  </g>
+
+  <!-- L7 -->
+  <rect x="40" y="100" width="250" height="46" rx="8" fill="#3a1d3f" stroke="#f472b6"/>
+  <text x="165" y="128" text-anchor="middle" fill="#fde7f3" font-size="12.5" font-weight="800">7 · APPLICATION</text>
+
+  <rect x="306" y="100" width="360" height="46" rx="8" fill="#121c31" stroke="#26344f"/>
+  <text x="322" y="120" fill="#e7eefb" font-size="11">user-facing services</text>
+  <text x="322" y="137" fill="#8fa3c0" font-size="10">PDU: data</text>
+
+  <rect x="682" y="100" width="300" height="46" rx="8" fill="#121c31" stroke="#26344f"/>
+  <text x="832" y="128" text-anchor="middle" fill="#c7d3e6" font-size="10.5">HTTP · HTTPS · DNS · SMTP · FTP · SSH</text>
+
+  <!-- L6 -->
+  <rect x="40" y="152" width="250" height="46" rx="8" fill="#2b1f47" stroke="#c084fc"/>
+  <text x="165" y="180" text-anchor="middle" fill="#f3e8ff" font-size="12.5" font-weight="800">6 · PRESENTATION</text>
+
+  <rect x="306" y="152" width="360" height="46" rx="8" fill="#121c31" stroke="#26344f"/>
+  <text x="322" y="172" fill="#e7eefb" font-size="11">translate · encrypt · compress</text>
+  <text x="322" y="189" fill="#8fa3c0" font-size="10">PDU: data</text>
+
+  <rect x="682" y="152" width="300" height="46" rx="8" fill="#121c31" stroke="#26344f"/>
+  <text x="832" y="172" text-anchor="middle" fill="#c7d3e6" font-size="10.5">TLS / SSL · JPEG · MP4</text>
+  <text x="832" y="189" text-anchor="middle" fill="#8fa3c0" font-size="9.5">ASCII · Unicode</text>
+
+  <!-- L5 -->
+  <rect x="40" y="204" width="250" height="46" rx="8" fill="#1e2c4d" stroke="#60a5fa"/>
+  <text x="165" y="232" text-anchor="middle" fill="#dbeafe" font-size="12.5" font-weight="800">5 · SESSION</text>
+
+  <rect x="306" y="204" width="360" height="46" rx="8" fill="#121c31" stroke="#26344f"/>
+  <text x="322" y="224" fill="#e7eefb" font-size="11">open, manage and close dialogues</text>
+  <text x="322" y="241" fill="#8fa3c0" font-size="10">PDU: data</text>
+
+  <rect x="682" y="204" width="300" height="46" rx="8" fill="#121c31" stroke="#26344f"/>
+  <text x="832" y="224" text-anchor="middle" fill="#c7d3e6" font-size="10.5">RPC · NetBIOS · sockets</text>
+  <text x="832" y="241" text-anchor="middle" fill="#8fa3c0" font-size="9.5">session tokens · checkpoints</text>
+
+  <!-- L4 -->
+  <rect x="40" y="256" width="250" height="46" rx="8" fill="#12363a" stroke="#22d3ee"/>
+  <text x="165" y="284" text-anchor="middle" fill="#cffafe" font-size="12.5" font-weight="800">4 · TRANSPORT</text>
+
+  <rect x="306" y="256" width="360" height="46" rx="8" fill="#121c31" stroke="#26344f"/>
+  <text x="322" y="276" fill="#e7eefb" font-size="11">end-to-end delivery · ports · reliability</text>
+  <text x="322" y="293" fill="#8fa3c0" font-size="10">PDU: segments (TCP) / datagrams (UDP)</text>
+
+  <rect x="682" y="256" width="300" height="46" rx="8" fill="#121c31" stroke="#26344f"/>
+  <text x="832" y="276" text-anchor="middle" fill="#c7d3e6" font-size="10.5">TCP · UDP · port numbers</text>
+  <text x="832" y="293" text-anchor="middle" fill="#fbbf24" font-size="9.5">load balancer (Layer 4)</text>
+
+  <!-- L3 -->
+  <rect x="40" y="308" width="250" height="46" rx="8" fill="#3a2c12" stroke="#fbbf24"/>
+  <text x="165" y="336" text-anchor="middle" fill="#fef3c7" font-size="12.5" font-weight="800">3 · NETWORK</text>
+
+  <rect x="306" y="308" width="360" height="46" rx="8" fill="#121c31" stroke="#26344f"/>
+  <text x="322" y="328" fill="#e7eefb" font-size="11">logical addressing + routing between networks</text>
+  <text x="322" y="345" fill="#8fa3c0" font-size="10">PDU: packets</text>
+
+  <rect x="682" y="308" width="300" height="46" rx="8" fill="#121c31" stroke="#26344f"/>
+  <text x="832" y="328" text-anchor="middle" fill="#c7d3e6" font-size="10.5">IP · ICMP · OSPF · RIP</text>
+  <text x="832" y="345" text-anchor="middle" fill="#fbbf24" font-size="9.5">router (Layer 3)</text>
+
+  <!-- L2 -->
+  <rect x="40" y="360" width="250" height="46" rx="8" fill="#12303a" stroke="#34d399"/>
+  <text x="165" y="388" text-anchor="middle" fill="#d1fae5" font-size="12.5" font-weight="800">2 · DATA LINK</text>
+
+  <rect x="306" y="360" width="360" height="46" rx="8" fill="#121c31" stroke="#26344f"/>
+  <text x="322" y="380" fill="#e7eefb" font-size="11">framing · MAC addressing · error detection</text>
+  <text x="322" y="397" fill="#8fa3c0" font-size="10">PDU: frames</text>
+
+  <rect x="682" y="360" width="300" height="46" rx="8" fill="#121c31" stroke="#26344f"/>
+  <text x="832" y="380" text-anchor="middle" fill="#c7d3e6" font-size="10.5">Ethernet · Wi-Fi 802.11 · ARP</text>
+  <text x="832" y="397" text-anchor="middle" fill="#34d399" font-size="9.5">switch · bridge · NIC</text>
+
+  <!-- L1 -->
+  <rect x="40" y="412" width="250" height="46" rx="8" fill="#2a2233" stroke="#94a3b8"/>
+  <text x="165" y="440" text-anchor="middle" fill="#e2e8f0" font-size="12.5" font-weight="800">1 · PHYSICAL</text>
+
+  <rect x="306" y="412" width="360" height="46" rx="8" fill="#121c31" stroke="#26344f"/>
+  <text x="322" y="432" fill="#e7eefb" font-size="11">bits as voltage, light or radio waves</text>
+  <text x="322" y="449" fill="#8fa3c0" font-size="10">PDU: bits</text>
+
+  <rect x="682" y="412" width="300" height="46" rx="8" fill="#121c31" stroke="#26344f"/>
+  <text x="832" y="432" text-anchor="middle" fill="#c7d3e6" font-size="10.5">cable · fibre · radio</text>
+  <text x="832" y="449" text-anchor="middle" fill="#94a3b8" font-size="9.5">hub · repeater · connector</text>
+
+  <!-- TCP/IP BRACKET -->
+  <text x="1040" y="88" text-anchor="middle" fill="#fbbf24" font-size="11" font-weight="800" letter-spacing="1.2">TCP/IP</text>
+
+  <rect x="994" y="100" width="92" height="150" rx="8" fill="#2a2450" stroke="#a78bfa"/>
+  <text x="1040" y="179" text-anchor="middle" fill="#e7eefb" font-size="9" font-weight="800">APPLICATION</text>
+
+  <rect x="994" y="256" width="92" height="46" rx="8" fill="#12363a" stroke="#22d3ee"/>
+  <text x="1040" y="283" text-anchor="middle" fill="#cffafe" font-size="8.5" font-weight="800">TRANSPORT</text>
+
+  <rect x="994" y="308" width="92" height="46" rx="8" fill="#3a2c12" stroke="#fbbf24"/>
+  <text x="1040" y="335" text-anchor="middle" fill="#fef3c7" font-size="8.5" font-weight="800">INTERNET</text>
+
+  <rect x="994" y="360" width="92" height="98" rx="8" fill="#12303a" stroke="#34d399"/>
+  <text x="1040" y="404" text-anchor="middle" fill="#d1fae5" font-size="8" font-weight="800">NETWORK</text>
+  <text x="1040" y="417" text-anchor="middle" fill="#d1fae5" font-size="8" font-weight="800">ACCESS</text>
+
+  <!-- bottom guidance -->
+  <text x="550" y="492" text-anchor="middle" fill="#22d3ee" font-size="11.5" font-weight="800">Mnemonic 1 to 7: "Please Do Not Throw Sausage Pizza Away"</text>
+  <text x="550" y="512" text-anchor="middle" fill="#8fa3c0" font-size="11">7 to 1: "All People Seem To Need Data Processing"</text>
+
+  <rect x="40" y="530" width="1020" height="64" rx="10" fill="#121c31" stroke="#26344f"/>
+  <text x="60" y="553" fill="#fbbf24" font-size="11" font-weight="800">REMEMBER THE LAYER OF EACH DEVICE:</text>
+  <text x="60" y="574" fill="#c7d3e6" font-size="11">Hub / repeater = L1 · Switch / bridge / NIC = L2 · Router = L3 · Load balancer = L4 (or L7 for HTTP-aware)</text>
+  <text x="60" y="588" fill="#8fa3c0" font-size="9.5">"Switch by MAC, route by IP" - if the question mentions MAC, think Layer 2; if it mentions IP, think Layer 3.</text>
+</svg>

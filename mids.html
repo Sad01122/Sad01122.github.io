@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MidZ — FE &amp; DS Mids Zone</title>
+<title>MidZ — FE, DS &amp; PF Mids Zone</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
@@ -24,8 +24,12 @@
   pre.gate { background: rgba(2,8,20,.55); border: 1px solid var(--card-border); border-radius: 10px;
              padding: 12px 14px; overflow-x: auto; font-size: .92rem; line-height: 1.5; }
   /* ---------- SUBJECT SWITCHER ---------- */
+  .subject-hero .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+                  justify-content: center; margin-top: 18px; }
+  .subject-hero .hero-actions .btn { margin: 0; }
+  .subject-hero .hero-actions .hint { color: var(--muted); font-size: .9rem; }
   .subject-switch { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
-                    max-width: 1060px; margin: -8px auto 12px; padding: 0 20px; }
+                    max-width: 1060px; margin: 22px auto 12px; padding: 0 20px; }
   .subject-pick {
     flex: 1 1 290px; max-width: 460px;
     display: flex; flex-direction: column; align-items: flex-start; gap: 3px;
@@ -41,9 +45,15 @@
   .subject-pick.active { border-color: var(--cyan); background: rgba(34,211,238,0.09);
                          box-shadow: 0 4px 18px rgba(34,211,238,0.14); }
   .tabs.subj-fe .tab-btn[data-subject="ds"],
-  .tabs.subj-ds .tab-btn[data-subject="fe"] { display: none; }
+  .tabs.subj-fe .tab-btn[data-subject="pf"],
+  .tabs.subj-ds .tab-btn[data-subject="fe"],
+  .tabs.subj-ds .tab-btn[data-subject="pf"],
+  .tabs.subj-pf .tab-btn[data-subject="fe"],
+  .tabs.subj-pf .tab-btn[data-subject="ds"] { display: none; }
   .book-img { display: block; max-width: 100%; border-radius: 10px;
               border: 1px solid var(--card-border); background: #fff; padding: 8px; margin: 10px 0 4px; }
+  /* Wide tables scroll inside their card instead of stretching the page on phones */
+  .note-card table { display: block; max-width: 100%; overflow-x: auto; }
 </style>
 <script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 </head>
@@ -79,24 +89,30 @@
 
 <header class="subject-hero">
   <span class="code-lg">🎯 MIDZ · MIDS ZONE</span>
-  <h1><span>Mid-Zerm Revision — FE &amp; DS</span></h1>
-  <p><b>One button, both mids papers.</b> Pick a <b>subject</b> below to focus —
-     <b>📘 EL170 · Functional English</b> (clauses · phrases · 12 tenses · PoS · cross-culture · formal email → mock test + sample paper) or
-     <b>🧮 MA216 · Discrete Structures</b> (zero-to-hero logic: equivalences · De Morgan · circuits · converse/inverse · the confirmed Rules-of-Inference long question → sample papers).
-     Your subject choice is remembered; press <b>1</b>–<b>5</b> to jump between that subject's tabs.</p>
-  <p><a class="btn primary" href="el170.html">📘 Full EL170 Notes</a>
-     <a class="btn ghost" href="ma216.html" style="margin-left:8px;">🧮 Full DS Notes</a>
-     <span style="color:var(--muted);font-size:.9rem;margin-left:8px;">mock tests &amp; sample papers are inside this page ↓</span></p>
+  <h1><span>Mid-Zerm Revision — FE · DS · PF</span></h1>
+  <p><b>One button, three mids papers.</b> Pick a <b>subject</b> below to focus —
+     <b>📘 EL170 · Functional English</b> (clauses · phrases · 12 tenses · PoS · paragraph writing · formal vs informal · cross-culture · formal email → mock test + 2 sample papers),
+     <b>🧮 MA216 · Discrete Structures</b> (zero-to-hero logic: equivalences · De Morgan · circuits · converse/inverse · the confirmed Rules-of-Inference long question → sample papers), or
+     <b>💻 CS111 · Programming Fundamentals</b> (Weeks 1–6: logic · data types · decisions · loops · functions · scope, references &amp; recursion → rapid revision + a <b>conceptual</b> sample paper with model answers).
+     Your subject choice is remembered; press <b>1</b>–<b>9</b> to jump between that subject's tabs.</p>
+  <p class="hero-actions"><a class="btn primary" href="el170.html">📘 Full EL170 Notes</a>
+     <a class="btn ghost" href="ma216.html">🧮 Full DS Notes</a>
+     <a class="btn ghost" href="cs111.html">💻 Full PF Notes</a>
+     <span class="hint">mock tests &amp; sample papers are inside this page ↓</span></p>
 </header>
 
 <div class="subject-switch" id="subjectSwitch" aria-label="Pick a subject to focus">
   <button class="subject-pick" data-subject="fe" type="button">
     <span class="sp-top"><span class="sp-ico">📘</span><b>EL170 · Functional English</b></span>
-    <i>Revise · 15-MCQ Mock Test · Sample Paper</i>
+    <i>Revise · 15-MCQ Mock Test · 2 Sample Papers (syllabus-mapped)</i>
   </button>
   <button class="subject-pick" data-subject="ds" type="button">
     <span class="sp-top"><span class="sp-ico">🧮</span><b>MA216 · Discrete Structures</b></span>
     <i>Zero-to-Hero · 2 Sample Papers · straight from Rosen 7e</i>
+  </button>
+  <button class="subject-pick" data-subject="pf" type="button">
+    <span class="sp-top"><span class="sp-ico">💻</span><b>CS111 · Programming Fundamentals</b></span>
+    <i>Weeks 1–6 Rapid Revise · Conceptual Sample Paper · model answers</i>
   </button>
 </div>
 
@@ -104,9 +120,12 @@
   <button class="tab-btn active" data-tab="fe-rev" data-subject="fe"><span class="dot"></span> 📚 FE · Revise</button>
   <button class="tab-btn" data-tab="fe-mock" data-subject="fe"><span class="dot"></span> 🎭 FE · Mock (15 MCQs)</button>
   <button class="tab-btn" data-tab="fe-paper" data-subject="fe"><span class="dot"></span> 📄 FE · Sample Paper</button>
+  <button class="tab-btn" data-tab="fe-paper2" data-subject="fe"><span class="dot"></span> 📘 FE · Paper 2 (Syllabus)</button>
   <button class="tab-btn" data-tab="ds-rev" data-subject="ds"><span class="dot"></span> 🧮 DS · Zero-to-Hero</button>
   <button class="tab-btn" data-tab="ds-paper" data-subject="ds"><span class="dot"></span> 📝 DS · Sample Paper</button>
   <button class="tab-btn" data-tab="ds-paper2" data-subject="ds"><span class="dot"></span> 📕 DS · Paper 2 (Rosen 7e)</button>
+  <button class="tab-btn" data-tab="pf-rev" data-subject="pf"><span class="dot"></span> 💻 PF · Revise (Weeks 1–6)</button>
+  <button class="tab-btn" data-tab="pf-paper" data-subject="pf"><span class="dot"></span> 📝 PF · Conceptual Paper</button>
 </div>
 
 <!-- ======================= FE REVISE ======================= -->
@@ -681,12 +700,302 @@
       <b>Q6?</b> → Phrases card (head-word test).<br>
       <b>Q7?</b> → Iceberg/Onion card (and remember: Iceberg = <b>Hall</b>).</div>
     </div>
-    <p><b>Related:</b> <a href="el170.html" style="color:var(--cyan)">EL170 full notes (clauses · phrases · tenses · cross-culture) →</a> ·
+    <p><b>Related:</b> <a href="el170.html" style="color:var(--cyan)">EL170 full notes (clauses · phrases · tenses · cross-culture · paragraphs) →</a> ·
+       <a href="#" onclick="document.querySelector('[data-tab=fe-paper2]').click();return false;" style="color:var(--cyan)">FE Paper 2 — full syllabus →</a> ·
        <a href="quiz-el170.html" style="color:var(--cyan)">FE Quiz (20 MCQs) →</a> ·
        <b>Notes:</b> <code>MASTER-REVISION.md</code></p>
   </div>
 
 </section>
+
+<!-- ======================= FE SAMPLE PAPER 2 — FULL SYLLABUS ======================= -->
+<section class="tab-panel" id="fe-paper2">
+  <div class="note-card">
+    <h2><span class="bar"></span>📘 EL170 — Mids Sample Paper 2 · built exactly on the 7 syllabus topics</h2>
+    <div class="paper-head">
+      <span><b>Time:</b> 2 hours 30 minutes</span><span><b>Total:</b> 100 marks</span>
+      <span><b>7 questions</b> — one per syllabus topic</span>
+      <span>Answer ALL questions</span>
+    </div>
+    <table>
+      <tr><th>#</th><th>Syllabus topic</th><th>Question</th><th>Marks</th></tr>
+      <tr><td>1</td><td>Parts of Speech</td><td><b>Q1</b> — name the part of speech (incl. chameleon words)</td><td>10</td></tr>
+      <tr><td>2</td><td>Tenses</td><td><b>Q2</b> — correct tense in context + name the tense</td><td>15</td></tr>
+      <tr><td>3</td><td>Phrases and Clauses</td><td><b>Q3</b> — phrase/clause + type, then fix fragment &amp; comma splice</td><td>15</td></tr>
+      <tr><td>4</td><td>Paragraph Writing and its basic elements</td><td><b>Q4</b> — label a paragraph's parts + write your own</td><td>20</td></tr>
+      <tr><td>5</td><td>Formal vs informal language</td><td><b>Q5</b> — rewrite informal lines formally</td><td>10</td></tr>
+      <tr><td>6</td><td>Formal Email Writing</td><td><b>Q6</b> — full formal email (5-step frame + BLUF)</td><td>20</td></tr>
+      <tr><td>7</td><td>Cross-cultural differences + Hofstede</td><td><b>Q7</b> — scenario: apply Hofstede + CQ</td><td>10</td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>How to use this page:</b> write each answer on paper <b>first</b>, then press <b>Reveal</b> and compare line by line.
+      This paper is deliberately <b>different from Paper 1</b> (no repeated questions) so doing both covers the whole syllabus twice.</div>
+    </div>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Marks are earned by naming things:</b> "adverb" not "describing word" · "past perfect continuous" not "past tense" ·
+      "dependent clause" not "sentence part" · "individualism–collectivism" not "culture". Every model answer below shows the exact
+      wording an examiner ticks.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q1 · Parts of Speech <span style="color:var(--muted);font-size:.9rem">(10 marks — 2 each)</span></h2>
+    <p>State the <b>part of speech</b> of each <b>bold</b> word as it is used in the sentence.</p>
+    <p><b>(a)</b> The <b>book</b> on the shelf belongs to my sister.<br>
+       <b>(b)</b> Please <b>book</b> a room for Friday.<br>
+       <b>(c)</b> She answered the examiner <b>politely</b>.<br>
+       <b>(d)</b> The <b>honest</b> answer surprised everyone.<br>
+       <b>(e)</b> The keys are <b>under</b> the desk.</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answers</h4>
+      <table>
+        <tr><th>Item</th><th>Answer</th><th>The test that proves it</th></tr>
+        <tr><td>(a) <b>book</b></td><td><b>Noun</b></td><td>names a thing; comes after "the" and is the subject of "belongs"</td></tr>
+        <tr><td>(b) <b>book</b></td><td><b>Verb</b></td><td>shows the action ("please ___ a room") — same word, different job!</td></tr>
+        <tr><td>(c) <b>politely</b></td><td><b>Adverb</b></td><td>tells <i>how</i> she answered → modifies the verb</td></tr>
+        <tr><td>(d) <b>honest</b></td><td><b>Adjective</b></td><td>describes the noun "answer" (which answer?)</td></tr>
+        <tr><td>(e) <b>under</b></td><td><b>Preposition</b></td><td>shows place before a noun phrase ("under the desk")</td></tr>
+      </table>
+      <div class="callout warn"><span class="c-ico">⚠️</span>
+        <div><b>Chameleon trap:</b> (a) and (b) use the <b>same word</b> as noun and verb — never answer from the spelling, always ask
+        <i>"what job is it doing in THIS sentence?"</i> Also: a word after a linking verb describes the subject, so it is an
+        <b>adjective</b> ("The soup is <i>hot</i>"), while "-ly" words are <b>adverbs</b> only when they modify a verb/adjective/adverb.</div>
+      </div>
+      <p><b>Marking (10):</b> 2 per item — correct label (1) + correct reason/test (1). Wrong label = 0 even with a reason.</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q2 · Tenses <span style="color:var(--muted);font-size:.9rem">(15 marks — 3 each)</span></h2>
+    <p>Fill in the blank with the <b>correct tense</b> of the verb in brackets, <b>and name the tense</b>.</p>
+    <p><b>(a)</b> She ___ (study) for three hours when the lights went out.<br>
+       <b>(b)</b> By next June, I ___ (complete) my first semester.<br>
+       <b>(c)</b> Look! The children ___ (play) in the rain.<br>
+       <b>(d)</b> Water ___ (freeze) at 0 °C.<br>
+       <b>(e)</b> I ___ (not / see) him since Monday.</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answers + the signal that decides it</h4>
+      <table>
+        <tr><th>#</th><th>Answer</th><th>Tense</th><th>Signal → rule</th></tr>
+        <tr><td>(a)</td><td><b>had been studying</b></td><td>Past perfect continuous</td><td>duration <i>before</i> another past event → <code>had been + -ing</code></td></tr>
+        <tr><td>(b)</td><td><b>will have completed</b></td><td>Future perfect</td><td>"by + future deadline" → <code>will have + V3</code></td></tr>
+        <tr><td>(c)</td><td><b>are playing</b></td><td>Present continuous</td><td>"Look!" = happening now → <code>am/is/are + -ing</code></td></tr>
+        <tr><td>(d)</td><td><b>freezes</b></td><td>Present simple</td><td>general truth / scientific fact → V5 (+s for he/she/it)</td></tr>
+        <tr><td>(e)</td><td><b>have not seen</b></td><td>Present perfect</td><td>"since + starting point" → <code>has/have + V3</code></td></tr>
+      </table>
+      <p><b>Trap check:</b> ✗ <i>had studied</i> in (a) — the three hours of <b>duration</b> demand the continuous form ·
+         ✗ <i>will complete</i> in (b) — "by June" is a deadline, not a plan · ✗ <i>did not see</i> in (e) — "since Monday" reaches
+         the present, so past simple is wrong · ✗ <i>freezes</i> written as <i>freeze</i> (it → -s).</p>
+      <p><b>Marking (15):</b> 3 each — correct verb form (2) + correct tense name (1). A right form with a wrong name loses 1.</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q3 · Phrases and Clauses <span style="color:var(--muted);font-size:.9rem">(15 marks — (a) 10 · (b) 5)</span></h2>
+    <p><b>(a)</b> Say whether each underlined group is a <b>phrase</b> or a <b>clause</b>, and name its type (2 each).</p>
+    <p>&nbsp;&nbsp;&nbsp;1. The chair <u>in the corner of the room</u> is broken.<br>
+       &nbsp;&nbsp;&nbsp;2. We missed the bus <u>because the bus was late</u>.<br>
+       &nbsp;&nbsp;&nbsp;3. <u>The girl with the red scarf</u> is my cousin.<br>
+       &nbsp;&nbsp;&nbsp;4. The neighbour <u>who lives next door</u> helped us.<br>
+       &nbsp;&nbsp;&nbsp;5. She finished the test <u>very quickly</u>.</p>
+    <p><b>(b)</b> Fix each error and name it (2.5 each).</p>
+    <p>&nbsp;&nbsp;&nbsp;1. "Although he was tired."<br>
+       &nbsp;&nbsp;&nbsp;2. "The exam was difficult, I passed it."</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer (a) — the 2-step test</h4>
+      <table>
+        <tr><th>#</th><th>Group</th><th>Phrase or clause?</th><th>Type</th></tr>
+        <tr><td>1</td><td>in the corner of the room</td><td><b>Phrase</b></td><td>Prepositional phrase (head = <i>in</i>) — no subject + verb</td></tr>
+        <tr><td>2</td><td>because the bus was late</td><td><b>Clause</b></td><td><b>Dependent (adverbial) clause</b> — marker <i>because</i>, subject + verb</td></tr>
+        <tr><td>3</td><td>The girl with the red scarf</td><td><b>Phrase</b></td><td>Noun phrase (head = <i>girl</i>) — the prepositional phrase sits inside it</td></tr>
+        <tr><td>4</td><td>who lives next door</td><td><b>Clause</b></td><td><b>Dependent (relative / adjective) clause</b> — <i>who</i> + verb <i>lives</i>, describes the neighbour</td></tr>
+        <tr><td>5</td><td>very quickly</td><td><b>Phrase</b></td><td>Adverb phrase (head = <i>quickly</i>, intensified by <i>very</i>)</td></tr>
+      </table>
+      <h4>Model answer (b) — name the error, then fix it</h4>
+      <table>
+        <tr><th>#</th><th>Error</th><th>Fix (any one legal method)</th></tr>
+        <tr><td>1</td><td><b>Fragment</b> — "Although…" makes it a dependent clause with no main clause</td><td>"Although he was tired, <b>he finished the report</b>." — attach an independent clause</td></tr>
+        <tr><td>2</td><td><b>Comma splice</b> — two independent clauses joined by one comma</td><td>"The exam was difficult<b>, but</b> I passed it." / "…difficult<b>;</b> I passed it." / "…difficult<b>. I</b> passed it."</td></tr>
+      </table>
+      <p><b>Rule recap:</b> <b>phrase</b> = no subject+verb pair · <b>clause</b> = subject + verb · <b>independent</b> = complete
+         thought · <b>dependent</b> = starts with a marker (although/because/who) and needs a partner. <b>Dependent first → comma;
+         independent first → no comma.</b></p>
+      <p><b>Marking (15):</b> (a) 2 each — label (1) + type (1) · (b) 2.5 each — error named (1) + correct fix (1.5).</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q4 · Paragraph Writing <span style="color:var(--muted);font-size:.9rem">(20 marks — (a) 10 · (b) 10)</span></h2>
+    <p><b>(a)</b> Read the paragraph and answer the four tasks.</p>
+    <div class="callout exam"><span class="c-ico">paragraph</span>
+      <div>
+      <b>1</b> Online learning has changed the way students prepare for exams.
+      <b>2</b> To begin with, recorded lectures let students pause and replay difficult explanations at their own pace.
+      <b>3</b> Many students also enjoy watching cricket matches at the weekend.
+      <b>4</b> In addition, discussion forums connect learners who live far from campus, so questions are answered within hours.
+      <b>5</b> Finally, digital quizzes give instant feedback, which shows exactly which topics need revision.
+      <b>6</b> In short, online learning is not a replacement for the classroom but a flexible tool that makes exam preparation more personal.
+      </div>
+    </div>
+    <p><b>(i)</b> Which sentence is the <b>topic sentence</b>? <span style="color:var(--muted)">(2)</span><br>
+       <b>(ii)</b> Which sentences are the <b>three supporting details</b>? <span style="color:var(--muted)">(3)</span><br>
+       <b>(iii)</b> List the <b>transitions</b> used and say what each one does. <span style="color:var(--muted)">(3)</span><br>
+       <b>(iv)</b> Which sentence <b>breaks unity</b>, and why? <span style="color:var(--muted)">(2)</span></p>
+    <p><b>(b)</b> Write your own paragraph of <b>80–120 words</b> on <b>"Why time management matters for a first-year student"</b>.
+       It must contain a <b>topic sentence</b>, <b>three supporting details with transitions</b> and a <b>concluding sentence</b>.
+       <span style="color:var(--muted)">(10)</span></p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer (a)</h4>
+      <table>
+        <tr><th>Task</th><th>Answer</th><th>Why</th></tr>
+        <tr><td>(i) Topic sentence</td><td><b>Sentence 1</b></td><td>names the topic (online learning) + a claim (changed exam preparation); the most general sentence</td></tr>
+        <tr><td>(ii) Supporting details</td><td><b>Sentences 2, 4, 5</b></td><td>three <i>different</i> benefits: recorded lectures · forums · instant quizzes</td></tr>
+        <tr><td>(iii) Transitions</td><td><b>To begin with</b> (sequence) · <b>In addition</b> (adding) · <b>Finally</b> (sequence/closing the list) · <b>In short</b> (concluding)</td><td>each one signals the job of its sentence</td></tr>
+        <tr><td>(iv) Unity break</td><td><b>Sentence 3</b> — cricket matches</td><td>it is about a hobby, not online learning → breaks <b>unity</b>; delete it</td></tr>
+      </table>
+      <h4>Model answer (b)</h4>
+      <p><b>Time management matters because it decides whether a first-year student survives the jump from school to university.
+      To begin with, university work arrives in overlapping deadlines, so a weekly plan stops three assignments from landing on the
+      same night. In addition, a realistic timetable protects sleep and health, which are the first things students sacrifice when
+      they leave everything to the last minute. Finally, managing time builds the habit employers expect, since punctual,
+      well-planned workers are trusted with bigger tasks. In short, time management is not about rushing; it is the skill that keeps
+      a first year calm, healthy and in control.</b></p>
+      <p><b>≈ 105 words.</b> Topic = "decides whether a first-year student survives…" (topic + comment) · Details = deadlines,
+         health, employability (three different angles) · Transitions = <i>To begin with · In addition · Finally · In short</i> ·
+         Conclusion paraphrases "time management" instead of copying the topic sentence.</p>
+      <p><b>Marking (20):</b> (a) 10 — topic 2 · details 3 · transitions 3 · unity break + reason 2.
+         (b) 10 — topic sentence 2 · three relevant details 3 · transitions 2 · conclusion 2 · unity + grammar 1.</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q5 · Formal vs Informal Language <span style="color:var(--muted);font-size:.9rem">(10 marks — 2 each)</span></h2>
+    <p>Rewrite each <b>informal</b> line as <b>formal</b> written English (same meaning, correct register).</p>
+    <p><b>(a)</b> "gonna send the report later, ok?"<br>
+       <b>(b)</b> "boss said no way."<br>
+       <b>(c)</b> "u gotta fix this asap."<br>
+       <b>(d)</b> "thx a lot for the help!!"<br>
+       <b>(e)</b> "wanna meet tmrw?"</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answers</h4>
+      <table>
+        <tr><th>#</th><th>Informal</th><th>Formal rewrite</th></tr>
+        <tr><td>(a)</td><td>gonna send the report later, ok?</td><td><b>I will send the report later today. Please confirm that this is acceptable.</b></td></tr>
+        <tr><td>(b)</td><td>boss said no way.</td><td><b>The manager has declined the request.</b></td></tr>
+        <tr><td>(c)</td><td>u gotta fix this asap.</td><td><b>You are requested to resolve this matter as soon as possible.</b></td></tr>
+        <tr><td>(d)</td><td>thx a lot for the help!!</td><td><b>Thank you very much for your assistance.</b></td></tr>
+        <tr><td>(e)</td><td>wanna meet tmrw?</td><td><b>Would you like to meet tomorrow?</b></td></tr>
+      </table>
+      <div class="callout exam"><span class="c-ico">🔑</span>
+        <div><b>The 5 formal switches:</b> ① full forms (<i>I will</i>, not <i>I'll/gonna</i>) ② no text-speak (<i>u, thx, asap, tmrw</i>)
+        ③ titles + surname (<i>the manager</i>, <i>Mr Khan</i>, not <i>boss</i>) ④ polite modal requests (<i>Would you… / Please… /
+        You are requested to…</i>) ⑤ no exclamation marks or emojis. Formal = <b>complete sentences, precise words, no slang</b>.</div>
+      </div>
+      <p><b>Marking (10):</b> 2 each — slang/text-speak removed (1) + grammar and polite register correct (1).
+         Keeping the meaning is required: changing the request from "send it later" to "I have sent it" = 0.</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q6 · Formal Email Writing <span style="color:var(--muted);font-size:.9rem">(20 marks)</span></h2>
+    <p>You are a first-year BS-CYS student. Your current timetable ends at 5:00 p.m., after the last university bus to your area
+       has left. Write an email of <b>120–150 words</b> to the <b>Head of Department</b> requesting a change of section.
+       Include the reason, the section you are requesting, the supporting document and a <b>deadline</b>. Use the <b>5-step frame + BLUF</b>.</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer</h4>
+      <p><b>Subject:</b> Request for section change — BS-CYS 1A to 1B</p>
+      <p>Dear Dr Ahmed,<br><br>
+      I am writing to request a change of section from <b>BS-CYS 1A to 1B</b> for the current semester. My present timetable ends
+      at 5:00 p.m., after the last university bus to my area has departed, and private transport every day is not affordable.<br><br>
+      Section 1B covers the same courses with the same credit hours, so the change would not affect my registration or my degree
+      plan. I have attached my current timetable and the bus schedule as evidence.<br><br>
+      I would be grateful for your decision by <b>Friday, 13 November</b>, so that I can join the correct section from the following
+      week. Please let me know if any further document is required.<br><br>
+      Yours sincerely,<br>
+      Ayesha Malik<br>
+      BS-CYS 1A · Roll No. 2026-014</p>
+      <p><b>Why it scores 20:</b> specific subject line (topic + action) · correct greeting with title + surname · <b>BLUF</b> — the
+         request is in the first sentence · reason + evidence + attachment · exact section named · polite closing ask with a
+         <b>date</b> · formal sign-off + name + roll number · full forms, no contractions, no slang.</p>
+      <p><b>Marking (20):</b> subject line (3) · greeting (3) · purpose in the first 2 lines = BLUF (4) · details: reason + section +
+         attachment (4) · deadline + polite close (3) · sign-off + identity (2) · grammar, spelling, register (1).</p>
+      <div class="callout warn"><span class="c-ico">⚠️</span>
+        <div><b>Instant mark-losers:</b> "Hi Sir" opener · "I wanna change my section plz" · no subject line · no deadline ·
+         "Thanks!" as the sign-off · forgetting the attachment you promised. Check the recipient field before sending — really.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Q7 · Cross-Cultural Scenario — Applying Hofstede <span style="color:var(--muted);font-size:.9rem">(10 marks — 4 · 2 · 2 · 2)</span></h2>
+    <div class="callout exam"><span class="c-ico">scenario</span>
+      <div>You join an <b>international online project team led from Germany</b>. The German team lead writes blunt feedback in the
+      group chat: <b>"This paragraph is unclear. Rewrite it and send it by 18:00."</b> He also asks every member to post a
+      <b>weekly log of their individual contribution</b>. Two Pakistani teammates stop posting; one messages you privately:
+      <b>"He is insulting us in front of everyone — have some respect."</b> Deadlines are missed because nobody wants to be the
+      first to answer.</div>
+    </div>
+    <p><b>(a)</b> Identify <b>two Hofstede dimensions</b> at work and explain each with evidence from the scenario. <span style="color:var(--muted)">(4)</span><br>
+       <b>(b)</b> On Hofstede's <b>onion</b>, are "blunt written feedback" and "individual contribution logs" <b>practices</b> or
+       <b>values</b>? Justify. <span style="color:var(--muted)">(2)</span><br>
+       <b>(c)</b> Give <b>two CQ-based adaptations</b> the team could agree on. <span style="color:var(--muted)">(2)</span><br>
+       <b>(d)</b> Which of the <b>7 PK-vs-global workplace conflicts</b> is closest to this episode, and why? <span style="color:var(--muted)">(2)</span></p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer</h4>
+      <p><b>(a) Two dimensions:</b></p>
+      <table>
+        <tr><th>Dimension</th><th>What the scenario shows</th></tr>
+        <tr><td><b>Power distance</b><br><span style="color:var(--muted)">Pakistan 55 — relatively high</span></td>
+            <td>The lead writes directly to juniors with no softening, and the team reads a senior's correction as <b>public
+            humiliation</b>. They expect indirect, private feedback and deference to authority; the German lead expects flat,
+            equal, task-focused exchange.</td></tr>
+        <tr><td><b>Individualism vs collectivism</b><br><span style="color:var(--muted)">Pakistan 14 — collectivist</span></td>
+            <td>The lead asks for <b>individual</b> contribution logs (personal accountability and credit). The team expects
+            <b>shared</b> credit and group harmony, so public logs feel like betraying the group; silence protects everyone's face.</td></tr>
+      </table>
+      <p><b>(b) Both are practices.</b> They are visible, everyday behaviours (communication style, reporting format) — the outer
+         layers of the onion. They express deeper <b>values</b>: directness/transparency and individual accountability (Germany)
+         versus harmony, face and group loyalty (Pakistan). <b>Practices change fast; values change slowly</b> — which is why you
+         adapt the practice (how feedback is given) rather than demand that someone's values change.</p>
+      <p><b>(c) Two CQ adaptations (CQ Strategy + Action):</b><br>
+         ① <b>Feedback protocol:</b> corrections go privately first, then a short written summary in the group; phrase it as
+         "needs an example" rather than "unclear".<br>
+         ② <b>Working agreement:</b> agree response times in writing, credit the team publicly but log contributions privately,
+         and confirm deadlines across time zones ("18:00 CET = 21:00 PKT").</p>
+      <p><b>(d) Conflict #3 — saying "no" and indirect feedback</b> (with a touch of #1, hierarchy and silence). The silence is a
+         <b>face-protecting "no"</b>, not agreement — exactly the <i>InshaAllah / dekhte hain</i> pattern in written form. Fix: confirm
+         commitments in writing, ask juniors privately, and separate the work from the person.</p>
+      <p><b>Marking (10):</b> (a) 2 per dimension — named (1) + evidence from the scenario (1) · (b) 2 — correct layer (1) +
+         practice-vs-value reasoning (1) · (c) 2 — one mark per usable adaptation · (d) 2 — correct conflict (1) + why (1).</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>✅ After Paper 2</h2>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>Q1 lost marks?</b> → PoS cheat sheet in <b>FE Revise</b> (chameleon words: always ask what job the word does).<br>
+      <b>Q2?</b> → the 3 × 4 tense grid — say the name, then build the formula from it.<br>
+      <b>Q3?</b> → Clauses &amp; Phrases cards (subject + verb? head word?) — and the 5 legal ways to join sentences.<br>
+      <b>Q4?</b> → <b>EL170 → Paragraphs tab</b>: topic sentence = topic + comment; three different details; paraphrase the conclusion.<br>
+      <b>Q5–Q6?</b> → Formal email card: registers table, 5-step frame + BLUF, you-attitude.<br>
+      <b>Q7?</b> → Iceberg/Onion + 6 dimensions + CQ: pause → hypothesise → adapt → confirm.</div>
+    </div>
+    <p><b>Related:</b> <a href="#" onclick="document.querySelector('[data-tab=fe-rev]').click();return false;" style="color:var(--cyan)">FE Revise →</a> ·
+       <a href="#" onclick="document.querySelector('[data-tab=fe-mock]').click();return false;" style="color:var(--cyan)">FE Mock Test →</a> ·
+       <a href="#" onclick="document.querySelector('[data-tab=fe-paper]').click();return false;" style="color:var(--cyan)">FE Sample Paper 1 →</a> ·
+       <a href="el170.html" style="color:var(--cyan)">EL170 notes (Paragraphs tab) →</a> ·
+       <a href="quiz-el170.html" style="color:var(--cyan)">FE Quiz (20 MCQs) →</a></p>
+  </div>
+
+</section>
+
 <!-- ======================= DS ZERO-TO-HERO ======================= -->
 <section class="tab-panel" id="ds-rev">
 
@@ -1450,8 +1759,468 @@
 
 </section>
 
+<!-- ======================= PF REVISE ======================= -->
+<section class="tab-panel" id="pf-rev">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⏱️ The 45-Minute PF Mids Plan (Weeks 1–6)</h2>
+    <div class="paper-head">
+      <span><b>Language:</b> C++</span><span><b>Coverage:</b> Weeks 1–6</span>
+      <span><b>Paper:</b> 40 marks · 60 min</span><span>Conceptual + trace + write</span>
+    </div>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>0–10 min:</b> read the six cheat cards (logic → data → decisions → loops → functions → scope/recursion).<br>
+      <b>10–25 min:</b> hand-trace every code snippet — write the value of each variable on paper.<br>
+      <b>25–40 min:</b> attempt the <b>PF Conceptual Paper</b> tab without peeking.<br>
+      <b>40–45 min:</b> re-read the trap table at the bottom; check semicolons, braces, and return paths.</div>
+    </div>
+    <p><b>What the mids tests:</b> can you <b>read</b> code, <b>trace</b> it, and <b>explain why</b> it behaves that way —
+       not just memorise syntax.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Weeks 1–2 · Logic, Data &amp; Expressions</h2>
+    <div class="pipeline">
+      <span class="pipe-step">Source .cpp</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">Preprocess</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">Compile</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">Link</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">Executable</span>
+    </div>
+    <p><b>Algorithm</b> = finite, ordered, unambiguous steps. <b>IPO</b> = Input → Process → Output.
+       The CPU executes <b>machine instructions</b>, never the C++ text directly.</p>
+    <table>
+      <tr><th>Type</th><th>Stores</th><th>Example</th></tr>
+      <tr><td><code>int</code></td><td>Whole numbers</td><td><code>0, 3, -15</code></td></tr>
+      <tr><td><code>float / double</code></td><td>Real numbers (double = more precision)</td><td><code>3.14, 0.75</code></td></tr>
+      <tr><td><code>bool</code></td><td>Logical state</td><td><code>true / false</code></td></tr>
+      <tr><td><code>string</code></td><td>Text (needs <code>&lt;string&gt;</code>)</td><td><code>"admin01"</code></td></tr>
+    </table>
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>Integer division trap:</b> <code>7 / 2</code> gives <b>3</b>, not 3.5. Make at least one operand
+      <code>double</code> → <code>7.0 / 2</code> gives <b>3.5</b>. Precedence: <code>()</code> &gt;
+      <code>* / %</code> &gt; <code>+ -</code>; <code>%</code> is remainder only for integers.</div>
+    </div>
+    <table>
+      <tr><th>Beginner bug</th><th>What happens</th></tr>
+      <tr><td><code>=</code> instead of <code>==</code></td><td>Assignment inside a condition → almost always true</td></tr>
+      <tr><td>Uninitialized variable</td><td>Garbage value — always initialize</td></tr>
+      <tr><td>Missing <code>;</code> / mismatched <code>{ }</code></td><td>Compile error — fix the first reported line</td></tr>
+      <tr><td><code>cin &gt;&gt;</code> vs <code>cout &lt;&lt;</code></td><td>Arrows point toward the variable / away from it</td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Week 3 · Decisions &amp; Logic</h2>
+    <div class="code-block"><span class="kw">if</span> (score &gt;= <span class="num">90</span>)      cout &lt;&lt; <span class="str">"A"</span>;
+<span class="kw">else if</span> (score &gt;= <span class="num">80</span>) cout &lt;&lt; <span class="str">"B"</span>;   <span class="cm">// first true wins</span>
+<span class="kw">else</span>                  cout &lt;&lt; <span class="str">"F"</span>;
+
+<span class="kw">switch</span> (choice) {
+    <span class="kw">case</span> <span class="num">1</span>: cout &lt;&lt; <span class="str">"Start"</span>; <span class="kw">break</span>;   <span class="cm">// break stops fall-through</span>
+    <span class="kw">default</span>: cout &lt;&lt; <span class="str">"Invalid"</span>;
+}</div>
+    <table>
+      <tr><th>Idea</th><th>Rule / trap</th></tr>
+      <tr><td><b>if / else</b></td><td>Exactly one branch runs; no automatic else</td></tr>
+      <tr><td><b>else-if ladder</b></td><td>Top-down, <b>first true wins</b> → put strictest/highest first</td></tr>
+      <tr><td><b>Dangling else</b></td><td>Binds to the <b>nearest unmatched if</b> — use braces</td></tr>
+      <tr><td><b><code>&amp;&amp;</code> / <code>||</code> / <code>!</code></b></td><td>AND both true · OR at least one · NOT flips; short-circuit may skip the right side</td></tr>
+      <tr><td><b>Range test</b></td><td><code>x &gt;= 10 &amp;&amp; x &lt;= 90</code> — chained <code>10 &lt;= x &lt;= 90</code> is wrong</td></tr>
+      <tr><td><b>switch</b></td><td>Exact values only; missing <code>break</code> falls through; <code>default</code> handles no match</td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Week 4 · Loops — Check, Do, Change</h2>
+    <table>
+      <tr><th>Loop</th><th>Check</th><th>Minimum runs</th><th>Use when</th></tr>
+      <tr><td><code>while</code></td><td>Before body (pre-test)</td><td><b>0</b></td><td>Only a condition (validation, unknown count)</td></tr>
+      <tr><td><code>do-while</code></td><td>After body (post-test)</td><td><b>1</b></td><td>Menu/prompt must appear first — ends with <code>while(...);</code></td></tr>
+      <tr><td><code>for</code></td><td>Before body</td><td><b>0</b></td><td>Count is known: <code>for (i=1; i&lt;=n; i++)</code></td></tr>
+      <tr><td><b>Sentinel</b></td><td>Special stop value (e.g. <code>-1</code>)</td><td>0</td><td>Read before loop, process while ≠ sentinel, read again inside</td></tr>
+      <tr><td><b>Nested</b></td><td>Outer × inner</td><td>—</td><td>Rows/columns; total iterations = rows × columns</td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Two classic bugs:</b> missing update (<code>i++</code>) → <b>infinite loop</b> ·
+      wrong boundary (<code>i &lt; 5</code> vs <code>i &lt;= 5</code>) → <b>off-by-one</b>.
+      Trace prints 1–5: values 1,2,3,4,5 then <code>i=6</code> fails the condition.</div>
+    </div>
+    <p><b>Sentinel trace:</b> inputs <code>5, 8, 2, -1</code> → sum 5 → 13 → 15 → stop. The sentinel is a
+       <b>control value, not data</b> — never add it to the total.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Week 5 · Functions — One Task, One Name</h2>
+    <div class="code-block"><span class="kw">int</span> <span class="fn">square</span>(<span class="kw">int</span> n);        <span class="cm">// prototype — announces</span>
+
+<span class="kw">int</span> <span class="fn">main</span>() {
+    cout &lt;&lt; <span class="fn">square</span>(<span class="num">5</span>);      <span class="cm">// call — executes</span>
+    <span class="kw">return</span> <span class="num">0</span>;
+}
+
+<span class="kw">int</span> <span class="fn">square</span>(<span class="kw">int</span> n) {        <span class="cm">// definition — the body</span>
+    <span class="kw">return</span> n * n;            <span class="cm">// sends 25 back and ends</span>
+}</div>
+    <table>
+      <tr><th>Concept</th><th>Must-know sentence</th></tr>
+      <tr><td><b>Function</b></td><td>Named reusable block — runs <b>only when called</b></td></tr>
+      <tr><td><b>Argument vs parameter</b></td><td>Argument = value in the call · parameter = receiving variable in the header</td></tr>
+      <tr><td><b>Matching</b></td><td>By <b>position</b>; every parameter needs a <b>type</b></td></tr>
+      <tr><td><b>Pass-by-value</b></td><td>Copies the argument → changing the parameter does <b>not</b> change the caller</td></tr>
+      <tr><td><b><code>void</code></b></td><td>Performs an action, returns nothing</td></tr>
+      <tr><td><b><code>return</code></b></td><td>Sends a value back and <b>immediately ends</b> the function</td></tr>
+    </table>
+    <p><b>Factorial (iterative):</b> <code>product = 1; for (i=1; i&lt;=n; i++) product *= i;</code> →
+       <code>5! = 120</code>, and <code>0! = 1</code>.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Week 6 · Scope, References &amp; Recursion</h2>
+    <table>
+      <tr><th>Type</th><th>Visible where</th><th>Lifetime</th></tr>
+      <tr><td><b>Local</b></td><td>Only its function/block</td><td>Until the block ends</td></tr>
+      <tr><td><b>Global</b></td><td>Many/all functions</td><td>Whole program</td></tr>
+      <tr><td><b>Static local</b></td><td>Only its function</td><td>Whole program — keeps value between calls</td></tr>
+    </table>
+    <div class="code-block"><span class="kw">void</span> <span class="fn">add1</span>(<span class="kw">int</span> &amp;x) { x++; }       <span class="cm">// reference: caller's variable changes</span>
+
+<span class="kw">void</span> <span class="fn">visit</span>() {
+    <span class="kw">static int</span> count = <span class="num">0</span>;         <span class="cm">// initialized once</span>
+    count++;                        <span class="cm">// 1, then 2, then 3</span>
+    cout &lt;&lt; count;
+}
+
+<span class="kw">long long</span> <span class="fn">factorial</span>(<span class="kw">int</span> n) {
+    <span class="kw">if</span> (n == <span class="num">0</span>) <span class="kw">return</span> <span class="num">1</span>;        <span class="cm">// base case</span>
+    <span class="kw">return</span> n * <span class="fn">factorial</span>(n - <span class="num">1</span>);  <span class="cm">// recursive case</span>
+}</div>
+    <ul class="checklist">
+      <li><b>Defaults</b> fill from the <b>right</b> — once one has a default, all to its right need one.</li>
+      <li><b>Overloading</b> = same name, different parameter lists — return type alone is <b>invalid</b>.</li>
+      <li><b><code>inline</code></b> is a <b>request</b>; the compiler may ignore it.</li>
+      <li><b><code>exit()</code></b> ends the whole program; <code>return</code> ends only the current function.</li>
+      <li><b>Recursion</b> needs a reachable <b>base case</b> + a <b>smaller</b> recursive call; no base → stack overflow.</li>
+    </ul>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Rapid Recall — tap to test yourself</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Does a function run when defined?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>No</b> — only when called. Execution begins at <code>main()</code>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Pass-by-value — does the caller change?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>No.</b> The parameter is a copy; the original variable stays the same.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Static local — scope and lifetime?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Scope <b>local</b> · lifetime <b>whole program</b>; keeps its value between calls.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Can return type alone overload a function?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>No</b> — parameter lists must differ; the compiler cannot choose by result type.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p><code>exit()</code> vs <code>return</code>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><code>exit()</code> terminates the <b>program</b>; <code>return</code> ends only the <b>current function</b>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>What happens with no base case?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Calls never stop → <b>infinite recursion → stack overflow</b>.</p></div>
+      </div></div>
+    </div>
+    <div class="callout exam" style="margin-top:14px;"><span class="c-ico">❓</span>
+      <div><b>Trace checklist:</b> write each variable · update it after every statement · follow the condition twice
+      (true and false) · for functions, copy arguments into parameters · for recursion, draw the stack down and back up.</div>
+    </div>
+    <p><b>Full notes:</b> <a href="cs111.html" style="color:var(--cyan)">CS111 — Weeks 1–6 with interactive demos →</a>
+       · <b>Ready?</b> open the <b>PF · Conceptual Paper</b> tab and attempt it on paper.</p>
+  </div>
+
+</section>
+
+<!-- ======================= PF PAPER ======================= -->
+<section class="tab-panel" id="pf-paper">
+  <div class="note-card">
+    <h2><span class="bar"></span>📝 CS111 — Mids Conceptual Sample Paper</h2>
+    <div class="paper-head">
+      <span><b>Course:</b> CS111 Programming Fundamentals</span><span><b>Time:</b> 60 minutes</span>
+      <span><b>Total:</b> 40 marks</span><span><b>Questions:</b> 11 · answer ALL</span>
+      <span><b>Coverage:</b> Weeks 1–6</span>
+    </div>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Instructions:</b> answer in your own words; for trace questions show the value of <b>every</b> variable
+      at each step. Attempt each question <b>on paper first</b>, then press <b>Reveal model answer</b> and compare
+      line by line. Marks are shown per question.</div>
+    </div>
+    <p><b>Marking philosophy:</b> a correct final answer without reasoning earns partial credit only.
+       The model answers show the <b>explanation</b> the examiner is looking for.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Section A · Short Conceptual Answers <span style="color:var(--muted);font-size:.9rem">(10 marks — 2 each)</span></h2>
+
+    <h3>Q1 · Function parts <span style="color:var(--muted);font-size:.85rem">(2)</span></h3>
+    <p>Define a <b>function</b>. Explain why defining a function does <b>not</b> execute it, and name the three
+       forms involved in using one.</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer</h4>
+      <p>A function is a <b>named, reusable block of statements</b> that performs one task. It runs only when it is
+         <b>called</b>; a definition merely tells the compiler what the body is. The three forms are the
+         <b>prototype</b> (announcement), the <b>call</b> (execution), and the <b>definition</b> (the actual body).</p>
+    </div>
+
+    <h3>Q2 · Argument, parameter &amp; pass-by-value <span style="color:var(--muted);font-size:.85rem">(2)</span></h3>
+    <p>Differentiate an <b>argument</b> from a <b>parameter</b>. What exactly does pass-by-value copy, and what
+       happens to the caller's variable if the parameter is changed?</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer</h4>
+      <p>An <b>argument</b> is the value supplied in the function call; a <b>parameter</b> is the receiving variable
+         in the function header. Arguments are matched to parameters by <b>position</b>. Pass-by-value copies the
+         <b>argument's value</b> into the parameter, so changing the parameter changes only the copy — the caller's
+         original variable is <b>unchanged</b>.</p>
+    </div>
+
+    <h3>Q3 · Scope vs lifetime <span style="color:var(--muted);font-size:.85rem">(2)</span></h3>
+    <p>State the difference between <b>scope</b> and <b>lifetime</b>. A <code>static int count = 0;</code> is declared
+       inside <code>visit()</code>. What are its scope and lifetime, and what does three calls print?</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer</h4>
+      <p><b>Scope</b> = where the name is visible/usable. <b>Lifetime</b> = how long its storage exists. A
+         <code>static</code> local has <b>local scope</b> (visible only inside <code>visit()</code>) but
+         <b>program lifetime</b>; it is initialized once and keeps its value, so three calls print
+         <b>1, 2, 3</b>.</p>
+    </div>
+
+    <h3>Q4 · Overloading rules <span style="color:var(--muted);font-size:.85rem">(2)</span></h3>
+    <p>Why is <code>int f(); double f();</code> <b>not</b> valid overloading? Give one valid overload pair and say how
+       the compiler chooses between them.</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer</h4>
+      <p>Overloading requires <b>different parameter lists</b>. The call does not state a return type, so the compiler
+         cannot choose between two functions that differ only by return type — the second declaration is a
+         redeclaration error. Valid: <code>int add(int a, int b);</code> and
+         <code>double add(double a, double b);</code>. The compiler selects the overload from the
+         <b>number and types of the arguments</b>.</p>
+    </div>
+
+    <h3>Q5 · <code>inline</code>, <code>return</code> and <code>exit()</code> <span style="color:var(--muted);font-size:.85rem">(2)</span></h3>
+    <p>Distinguish <code>inline</code>, <code>return</code> and <code>exit()</code>. Which one terminates the entire
+       program, and which one is only a request to the compiler?</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer</h4>
+      <p><code>inline</code> is a <b>request</b> to expand a small function at the call site — the compiler may ignore
+         it. <code>return</code> ends the <b>current function</b> and returns control to its caller. <code>exit()</code>
+         (from <code>&lt;cstdlib&gt;</code>) terminates the <b>entire program</b> immediately. So: program-wide =
+         <b><code>exit()</code></b>; request only = <b><code>inline</code></b>.</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Section B · Predict the Output &amp; Trace <span style="color:var(--muted);font-size:.9rem">(20 marks — 5 each)</span></h2>
+
+    <h3>Q6 · Pass-by-value <span style="color:var(--muted);font-size:.85rem">(5)</span></h3>
+    <p>What is the exact output? Justify each value.</p>
+    <div class="code-block"><span class="kw">void</span> <span class="fn">change</span>(<span class="kw">int</span> n) { n = <span class="num">100</span>; }
+<span class="kw">void</span> <span class="fn">test</span>(<span class="kw">int</span> a)   { a = a + <span class="num">10</span>; }
+
+<span class="kw">int</span> <span class="fn">main</span>() {
+    <span class="kw">int</span> x = <span class="num">5</span>, y = <span class="num">2</span>;
+    <span class="fn">change</span>(x);
+    <span class="fn">test</span>(y);
+    cout &lt;&lt; x &lt;&lt; <span class="str">" "</span> &lt;&lt; y;
+}</div>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer</h4>
+      <p><b>Output: <code>5 2</code></b></p>
+      <p><code>change(x)</code> copies <code>x</code> into <code>n</code>; setting <code>n = 100</code> changes only the
+         copy. <code>test(y)</code> copies <code>y</code> into <code>a</code>; <code>a = 12</code> is also local.
+         Neither original changes, so <code>x</code> is still 5 and <code>y</code> is still 2.</p>
+      <p><b>Marks:</b> correct output (2) · explains the copy for <code>change</code> (1.5) · explains the copy for
+         <code>test</code> (1.5).</p>
+    </div>
+
+    <h3>Q7 · Defaults + static <span style="color:var(--muted);font-size:.85rem">(5)</span></h3>
+    <p>Give the exact output of <code>main()</code>.</p>
+    <div class="code-block"><span class="kw">void</span> <span class="fn">greet</span>(<span class="kw">string</span> name, <span class="kw">string</span> title = <span class="str">"Student"</span>) {
+    cout &lt;&lt; title &lt;&lt; <span class="str">" "</span> &lt;&lt; name &lt;&lt; endl;
+}
+
+<span class="kw">void</span> <span class="fn">visit</span>() {
+    <span class="kw">static int</span> count = <span class="num">0</span>;
+    count++;
+    cout &lt;&lt; count &lt;&lt; <span class="str">" "</span>;
+}
+
+<span class="kw">int</span> <span class="fn">main</span>() {
+    <span class="fn">greet</span>(<span class="str">"Ali"</span>);
+    <span class="fn">greet</span>(<span class="str">"Sara"</span>, <span class="str">"Ms."</span>);
+    <span class="fn">visit</span>(); <span class="fn">visit</span>(); <span class="fn">visit</span>();
+}</div>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer</h4>
+      <p><b>Output:</b></p>
+      <div class="code-block" style="margin-top:6px;">Student Ali
+Ms. Sara
+1 2 3</div>
+      <p><b>Why:</b> <code>greet("Ali")</code> omits <code>title</code>, so the default <code>"Student"</code> is used.
+         <code>greet("Sara","Ms.")</code> supplies the value, so the default is ignored. Inside <code>visit()</code>,
+         <code>static count</code> is initialized <b>once</b> and survives between calls: 1 → 2 → 3.</p>
+      <p><b>Marks:</b> greetings (2) · static sequence (2) · correct explanation of “initialized once” (1).</p>
+    </div>
+
+    <h3>Q8 · References and <code>swap</code> <span style="color:var(--muted);font-size:.85rem">(5)</span></h3>
+    <p>(a) Trace the code and give the output. (b) What would the output be if the two <code>&amp;</code> symbols were
+       removed?</p>
+    <div class="code-block"><span class="kw">void</span> <span class="fn">swap</span>(<span class="kw">int</span> &amp;a, <span class="kw">int</span> &amp;b) {
+    <span class="kw">int</span> temp = a;
+    a = b;
+    b = temp;
+}
+
+<span class="kw">int</span> <span class="fn">main</span>() {
+    <span class="kw">int</span> x = <span class="num">4</span>, y = <span class="num">9</span>;
+    <span class="fn">swap</span>(x, y);
+    cout &lt;&lt; x &lt;&lt; <span class="str">" "</span> &lt;&lt; y;
+}</div>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer</h4>
+      <p><b>(a) Output: <code>9 4</code></b></p>
+      <table>
+        <tr><th>Step</th><th>Action</th><th>x</th><th>y</th><th>temp</th></tr>
+        <tr><td>start</td><td>—</td><td>4</td><td>9</td><td>—</td></tr>
+        <tr><td>1</td><td><code>temp = a</code></td><td>4</td><td>9</td><td>4</td></tr>
+        <tr><td>2</td><td><code>a = b</code></td><td><b>9</b></td><td>9</td><td>4</td></tr>
+        <tr><td>3</td><td><code>b = temp</code></td><td>9</td><td><b>4</b></td><td>4</td></tr>
+      </table>
+      <p><b>(b)</b> Without <code>&amp;</code>, <code>a</code> and <code>b</code> are copies. The function swaps only the
+         copies, so the output is <b><code>4 9</code></b> — unchanged.</p>
+      <p><b>Marks:</b> correct output (2) · correct trace table (2) · explains alias / why <code>&amp;</code> matters (1).</p>
+    </div>
+
+    <h3>Q9 · Recursive factorial <span style="color:var(--muted);font-size:.85rem">(5)</span></h3>
+    <p>Trace <code>factorial(4)</code>. Show the calls <b>going down</b>, the base case, and the values
+       <b>coming back</b>. What would happen if the base case were removed?</p>
+    <div class="code-block"><span class="kw">long long</span> <span class="fn">factorial</span>(<span class="kw">int</span> n) {
+    <span class="kw">if</span> (n == <span class="num">0</span>) <span class="kw">return</span> <span class="num">1</span>;
+    <span class="kw">return</span> n * <span class="fn">factorial</span>(n - <span class="num">1</span>);
+}</div>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer</h4>
+      <p><b>Going down:</b> <code>factorial(4) → 4 × factorial(3) → 3 × factorial(2) → 2 × factorial(1) →
+         1 × factorial(0)</code>; <code>factorial(0)</code> hits the base case and returns <b>1</b>.</p>
+      <p><b>Coming back (LIFO):</b> <code>factorial(1)=1×1=1</code> → <code>factorial(2)=2×1=2</code> →
+         <code>factorial(3)=3×2=6</code> → <code>factorial(4)=4×6=<b>24</b></code>.</p>
+      <p><b>No base case:</b> <code>factorial(0)</code> would call <code>factorial(-1)</code>, then
+         <code>factorial(-2)</code>, …; the stack never unwinds → <b>infinite recursion / stack overflow</b>.</p>
+      <p><b>Marks:</b> correct descent (2) · correct unwind values (2) · base-case failure explained (1).</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Section C · Write &amp; Explain <span style="color:var(--muted);font-size:.9rem">(10 marks — 5 each)</span></h2>
+
+    <h3>Q10 · Menu program with prototypes <span style="color:var(--muted);font-size:.85rem">(5)</span></h3>
+    <p>Write a complete C++ program skeleton for a menu that offers <b>(1) square</b> and <b>(2) factorial</b>.
+       Use prototypes, a <code>showMenu()</code> function, a <code>getChoice()</code> function, and separate
+       <code>square(int)</code> / <code>factorial(int)</code> functions. <code>main()</code> should coordinate only.</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer</h4>
+      <div class="code-block" style="margin-top:6px;"><span class="kw">#include</span> &lt;iostream&gt;
+<span class="kw">using namespace</span> std;
+
+<span class="kw">void</span> <span class="fn">showMenu</span>();
+<span class="kw">int</span>  <span class="fn">getChoice</span>();
+<span class="kw">int</span>  <span class="fn">square</span>(<span class="kw">int</span> n);
+<span class="kw">int</span>  <span class="fn">factorial</span>(<span class="kw">int</span> n);
+
+<span class="kw">int</span> <span class="fn">main</span>() {
+    <span class="fn">showMenu</span>();
+    <span class="kw">int</span> choice = <span class="fn">getChoice</span>();
+    <span class="kw">int</span> n;
+    <span class="kw">if</span> (choice == <span class="num">1</span>) {
+        cin &gt;&gt; n;
+        cout &lt;&lt; <span class="fn">square</span>(n);
+    } <span class="kw">else if</span> (choice == <span class="num">2</span>) {
+        cin &gt;&gt; n;
+        cout &lt;&lt; <span class="fn">factorial</span>(n);
+    } <span class="kw">else</span> {
+        cout &lt;&lt; <span class="str">"Invalid choice"</span>;
+    }
+    <span class="kw">return</span> <span class="num">0</span>;
+}
+
+<span class="kw">void</span> <span class="fn">showMenu</span>() {
+    cout &lt;&lt; <span class="str">"1. Square\n2. Factorial\n"</span>;
+}
+
+<span class="kw">int</span> <span class="fn">getChoice</span>() {
+    <span class="kw">int</span> c;
+    cin &gt;&gt; c;
+    <span class="kw">return</span> c;
+}
+
+<span class="kw">int</span> <span class="fn">square</span>(<span class="kw">int</span> n) { <span class="kw">return</span> n * n; }
+
+<span class="kw">int</span> <span class="fn">factorial</span>(<span class="kw">int</span> n) {
+    <span class="kw">int</span> product = <span class="num">1</span>;
+    <span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">1</span>; i &lt;= n; i++) product *= i;
+    <span class="kw">return</span> product;
+}</div>
+      <p><b>Marks:</b> four prototypes (1) · <code>main</code> only coordinates (1) · both value-returning functions
+         correct (2) · input + invalid-choice handling (1).</p>
+    </div>
+
+    <h3>Q11 · Recursive sum + base-case reasoning <span style="color:var(--muted);font-size:.85rem">(5)</span></h3>
+    <p>Write a recursive function <code>int sumTo(int n)</code> that returns <code>1 + 2 + … + n</code>
+       (<code>sumTo(0) = 0</code>). Trace <code>sumTo(4)</code>. Explain in one sentence why the base case is essential.</p>
+    <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+    <div class="model-ans" hidden>
+      <h4>Model answer</h4>
+      <div class="code-block" style="margin-top:6px;"><span class="kw">int</span> <span class="fn">sumTo</span>(<span class="kw">int</span> n) {
+    <span class="kw">if</span> (n &lt;= <span class="num">0</span>) <span class="kw">return</span> <span class="num">0</span>;      <span class="cm">// base case</span>
+    <span class="kw">return</span> n + <span class="fn">sumTo</span>(n - <span class="num">1</span>);  <span class="cm">// smaller problem</span>
+}</div>
+      <p><b>Trace:</b> <code>sumTo(4) = 4 + sumTo(3) = 4 + (3 + sumTo(2)) = 4 + 3 + 2 + 1 + sumTo(0) = 4+3+2+1+0 =
+         <b>10</b></code>. Unwinding returns 0 → 1 → 3 → 6 → 10.</p>
+      <p><b>Why the base case is essential:</b> it is the only condition that stops the self-calls; without a
+         reachable base case, <code>n</code> would keep decreasing and the calls would never return, exhausting the
+         call stack (<b>stack overflow</b>).</p>
+      <p><b>Marks:</b> correct base case + recursive call (3) · correct trace/result 10 (1) · base-case reasoning (1).</p>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>✅ After the Paper — 60-Second Self-Check</h2>
+    <ul class="checklist">
+      <li>Did I write <b>why</b>, not just the final value, for every trace question?</li>
+      <li>Did I copy arguments into parameters when tracing a function?</li>
+      <li>Did I check every <code>return</code> path in the code I wrote?</li>
+      <li>Did I handle invalid menu input instead of assuming a valid choice?</li>
+      <li>Did I draw the recursion stack <b>down and back up</b>?</li>
+    </ul>
+    <p><b>Score guide:</b> 34–40 = mids-ready · 26–33 = revise the missed cards · below 26 = re-read the
+       <b>PF Revise</b> tab, then retry the paper tomorrow.</p>
+    <p><b>Go deeper:</b> <a href="cs111.html" style="color:var(--cyan)">CS111 full notes + interactive call-stack and recursion demos →</a></p>
+  </div>
+
+</section>
+
 <footer class="footer">
-  🎯 <b>MidZ</b> · FE (Revise · Mock · Paper) + DS (Zero-to-Hero · 2 Sample Papers · Rosen 7e verbatim) · <a href="index.html" style="color:inherit">Notes Hub →</a> · <a href="el170.html" style="color:inherit">EL170 →</a> · <a href="ma216.html" style="color:inherit">MA216 →</a> · Fall 2026
+  🎯 <b>MidZ</b> · FE (Revise · Mock · 2 Sample Papers) + DS (Zero-to-Hero · 2 Sample Papers · Rosen 7e verbatim) + PF (Weeks 1–6 Revise · Conceptual Paper) · <a href="index.html" style="color:inherit">Notes Hub →</a> · <a href="el170.html" style="color:inherit">EL170 →</a> · <a href="ma216.html" style="color:inherit">MA216 →</a> · <a href="cs111.html" style="color:inherit">CS111 →</a> · Fall 2026
 </footer>
 
 <script src="script.js"></script>
@@ -1522,7 +2291,7 @@
 
   function setSubject(sub) {
     picks.forEach(function (p) { p.classList.toggle('active', p.dataset.subject === sub); });
-    tabsBox.classList.remove('subj-fe', 'subj-ds');
+    tabsBox.classList.remove('subj-fe', 'subj-ds', 'subj-pf');
     tabsBox.classList.add('subj-' + sub);
     btns.forEach(function (b) { b.classList.remove('active'); });
     panels.forEach(function (p) { p.classList.remove('active'); });
@@ -1547,7 +2316,7 @@
 
   var savedSub = 'fe';
   try { savedSub = localStorage.getItem('cys-midz-subject') || 'fe'; } catch (e) {}
-  setSubject(savedSub === 'ds' ? 'ds' : 'fe');
+  setSubject(['fe', 'ds', 'pf'].indexOf(savedSub) !== -1 ? savedSub : 'fe');
 
   /* digits 1-9 must only hit VISIBLE tabs (shared script.js indexes all tabs) */
   document.addEventListener('keydown', function (e) {
