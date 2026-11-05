@@ -44,12 +44,10 @@
   .subject-pick:hover { transform: translateY(-3px); border-color: var(--cyan); }
   .subject-pick.active { border-color: var(--cyan); background: rgba(34,211,238,0.09);
                          box-shadow: 0 4px 18px rgba(34,211,238,0.14); }
-  .tabs.subj-fe .tab-btn[data-subject="ds"],
-  .tabs.subj-fe .tab-btn[data-subject="pf"],
-  .tabs.subj-ds .tab-btn[data-subject="fe"],
-  .tabs.subj-ds .tab-btn[data-subject="pf"],
-  .tabs.subj-pf .tab-btn[data-subject="fe"],
-  .tabs.subj-pf .tab-btn[data-subject="ds"] { display: none; }
+  .tabs.subj-fe .tab-btn:not([data-subject="fe"]),
+  .tabs.subj-ds .tab-btn:not([data-subject="ds"]),
+  .tabs.subj-pf .tab-btn:not([data-subject="pf"]),
+  .tabs.subj-cy .tab-btn:not([data-subject="cy"]) { display: none; }
   .book-img { display: block; max-width: 100%; border-radius: 10px;
               border: 1px solid var(--card-border); background: #fff; padding: 8px; margin: 10px 0 4px; }
   /* Wide tables scroll inside their card instead of stretching the page on phones */
@@ -65,6 +63,65 @@
   .hard-q { border-left: 3px solid rgba(244,114,182,.55); padding-left: 16px; }
   .hard-q + .hard-q { margin-top: 26px; }
   .note-card h2 { flex-wrap: wrap; }
+  /* ---------- ICYS VISUAL REVISION ---------- */
+  .cyber-art { border: 1px solid var(--card-border); border-radius: 16px; overflow: hidden;
+               margin: 4px 0 18px; background: #050a16; }
+  .cyber-art svg { display: block; width: 100%; height: auto; }
+  .cyber-diagram { background: #0a1226; border: 1px solid var(--card-border);
+                   border-radius: 16px; padding: 12px; margin: 14px 0 18px; overflow-x: auto; }
+  .cyber-diagram svg { display: block; width: 100%; min-width: 560px; height: auto; }
+  .cyber-diagram .dg-cap { text-align: center; color: #93a2c4; font-size: .82rem; padding: 6px 4px 2px; }
+  .cy-svg text { fill: #e2e8f0; font-family: inherit; }
+  .cy-svg .muted { fill: #93a2c4; }
+  .cy-svg .tiny { font-size: 10px; }
+  .cy-svg .lbl { font-size: 13px; font-weight: 700; }
+  .cy-svg .node { fill: rgba(34,211,238,.10); stroke: #22d3ee; stroke-width: 1.4; }
+  .cy-svg .node-pink { fill: rgba(244,114,182,.10); stroke: #f472b6; stroke-width: 1.4; }
+  .cy-svg .flow { stroke: #22d3ee; stroke-width: 2; fill: none; stroke-dasharray: 7 7;
+                  animation: cyDash 1.1s linear infinite; }
+  .cy-svg .flow-pink { stroke: #f472b6; }
+  .cy-svg .flow-green { stroke: #34d399; }
+  .cy-svg .ring { fill: none; stroke: #22d3ee; stroke-width: 1.2; opacity: .55; }
+  .cy-svg .ring-scan { fill: none; stroke: #a78bfa; stroke-width: 2.4; opacity: .8;
+                       animation: cyScan 4s ease-in-out infinite; }
+  .cy-node { transform-box: fill-box; transform-origin: center; animation: cyPulse 3s ease-in-out infinite; }
+  @keyframes cyDash { to { stroke-dashoffset: -28; } }
+  @keyframes cyPulse { 0%,100% { opacity: .78; } 50% { opacity: 1; } }
+  @keyframes cyScan { 0%,100% { opacity: .15; } 50% { opacity: .9; } }
+  .cy-week-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+  .cy-week { background: rgba(255,255,255,.025); border: 1px solid var(--card-border);
+             border-radius: 14px; padding: 14px 16px; }
+  .cy-week .wk { display: inline-block; font-size: .68rem; font-weight: 900; letter-spacing: .1em;
+                 color: #67e8f9; background: rgba(34,211,238,.12); border: 1px solid rgba(34,211,238,.3);
+                 border-radius: 999px; padding: 2px 8px; margin-bottom: 6px; }
+  .cy-week h4 { margin: 0 0 6px; font-size: .98rem; }
+  .cy-week p { margin: 0 0 6px; font-size: .88rem; color: var(--muted); }
+  .cy-week ul { margin: 6px 0 0 18px; font-size: .86rem; }
+  .cy-week li { margin-bottom: 4px; }
+  .cy-week .exam-line { display: block; margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--card-border);
+                        color: #67e8f9; font-size: .8rem; font-weight: 700; }
+  .chain-demo { border: 1px solid var(--card-border); border-radius: 14px; padding: 14px; margin: 12px 0 4px; }
+  .chain-track { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chain-btn { border: 1px solid var(--card-border); background: transparent; color: var(--muted);
+               border-radius: 999px; padding: 7px 12px; cursor: pointer; font: inherit; font-size: .82rem;
+               font-weight: 700; transition: .2s; }
+  .chain-btn:hover { border-color: var(--cyan); color: var(--text); }
+  .chain-btn.active { border-color: #f472b6; color: #fff; background: rgba(244,114,182,.16);
+                      box-shadow: 0 0 0 3px rgba(244,114,182,.08); }
+  .chain-info { margin-top: 12px; border-left: 3px solid var(--cyan); border-radius: 0 10px 10px 0;
+                background: rgba(34,211,238,.06); padding: 10px 14px; min-height: 70px; }
+  .chain-info b { color: #67e8f9; }
+  .chain-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .phish-mail { border: 1px solid var(--card-border); border-radius: 14px; overflow: hidden; margin: 12px 0; }
+  .phish-head { background: rgba(255,255,255,.04); padding: 10px 14px; font-size: .82rem; color: var(--muted);
+                border-bottom: 1px solid var(--card-border); }
+  .phish-head b { color: var(--text); }
+  .phish-body { padding: 14px; font-size: .9rem; }
+  .phish-body ul { margin: 8px 0 0 20px; }
+  .flag { color: #fda4af; font-weight: 800; }
+  @media (prefers-reduced-motion: reduce) {
+    .cy-svg .flow, .cy-node, .cy-svg .ring-scan { animation: none !important; }
+  }
 </style>
 <script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 </head>
@@ -100,15 +157,17 @@
 
 <header class="subject-hero">
   <span class="code-lg">🎯 MIDZ · MIDS ZONE</span>
-  <h1><span>Mid-Zerm Revision — FE · DS · PF</span></h1>
-  <p><b>One button, three mids papers.</b> Pick a <b>subject</b> below to focus —
+  <h1><span>Mid-Zerm Revision — FE · DS · PF · ICYS</span></h1>
+  <p><b>One button, four mids papers.</b> Pick a <b>subject</b> below to focus —
      <b>📘 EL170 · Functional English</b> (clauses · phrases · 12 tenses · PoS · paragraph writing · formal vs informal · cross-culture · formal email → mock test + 2 sample papers),
      <b>🧮 MA216 · Discrete Structures</b> (zero-to-hero logic: equivalences · De Morgan · circuits · converse/inverse · the confirmed Rules-of-Inference long question → sample papers), or
-     <b>💻 CS111 · Programming Fundamentals</b> (Weeks 1–6: logic · data types · decisions · loops · functions · scope, references &amp; recursion → rapid revision + a <b>conceptual</b> sample paper + a <b>10-program hard set</b> with model solutions).
+     <b>💻 CS111 · Programming Fundamentals</b> (Weeks 1–6: logic · data types · decisions · loops · functions · scope, references &amp; recursion → rapid revision + a <b>conceptual</b> sample paper + a <b>10-program hard set</b> with model solutions), or
+     <b>🛡️ CY104 · Intro to Cyber Security</b> (Weeks 1–6: CIA · AAA · threat/risk · social engineering · malware · OS hardening · network defence → animated visual notes + a <b>scenario-based</b> paper with model answers).
      Your subject choice is remembered; press <b>1</b>–<b>9</b> to jump between that subject's tabs.</p>
   <p class="hero-actions"><a class="btn primary" href="el170.html">📘 Full EL170 Notes</a>
      <a class="btn ghost" href="ma216.html">🧮 Full DS Notes</a>
      <a class="btn ghost" href="cs111.html">💻 Full PF Notes</a>
+     <a class="btn ghost" href="cy104.html">🛡️ Full ICYS Notes</a>
      <span class="hint">mock tests &amp; sample papers are inside this page ↓</span></p>
 </header>
 
@@ -125,6 +184,10 @@
     <span class="sp-top"><span class="sp-ico">💻</span><b>CS111 · Programming Fundamentals</b></span>
     <i>Weeks 1–6 Rapid Revise · Conceptual Paper · 10 HARD programs</i>
   </button>
+  <button class="subject-pick" data-subject="cy" type="button">
+    <span class="sp-top"><span class="sp-ico">🛡️</span><b>CY104 · Intro to Cyber Security</b></span>
+    <i>Weeks 1–6 Visual Revise · Scenario Paper · model answers</i>
+  </button>
 </div>
 
 <div class="tabs">
@@ -138,6 +201,8 @@
   <button class="tab-btn" data-tab="pf-rev" data-subject="pf"><span class="dot"></span> 💻 PF · Revise (Weeks 1–6)</button>
   <button class="tab-btn" data-tab="pf-paper" data-subject="pf"><span class="dot"></span> 📝 PF · Conceptual Paper</button>
   <button class="tab-btn" data-tab="pf-hard" data-subject="pf"><span class="dot"></span> 🔥 PF · Hard Programs</button>
+  <button class="tab-btn" data-tab="icys-rev" data-subject="cy"><span class="dot"></span> 🛡️ ICYS · Visual Revise</button>
+  <button class="tab-btn" data-tab="icys-paper" data-subject="cy"><span class="dot"></span> 📝 ICYS · Scenario Paper</button>
 </div>
 
 <!-- ======================= FE REVISE ======================= -->
@@ -2733,8 +2798,585 @@ int main() {
 
 </section>
 
+<!-- ======================= ICYS REVISE ======================= -->
+<section class="tab-panel" id="icys-rev">
+  <div class="note-card">
+    <h2><span class="bar"></span>🛡️ ICYS — Visual MidZ Sprint <span class="hard-tag" style="color:#67e8f9;border-color:rgba(34,211,238,.4);background:rgba(34,211,238,.1)">Weeks 1–6</span></h2>
+    <div class="paper-head">
+      <span><b>Course:</b> CY104 Intro to Cyber Security</span>
+      <span><b>Focus:</b> concepts → scenarios</span>
+      <span><b>Paper:</b> 40 marks · 60 min</span>
+      <span><b>Coverage:</b> Weeks 1–6</span>
+    </div>
+    <div class="cyber-art" aria-hidden="true">
+      <svg class="cy-svg" viewBox="0 0 1000 300" role="img">
+        <defs>
+          <linearGradient id="cyHeroBg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#050a16"/><stop offset=".55" stop-color="#07192e"/><stop offset="1" stop-color="#120a2a"/>
+          </linearGradient>
+          <radialGradient id="cyHeroGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#22d3ee" stop-opacity=".35"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="cyShieldFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#22d3ee" stop-opacity=".38"/><stop offset="1" stop-color="#a78bfa" stop-opacity=".16"/>
+          </linearGradient>
+        </defs>
+        <rect width="1000" height="300" fill="url(#cyHeroBg)"/>
+        <g stroke="#22d3ee" stroke-opacity=".12">
+          <path d="M0 50H1000M0 100H1000M0 150H1000M0 200H1000M0 250H1000"/>
+          <path d="M100 0V300M200 0V300M300 0V300M400 0V300M500 0V300M600 0V300M700 0V300M800 0V300M900 0V300"/>
+        </g>
+        <circle cx="500" cy="150" r="160" fill="url(#cyHeroGlow)"/>
+        <path class="flow flow-pink" d="M135 150 H390"/>
+        <path class="flow flow-green" d="M610 150 H865"/>
+        <circle class="cy-node" cx="105" cy="150" r="22" fill="rgba(244,114,182,.15)" stroke="#f472b6" stroke-width="2"/>
+        <text x="105" y="194" text-anchor="middle" font-size="11" font-weight="700" fill="#fda4af">THREAT</text>
+        <circle class="cy-node" cx="895" cy="150" r="22" fill="rgba(52,211,153,.15)" stroke="#34d399" stroke-width="2"/>
+        <text x="895" y="194" text-anchor="middle" font-size="11" font-weight="700" fill="#6ee7b7">DATA</text>
+        <g transform="translate(500 150)">
+          <path d="M0 -78 L78 -53 V0 C78 47 45 76 0 90 C-45 76 -78 47 -78 0 V-53 Z"
+                fill="url(#cyShieldFill)" stroke="#67e8f9" stroke-width="2.4"/>
+          <path d="M-32 6 L-8 30 L38 -24" fill="none" stroke="#e0f2fe" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <text x="500" y="268" text-anchor="middle" font-size="11" letter-spacing="3" fill="#93a2c4">PROTECT · DETECT · RESPOND · RECOVER</text>
+      </svg>
+    </div>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>How to use this tab:</b> read the diagram first, then the six weekly cards, then play the
+      <b>attack-chain breaker</b>. In the exam, every scenario answer follows the same 4-line skeleton:
+      <b>Asset → Threat → Vulnerability → Control (mapped to CIA/AAA)</b>.</div>
+    </div>
+    <div class="callout warn"><span class="c-ico">🎯</span>
+      <div><b>Conceptual priority:</b> the ICYS paper is 100% scenario-based. A memorised definition with no
+      application earns little; a short answer that names the failed property and a realistic control earns full marks.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 The 3 questions every case study asks</h2>
+    <div class="cyber-diagram">
+      <svg class="cy-svg" viewBox="0 0 720 330" role="img" aria-label="CIA triad">
+        <circle cx="250" cy="120" r="112" fill="rgba(34,211,238,.09)" stroke="#22d3ee" stroke-width="1.6"/>
+        <circle cx="470" cy="120" r="112" fill="rgba(167,139,250,.10)" stroke="#a78bfa" stroke-width="1.6"/>
+        <circle cx="360" cy="240" r="112" fill="rgba(244,114,182,.09)" stroke="#f472b6" stroke-width="1.6"/>
+        <text x="250" y="92" text-anchor="middle" class="lbl">CONFIDENTIALITY</text>
+        <text x="250" y="112" text-anchor="middle" class="muted tiny">only authorised eyes</text>
+        <text x="470" y="92" text-anchor="middle" class="lbl">INTEGRITY</text>
+        <text x="470" y="112" text-anchor="middle" class="muted tiny">accurate · unmodified</text>
+        <text x="360" y="276" text-anchor="middle" class="lbl">AVAILABILITY</text>
+        <text x="360" y="296" text-anchor="middle" class="muted tiny">reachable when needed</text>
+        <text x="360" y="158" text-anchor="middle" font-size="12" font-weight="900" fill="#67e8f9">CIA</text>
+      </svg>
+      <div class="dg-cap">CIA triad — in a scenario, say <b>which leg broke</b> and <b>what the business lost</b>, not just “security was compromised”.</div>
+    </div>
+    <div class="cyber-diagram">
+      <svg class="cy-svg" viewBox="0 0 720 190" role="img" aria-label="AAA flow">
+        <rect class="node" x="30" y="38" width="180" height="64" rx="12"/>
+        <text x="120" y="66" text-anchor="middle" class="lbl">AUTHENTICATE</text>
+        <text x="120" y="86" text-anchor="middle" class="muted tiny">Who are you?</text>
+        <rect class="node" x="270" y="38" width="180" height="64" rx="12"/>
+        <text x="360" y="66" text-anchor="middle" class="lbl">AUTHORISE</text>
+        <text x="360" y="86" text-anchor="middle" class="muted tiny">What may you do?</text>
+        <rect class="node" x="510" y="38" width="180" height="64" rx="12"/>
+        <text x="600" y="66" text-anchor="middle" class="lbl">ACCOUNT</text>
+        <text x="600" y="86" text-anchor="middle" class="muted tiny">What did you do?</text>
+        <path class="flow" d="M212 70 H266"/><path class="flow" d="M452 70 H506"/>
+        <text x="360" y="145" text-anchor="middle" class="muted tiny">Break any one link and the incident happens — most exam scenarios are an <tspan font-weight="700" fill="#fda4af">AAA failure</tspan>.</text>
+      </svg>
+      <div class="dg-cap">AAA — authentication proves identity, authorisation limits action, accounting makes actions attributable.</div>
+    </div>
+    <table>
+      <tr><th>Question</th><th>What to write</th><th>Typical trap</th></tr>
+      <tr><td><b>What broke?</b></td><td>Confidentiality / Integrity / Availability, with the affected asset</td><td>Listing all three with no evidence</td></tr>
+      <tr><td><b>How did they get in?</b></td><td>Vector → technique → stage (recon, initial access, execution, lateral, impact)</td><td>Calling a tool an “attack”</td></tr>
+      <tr><td><b>What stops it?</b></td><td>One preventive, one detective, one recovery control</td><td>“Use a firewall” with no placement or purpose</td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📅 Weeks 1–6 — the whole mids in six cards</h2>
+    <div class="cy-week-grid">
+      <div class="cy-week">
+        <span class="wk">WEEK 1</span>
+        <h4>Foundations &amp; the CIA model</h4>
+        <p>Security protects data and the systems that carry it. The attacker needs a path; the defender can break it anywhere.</p>
+        <ul>
+          <li><b>Protect → Detect → Respond → Recover</b></li>
+          <li>Asset, threat, vulnerability, risk, attack</li>
+          <li>Data types: identity, contact, behaviour, content</li>
+        </ul>
+        <span class="exam-line">Exam line: “The breach broke confidentiality of customer records; availability also fell when the portal was taken offline.”</span>
+      </div>
+      <div class="cy-week">
+        <span class="wk">WEEK 2</span>
+        <h4>Principles, AAA &amp; frameworks</h4>
+        <p>Security is designed, not bolted on. Every identity passes Authentication → Authorisation → Accounting.</p>
+        <ul>
+          <li>Least privilege · defence in depth · secure defaults</li>
+          <li>Separation of duties · fail securely · reduce attack surface</li>
+          <li>Risk = likelihood × impact; MITRE ATT&amp;CK = why/how</li>
+        </ul>
+        <span class="exam-line">Exam line: “Shared admin credentials broke authentication and made accounting impossible.”</span>
+      </div>
+      <div class="cy-week">
+        <span class="wk">WEEK 3</span>
+        <h4>Social engineering &amp; insider risk</h4>
+        <p>Attacks exploit normal human behaviour — trust, urgency, authority, helpfulness — not stupidity.</p>
+        <ul>
+          <li>Phishing · spear phishing · smishing · vishing · quishing · pretexting</li>
+          <li>BEC: fake invoice → changed bank details</li>
+          <li><b>PVLR:</b> Pause → Verify → Limit → Report</li>
+        </ul>
+        <span class="exam-line">Exam line: “Verify payment changes through a known phone number, never through the email thread.”</span>
+      </div>
+      <div class="cy-week">
+        <span class="wk">WEEK 4</span>
+        <h4>Offensive security &amp; malware</h4>
+        <p>Malware is the payload; the exploit is the way in. Ransomware turns availability into the ransom lever.</p>
+        <ul>
+          <li>Virus (needs host) · worm (self-spreads) · trojan (disguised) · ransomware · spyware</li>
+          <li>Lifecycle: delivery → exploit → install → C2 → action</li>
+          <li>Controls: email filtering, patching, EDR, least privilege, backups</li>
+        </ul>
+        <span class="exam-line">Exam line: “WannaCry spread as a worm through unpatched SMB — patching and network segmentation break it.”</span>
+      </div>
+      <div class="cy-week">
+        <span class="wk">WEEK 5</span>
+        <h4>Operating-system security</h4>
+        <p>The OS is the trust boundary between users and hardware. Hardening removes convenience the attacker needs.</p>
+        <ul>
+          <li>Patch OS/apps · remove unused services · close ports</li>
+          <li>Standard accounts · unique local admin · MFA · UAC/sudo</li>
+          <li>Application allow-listing · full-disk encryption · central logs</li>
+        </ul>
+        <span class="exam-line">Exam line: “A shared local-admin password turns one student into a domain-wide insider.”</span>
+      </div>
+      <div class="cy-week">
+        <span class="wk">WEEK 6</span>
+        <h4>Network security</h4>
+        <p>Networks are shared trust zones. Segment them so one compromised laptop is not the whole company.</p>
+        <ul>
+          <li>Attacks: scanning, spoofing, on-path/MITM, DoS/DDoS, rogue AP</li>
+          <li>Controls: firewall, IDS/IPS, VPN, 802.1X/WPA3, DNS filtering, NAC</li>
+          <li>Defence in depth: perimeter → DMZ → internal → data</li>
+        </ul>
+        <span class="exam-line">Exam line: “HTTPS protects the payload, not the destination — a rogue access point can still phish the password.”</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⛓️ The attack chain — and where defence breaks it</h2>
+    <div class="cyber-diagram">
+      <svg class="cy-svg" viewBox="0 0 900 210" role="img" aria-label="Attack chain">
+        <path class="flow flow-pink" d="M120 68 H790"/>
+        <g>
+          <rect class="node-pink" x="25" y="35" width="150" height="66" rx="12"/>
+          <text x="100" y="62" text-anchor="middle" class="lbl">1 · Recon</text>
+          <text x="100" y="82" text-anchor="middle" class="muted tiny">LinkedIn · OSINT</text>
+          <rect class="node-pink" x="195" y="35" width="150" height="66" rx="12"/>
+          <text x="270" y="62" text-anchor="middle" class="lbl">2 · Initial access</text>
+          <text x="270" y="82" text-anchor="middle" class="muted tiny">phish · vish · exploit</text>
+          <rect class="node-pink" x="365" y="35" width="150" height="66" rx="12"/>
+          <text x="440" y="62" text-anchor="middle" class="lbl">3 · Execution</text>
+          <text x="440" y="82" text-anchor="middle" class="muted tiny">payload · C2</text>
+          <rect class="node-pink" x="535" y="35" width="150" height="66" rx="12"/>
+          <text x="610" y="62" text-anchor="middle" class="lbl">4 · Lateral</text>
+          <text x="610" y="82" text-anchor="middle" class="muted tiny">credentials · SMB</text>
+          <rect class="node-pink" x="705" y="35" width="150" height="66" rx="12"/>
+          <text x="780" y="62" text-anchor="middle" class="lbl">5 · Impact</text>
+          <text x="780" y="82" text-anchor="middle" class="muted tiny">encrypt · exfiltrate</text>
+        </g>
+        <g class="muted tiny" text-anchor="middle">
+          <text x="100" y="140">reduce public data</text>
+          <text x="270" y="140">MFA + verify caller</text>
+          <text x="440" y="140">EDR + allow-list</text>
+          <text x="610" y="140">segment + least priv</text>
+          <text x="780" y="140">offline backups + IR</text>
+        </g>
+        <g fill="#34d399" font-size="10" font-weight="800" text-anchor="middle">
+          <text x="100" y="160">BREAK HERE</text>
+          <text x="270" y="160">BREAK HERE</text>
+          <text x="440" y="160">BREAK HERE</text>
+          <text x="610" y="160">BREAK HERE</text>
+          <text x="780" y="160">RECOVER HERE</text>
+        </g>
+        <text x="450" y="190" text-anchor="middle" class="muted tiny">You do not need to stop every stage — one broken link collapses the chain.</text>
+      </svg>
+      <div class="dg-cap">Attack chain — the same five stages appear in phishing, ransomware, insider and network scenarios.</div>
+    </div>
+    <div class="chain-demo">
+      <div class="chain-track" id="chainTrack">
+        <button type="button" class="chain-btn active" data-chain="0">1 · Recon</button>
+        <button type="button" class="chain-btn" data-chain="1">2 · Initial access</button>
+        <button type="button" class="chain-btn" data-chain="2">3 · Execution</button>
+        <button type="button" class="chain-btn" data-chain="3">4 · Lateral movement</button>
+        <button type="button" class="chain-btn" data-chain="4">5 · Impact</button>
+      </div>
+      <div class="chain-info" id="chainInfo"><b>Recon:</b> the attacker studies LinkedIn, the website and leaked data to choose a target. <b>Break it:</b> minimise public org details, monitor breach data, train staff not to expose role/contact info.</div>
+      <div class="chain-actions">
+        <button type="button" class="btn ghost" id="chainPlay">▶ Play attack</button>
+        <span style="color:var(--muted);font-size:.82rem;align-self:center">Tap a stage, or play the chain end to end.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎣 Anatomy of a phishing email</h2>
+    <div class="phish-mail">
+      <div class="phish-head">
+        <div><b>From:</b> HR Department &lt;hr@university-hr-portal.com&gt;</div>
+        <div><b>Reply-To:</b> accounts@mail-secure-update.net</div>
+        <div><b>Subject:</b> URGENT: Salary account verification closes in 2 hours</div>
+      </div>
+      <div class="phish-body">
+        <p>Dear Employee,</p>
+        <p>Your salary account will be <b>suspended today</b> unless you re-verify. Click the secure link and enter your
+           <b>CNIC, bank card and OTP</b> to avoid loss of payment.</p>
+        <p><a href="#" onclick="return false" style="color:#67e8f9">https://university-hr-portal.com.verify-now.net/login</a></p>
+        <p>Regards,<br>HR Team</p>
+        <ul>
+          <li><span class="flag">Flag 1 — look-alike domain:</span> the real domain ends at <code>verify-now.net</code>, not the university.</li>
+          <li><span class="flag">Flag 2 — urgency:</span> “2 hours”, “suspended today” — manufactured deadline.</li>
+          <li><span class="flag">Flag 3 — credential/OTP ask:</span> HR never needs your card or OTP.</li>
+          <li><span class="flag">Flag 4 — reply-to mismatch:</span> replies go to a different domain.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>The safe move:</b> do not click. Open the HR portal from a saved bookmark and check the message there, or call
+      the HR number from the staff directory. Then report the email to IT. One verified out-of-band check kills the attack.</div>
+    </div>
+    <div class="flip-grid" style="margin-top:14px;">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">DRILL 1</span><p>CEO emails finance: “Buy 10 gift cards for a client, send codes, keep it quiet.”</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>BEC / pretexting.</b> Verify by calling the CEO on a known number; no gift cards, no secrecy.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">DRILL 2</span><p>A shared drive shows <code>READ_ME.txt</code>: files encrypted, pay in 48 hours.</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Ransomware.</b> Isolate the host, do not pay, restore from offline backup, preserve logs, report.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">DRILL 3</span><p>Airport Wi-Fi “Free_Airport” asks you to install a certificate before login.</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Rogue AP / on-path attack.</b> Disconnect, forget the network, use mobile data or a trusted VPN.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">DRILL 4</span><p><code>/invoice/104</code> shows your invoice; changing it to <code>/invoice/105</code> shows another customer’s.</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>IDOR / broken object-level authorisation.</b> Enforce per-object checks server-side, not just login.</p></div>
+      </div></div>
+    </div>
+    <p style="margin-top:14px;"><b>Next:</b> open the <b>ICYS · Scenario Paper</b> tab and write the answers before revealing them.</p>
+  </div>
+</section>
+
+<!-- ======================= ICYS PAPER ======================= -->
+<section class="tab-panel" id="icys-paper">
+  <div class="note-card">
+    <h2><span class="bar"></span>📝 ICYS — Scenario-Based Conceptual Paper</h2>
+    <div class="paper-head">
+      <span><b>Course:</b> CY104 Introduction to Cyber Security</span>
+      <span><b>Time:</b> 60 minutes</span>
+      <span><b>Total:</b> 40 marks</span>
+      <span><b>Questions:</b> 8 scenarios · answer ALL</span>
+      <span><b>Coverage:</b> Weeks 1–6</span>
+    </div>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Conceptual-first instructions:</b> every question is a mini case. Define only what the scenario needs;
+      spend your marks on <b>identification → reasoning → control</b>. For each answer, name the
+      <b>asset</b>, the <b>CIA property</b> affected, the <b>AAA/security principle</b> that failed, and one
+      <b>preventive + detective + recovery</b> control where asked.</div>
+    </div>
+    <div class="callout exam"><span class="c-ico">🔎</span>
+      <div><b>Scenarios are fictionalised</b> from public incident reporting — MGM/Scattered Spider (2023),
+      Twitter phone spear-phishing (2020), WannaCry (2017), Colonial Pipeline (2021) and the Optus API breach (2022).
+      Names, numbers and organisations in the paper are invented; the attack patterns are real.</div>
+    </div>
+    <table>
+      <tr><th>Q</th><th>Scenario</th><th>Topic tested</th><th>Marks</th></tr>
+      <tr><td>1</td><td>Campus portal credential stuffing</td><td>CIA · asset/threat/vulnerability · MFA</td><td>5</td></tr>
+      <tr><td>2</td><td>Hotel help-desk impersonation</td><td>Social engineering · attack chain · identity proofing</td><td>5</td></tr>
+      <tr><td>3</td><td>Vendor invoice change</td><td>BEC · email security · process control</td><td>5</td></tr>
+      <tr><td>4</td><td>Hospital ransomware</td><td>Malware lifecycle · CIA · backup/recovery</td><td>5</td></tr>
+      <tr><td>5</td><td>Lab shared-admin keylogger</td><td>OS hardening · least privilege · accounting</td><td>5</td></tr>
+      <tr><td>6</td><td>Airport “free Wi-Fi”</td><td>Rogue AP · on-path attack · network controls</td><td>5</td></tr>
+      <tr><td>7</td><td>Telecom invoice API leak</td><td>IDOR/BOLA · authorisation · monitoring</td><td>5</td></tr>
+      <tr><td>8</td><td>20-person fintech capstone</td><td>Risk prioritisation · people/process/technology</td><td>5</td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Section A · Identity &amp; Access Scenarios <span style="color:var(--muted);font-size:.9rem">(15 marks)</span></h2>
+
+    <div class="hard-q">
+      <h3>Q1 · The reusable password <span style="color:var(--muted);font-size:.85rem">(5)</span></h3>
+      <p><b>Scenario.</b> A university portal lets students log in with email + password. There is no MFA and no rate
+         limit. A leaked password list from an unrelated gaming site is replayed against the portal; 412 accounts open.
+         Logs show one IP address trying 60,000 combinations overnight. One attacker changes a student’s bank details
+         and downloads fee records.</p>
+      <p><b>(a)</b> Identify the asset, threat, vulnerability and risk. <b>(b)</b> Which CIA properties failed?
+         <b>(c)</b> Give two controls that would have stopped the takeover and one that would detect it.</p>
+      <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+      <div class="model-ans" hidden>
+        <h4>Model answer</h4>
+        <p><b>(a)</b> Asset = student accounts and fee/identity records. Threat = external cybercriminal using a
+           credential-stuffing tool. Vulnerability = password reuse accepted by the portal, no MFA, no rate limiting.
+           Risk = account takeover → fee fraud + exposure of student data (high likelihood, high impact).</p>
+        <p><b>(b)</b> <b>Confidentiality</b> (records downloaded) and <b>integrity</b> (bank details changed).
+           Availability is not the main loss here.</p>
+        <p><b>(c)</b> Preventive: MFA (preferably phishing-resistant), breached-password blocking, rate limiting +
+           bot detection. Detective: alert on many failed logins / one IP hitting many accounts / impossible travel,
+           and notify the user on new-device login.</p>
+        <p><b>Examiner wants:</b> the link <i>password reuse → no MFA → takeover</i>, not a generic “use a strong password”.</p>
+      </div>
+    </div>
+
+    <div class="hard-q">
+      <h3>Q2 · “Hi, I’m the new manager” <span style="color:var(--muted);font-size:.85rem">(5)</span></h3>
+      <p><b>Scenario.</b> A hotel chain’s help desk receives a call from a man claiming to be a new regional manager.
+         He knows the manager’s name, office and start date from LinkedIn, answers the “security questions” from social
+         media, and asks for an MFA reset because “my phone is broken”. The reset succeeds. Within an hour, the account
+         adds a new admin user; ransomware is deployed across reservation servers two days later.</p>
+      <p><b>(a)</b> Name two social-engineering techniques in use. <b>(b)</b> Map the incident to the attack chain and
+         give one control at three different stages. <b>(c)</b> Why is “annual security-awareness training” not a
+         sufficient fix?</p>
+      <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+      <div class="model-ans" hidden>
+        <h4>Model answer</h4>
+        <p><b>(a)</b> <b>Pretexting</b> (invented new-manager story), <b>vishing</b> (voice call), plus
+           <b>OSINT</b> from LinkedIn/social media and <b>impersonation</b>.</p>
+        <p><b>(b)</b> Recon (LinkedIn/social media) → initial access (help-desk call) → execution (admin account +
+           ransomware) → impact. Controls: minimise public role data and monitor exposure; enforce out-of-band identity
+           proofing + callback to a known number before any MFA reset; least privilege for help-desk staff, alert on new
+           admin creation, EDR and segmentation.</p>
+        <p><b>(c)</b> The attack targets a <b>process</b>, not employee ignorance. A well-trained agent can still be
+           fooled when the policy allows a reset after guessable questions. Fix the identity-proofing procedure and
+           technical authority limits, then train.</p>
+        <p><b>Examiner wants:</b> process failure + out-of-band verification, not “tell users not to click links”.</p>
+      </div>
+    </div>
+
+    <div class="hard-q">
+      <h3>Q3 · The urgent invoice <span style="color:var(--muted);font-size:.85rem">(5)</span></h3>
+      <p><b>Scenario.</b> Finance receives an email from <code>billing@supp1ier.com</code> (note the “1”) with a PDF
+         invoice: “Our bank changed — pay the new account before month-end or the shipment is delayed.” The real
+         supplier’s domain is <code>supplier.com</code>. The email passes SPF and DKIM because the look-alike domain
+         has its own valid records. An employee updates the bank details and pays PKR 4.2 million.</p>
+      <p><b>(a)</b> Name the attack and three red flags. <b>(b)</b> Why do SPF/DKIM/DMARC not prevent this?
+         <b>(c)</b> Design a process control that would stop the payment.</p>
+      <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+      <div class="model-ans" hidden>
+        <h4>Model answer</h4>
+        <p><b>(a)</b> <b>Business email compromise / invoice fraud</b> (a targeted phishing variant). Red flags:
+           look-alike domain, urgency + threat of loss, change of bank details, unexpected sender, PDF-only instruction.</p>
+        <p><b>(b)</b> SPF/DKIM/DMARC authenticate the <b>domain that actually sent</b> the mail. The attacker owns
+           <code>supp1ier.com</code> and can publish valid records for it. They do not prove the sender is the real
+           supplier. DMARC alignment would only reject if the attacker spoofed <code>supplier.com</code> itself.</p>
+        <p><b>(c)</b> Dual approval for bank-detail changes + callback verification to a number already on file +
+           freeze/settlement delay for new accounts. Never confirm using the phone number or reply-to in the email.</p>
+        <p><b>Examiner wants:</b> distinction between <i>domain authentication</i> and <i>supplier identity verification</i>.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Section B · Malware, OS &amp; Network Scenarios <span style="color:var(--muted);font-size:.9rem">(20 marks)</span></h2>
+
+    <div class="hard-q">
+      <h3>Q4 · The hospital that went back to paper <span style="color:var(--muted);font-size:.85rem">(5)</span></h3>
+      <p><b>Scenario.</b> A nurse opens a “lab results” attachment. A macro runs PowerShell, which downloads a payload.
+         The malware steals saved credentials, moves over SMB to file servers, and encrypts shared folders. The hospital’s
+         backups are on a mapped drive that is also encrypted. Staff switch to paper; appointments are cancelled for
+         three days; a ransom note demands cryptocurrency.</p>
+      <p><b>(a)</b> Classify the malware and name two propagation techniques. <b>(b)</b> Which CIA properties are hit,
+         and which one justifies paying or not paying? <b>(c)</b> Name one preventive, one detective and one recovery
+         control, and explain why the existing backup failed.</p>
+      <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+      <div class="model-ans" hidden>
+        <h4>Model answer</h4>
+        <p><b>(a)</b> <b>Ransomware</b> delivered by a trojan/macro loader; propagation via <b>phishing attachment</b>
+           and <b>lateral SMB movement with stolen credentials</b>.</p>
+        <p><b>(b)</b> <b>Availability</b> is definitely lost (systems/files unavailable). <b>Confidentiality</b> is at
+           risk because credentials were stolen and data may have been exfiltrated before encryption; <b>integrity</b>
+           of records is also at risk. Availability is the ransom lever, but patient-safety impact is the priority.</p>
+        <p><b>(c)</b> Preventive: email attachment/macro blocking, patching, least privilege, EDR, segmentation.
+           Detective: central logging/EDR alert on PowerShell + mass file rename/encryption. Recovery: offline,
+           immutable, tested backups + incident-response and downtime plan. The mapped-drive backup failed because it
+           was <b>online and reachable with the same credentials</b>, so the ransomware encrypted it too.</p>
+        <p><b>Examiner wants:</b> “backup exists” is not enough — it must be isolated and restorable.</p>
+      </div>
+    </div>
+
+    <div class="hard-q">
+      <h3>Q5 · The lab image with a secret <span style="color:var(--muted);font-size:.85rem">(5)</span></h3>
+      <p><b>Scenario.</b> A university lab uses one local-admin password on every PC, documented in a shared text file.
+         A student finds it, installs a keylogger, and captures a lecturer’s domain credentials. The student changes
+         grades and deletes the audit log on the lab PC. No central logging exists.</p>
+      <p><b>(a)</b> Which security principles failed? <b>(b)</b> List four concrete OS-hardening changes.
+         <b>(c)</b> How would logging/accounting have changed the outcome?</p>
+      <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+      <div class="model-ans" hidden>
+        <h4>Model answer</h4>
+        <p><b>(a)</b> <b>Least privilege</b> (students had admin), <b>separation of duties</b> (one shared secret),
+           <b>secure defaults</b>, and weak <b>accounting</b> (local logs deletable).</p>
+        <p><b>(b)</b> Unique local-admin password per machine or LAPS; students use standard accounts; remove
+           unnecessary services/software; patch OS; application allow-listing; full-disk encryption; central
+           logging with tamper protection; block keylogger-style drivers where possible.</p>
+        <p><b>(c)</b> Central logs would record the admin logon, process creation, grade-change action and log
+           deletion attempt, with user/host/time. Alerts on privilege use and grade changes would identify the student,
+           and off-box logs would survive local deletion.</p>
+        <p><b>Examiner wants:</b> link shared admin → credential theft → no attribution; controls at identity, endpoint and logging layers.</p>
+      </div>
+    </div>
+
+    <div class="hard-q">
+      <h3>Q6 · Free airport Wi-Fi <span style="color:var(--muted);font-size:.85rem">(5)</span></h3>
+      <p><b>Scenario.</b> A traveller joins <code>Free_Airport_WiFi</code>. A captive portal asks for email and a
+         “certificate install” to continue. The attacker runs an access point with the same name, intercepts DNS, and
+         serves a fake staff-login page. The traveller’s session cookie is stolen and used to open the company webmail;
+         the internal app still uses HTTP.</p>
+      <p><b>(a)</b> Name the attack types and the network layer/stage. <b>(b)</b> Does HTTPS completely protect the
+         traveller? Explain. <b>(c)</b> Give one control for the traveller and two for the airport/company.</p>
+      <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+      <div class="model-ans" hidden>
+        <h4>Model answer</h4>
+        <p><b>(a)</b> <b>Evil twin / rogue access point</b>, <b>on-path (MITM)</b> attack, <b>DNS spoofing</b> and
+           <b>credential/session theft</b>. It starts at the network access layer and moves to the application layer.</p>
+        <p><b>(b)</b> Not completely. HTTPS protects traffic to the <b>real</b> server, but a fake portal can present
+           its own certificate and phish the password; users click through warnings, and a stolen session cookie may be
+           replayed if it is not bound to the device. HTTP internal apps expose everything on the path.</p>
+        <p><b>(c)</b> Traveller: use mobile data/VPN, verify the SSID, disable auto-join, never install unknown
+           certificates. Airport: WPA3/802.1X, rogue-AP monitoring, network segmentation, DNS filtering. Company:
+           MFA + conditional access, HTTPS/HSTS everywhere, short-lived device-bound sessions.</p>
+        <p><b>Examiner wants:</b> “HTTPS is not a substitute for trusting the network”.</p>
+      </div>
+    </div>
+
+    <div class="hard-q">
+      <h3>Q7 · The invoice URL that counted to a million <span style="color:var(--muted);font-size:.85rem">(5)</span></h3>
+      <p><b>Scenario.</b> A telecom exposes <code>GET /api/customer/104</code>. Any logged-in user can change the number
+         and receive another customer’s name, address, CNIC and plan. There is no rate limit. An attacker scripts IDs
+         1→1,000,000 and downloads 10 million records. The API returns 200 for every request, and monitoring only watches
+         server uptime.</p>
+      <p><b>(a)</b> Name the vulnerability class and the failed security property. <b>(b)</b> Why is “the user was
+         authenticated” not a defence? Which authorisation model would help? <b>(c)</b> Give three controls and one
+         metric that would detect the attack.</p>
+      <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+      <div class="model-ans" hidden>
+        <h4>Model answer</h4>
+        <p><b>(a)</b> <b>IDOR / broken object-level authorisation (BOLA)</b>. <b>Confidentiality</b> failed; integrity
+           is at risk if records can be modified. Authentication succeeded, authorisation did not.</p>
+        <p><b>(b)</b> Authentication only proves <i>who</i> the caller is; it does not prove the caller may access
+           <i>this object</i>. Use server-side object-level checks, with <b>RBAC/ABAC</b> or ownership rules
+           (customer can read only their own record).</p>
+        <p><b>(c)</b> Random/UUID identifiers (not a fix alone), per-object authorisation, rate limiting and
+           anomaly detection, WAF/API gateway, encrypted data at rest. Metric: number of distinct object IDs requested
+           per user per minute, or a spike in 403/200 responses for sequential IDs.</p>
+        <p><b>Examiner wants:</b> the phrase “authenticated ≠ authorised” and object-level checks.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Section C · Capstone <span style="color:var(--muted);font-size:.9rem">(5 marks)</span></h2>
+
+    <div class="hard-q">
+      <h3>Q8 · Security plan for a 20-person fintech <span style="color:var(--muted);font-size:.85rem">(5)</span></h3>
+      <p><b>Scenario.</b> “PayLink” is a 20-person startup with a cloud web app, remote staff, customer CNIC and bank
+         data, one IT admin, no written policies, no MFA, unpatched internet-facing servers, and nightly backups to the
+         same cloud account. Investors ask for a 90-day security plan before funding.</p>
+      <p><b>(a)</b> Rank the top three risks and justify each with likelihood × impact. <b>(b)</b> Map four controls
+         across people, process and technology. <b>(c)</b> Give a 30/60/90-day sequence and one metric to prove progress.</p>
+      <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+      <div class="model-ans" hidden>
+        <h4>Model answer</h4>
+        <p><b>(a)</b> ① Credential theft → cloud takeover (high likelihood: no MFA; high impact: all customer data)
+           — highest. ② Unpatched internet-facing server exploited (medium-high likelihood, high impact).
+           ③ Over-privileged single admin / insider (medium likelihood, high impact, weak detection).</p>
+        <p><b>(b)</b> People: MFA + phishing training for all staff, security owner. Process: access-review and
+           patch-management policy, incident-response runbook, vendor checklist. Technology: MFA/SSO, patching,
+           least-privilege IAM, central logging, immutable off-account backups, encryption.</p>
+        <p><b>(c)</b> Days 0–30: MFA everywhere, inventory assets, patch critical internet-facing systems, isolate
+           backups. 31–60: least-privilege IAM, logging/alerts, IR plan, staff training. 61–90: tabletop exercise,
+           access review, penetration test, report to investors. Metric: % accounts with MFA, % critical patches within
+           7 days, mean time to detect a simulated alert.</p>
+        <p><b>Examiner wants:</b> prioritisation by risk, not a wish-list; coverage of people + process + technology; a
+           measurable sequence.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>✅ After the Paper — Mark Yourself</h2>
+    <ul class="checklist">
+      <li>Did I name the <b>asset</b> and the exact <b>CIA leg</b>, not just “data was hacked”?</li>
+      <li>Did I separate <b>authentication</b> (who) from <b>authorisation</b> (what object/action)?</li>
+      <li>Did I give a <b>preventive + detective + recovery</b> control where the question asked?</li>
+      <li>Did I explain <b>why</b> a control works, not just name a tool?</li>
+      <li>For social engineering, did I mention <b>out-of-band verification</b>?</li>
+      <li>For backups, did I say <b>offline/immutable + tested restore</b>?</li>
+    </ul>
+    <p><b>Score guide:</b> 34–40 = mids-ready · 26–33 = redo the missed scenarios · below 26 = return to
+       <b>ICYS · Visual Revise</b>, replay the attack chain, then retry tomorrow.</p>
+    <p><b>Full notes:</b> <a href="cy104.html" style="color:var(--cyan)">CY104 Lectures 1–3 →</a>
+       · <a href="rev-cy.html" style="color:var(--cyan)">CY104 revision sprint →</a></p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📚 Scenario Sources &amp; Further Reading</h2>
+    <p>These public incidents inspired the paper’s attack patterns; all names and figures in the questions are fictional
+       where marked. Read one timeline and ask: <i>which stage could have been broken cheapest?</i></p>
+    <ul>
+      <li><b>MGM / Scattered Spider (2023):</b> help-desk impersonation, MFA reset, ransomware.
+          <a href="https://en.wikipedia.org/wiki/Scattered_Spider" target="_blank" rel="noopener" style="color:var(--cyan)">timeline →</a></li>
+      <li><b>Twitter phone spear-phishing (2020):</b> LinkedIn recon, fake VPN, MFA code relay, admin tool abuse.
+          <a href="https://en.wikipedia.org/wiki/2020_Twitter_account_hijacking" target="_blank" rel="noopener" style="color:var(--cyan)">case →</a></li>
+      <li><b>WannaCry (2017):</b> worm + unpatched SMB (EternalBlue), NHS disruption.
+          <a href="https://en.wikipedia.org/wiki/WannaCry_ransomware_attack" target="_blank" rel="noopener" style="color:var(--cyan)">case →</a></li>
+      <li><b>Colonial Pipeline (2021):</b> ransomware, IT/OT shutdown, continuity impact.
+          <a href="https://en.wikipedia.org/wiki/Colonial_Pipeline_ransomware_attack" target="_blank" rel="noopener" style="color:var(--cyan)">case →</a></li>
+      <li><b>Optus API breach (2022):</b> exposed API, ~10 million customers, authorisation failure.
+          <a href="https://en.wikipedia.org/wiki/2022_Optus_data_breach" target="_blank" rel="noopener" style="color:var(--cyan)">case →</a></li>
+    </ul>
+    <p style="color:var(--muted);font-size:.85rem;margin-top:8px;">Accessed for pattern-checking only; exam answers should
+       use the concepts from your CY104 lectures and cite controls, not incident trivia.</p>
+  </div>
+</section>
+
+<script>
+/* ---------- ICYS attack-chain demo ---------- */
+(function () {
+  var track = document.getElementById('chainTrack');
+  var info = document.getElementById('chainInfo');
+  if (!track || !info) return;
+  var data = [
+    ['Recon', 'the attacker studies LinkedIn, the website and leaked data to choose a target.', 'minimise public org details, monitor breach data, train staff not to expose role/contact info.'],
+    ['Initial access', 'a phish, vishing call or exploit gets a foothold — often stolen credentials or a malicious attachment.', 'MFA, phishing-resistant keys, email filtering, out-of-band verification, patching.'],
+    ['Execution', 'the payload runs, installs persistence and contacts command-and-control.', 'EDR, application allow-listing, least privilege, egress filtering.'],
+    ['Lateral movement', 'stolen credentials and shared drives let the attacker reach more systems.', 'segmentation, unique credentials, tiered admin, MFA on remote access.'],
+    ['Impact', 'data is encrypted, stolen or destroyed and the business is disrupted.', 'immutable offline backups, tested restore, incident response, cyber insurance.']
+  ];
+  var btns = [].slice.call(track.querySelectorAll('.chain-btn'));
+  var i = 0, timer = null;
+  function show(n) {
+    i = n;
+    btns.forEach(function (b, k) { b.classList.toggle('active', k === n); });
+    info.innerHTML = '<b>' + data[n][0] + ':</b> ' + data[n][1] + ' <b>Break it:</b> ' + data[n][2];
+  }
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () { stop(); show(+b.dataset.chain); });
+  });
+  function stop() { if (timer) { clearInterval(timer); timer = null; } }
+  var play = document.getElementById('chainPlay');
+  if (play) play.addEventListener('click', function () {
+    stop();
+    show(0);
+    timer = setInterval(function () { show((i + 1) % data.length); }, 1500);
+  });
+})();
+</script>
+
 <footer class="footer">
-  🎯 <b>MidZ</b> · FE (Revise · Mock · 2 Sample Papers) + DS (Zero-to-Hero · 2 Sample Papers · Rosen 7e verbatim) + PF (Weeks 1–6 Revise · Conceptual Paper · 10 Hard Programs) · <a href="index.html" style="color:inherit">Notes Hub →</a> · <a href="el170.html" style="color:inherit">EL170 →</a> · <a href="ma216.html" style="color:inherit">MA216 →</a> · <a href="cs111.html" style="color:inherit">CS111 →</a> · Fall 2026
+  🎯 <b>MidZ</b> · FE (Revise · Mock · 2 Sample Papers) + DS (Zero-to-Hero · 2 Sample Papers · Rosen 7e verbatim) + PF (Weeks 1–6 Revise · Conceptual Paper · 10 Hard Programs) + ICYS (Weeks 1–6 Visual Revise · Scenario Paper) · <a href="index.html" style="color:inherit">Notes Hub →</a> · <a href="el170.html" style="color:inherit">EL170 →</a> · <a href="ma216.html" style="color:inherit">MA216 →</a> · <a href="cs111.html" style="color:inherit">CS111 →</a> · <a href="cy104.html" style="color:inherit">CY104 →</a> · Fall 2026
 </footer>
 
 <script src="script.js"></script>
@@ -2808,7 +3450,7 @@ int main() {
 
   function setSubject(sub) {
     picks.forEach(function (p) { p.classList.toggle('active', p.dataset.subject === sub); });
-    tabsBox.classList.remove('subj-fe', 'subj-ds', 'subj-pf');
+    tabsBox.classList.remove('subj-fe', 'subj-ds', 'subj-pf', 'subj-cy');
     tabsBox.classList.add('subj-' + sub);
     btns.forEach(function (b) { b.classList.remove('active'); });
     panels.forEach(function (p) { p.classList.remove('active'); });
@@ -2833,7 +3475,7 @@ int main() {
 
   var savedSub = 'fe';
   try { savedSub = localStorage.getItem('cys-midz-subject') || 'fe'; } catch (e) {}
-  setSubject(['fe', 'ds', 'pf'].indexOf(savedSub) !== -1 ? savedSub : 'fe');
+  setSubject(['fe', 'ds', 'pf', 'cy'].indexOf(savedSub) !== -1 ? savedSub : 'fe');
 
   /* digits 1-9 must only hit VISIBLE tabs (shared script.js indexes all tabs) */
   document.addEventListener('keydown', function (e) {

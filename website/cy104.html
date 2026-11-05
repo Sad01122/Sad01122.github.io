@@ -44,13 +44,14 @@
 <header class="subject-hero">
   <span class="code-lg">CY104 · THEORY</span>
   <h1><span>Introduction to Cyber Security</span></h1>
-  <p>Foundations, AAA &amp; frameworks · Social engineering, scams &amp; insider threats · Dr. Muhammad Kamran</p>
+  <p>Foundations, AAA &amp; frameworks · Social engineering &amp; insider threats · Malware &amp; threat sources · Dr. Muhammad Kamran</p>
 </header>
 
 <div class="tabs">
   <button class="tab-btn active" data-tab="lec1"><span class="dot"></span> Lecture 1 · Foundations</button>
   <button class="tab-btn" data-tab="lec2"><span class="dot"></span> Lecture 2 · AAA &amp; Frameworks</button>
   <button class="tab-btn" data-tab="lec3"><span class="dot"></span> Lecture 3 · Social Engineering</button>
+  <button class="tab-btn" data-tab="lec4"><span class="dot"></span> Lecture 4 · Malware</button>
   <button class="tab-btn" data-tab="course"><span class="dot"></span> 📚 Course Contents</button>
 </div>
 
@@ -66,7 +67,9 @@
       <b>49-term glossary</b> — click any bold term for its full definition — pictures,
       🌳 animated topic tree + real attack data) and
       <b><a href="quiz-cy.html" style="color:var(--amber)">CY104 Quiz Zone →</a></b>
-      (15 flip questions + scored 15-MCQ practice test, target 12/15).</div>
+      (15 flip questions + scored 15-MCQ practice test, target 12/15).
+      <b><a href="mids.html" style="color:var(--cyan)">MidZ · ICYS →</a></b>
+      animated Weeks 1–6 visual notes + a 40-mark scenario paper with model answers.</div>
     </div>
   </div>
 
@@ -626,6 +629,227 @@
 
 </section>
 
+<!-- ======================= LECTURE 4 ======================= -->
+<section class="tab-panel" id="lec4">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Threat Sources — Where Harm Comes From</h2>
+    <p>A <b>threat</b> is anything that can harm an asset. A <b>threat source</b> is its origin.
+       The same weakness can be hit by very different actors — and the control you choose depends on
+       <i>who</i> is attacking and <i>why</i>.</p>
+    <table>
+      <tr><th>Source</th><th>Examples</th><th>Motive</th></tr>
+      <tr><td><b>Natural / environmental</b></td><td>Flood, fire, power failure, earthquake</td><td>No intent — disruption</td></tr>
+      <tr><td><b>Human, accidental</b></td><td>Lost USB, wrong recipient, misconfiguration</td><td>Mistake</td></tr>
+      <tr><td><b>Cybercriminal</b></td><td>Ransomware, fraud, stolen-data sales</td><td>Money</td></tr>
+      <tr><td><b>Insider</b></td><td>Employee, ex-employee, student with access</td><td>Revenge, money, negligence</td></tr>
+      <tr><td><b>Hacktivist</b></td><td>Defacement, leaks, DDoS</td><td>Ideology / publicity</td></tr>
+      <tr><td><b>Nation-state / APT</b></td><td>Espionage, sabotage, long-term access</td><td>Strategic advantage</td></tr>
+      <tr><td><b>Opportunist</b></td><td>Scans any exposed, unpatched host</td><td>Easy profit</td></tr>
+    </table>
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>Say it precisely:</b> <b>Threat</b> = who/what can cause harm · <b>Vulnerability</b> = the weakness
+      they exploit · <b>Risk</b> = likelihood × impact · <b>Attack</b> = the method used.
+      “The hacker” is not a vulnerability; “unpatched SMB” is.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>What Is Malware — and the 5-Stage Lifecycle</h2>
+    <p><b>Malware</b> = malicious software that damages or disables a system, or gives its creator limited
+       or full control, for <b>theft or fraud</b>. It may steal data, track browsing, slow the machine,
+       make it unusable, or recruit it into a botnet.</p>
+    <div class="diagram">
+      <div class="dg-cap">Malware is the payload — the exploit is only the way in</div>
+      <svg viewBox="0 0 740 190">
+        <rect class="box p pulse" x="8" y="24" width="128" height="54" rx="10"/>
+        <rect class="box a pulse" x="154" y="24" width="128" height="54" rx="10"/>
+        <rect class="box pulse" x="300" y="24" width="128" height="54" rx="10"/>
+        <rect class="box p pulse" x="446" y="24" width="128" height="54" rx="10"/>
+        <rect class="box r pulse" x="592" y="24" width="128" height="54" rx="10"/>
+        <path class="flow" d="M136 51 H154"/><path class="flow" d="M282 51 H300"/>
+        <path class="flow" d="M428 51 H446"/><path class="flow" d="M574 51 H592"/>
+        <path class="head" d="M154 51 l-10 -5 v10 z"/><path class="head" d="M300 51 l-10 -5 v10 z"/>
+        <path class="head" d="M446 51 l-10 -5 v10 z"/><path class="head" d="M592 51 l-10 -5 v10 z"/>
+        <text x="72" y="46">1 · DELIVERY</text><text x="72" y="64" class="sub">email · USB · link</text>
+        <text x="218" y="46">2 · EXECUTION</text><text x="218" y="64" class="sub">open · macro · exploit</text>
+        <text x="364" y="46">3 · PERSISTENCE</text><text x="364" y="64" class="sub">service · task · registry</text>
+        <text x="510" y="46">4 · C2</text><text x="510" y="64" class="sub">call home</text>
+        <text x="656" y="46">5 · IMPACT</text><text x="656" y="64" class="sub">steal · encrypt · pivot</text>
+        <g fill="#34d399" font-size="10.5" font-weight="900">
+          <text x="72" y="112">BREAK</text><text x="218" y="112">BREAK</text><text x="364" y="112">BREAK</text>
+          <text x="510" y="112">BREAK</text><text x="656" y="112">RECOVER</text>
+        </g>
+        <g class="sub" font-size="9.5">
+          <text x="72" y="130">filter mail/USB</text><text x="218" y="130">block macros/scripts</text>
+          <text x="364" y="130">allow-list + EDR</text><text x="510" y="130">egress filtering</text>
+          <text x="656" y="130">offline backups + IR</text>
+        </g>
+        <text x="370" y="170" class="sub">One broken stage collapses the chain — you do not have to stop all five.</text>
+      </svg>
+    </div>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Exam sentence:</b> “The attachment delivered a macro loader; on execution it downloaded a payload,
+      created a scheduled task for persistence, contacted C2, then encrypted shared folders.” That single sentence
+      covers vector → technique → stage → impact.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Malware Families — One Table, Full Marks</h2>
+    <table>
+      <tr><th>Type</th><th>What it is</th><th>What makes it different</th></tr>
+      <tr><td><b>Virus</b></td><td>Malicious code attached to another file</td><td>Needs a <b>host</b> + <b>user action</b> to spread</td></tr>
+      <tr><td><b>Worm</b></td><td>Self-replicating malware</td><td>Spreads over the <b>network</b>; no host file, no user action</td></tr>
+      <tr><td><b>Trojan</b></td><td>Malware disguised as useful software</td><td>The user installs it willingly</td></tr>
+      <tr><td><b>Ransomware</b></td><td>Encrypts data and demands payment</td><td>Attacks <b>availability</b>; may add data theft (double extortion)</td></tr>
+      <tr><td><b>Rootkit</b></td><td>Hides itself and the attacker</td><td>Hooks OS calls; persistent privileged/backdoor access</td></tr>
+      <tr><td><b>Adware</b></td><td>Forces unwanted advertisements</td><td>Often bundled with free software; may track behaviour</td></tr>
+      <tr><td><b>Spyware</b></td><td>Secretly records user activity</td><td>Hides process/files; sends data to a remote attacker</td></tr>
+      <tr><td><b>Keylogger</b></td><td>Records every keystroke</td><td>Captures passwords, banking details, messages</td></tr>
+      <tr><td><b>Botnet</b></td><td>Network of compromised “bots/zombies”</td><td>Scale + anonymity: DDoS, spam, credential attacks</td></tr>
+      <tr><td><b>Fileless</b></td><td>Runs in memory via legitimate tools</td><td>Little on disk (e.g. PowerShell) → evades signature AV</td></tr>
+      <tr><td><b>Rogue AV</b></td><td>Fake antivirus that “finds” infections</td><td>Pressures the user to pay or install more malware</td></tr>
+      <tr><td><b>Drive-by download</b></td><td>Automatic install from a malicious/compromised site</td><td>No explicit consent — just visiting is enough</td></tr>
+      <tr><td><b>PUA</b></td><td>Potentially Unwanted Application</td><td>Not always clearly malicious, but risky/unwanted</td></tr>
+      <tr><td><b>APT</b></td><td>Advanced Persistent Threat</td><td>Targeted, stealthy, long dwell time; custom tooling</td></tr>
+    </table>
+    <div class="callout trick"><span class="c-ico brain">🧠</span>
+      <div><b>Memory hook:</b> <b>V</b>irus needs a <b>V</b>ehicle (host file) · <b>W</b>orm <b>W</b>alks the network alone ·
+      <b>T</b>rojan is a <b>T</b>rick · <b>R</b>ansomware holds data <b>R</b>andom (encrypted) ·
+      <b>R</b>ootkit <b>R</b>oots itself deep and hides.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Virus vs Worm — the Guaranteed Compare Question</h2>
+    <table>
+      <tr><th>Parameter</th><th>Worm</th><th>Virus</th></tr>
+      <tr><td><b>Definition</b></td><td>Replicates itself and spreads to other computers over the network</td><td>Malicious executable code attached to another executable file; may modify or delete data</td></tr>
+      <tr><td><b>Host</b></td><td>No host program — self-replicates without user interaction</td><td>Attaches to a legitimate program/file; user must run or open it</td></tr>
+      <tr><td><b>Objective</b></td><td>Consume resources (RAM/CPU); slow or crash the system</td><td>Modify, corrupt or delete information</td></tr>
+      <tr><td><b>Example</b></td><td><b>Stuxnet</b></td><td>Boot-sector, macro, file viruses</td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Common trap:</b> “A worm is a virus that spreads faster.” Wrong. The difference is <b>host + user action</b>,
+      not speed. A worm is standalone; a virus is dependent.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Ransomware — Extortion, Not Just Encryption</h2>
+    <p>Ransomware encrypts data and demands payment to restore access. Modern attacks also <b>steal data first</b>
+       and demand a second payment to stop publication — <b>double extortion</b>. First cases appeared in
+       <b>Russia (2005–2006)</b> and spread across Europe by <b>2012</b>.</p>
+    <table>
+      <tr><th>Stage</th><th>What the attacker does</th><th>What the defender should have</th></tr>
+      <tr><td><b>Access</b></td><td>Phishing, exposed RDP/VPN, stolen credentials</td><td>MFA, patching, email filtering</td></tr>
+      <tr><td><b>Spread</b></td><td>Stolen credentials, SMB, shared drives</td><td>Segmentation, least privilege, unique local admin</td></tr>
+      <tr><td><b>Exfiltrate</b></td><td>Copies data before encryption</td><td>Egress filtering, DLP, anomaly alerts</td></tr>
+      <tr><td><b>Encrypt</b></td><td>Locks files/servers, deletes shadow copies</td><td>EDR detection of mass rename/encryption</td></tr>
+      <tr><td><b>Extort</b></td><td>Ransom note + leak threat</td><td>Offline/immutable backups, tested restore, IR plan</td></tr>
+    </table>
+    <p><b>Named variants from the lecture:</b> WannaCry, CryptoLocker, Petya, Ryuk, GandCrab, Cerber,
+       Bad Rabbit, LockBit, BlackCat, Jigsaw.</p>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>Backup rule:</b> a backup on a mapped drive with the same credentials is <b>not</b> a backup — ransomware
+      encrypts it too. It must be <b>offline or immutable</b>, access-controlled, and <b>restore-tested</b>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Hidden Attackers — Rootkit · Spyware · Keylogger · Botnet · Fileless</h2>
+    <table>
+      <tr><th>Type</th><th>How it works</th><th>Why it is dangerous</th></tr>
+      <tr><td><b>Rootkit</b></td><td>Replaces/hooks OS calls; hides files, processes and the attacker; often includes a backdoor</td><td>Full persistent access; normal tools report the system as clean</td></tr>
+      <tr><td><b>Spyware</b></td><td>Secretly records interaction with the computer and internet; hides its process/files</td><td>Long-term data collection without obvious symptoms</td></tr>
+      <tr><td><b>Keylogger</b></td><td>Software or hardware that logs every keystroke and sends it to the attacker</td><td>Captures passwords, banking details, private messages</td></tr>
+      <tr><td><b>Botnet</b></td><td>Malware turns victims into bots/zombies controlled as a group</td><td>Scale and anonymity for DDoS, spam, credential attacks</td></tr>
+      <tr><td><b>Fileless</b></td><td>Lives in memory and abuses legitimate tools such as PowerShell/WMI</td><td>Little or no file on disk → signature AV may miss it</td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Detection shift:</b> if the malware hides or never writes a file, signatures are not enough.
+      Use <b>behavioural EDR</b>, PowerShell script-block logging, autorun/persistence checks, network C2 alerts
+      and memory analysis.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Case Study — Stuxnet (2010)</h2>
+    <div class="diagram">
+      <div class="dg-cap">A worm that crossed from IT into industrial control systems</div>
+      <svg viewBox="0 0 740 120">
+        <rect class="box p" x="8" y="22" width="166" height="58" rx="10"/>
+        <rect class="box a" x="192" y="22" width="166" height="58" rx="10"/>
+        <rect class="box" x="376" y="22" width="166" height="58" rx="10"/>
+        <rect class="box r" x="560" y="22" width="172" height="58" rx="10"/>
+        <text x="91" y="46">2010</text><text x="91" y="64" class="sub">discovered</text>
+        <text x="275" y="46">~500 KB</text><text x="275" y="64" class="sub">vs ~10 KB average virus</text>
+        <text x="459" y="46">SCADA</text><text x="459" y="64" class="sub">Siemens PLCs</text>
+        <text x="646" y="46">IRAN</text><text x="646" y="64" class="sub">uranium centrifuges</text>
+      </svg>
+    </div>
+    <ul>
+      <li>Widely believed to be a joint <b>US–Israel</b> operation; discovered in <b>2010</b>.</li>
+      <li>Targeted <b>SCADA</b> systems and manipulated <b>Siemens software</b> controlling
+          <b>programmable logic controllers (PLCs)</b>.</li>
+      <li>Designed to sabotage Iran's nuclear programme by causing malfunctions in uranium-enrichment centrifuges.</li>
+      <li>Roughly <b>500 KB</b> versus about <b>10 KB</b> for an average virus at the time — large, complex, no graphics.</li>
+    </ul>
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>Why it matters:</b> malware can cross from office IT into <b>OT/industrial</b> systems; “air gaps” can be
+      bridged by insiders, USB media and the supply chain; patching, segmentation and monitoring are not optional.
+      Nation-states build <b>custom, patient</b> attacks — the definition of an APT.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>How to Stop Malware — People · Process · Technology</h2>
+    <table>
+      <tr><th>Layer</th><th>Controls</th><th>Breaks which stage</th></tr>
+      <tr><td><b>People</b></td><td>Don't open unexpected attachments/macros; verify links and senders; use official downloads; report symptoms</td><td>Delivery · Execution</td></tr>
+      <tr><td><b>Process</b></td><td>Patch OS/apps; email &amp; web filtering; least privilege; allow-listing; disable unused services; tested backups; IR plan</td><td>Execution · Persistence · Impact</td></tr>
+      <tr><td><b>Technology</b></td><td>AV/EDR with behaviour detection; firewall, IDS/IPS, DNS filtering; segmentation; full-disk encryption; central tamper-resistant logs; offline/immutable backups</td><td>Persistence · C2 · Impact</td></tr>
+    </table>
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>One-line answer:</b> reduce the chance of execution (patch, filter, least privilege), detect behaviour
+      early (EDR, logs, C2 alerts), and guarantee recovery (offline backups + tested restore). Prevention alone is
+      never a complete strategy.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Rapid-Fire Exam Drills — Lecture 4</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Virus vs worm — one difference that earns the mark.</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>A virus needs a <b>host file + user action</b>; a worm <b>self-replicates over the network</b> with no host and no user action. (Example: worm = Stuxnet.)</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>What is double extortion?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>The attacker <b>steals data before encrypting</b> it, then demands one payment to restore access and a second to stop leaking the data.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Why may signature antivirus miss fileless malware?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>It runs <b>in memory</b> and abuses legitimate tools (PowerShell/WMI), so there is little or no malicious file on disk to match a signature. Use behavioural EDR and script logging.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>What does a rootkit hide, and how does it persist?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>It hides its own files/processes and the attacker's activity by hooking OS calls; it grants <b>persistent privileged/backdoor access</b>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>Why is a mapped-drive backup useless against ransomware?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>It is <b>online and reachable with the same credentials</b>, so the ransomware encrypts the backup too. Use offline/immutable, access-controlled, restore-tested backups.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>What makes Stuxnet an APT rather than ordinary malware?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Targeted, custom-built, patient campaign (US–Israel) against <b>SCADA/Siemens PLCs</b> in Iran's nuclear programme — sabotage, not opportunistic crime.</p></div>
+      </div></div>
+    </div>
+  </div>
+
+</section>
+
 <!-- ======================= COURSE CONTENTS ======================= -->
 <section class="tab-panel" id="course">
   <div class="note-card">
@@ -654,8 +878,8 @@
     <div class="course-tl">
       <div class="course-week"><span class="wk">WEEK 1</span><div><h4>Introduction to Cyber Security</h4><p>Course intro · What is cyber security? · Basic cyber security model</p><div class="acts"><span>Pfleeger Ch.1</span><span>CLO-1</span></div></div></div>
       <div class="course-week"><span class="wk">WEEK 2</span><div><h4>Principles · AAA · Threats &amp; Attack Frameworks</h4><p>Principles of cybersecurity · Authentication, Authorization &amp; Accounting · Threat actors, attack vectors &amp; frameworks</p><div class="acts"><span>Stallings Ch.1</span><span>CLO-1</span></div></div></div>
-      <div class="course-week"><span class="wk">WEEK 3</span><div><h4>Social Engineering</h4><p>Methods of social engineering · fraud, scams &amp; influence campaigns · identity theft · insider threat</p><div class="acts"><span>CS Fundamentals Ch.3</span><span>CLO-2</span><span>★ you are here</span></div></div></div>
-      <div class="course-week"><span class="wk">WEEK 4</span><div><h4>Offensive Security</h4><p>Malware &amp; exploits · attack vectors (attachments, pop-ups, links, deception) · types of malware · malware attack lifecycle</p><div class="acts"><span>Cyber Sec for Dummies Ch.1-2</span><span>CLO-2</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 3</span><div><h4>Social Engineering</h4><p>Methods of social engineering · fraud, scams &amp; influence campaigns · identity theft · insider threat</p><div class="acts"><span>CS Fundamentals Ch.3</span><span>CLO-2</span></div></div></div>
+      <div class="course-week"><span class="wk">WEEK 4</span><div><h4>Offensive Security</h4><p>Malware &amp; exploits · attack vectors (attachments, pop-ups, links, deception) · types of malware · malware attack lifecycle</p><div class="acts"><span>Cyber Sec for Dummies Ch.1-2</span><span>CLO-2</span><span>★ you are here</span></div></div></div>
       <div class="course-week"><span class="wk">WEEK 5</span><div><h4>Operating System Security</h4><p>Linux security · Windows security · OS hardening</p><div class="acts"><span>Stallings Ch.12</span><span>CLO-3</span></div></div></div>
       <div class="course-week"><span class="wk">WEEK 6</span><div><h4>Security in Networks</h4><p>Network concepts &amp; attacks · firewalls · VPNs · IDS/IPS · content filtering · threat intelligence · trusted computing</p><div class="acts"><span>Pfleeger Ch.6</span><span>CLO-2</span></div></div></div>
       <div class="course-week"><span class="wk">WEEK 7</span><div><h4>Cryptography I</h4><p>Basics · symmetric (block &amp; stream ciphers) · asymmetric (PKC)</p><div class="acts"><span>Pfleeger Ch.12</span><span>CLO-2</span></div></div></div>
