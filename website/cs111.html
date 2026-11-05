@@ -8,6 +8,75 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="themes.css">
+<style>
+  /* ---------- shared interactive demo shell ---------- */
+  .demo { margin: 16px 0 6px; padding: 16px; border-radius: 16px;
+          border: 1px solid var(--card-border); background: rgba(148, 163, 184, 0.09); }
+  .demo-top { display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+              justify-content: space-between; margin-bottom: 12px; }
+  .demo-title { font-weight: 800; font-size: 0.95rem; letter-spacing: 0.02em; }
+  .demo-title span { color: var(--cyan); }
+  .demo-btns { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .demo-btn { font-family: inherit; font-weight: 800; font-size: 0.82rem; color: var(--text);
+              background: rgba(34, 211, 238, 0.1); border: 1px solid rgba(34, 211, 238, 0.42);
+              border-radius: 10px; padding: 8px 14px; cursor: pointer; transition: 0.2s; }
+  .demo-btn:hover:not(:disabled) { background: rgba(34, 211, 238, 0.26); transform: translateY(-2px); }
+  .demo-btn:disabled { opacity: 0.38; cursor: not-allowed; }
+  .demo-btn.primary { background: var(--cyan); border-color: var(--cyan); color: #04121c; }
+  .demo-btn.warm { background: rgba(251, 191, 36, 0.12); border-color: rgba(251, 191, 36, 0.5); color: var(--amber); }
+  .demo-note { margin-top: 12px; padding: 10px 14px; border-radius: 10px; min-height: 46px;
+               background: rgba(167, 139, 250, 0.1); border: 1px dashed rgba(167, 139, 250, 0.45);
+               font-size: 0.9rem; color: var(--text); }
+  .demo-note b { color: var(--purple); }
+  .demo-count { font-family: ui-monospace, Consolas, monospace; font-size: 0.8rem; color: var(--muted); }
+  .demo-dots { display: flex; gap: 5px; flex-wrap: wrap; }
+  .demo-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(148, 163, 184, 0.32); transition: 0.25s; }
+  .demo-dot.on { background: var(--cyan); box-shadow: 0 0 8px var(--cyan); }
+
+  /* ---------- function call stack ---------- */
+  .stack-stage { display: flex; flex-direction: column-reverse; gap: 8px; min-height: 132px;
+                 justify-content: flex-start; padding: 4px 0; }
+  .stack-frame { border: 1px solid rgba(148, 163, 184, 0.3); border-left: 4px solid var(--cyan);
+                 border-radius: 10px; padding: 9px 13px; background: rgba(148, 163, 184, 0.08);
+                 animation: stepIn 0.35s ease both; }
+  .stack-frame .fr-name { font-weight: 800; font-size: 0.88rem; color: var(--cyan); }
+  .stack-frame .fr-vars { font-family: ui-monospace, Consolas, monospace; font-size: 0.82rem;
+                          color: var(--text); margin-top: 3px; }
+  .stack-frame.ret { border-left-color: var(--green); background: rgba(52, 211, 153, 0.1); }
+  .stack-frame.ret .fr-name { color: var(--green); }
+
+  /* ---------- two-box memory view ---------- */
+  .mem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 12px 0; }
+  .mem-box { border: 1px solid var(--card-border); border-radius: 12px; padding: 12px 14px;
+             background: rgba(148, 163, 184, 0.08); }
+  .mem-box h5 { margin: 0 0 4px; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase;
+                color: var(--muted); font-weight: 800; }
+  .mem-val { font-family: ui-monospace, Consolas, monospace; font-size: 1.7rem; font-weight: 900; color: var(--cyan); }
+  .mem-box small { color: var(--muted); font-size: 0.78rem; }
+  .mem-box.changed { border-color: var(--green); background: rgba(52, 211, 153, 0.1); }
+  .mem-box.changed .mem-val { color: var(--green); }
+  .demo-input { width: 66px; font-family: ui-monospace, Consolas, monospace; font-weight: 800;
+                font-size: 0.95rem; color: var(--text); background: var(--card);
+                border: 1px solid var(--card-border); border-radius: 8px; padding: 7px 10px; }
+  .demo-input:focus { outline: 2px solid var(--cyan); outline-offset: 1px; }
+
+  /* ---------- recursion stack ---------- */
+  .rec-frame { border: 1px solid rgba(148, 163, 184, 0.3); border-left: 4px solid var(--amber);
+               border-radius: 10px; padding: 8px 13px; background: rgba(251, 191, 36, 0.07);
+               animation: stepIn 0.3s ease both; }
+  .rec-frame .fr-name { font-weight: 800; font-size: 0.88rem; color: var(--amber); }
+  .rec-frame .fr-vars { font-family: ui-monospace, Consolas, monospace; font-size: 0.8rem;
+                        color: var(--text); margin-top: 2px; }
+  .rec-frame.base { border-left-color: var(--green); background: rgba(52, 211, 153, 0.1); }
+  .rec-frame.base .fr-name { color: var(--green); }
+  .rec-frame.done { border-left-color: var(--cyan); background: rgba(34, 211, 238, 0.1); }
+  .rec-frame.done .fr-name { color: var(--cyan); }
+
+  @media (max-width: 620px) {
+    .mem-grid { grid-template-columns: 1fr; }
+    .demo-top { align-items: flex-start; }
+  }
+</style>
 
 <script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
 </head>
@@ -44,7 +113,7 @@
 <header class="subject-hero">
   <span class="code-lg">CS111 · THEORY</span>
   <h1><span>Programming Fundamentals</span></h1>
-  <p>Think → Plan → Express → Execute · Dr. Zakir Khan · Weeks 1–4</p>
+  <p>Think → Plan → Express → Execute · Dr. Zakir Khan · Weeks 1–6</p>
 </header>
 
 <div class="tabs">
@@ -52,6 +121,8 @@
   <button class="tab-btn" data-tab="week2"><span class="dot"></span> Week 2 · Data &amp; Expressions</button>
   <button class="tab-btn" data-tab="week3"><span class="dot"></span> Week 3 · Decision Making</button>
   <button class="tab-btn" data-tab="week4"><span class="dot"></span> Week 4 · Loops</button>
+  <button class="tab-btn" data-tab="week5"><span class="dot"></span> Week 5 · Functions</button>
+  <button class="tab-btn" data-tab="week6"><span class="dot"></span> Week 6 · Scope &amp; Recursion</button>
 </div>
 
 <!-- ======================= WEEK 1 ======================= -->
@@ -908,11 +979,825 @@ cout &lt;&lt; sum;                <span class="cm">// sentinel is NOT added</spa
 
 </section>
 
+<!-- ======================= WEEK 5 ======================= -->
+<section class="tab-panel" id="week5">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Why Functions? One Task, One Name</h2>
+    <p>Copying the same block into five places means five places to fix when something changes. A
+       <strong>function</strong> names one task, writes it <b>once</b>, and lets you call it whenever needed.
+       Think of a <b>recipe card</b>: same procedure, different ingredients each time.</p>
+    <div class="pipeline">
+      <span class="pipe-step">🎯 Problem</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">🧩 Decompose</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">🏷️ Name a task</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">📥 Parameters</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">📤 Return</span>
+    </div>
+
+    <div class="diagram">
+      <div class="dg-cap">A call jumps into the function — <code>return</code> jumps back</div>
+      <svg viewBox="0 0 740 150" role="img" aria-label="main calls displaySum with 4 and 6, displaySum prints 10 and returns to main">
+        <rect class="box" x="10" y="26" width="150" height="62" rx="10"/>
+        <text x="85" y="52">main()</text><text x="85" y="70" class="sub">x = 4 · y = 6</text>
+        <rect class="box pulse" x="230" y="26" width="210" height="62" rx="10"/>
+        <text x="335" y="52">displaySum(4, 6)</text><text x="335" y="70" class="sub">a = 4 · b = 6 · sum = 10</text>
+        <rect class="box g" x="510" y="26" width="150" height="62" rx="10"/>
+        <text x="585" y="52">cout</text><text x="585" y="70" class="sub">prints 10</text>
+        <path class="flow" d="M160 57 H230"/>
+        <path class="flow g" d="M440 57 H510"/>
+        <path class="flow a" d="M585 88 C585 130 85 130 85 88"/>
+        <text x="335" y="143" class="sub">return → resumes at the next statement in main()</text>
+      </svg>
+    </div>
+
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>Exam trap:</b> defining a function does <b>not</b> run it. A perfect <code>showWelcome()</code>
+      definition with no call prints nothing — execution starts at <code>main()</code> and only a
+      <b>call</b> enters another function.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Anatomy: Prototype · Call · Definition</h2>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">int</span> <span class="fn">square</span>(<span class="kw">int</span> n);          <span class="cm">// 1. prototype — announces it (semicolon, no body)</span>
+
+<span class="kw">int</span> <span class="fn">main</span>() {
+    cout &lt;&lt; <span class="fn">square</span>(<span class="num">5</span>);      <span class="cm">// 2. call — executes it</span>
+    <span class="kw">return</span> <span class="num">0</span>;
+}
+
+<span class="kw">int</span> <span class="fn">square</span>(<span class="kw">int</span> n) {          <span class="cm">// 3. definition — the actual body</span>
+    <span class="kw">return</span> n * n;
+}</div>
+
+    <table>
+      <tr><th>Form</th><th>Looks like</th><th>Job</th></tr>
+      <tr><td><b>Prototype</b></td><td><code>int square(int n);</code></td><td>Announce name, return type and parameter types <b>before</b> the call</td></tr>
+      <tr><td><b>Call</b></td><td><code>square(5);</code></td><td>Execute the function with arguments</td></tr>
+      <tr><td><b>Definition</b></td><td><code>int square(int n) { return n*n; }</code></td><td>Contains the actual statements that run</td></tr>
+    </table>
+
+    <h3>Common beginner errors</h3>
+    <table>
+      <tr><th>Error</th><th>Symptom</th><th>Fix</th></tr>
+      <tr><td>Function never called</td><td>Nothing happens</td><td>Add <code>showWelcome();</code></td></tr>
+      <tr><td>Missing prototype</td><td>"not declared in this scope"</td><td>Declare before <code>main()</code></td></tr>
+      <tr><td>Prototype / definition mismatch</td><td>Type or linker error</td><td>Keep names and parameter lists identical</td></tr>
+      <tr><td>Missing parameter type</td><td><code>void display(a, b)</code> fails</td><td>Write <code>void display(int a, int b)</code></td></tr>
+      <tr><td>Non-void function with no <code>return</code></td><td>Undefined result</td><td><code>return result;</code> on every path</td></tr>
+    </table>
+
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Build order:</b> prototypes → <code>main()</code> → calls → definitions → test each function alone.
+      One function = one responsibility (login: read username, read password, check length, show result).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Parameters, Arguments &amp; the Call Stack</h2>
+    <p><b>Argument</b> = the value sent by the caller. <b>Parameter</b> = the receiving variable in the
+       function header. They are matched by <b>position</b>, and every parameter needs a <b>type</b>.</p>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">void</span> <span class="fn">displaySum</span>(<span class="kw">int</span> a, <span class="kw">int</span> b) {
+    <span class="kw">int</span> sum = a + b;
+    cout &lt;&lt; <span class="str">"Sum = "</span> &lt;&lt; sum;
+}
+
+<span class="kw">int</span> <span class="fn">main</span>() {
+    <span class="fn">displaySum</span>(<span class="num">4</span>, <span class="num">6</span>);   <span class="cm">// 4 → a, 6 → b (copies)</span>
+}</div>
+
+    <div class="demo">
+      <div class="demo-top">
+        <div class="demo-title">🧵 <span>Call-stack stepper</span> · displaySum(4, 6)</div>
+        <div class="demo-btns">
+          <button class="demo-btn" id="w5-prev" type="button">← Prev</button>
+          <button class="demo-btn primary" id="w5-next" type="button">Next →</button>
+          <button class="demo-btn" id="w5-reset" type="button">↺ Reset</button>
+        </div>
+      </div>
+      <div class="stack-stage" id="w5-stage"></div>
+      <div class="demo-note" id="w5-note">Press <b>Next</b> to follow the call, the copies, and the return.</div>
+      <div class="demo-top" style="margin:10px 0 0;">
+        <span class="demo-count" id="w5-count">Step 1 / 7</span>
+        <div class="demo-dots" id="w5-dots"></div>
+      </div>
+    </div>
+
+    <div class="callout good"><span class="c-ico">✅</span>
+      <div><b>Stack rule:</b> only the currently active function executes. The caller <b>pauses</b>; when the
+      callee returns, its local variables are destroyed and control resumes in the caller.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Pass-by-Value — The Function Works on a Copy</h2>
+    <p>C++ copies each argument into its parameter. Changing the parameter changes <b>only the copy</b> —
+       the caller's original variable stays untouched.</p>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">void</span> <span class="fn">change</span>(<span class="kw">int</span> n) {
+    n = <span class="num">100</span>;          <span class="cm">// changes only the local copy</span>
+}
+
+<span class="kw">int</span> <span class="fn">main</span>() {
+    <span class="kw">int</span> x = <span class="num">5</span>;
+    <span class="fn">change</span>(x);
+    cout &lt;&lt; x;        <span class="cm">// prints 5 — NOT 100</span>
+}</div>
+
+    <div class="demo">
+      <div class="demo-top">
+        <div class="demo-title">📦 <span>Memory boxes</span> · pass-by-value</div>
+        <div class="demo-btns">
+          <button class="demo-btn warm" id="w5-call-change" type="button">Call change(x) → n = 100</button>
+          <button class="demo-btn" id="w5-change-reset" type="button">↺ Reset</button>
+        </div>
+      </div>
+      <div class="mem-grid">
+        <div class="mem-box" id="w5-x-box"><h5>main() · original</h5><div class="mem-val" id="w5-x">5</div><small>x</small></div>
+        <div class="mem-box" id="w5-n-box"><h5>change() · copy</h5><div class="mem-val" id="w5-n">5</div><small>n</small></div>
+      </div>
+      <div class="demo-note" id="w5-change-note">Two separate boxes: <b>x</b> in main, <b>n</b> in change().</div>
+    </div>
+
+    <table>
+      <tr><th>Call</th><th>Output</th><th>Why</th></tr>
+      <tr><td><code>void test(int a){ a = a + 10; }</code> with <code>x = 2</code></td><td><code>2</code></td><td>Only the local copy changed</td></tr>
+      <tr><td><code>void show(int n){ cout &lt;&lt; n + 1; }</code> with <code>show(9)</code></td><td><code>10</code></td><td><code>9</code> is copied into <code>n</code></td></tr>
+      <tr><td><code>showRange(5, 10)</code></td><td><code>5 to 10</code></td><td>First argument → first parameter</td></tr>
+      <tr><td><code>showRange(10, 5)</code></td><td><code>10 to 5</code></td><td>Order matters — matching is positional</td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Return Values — Functions That Produce an Answer</h2>
+    <table>
+      <tr><th>Kind</th><th>Example</th><th>Use</th></tr>
+      <tr><td><b><code>void</code></b></td><td><code>void showMenu() { cout &lt;&lt; "1. Start"; }</code></td><td>Perform an action, return nothing</td></tr>
+      <tr><td><b>Value-returning</b></td><td><code>int square(int n) { return n * n; }</code></td><td>Compute and send a result back</td></tr>
+    </table>
+
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">bool</span> <span class="fn">isEven</span>(<span class="kw">int</span> n) {
+    <span class="kw">return</span> n % <span class="num">2</span> == <span class="num">0</span>;
+}
+
+<span class="kw">if</span> (<span class="fn">isEven</span>(<span class="num">8</span>)) {
+    cout &lt;&lt; <span class="str">"Even"</span>;
+}
+
+<span class="cm">// One rule per function — the caller chooses the message</span>
+<span class="kw">bool</span> <span class="fn">isPasswordLongEnough</span>(<span class="kw">int</span> length) {
+    <span class="kw">return</span> length &gt;= <span class="num">8</span>;
+}</div>
+
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>Three return rules:</b> the value must match the declared type · <code>return</code> <b>immediately
+      ends</b> the function · a non-<code>void</code> function must return on <b>every</b> possible path.
+      <code>void add(...) { return a + b; }</code> is invalid — <code>void</code> cannot return a value.</div>
+    </div>
+
+    <h3>Factorial — a complete value-returning function</h3>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">int</span> <span class="fn">factorial</span>(<span class="kw">int</span> n) {
+    <span class="kw">int</span> product = <span class="num">1</span>;
+    <span class="kw">for</span> (<span class="kw">int</span> i = <span class="num">1</span>; i &lt;= n; i++) {
+        product = product * i;
+    }
+    <span class="kw">return</span> product;
+}</div>
+    <table>
+      <tr><th>Step</th><th><code>i</code></th><th><code>product</code></th></tr>
+      <tr><td>start</td><td>—</td><td>1</td></tr>
+      <tr><td>1</td><td>1</td><td>1 × 1 = 1</td></tr>
+      <tr><td>2</td><td>2</td><td>1 × 2 = 2</td></tr>
+      <tr><td>3</td><td>3</td><td>2 × 3 = 6</td></tr>
+      <tr><td>4</td><td>4</td><td>6 × 4 = 24</td></tr>
+      <tr><td>5</td><td>5</td><td>24 × 5 = <b>120</b></td></tr>
+    </table>
+    <p><code>factorial(5)</code> returns <b>120</b>; <code>0! = 1</code> by definition. Week 6 rewrites this
+       exact problem <b>recursively</b> — same answer, different control flow.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Menu Programs — Functions as Responsibilities</h2>
+    <div class="pipeline">
+      <span class="pipe-step">showMenu()</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">getChoice()</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">square() / factorial()</span><span class="pipe-arrow">→</span>
+      <span class="pipe-step">showResult()</span>
+    </div>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">#include</span> &lt;iostream&gt;
+<span class="kw">using namespace</span> std;
+
+<span class="kw">void</span> <span class="fn">showMenu</span>();
+<span class="kw">int</span>  <span class="fn">getChoice</span>();
+<span class="kw">int</span>  <span class="fn">square</span>(<span class="kw">int</span> n);
+<span class="kw">int</span>  <span class="fn">factorial</span>(<span class="kw">int</span> n);
+
+<span class="kw">int</span> <span class="fn">main</span>() {
+    <span class="fn">showMenu</span>();
+    <span class="kw">int</span> choice = <span class="fn">getChoice</span>();
+    <span class="cm">// call the function that matches the choice</span>
+    <span class="kw">return</span> <span class="num">0</span>;
+}</div>
+
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Why it works:</b> <code>main()</code> becomes a short coordinator; each helper is small enough
+      to test alone. Fixing the square logic never touches the menu logic — that is modular design.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Rapid Recall — Week 5</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Does a function run when it is defined?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>No</b> — only when it is <b>called</b>. Execution starts at <code>main()</code>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Argument vs parameter?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Argument = value in the <b>call</b> · parameter = receiving variable in the <b>header</b>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Pass-by-value — does the original change?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>No.</b> The parameter is a copy; changing it leaves the caller's variable unchanged.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>What does <code>return</code> do?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Sends a value back <b>and immediately ends</b> the function.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p><code>square(3)</code> with <code>return n*n</code>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>9</b> — the returned value can be stored, printed, or used in an expression.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>Why prototypes?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>To <b>announce</b> the function before it is called — lets <code>main()</code> appear first.</p></div>
+      </div></div>
+    </div>
+    <ul class="trick-list" style="margin-top:14px;">
+      <li><b>D-C-P-R:</b> Decompose → Call → Pass by value → Return. <span class="mem">The whole week in four words.</span></li>
+      <li><b>Argument = actual, Parameter = placeholder.</b> <span class="mem">A-P: actual goes in, placeholder receives.</span></li>
+      <li><b>Pass-by-value = photocopy.</b> <span class="mem">Writing on the photocopy never changes the original document.</span></li>
+      <li><b>No <code>return</code> = no answer.</b> <span class="mem">A non-void function must return on every path.</span></li>
+    </ul>
+    <p><b>Related:</b> <a href="cs111l.html" style="color:var(--cyan)">CS111L lab work →</a>
+       · <b>Next:</b> Week 6 — scope, references, overloading, recursion</p>
+  </div>
+
+</section>
+
+<!-- ======================= WEEK 6 ======================= -->
+<section class="tab-panel" id="week6">
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Scope vs Lifetime — Two Different Questions</h2>
+    <p><b>Scope</b> answers <i>where can this name be used?</i> · <b>Lifetime</b> answers
+       <i>how long does the storage stay alive?</i> They often disagree — a <code>static</code> local is the
+       classic example.</p>
+
+    <div class="diagram">
+      <div class="dg-cap">The three homes of a variable</div>
+      <svg viewBox="0 0 740 180" role="img" aria-label="Global memory, static storage and the call stack">
+        <rect class="box p" x="12" y="26" width="210" height="84" rx="10"/>
+        <text x="117" y="54" class="big">GLOBAL</text>
+        <text x="117" y="76" class="sub">gCount = 2</text>
+        <text x="117" y="94" class="sub">lives for the whole program</text>
+
+        <rect class="box a" x="262" y="26" width="200" height="84" rx="10"/>
+        <text x="362" y="54" class="big">STATIC</text>
+        <text x="362" y="76" class="sub">count = 3</text>
+        <text x="362" y="94" class="sub">one copy, keeps its value</text>
+
+        <rect class="box" x="502" y="26" width="226" height="84" rx="10"/>
+        <text x="615" y="54" class="big">CALL STACK</text>
+        <text x="615" y="76" class="sub">main() → visit()</text>
+        <text x="615" y="94" class="sub">frames appear / vanish</text>
+
+        <path class="flow p" d="M222 68 H262"/>
+        <path class="flow a" d="M462 68 H502"/>
+        <text x="370" y="150" class="sub">Scope = who can use it · Lifetime = how long it stays alive</text>
+      </svg>
+    </div>
+
+    <table>
+      <tr><th>Type</th><th>Declared where</th><th>Visible where</th><th>Lifetime</th></tr>
+      <tr><td><b>Local</b></td><td>Inside a function / block</td><td>Only there</td><td>Until the block ends</td></tr>
+      <tr><td><b>Global</b></td><td>Outside all functions</td><td>Many functions</td><td>Whole program</td></tr>
+      <tr><td><b>Static local</b></td><td>Inside a function with <code>static</code></td><td>Only that function</td><td>Whole program</td></tr>
+    </table>
+
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Same name ≠ same variable.</b> <code>int x = 5;</code> in <code>fun1()</code> and
+      <code>int x = 9;</code> in <code>fun2()</code> are two separate stack slots. Each call gets a fresh frame.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span><code>static</code> — Local Name, Program Life</h2>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">void</span> <span class="fn">visit</span>() {
+    <span class="kw">static int</span> count = <span class="num">0</span>;   <span class="cm">// initialized ONCE, not on every call</span>
+    count++;
+    cout &lt;&lt; count;
+}
+<span class="cm">// visit(); visit(); visit();  →  prints 1 2 3</span></div>
+
+    <div class="demo">
+      <div class="demo-top">
+        <div class="demo-title">🔁 <span>Static counter lab</span> · call visit() three times</div>
+        <div class="demo-btns">
+          <button class="demo-btn primary" id="w6-sc-visit" type="button">Call visit()</button>
+          <button class="demo-btn" id="w6-sc-reset" type="button">↺ Reset</button>
+        </div>
+      </div>
+      <div class="mem-grid">
+        <div class="mem-box"><h5>Static storage · one copy</h5><div class="mem-val" id="w6-sc-count">0</div><small>count — survives every call</small></div>
+        <div class="mem-box"><h5>This call's output</h5><div class="mem-val" id="w6-sc-out">—</div><small>cout &lt;&lt; count</small></div>
+      </div>
+      <div class="demo-note" id="w6-sc-note">Press <b>Call visit()</b>. The frame is destroyed each time, but <b>count</b> is not.</div>
+    </div>
+
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>Exam sentence:</b> <code>static</code> changes <b>lifetime</b> (whole program), not <b>scope</b>
+      (still visible only inside <code>visit()</code>). If the question asks "keeps its value between calls?" —
+      answer <b>static local</b>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Default Arguments — Optional Values From the Right</h2>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">void</span> <span class="fn">greet</span>(<span class="kw">string</span> name, <span class="kw">string</span> title = <span class="str">"Student"</span>) {
+    cout &lt;&lt; <span class="str">"Hello "</span> &lt;&lt; title &lt;&lt; <span class="str">" "</span> &lt;&lt; name;
+}
+
+<span class="fn">greet</span>(<span class="str">"Ali"</span>);            <span class="cm">// Hello Student Ali  (default used)</span>
+<span class="fn">greet</span>(<span class="str">"Ali"</span>, <span class="str">"Mr."</span>);     <span class="cm">// Hello Mr. Ali       (caller overrides)</span>
+
+<span class="kw">int</span> <span class="fn">power</span>(<span class="kw">int</span> base, <span class="kw">int</span> exp = <span class="num">2</span>);
+<span class="fn">power</span>(<span class="num">5</span>);        <span class="cm">// base = 5, exp = 2</span>
+<span class="fn">power</span>(<span class="num">5</span>, <span class="num">3</span>);     <span class="cm">// base = 5, exp = 3</span></div>
+
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Right-side rule:</b> once a parameter has a default, every parameter to its <b>right</b> must also
+      have one. <code>void f(int a = 1, int b);</code> is illegal — the caller cannot skip <code>b</code> and
+      still supply it.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Reference Parameters — Work on the Caller's Variable</h2>
+    <p>Pass-by-value copies. Add <code>&amp;</code> and the parameter becomes an <b>alias</b> for the caller's
+       storage — writing through it writes through the original.</p>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">void</span> <span class="fn">add1</span>(<span class="kw">int</span> &amp;x) {   <span class="cm">// x refers to the caller's variable</span>
+    x++;
+}
+
+<span class="kw">int</span> <span class="fn">main</span>() {
+    <span class="kw">int</span> num = <span class="num">10</span>;
+    <span class="fn">add1</span>(num);          <span class="cm">// num becomes 11</span>
+}
+
+<span class="kw">void</span> <span class="fn">swap</span>(<span class="kw">int</span> &amp;a, <span class="kw">int</span> &amp;b) {
+    <span class="kw">int</span> temp = a;
+    a = b;
+    b = temp;
+}</div>
+
+    <div class="diagram">
+      <div class="dg-cap">References are doors to the same storage — not new boxes</div>
+      <svg viewBox="0 0 740 160" role="img" aria-label="swap references: a aliases x, b aliases y, after swap x is 9 and y is 4">
+        <rect class="box" x="26" y="18" width="180" height="52" rx="10"/>
+        <text x="116" y="49">main: x = 4</text>
+        <rect class="box" x="26" y="90" width="180" height="52" rx="10"/>
+        <text x="116" y="121">main: y = 9</text>
+        <rect class="box p" x="326" y="18" width="190" height="52" rx="10"/>
+        <text x="421" y="42">swap: a</text><text x="421" y="60" class="sub">alias for x</text>
+        <rect class="box p" x="326" y="90" width="190" height="52" rx="10"/>
+        <text x="421" y="114">swap: b</text><text x="421" y="132" class="sub">alias for y</text>
+        <rect class="box g" x="576" y="18" width="150" height="124" rx="10"/>
+        <text x="651" y="60" class="big">after</text>
+        <text x="651" y="86" class="sub">x = 9</text>
+        <text x="651" y="108" class="sub">y = 4</text>
+        <path class="flow p" d="M206 44 H326"/>
+        <path class="flow p" d="M206 116 H326"/>
+        <path class="flow g" d="M516 80 H576"/>
+      </svg>
+    </div>
+
+    <table>
+      <tr><th>Step</th><th>Action</th><th><code>x</code></th><th><code>y</code></th><th><code>temp</code></th></tr>
+      <tr><td>start</td><td>—</td><td>4</td><td>9</td><td>—</td></tr>
+      <tr><td>1</td><td><code>temp = a</code></td><td>4</td><td>9</td><td>4</td></tr>
+      <tr><td>2</td><td><code>a = b</code></td><td><b>9</b></td><td>9</td><td>4</td></tr>
+      <tr><td>3</td><td><code>b = temp</code></td><td>9</td><td><b>4</b></td><td>4</td></tr>
+    </table>
+    <p><b>Why references?</b> modify the caller's variable · avoid copying large data · send multiple results back.
+       Remove the two <code>&amp;</code> symbols and <code>swap</code> swaps only its own copies — a favourite exam trick.</p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Overloading, <code>inline</code> &amp; <code>exit()</code></h2>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="cm">// Same name, DIFFERENT parameter lists → valid overloads</span>
+<span class="kw">int</span>    <span class="fn">add</span>(<span class="kw">int</span> a, <span class="kw">int</span> b);
+<span class="kw">double</span> <span class="fn">add</span>(<span class="kw">double</span> a, <span class="kw">double</span> b);
+
+<span class="cm">// Return type alone is NOT enough</span>
+<span class="kw">int</span>    <span class="fn">getValue</span>();
+<span class="kw">double</span> <span class="fn">getValue</span>();   <span class="cm">// ❌ redeclaration error</span>
+
+<span class="kw">inline int</span> <span class="fn">square</span>(<span class="kw">int</span> n) { <span class="kw">return</span> n * n; }   <span class="cm">// request, not a guarantee</span></div>
+
+    <table>
+      <tr><th>Feature</th><th>What it does</th><th>Key exam point</th></tr>
+      <tr><td><b>Overloading</b></td><td>Same name, different parameter types/count</td><td>Return type alone is <b>invalid</b>; compiler resolves by arguments</td></tr>
+      <tr><td><b><code>inline</code></b></td><td>Suggests expanding a small function at the call site</td><td>Only a <b>request</b> — the compiler may ignore it</td></tr>
+      <tr><td><b><code>exit()</code></b></td><td>Terminates the entire program immediately</td><td>Needs <code>&lt;cstdlib&gt;</code>; unlike <code>return</code>, it never goes back to the caller</td></tr>
+    </table>
+
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>Debug the overload:</b> <code>void show(int x, int y); show(5);</code> → wrong argument count.
+      <code>int f(); double f();</code> → same signature. <code>add(2, 3)</code> picks the <code>int</code> version;
+      <code>add(2.0, 3.5)</code> picks the <code>double</code> version.</div>
+    </div>
+
+    <h3>Modular design — match the need to the feature</h3>
+    <table>
+      <tr><th>Need</th><th>Tool</th></tr>
+      <tr><td>Same operation for <code>int</code> and <code>double</code></td><td>Function overloading</td></tr>
+      <tr><td>Tiny helper such as <code>x*x</code></td><td><code>inline</code> (maybe — compiler decides)</td></tr>
+      <tr><td>Fatal configuration error</td><td><code>exit()</code> deliberately</td></tr>
+      <tr><td>Modify the caller's variable</td><td>Reference parameter <code>&amp;</code></td></tr>
+      <tr><td>Counter that survives calls</td><td><code>static</code> local</td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Recursion — Base Case + Smaller Step</h2>
+    <p>A <b>recursive</b> function calls itself. It needs exactly two ideas: a <b>base case</b> that stops,
+       and a <b>recursive case</b> that makes the problem <b>smaller</b>.</p>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">void</span> <span class="fn">countdown</span>(<span class="kw">int</span> n) {
+    <span class="kw">if</span> (n == <span class="num">0</span>) {          <span class="cm">// base case — stops</span>
+        cout &lt;&lt; <span class="str">"Go!"</span>;
+        <span class="kw">return</span>;
+    }
+    cout &lt;&lt; n &lt;&lt; <span class="str">" "</span>;
+    <span class="fn">countdown</span>(n - <span class="num">1</span>);       <span class="cm">// recursive case — smaller n</span>
+}
+<span class="cm">// countdown(3) → 3 2 1 Go!</span></div>
+
+    <div class="diagram">
+      <div class="dg-cap">Descent goes deeper; the stack unwinds in reverse (LIFO)</div>
+      <svg viewBox="0 0 740 170" role="img" aria-label="countdown descends from 3 to 0 then unwinds back">
+        <rect class="box" x="10" y="25" width="150" height="56" rx="10"/>
+        <text x="85" y="49">countdown(3)</text><text x="85" y="67" class="sub">print 3 · waiting</text>
+        <rect class="box" x="195" y="25" width="150" height="56" rx="10"/>
+        <text x="270" y="49">countdown(2)</text><text x="270" y="67" class="sub">print 2 · waiting</text>
+        <rect class="box" x="380" y="25" width="150" height="56" rx="10"/>
+        <text x="455" y="49">countdown(1)</text><text x="455" y="67" class="sub">print 1 · waiting</text>
+        <rect class="box g" x="565" y="25" width="165" height="56" rx="10"/>
+        <text x="647" y="49">countdown(0)</text><text x="647" y="67" class="sub">base · prints Go!</text>
+        <path class="flow" d="M160 53 H195"/><path class="flow" d="M345 53 H380"/>
+        <path class="flow" d="M530 53 H565"/>
+        <path class="flow g" d="M647 86 C647 132 85 132 85 86"/>
+        <text x="360" y="158" class="sub">unwind: 0 returns → 1 → 2 → 3 → back to main()</text>
+      </svg>
+    </div>
+
+    <div class="demo">
+      <div class="demo-top">
+        <div class="demo-title">🧮 <span>Recursion stack machine</span> · factorial(n)</div>
+        <div class="demo-btns">
+          <label class="demo-count" for="w6-fact-n">n =</label>
+          <input class="demo-input" id="w6-fact-n" type="number" min="1" max="8" value="4">
+          <button class="demo-btn" id="w6-fact-prev" type="button">← Prev</button>
+          <button class="demo-btn primary" id="w6-fact-next" type="button">Next →</button>
+          <button class="demo-btn" id="w6-fact-reset" type="button">↺ Reset</button>
+        </div>
+      </div>
+      <div class="stack-stage" id="w6-fact-stage"></div>
+      <div class="demo-note" id="w6-fact-note">Choose <b>n</b> and press <b>Next</b> to watch calls pile up, then unwind.</div>
+      <div class="demo-top" style="margin:10px 0 0;">
+        <span class="demo-count" id="w6-fact-count">Step 1 / 1</span>
+        <div class="demo-dots" id="w6-fact-dots"></div>
+      </div>
+    </div>
+
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="kw">long long</span> <span class="fn">factorial</span>(<span class="kw">int</span> n) {
+    <span class="kw">if</span> (n == <span class="num">0</span>)
+        <span class="kw">return</span> <span class="num">1</span>;                 <span class="cm">// 0! = 1</span>
+    <span class="kw">return</span> n * <span class="fn">factorial</span>(n - <span class="num">1</span>);  <span class="cm">// n! = n × (n−1)!</span>
+}</div>
+
+    <table>
+      <tr><th>Going down</th><th>Coming back</th></tr>
+      <tr><td><code>factorial(0) → 1</code></td><td><code>factorial(0) = 1</code></td></tr>
+      <tr><td><code>factorial(1) → 1 × factorial(0)</code></td><td><code>factorial(1) = 1 × 1 = 1</code></td></tr>
+      <tr><td><code>factorial(2) → 2 × factorial(1)</code></td><td><code>factorial(2) = 2 × 1 = 2</code></td></tr>
+      <tr><td><code>factorial(3) → 3 × factorial(2)</code></td><td><code>factorial(3) = 3 × 2 = 6</code></td></tr>
+      <tr><td><code>factorial(4) → 4 × factorial(3)</code></td><td><code>factorial(4) = 4 × 6 = <b>24</b></code></td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Fibonacci, Recursion vs Iteration &amp; Errors</h2>
+    <div class="code-block"><button class="copy-btn">Copy</button><span class="cm">// 0 1 1 2 3 5 8 13 ...   F(n) = F(n−1) + F(n−2)</span>
+<span class="kw">int</span> <span class="fn">fib</span>(<span class="kw">int</span> n) {
+    <span class="kw">if</span> (n &lt;= <span class="num">1</span>)
+        <span class="kw">return</span> n;                       <span class="cm">// two base cases: F(0)=0, F(1)=1</span>
+    <span class="kw">return</span> <span class="fn">fib</span>(n - <span class="num">1</span>) + <span class="fn">fib</span>(n - <span class="num">2</span>);   <span class="cm">// branches into two calls</span>
+}
+<span class="cm">// fib(4) = 3 — and fib(2) is computed twice</span></div>
+
+    <table>
+      <tr><th></th><th>Iteration</th><th>Recursion</th></tr>
+      <tr><td>Mechanism</td><td>Loops</td><td>Function calls</td></tr>
+      <tr><td>State</td><td>Variables change each pass</td><td>Each call has its own frame</td></tr>
+      <tr><td>Natural for</td><td>Repeated counting</td><td>Self-similar / divide-and-conquer</td></tr>
+      <tr><td>Cost</td><td>Usually less memory</td><td>Stack frames + call overhead</td></tr>
+      <tr><td>Risk</td><td>Infinite loop</td><td>Infinite recursion → stack overflow</td></tr>
+    </table>
+
+    <h3>Common recursion errors</h3>
+    <table>
+      <tr><th>Error</th><th>Result</th><th>Fix</th></tr>
+      <tr><td>No base case</td><td>Infinite recursion → stack overflow</td><td>Add a reachable base case</td></tr>
+      <tr><td>Base case never reached</td><td>Calls keep going</td><td>Move input <b>toward</b> the base (<code>n-1</code>)</td></tr>
+      <tr><td>Wrong reduction</td><td>Wrong answer / no progress</td><td><code>n-1</code>, not <code>n+1</code> or <code>n</code></td></tr>
+      <tr><td>Missing <code>return</code> in recursive case</td><td>Undefined result</td><td><code>return n * factorial(n-1);</code></td></tr>
+      <tr><td>Exponential branching on large <code>n</code></td><td>Very slow</td><td>Use iteration or memoization</td></tr>
+    </table>
+
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Quiz 2 alert:</b> the Week 6 deck notes that <b>Session 18 includes Quiz 2</b>. Be ready to trace
+      the call stack, classify scope, predict defaults, explain why return type alone cannot overload, and
+      write <code>factorial</code> / <code>fib</code> with correct base cases.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧠 Rapid Recall — Week 6</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Scope vs lifetime?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Scope = <b>where</b> a name is visible · lifetime = <b>how long</b> its storage exists.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Static local — scope and lifetime?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Scope <b>local</b> (only that function) · lifetime <b>whole program</b>; keeps its value between calls.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Which side are defaults written from?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>The <b>right</b>. All parameters to the right of a default must also have defaults.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Can return type alone overload?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>No</b> — parameter lists must differ; the compiler cannot choose by result type.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>Is <code>inline</code> guaranteed?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>No</b> — it is a <b>request</b>; the compiler may ignore it.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p><code>exit()</code> vs <code>return</code>?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><code>exit()</code> ends the <b>whole program</b> · <code>return</code> ends only the <b>current function</b>.</p></div>
+      </div></div>
+    </div>
+    <ul class="trick-list" style="margin-top:14px;">
+      <li><b>Static = local name, global life.</b> <span class="mem">Like a hotel room key that keeps the same room number forever.</span></li>
+      <li><b><code>&amp;</code> = same house, different door.</b> <span class="mem">a and x are two names for one storage.</span></li>
+      <li><b>Overload = same name, different signature.</b> <span class="mem">Never return type alone.</span></li>
+      <li><b>Recursion = base to stop + smaller step to get there + unwind to combine.</b> <span class="mem">No base → stack overflow.</span></li>
+    </ul>
+    <p><b>Related:</b> <a href="cs111l.html" style="color:var(--cyan)">CS111L lab work →</a>
+       · <b>Back:</b> Week 5 functions · <b>Practice:</b> <a href="mids.html" style="color:var(--amber)">PF mids sample paper →</a></p>
+  </div>
+
+</section>
+
 <footer class="footer">
-  CS111 · Programming Fundamentals · <b>Weeks 1–4</b> · BS Cyber Security · Fall 2026
+  CS111 · Programming Fundamentals · <b>Weeks 1–6</b> · BS Cyber Security · Fall 2026
 </footer>
 
 <button id="toTop" title="Back to top">↑</button>
 <script src="script.js"></script>
+<script>
+/* ---------- WEEK 5 · call-stack stepper ---------- */
+(function () {
+  var stage = document.getElementById('w5-stage');
+  if (!stage) return;
+  var note = document.getElementById('w5-note');
+  var count = document.getElementById('w5-count');
+  var dots = document.getElementById('w5-dots');
+  var prev = document.getElementById('w5-prev');
+  var next = document.getElementById('w5-next');
+  var reset = document.getElementById('w5-reset');
+
+  var steps = [
+    { frames: [{ name: 'main()', vars: 'x = 4 · y = 6' }],
+      note: '<b>main()</b> is running. Nothing has been called yet.' },
+    { frames: [{ name: 'main()', vars: 'x = 4 · y = 6' },
+               { name: 'displaySum(4, 6)', vars: 'a = 4 · b = 6' }],
+      note: 'Call <b>displaySum(4, 6)</b>: the arguments <b>4</b> and <b>6</b> are copied into <b>a</b> and <b>b</b>.' },
+    { frames: [{ name: 'main()', vars: 'x = 4 · y = 6' },
+               { name: 'displaySum(4, 6)', vars: 'a = 4 · b = 6 · sum = 10' }],
+      note: 'Inside the function: <b>sum = a + b = 10</b>. main() is paused.' },
+    { frames: [{ name: 'main()', vars: 'x = 4 · y = 6' },
+               { name: 'displaySum(4, 6)', vars: 'sum = 10' }],
+      note: '<b>cout</b> prints <b>Sum = 10</b>.' },
+    { frames: [{ name: 'main()', vars: 'x = 4 · y = 6' },
+               { name: 'displaySum(4, 6)', vars: 'sum = 10', ret: true }],
+      note: 'The <b>void</b> function reaches its end and returns — control goes back to main().' },
+    { frames: [{ name: 'main()', vars: 'x = 4 · y = 6' }],
+      note: 'The displaySum frame is <b>destroyed</b>. main() resumes at the next statement. Final output: <b>Sum = 10</b>.' }
+  ];
+
+  var idx = 0;
+
+  function render() {
+    stage.innerHTML = '';
+    steps[idx].frames.forEach(function (f) {
+      var box = document.createElement('div');
+      box.className = 'stack-frame' + (f.ret ? ' ret' : '');
+      var name = document.createElement('div');
+      name.className = 'fr-name';
+      name.textContent = f.name;
+      var vars = document.createElement('div');
+      vars.className = 'fr-vars';
+      vars.textContent = f.vars;
+      box.appendChild(name);
+      box.appendChild(vars);
+      stage.appendChild(box);
+    });
+    note.innerHTML = steps[idx].note;
+    count.textContent = 'Step ' + (idx + 1) + ' / ' + steps.length;
+    prev.disabled = idx === 0;
+    next.disabled = idx === steps.length - 1;
+    [].forEach.call(dots.children, function (d, i) {
+      d.classList.toggle('on', i <= idx);
+    });
+  }
+
+  steps.forEach(function (_, i) {
+    var d = document.createElement('span');
+    d.className = 'demo-dot';
+    if (i === 0) d.classList.add('on');
+    dots.appendChild(d);
+  });
+
+  prev.addEventListener('click', function () { if (idx > 0) { idx--; render(); } });
+  next.addEventListener('click', function () { if (idx < steps.length - 1) { idx++; render(); } });
+  reset.addEventListener('click', function () { idx = 0; render(); });
+  render();
+})();
+
+/* ---------- WEEK 5 · pass-by-value memory boxes ---------- */
+(function () {
+  var btn = document.getElementById('w5-call-change');
+  if (!btn) return;
+  var xOut = document.getElementById('w5-x');
+  var nOut = document.getElementById('w5-n');
+  var xBox = document.getElementById('w5-x-box');
+  var nBox = document.getElementById('w5-n-box');
+  var note = document.getElementById('w5-change-note');
+
+  btn.addEventListener('click', function () {
+    nOut.textContent = '100';
+    nBox.classList.add('changed');
+    note.innerHTML = '<b>n</b> became 100 inside change(). <b>x</b> is still 5 — pass-by-value gave the function a copy, so the caller never changed.';
+  });
+
+  document.getElementById('w5-change-reset').addEventListener('click', function () {
+    xOut.textContent = '5';
+    nOut.textContent = '5';
+    nBox.classList.remove('changed');
+    note.innerHTML = 'Two separate boxes: <b>x</b> in main, <b>n</b> in change().';
+  });
+})();
+
+/* ---------- WEEK 6 · static counter ---------- */
+(function () {
+  var visit = document.getElementById('w6-sc-visit');
+  if (!visit) return;
+  var countOut = document.getElementById('w6-sc-count');
+  var out = document.getElementById('w6-sc-out');
+  var note = document.getElementById('w6-sc-note');
+  var calls = 0;
+
+  visit.addEventListener('click', function () {
+    calls++;
+    countOut.textContent = calls;
+    out.textContent = calls;
+    note.innerHTML = 'Call <b>' + calls + '</b>: the frame is recreated, but <b>static count</b> still holds ' +
+                     (calls - 1) + ' from the previous call → it becomes <b>' + calls + '</b>.';
+  });
+
+  document.getElementById('w6-sc-reset').addEventListener('click', function () {
+    calls = 0;
+    countOut.textContent = '0';
+    out.textContent = '—';
+    note.innerHTML = 'Press <b>Call visit()</b>. The frame is destroyed each time, but <b>count</b> is not.';
+  });
+})();
+
+/* ---------- WEEK 6 · recursion stack machine ---------- */
+(function () {
+  var stage = document.getElementById('w6-fact-stage');
+  if (!stage) return;
+  var input = document.getElementById('w6-fact-n');
+  var note = document.getElementById('w6-fact-note');
+  var count = document.getElementById('w6-fact-count');
+  var dots = document.getElementById('w6-fact-dots');
+  var prev = document.getElementById('w6-fact-prev');
+  var next = document.getElementById('w6-fact-next');
+  var reset = document.getElementById('w6-fact-reset');
+
+  var steps = [];
+  var idx = 0;
+
+  function copyFrames(frames) {
+    return frames.map(function (f) {
+      return { label: f.label, vars: f.vars, state: f.state };
+    });
+  }
+
+  function build(n) {
+    steps = [];
+    var frames = [];
+    steps.push({ frames: [], note: '<b>main()</b> calls <b>factorial(' + n + ')</b>.' });
+
+    for (var i = n; i >= 1; i--) {
+      frames.push({ label: 'factorial(' + i + ')', vars: 'waiting: ' + i + ' × factorial(' + (i - 1) + ')', state: 'wait' });
+      steps.push({ frames: copyFrames(frames),
+        note: 'Call <b>factorial(' + i + ')</b> — it pauses while <b>factorial(' + (i - 1) + ')</b> runs.' });
+    }
+
+    frames.push({ label: 'factorial(0)', vars: 'base case → returns 1', state: 'base' });
+    steps.push({ frames: copyFrames(frames),
+      note: '<b>Base case reached:</b> 0! = 1. The stack stops growing and begins to unwind.' });
+
+    var value = 1;
+    for (var j = 1; j <= n; j++) {
+      value = value * j;
+      var at = -1;
+      for (var k = 0; k < frames.length; k++) {
+        if (frames[k].label === 'factorial(' + j + ')') { at = k; break; }
+      }
+      if (at >= 0) {
+        frames[at].state = 'done';
+        frames[at].vars = 'returns ' + value;
+        frames = frames.slice(0, at + 1);
+      }
+      steps.push({ frames: copyFrames(frames),
+        note: '<b>factorial(' + j + ') returns ' + value + '</b>.' +
+              (j === n ? ' Final answer: <b>' + value + '</b> — control returns to main().' : ' The next waiting call can now continue.') });
+    }
+    idx = 0;
+    dots.innerHTML = '';
+    steps.forEach(function (_, i) {
+      var d = document.createElement('span');
+      d.className = 'demo-dot';
+      if (i === 0) d.classList.add('on');
+      dots.appendChild(d);
+    });
+    render();
+  }
+
+  function render() {
+    stage.innerHTML = '';
+    steps[idx].frames.forEach(function (f) {
+      var box = document.createElement('div');
+      box.className = 'rec-frame' + (f.state === 'base' ? ' base' : f.state === 'done' ? ' done' : '');
+      var name = document.createElement('div');
+      name.className = 'fr-name';
+      name.textContent = f.label;
+      var vars = document.createElement('div');
+      vars.className = 'fr-vars';
+      vars.textContent = f.vars;
+      box.appendChild(name);
+      box.appendChild(vars);
+      stage.appendChild(box);
+    });
+    note.innerHTML = steps[idx].note;
+    count.textContent = 'Step ' + (idx + 1) + ' / ' + steps.length;
+    prev.disabled = idx === 0;
+    next.disabled = idx === steps.length - 1;
+    [].forEach.call(dots.children, function (d, i) {
+      d.classList.toggle('on', i <= idx);
+    });
+  }
+
+  prev.addEventListener('click', function () { if (idx > 0) { idx--; render(); } });
+  next.addEventListener('click', function () { if (idx < steps.length - 1) { idx++; render(); } });
+  reset.addEventListener('click', function () { idx = 0; render(); });
+
+  input.addEventListener('change', function () {
+    var n = parseInt(input.value, 10);
+    if (isNaN(n) || n < 1) n = 1;
+    if (n > 8) n = 8;
+    input.value = n;
+    build(n);
+  });
+
+  build(4);
+})();
+</script>
 </body>
 </html>
