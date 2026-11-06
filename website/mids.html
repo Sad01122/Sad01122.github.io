@@ -47,7 +47,8 @@
   .tabs.subj-fe .tab-btn:not([data-subject="fe"]),
   .tabs.subj-ds .tab-btn:not([data-subject="ds"]),
   .tabs.subj-pf .tab-btn:not([data-subject="pf"]),
-  .tabs.subj-cy .tab-btn:not([data-subject="cy"]) { display: none; }
+  .tabs.subj-cy .tab-btn:not([data-subject="cy"]),
+  .tabs.subj-ict .tab-btn:not([data-subject="ict"]) { display: none; }
   .book-img { display: block; max-width: 100%; border-radius: 10px;
               border: 1px solid var(--card-border); background: #fff; padding: 8px; margin: 10px 0 4px; }
   /* Wide tables scroll inside their card instead of stretching the page on phones */
@@ -99,7 +100,7 @@
   .cy-week ul { margin: 6px 0 0 18px; font-size: .86rem; }
   .cy-week li { margin-bottom: 4px; }
   .cy-week .exam-line { display: block; margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--card-border);
-                        color: #67e8f9; font-size: .8rem; font-weight: 700; }
+                        color: var(--cyan); font-size: .8rem; font-weight: 700; }
   .chain-demo { border: 1px solid var(--card-border); border-radius: 14px; padding: 14px; margin: 12px 0 4px; }
   .chain-track { display: flex; flex-wrap: wrap; gap: 8px; }
   .chain-btn { border: 1px solid var(--card-border); background: transparent; color: var(--muted);
@@ -119,8 +120,40 @@
   .phish-body { padding: 14px; font-size: .9rem; }
   .phish-body ul { margin: 8px 0 0 20px; }
   .flag { color: #fda4af; font-weight: 800; }
+  /* ---------- ICT (CS181) VISUAL REVISION ---------- */
+  .ict-img { display: block; width: 100%; height: auto; border-radius: 14px;
+             border: 1px solid var(--card-border); background: #0b1220; margin: 12px 0 8px; }
+  .ict-base-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                   gap: 10px; margin: 12px 0; }
+  .ict-base { border: 1px solid var(--card-border); border-radius: 12px; padding: 12px 14px;
+              background: rgba(255,255,255,.025); }
+  .ict-base .b { display: block; font-size: 1.45rem; font-weight: 900; color: var(--cyan); line-height: 1.1; }
+  .ict-base b { display: block; margin: 3px 0 2px; }
+  .ict-base i { color: var(--muted); font-size: .8rem; font-style: normal; }
+  .ict-conv { border: 1px solid var(--card-border); border-radius: 12px; padding: 12px 14px;
+              background: rgba(148,163,184,.12); margin: 12px 0; font-family: 'Cascadia Code', monospace;
+              font-size: .86rem; }
+  .ict-row { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0;
+             border-bottom: 1px dashed rgba(148,163,184,.16); opacity: 0; }
+  .ict-conv.run .ict-row { animation: ictRow .45s ease forwards; }
+  .ict-row .r { color: var(--pink); font-weight: 800; }
+  .ict-conv.run .ict-row:nth-child(1) { animation-delay: .05s; }
+  .ict-conv.run .ict-row:nth-child(2) { animation-delay: .30s; }
+  .ict-conv.run .ict-row:nth-child(3) { animation-delay: .55s; }
+  .ict-conv.run .ict-row:nth-child(4) { animation-delay: .80s; }
+  .ict-conv.run .ict-row:nth-child(5) { animation-delay: 1.05s; }
+  .ict-conv.run .ict-row:nth-child(6) { animation-delay: 1.30s; }
+  .ict-conv.run .ict-row:nth-child(7) { animation-delay: 1.55s; }
+  .ict-conv .ans { margin-top: 10px; color: var(--green); font-weight: 800; }
+  .ict-conv:not(.run) .ans { opacity: 0; }
+  .ict-conv.run .ans { animation: ictRow .45s 1.9s ease forwards; opacity: 0; }
+  @keyframes ictRow { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+  .ict-bit { animation: ictBit 3.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes ictBit { 0%,100% { opacity: .35; } 45%,60% { opacity: 1; } }
+  .ict-split { font-family: 'Cascadia Code', monospace; letter-spacing: .06em; }
   @media (prefers-reduced-motion: reduce) {
     .cy-svg .flow, .cy-node, .cy-svg .ring-scan { animation: none !important; }
+    .ict-row, .ict-conv .ans, .ict-bit { animation: none !important; opacity: 1 !important; transform: none !important; }
   }
 </style>
 <script>try{var t=localStorage.getItem('cys-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
@@ -157,17 +190,19 @@
 
 <header class="subject-hero">
   <span class="code-lg">🎯 MIDZ · MIDS ZONE</span>
-  <h1><span>Mid-Zerm Revision — FE · DS · PF · ICYS</span></h1>
-  <p><b>One button, four mids papers.</b> Pick a <b>subject</b> below to focus —
+  <h1><span>Mid-Zerm Revision — FE · DS · PF · ICYS · ICT</span></h1>
+  <p><b>One button, five mids papers.</b> Pick a <b>subject</b> below to focus —
      <b>📘 EL170 · Functional English</b> (clauses · phrases · 12 tenses · PoS · paragraph writing · formal vs informal · cross-culture · formal email → mock test + 2 sample papers),
      <b>🧮 MA216 · Discrete Structures</b> (zero-to-hero logic: equivalences · De Morgan · circuits · converse/inverse · the confirmed Rules-of-Inference long question → sample papers), or
      <b>💻 CS111 · Programming Fundamentals</b> (Weeks 1–6: logic · data types · decisions · loops · functions · scope, references &amp; recursion → rapid revision + a <b>conceptual</b> sample paper + a <b>10-program hard set</b> with model solutions), or
-     <b>🛡️ CY104 · Intro to Cyber Security</b> (Weeks 1–6: CIA · AAA · threat/risk · social engineering · malware · OS hardening · network defence → animated visual notes + a <b>scenario-based</b> paper with model answers).
+     <b>🛡️ CY104 · Intro to Cyber Security</b> (Weeks 1–6: CIA · AAA · threat/risk · social engineering · malware · OS hardening · network defence → animated visual notes + a <b>scenario-based</b> paper with model answers), or
+     <b>🌐 CS181 · Application of ICT</b> (Weeks 1–5: number systems · conversions · binary arithmetic · SDLC models · testing &amp; QA → animated revision + a <b>40-mark paper</b> weighted to conversions and <b>“choose the SDLC model”</b> scenarios).
      Your subject choice is remembered; press <b>1</b>–<b>9</b> to jump between that subject's tabs.</p>
   <p class="hero-actions"><a class="btn primary" href="el170.html">📘 Full EL170 Notes</a>
      <a class="btn ghost" href="ma216.html">🧮 Full DS Notes</a>
      <a class="btn ghost" href="cs111.html">💻 Full PF Notes</a>
      <a class="btn ghost" href="cy104.html">🛡️ Full ICYS Notes</a>
+     <a class="btn ghost" href="cs181.html">🌐 Full ICT Notes</a>
      <span class="hint">mock tests &amp; sample papers are inside this page ↓</span></p>
 </header>
 
@@ -188,6 +223,10 @@
     <span class="sp-top"><span class="sp-ico">🛡️</span><b>CY104 · Intro to Cyber Security</b></span>
     <i>Weeks 1–6 Visual Revise · Scenario Paper · model answers</i>
   </button>
+  <button class="subject-pick" data-subject="ict" type="button">
+    <span class="sp-top"><span class="sp-ico">🌐</span><b>CS181 · Application of ICT</b></span>
+    <i>Number Systems + SDLC Visual Revise · 40-mark paper</i>
+  </button>
 </div>
 
 <div class="tabs">
@@ -203,6 +242,8 @@
   <button class="tab-btn" data-tab="pf-hard" data-subject="pf"><span class="dot"></span> 🔥 PF · Hard Programs</button>
   <button class="tab-btn" data-tab="icys-rev" data-subject="cy"><span class="dot"></span> 🛡️ ICYS · Visual Revise</button>
   <button class="tab-btn" data-tab="icys-paper" data-subject="cy"><span class="dot"></span> 📝 ICYS · Scenario Paper</button>
+  <button class="tab-btn" data-tab="ict-rev" data-subject="ict"><span class="dot"></span> 🌐 ICT · Visual Revise</button>
+  <button class="tab-btn" data-tab="ict-paper" data-subject="ict"><span class="dot"></span> 📝 ICT · Sample Paper</button>
 </div>
 
 <!-- ======================= FE REVISE ======================= -->
@@ -3375,8 +3416,801 @@ int main() {
 })();
 </script>
 
+<!-- ======================= ICT REVISE ======================= -->
+<section class="tab-panel" id="ict-rev">
+  <div class="note-card">
+    <h2><span class="bar"></span>🌐 ICT — Number Systems + Software Engineering <span class="hard-tag" style="color:var(--cyan);border-color:rgba(34,211,238,.4);background:rgba(34,211,238,.1)">Weeks 1–5</span></h2>
+    <div class="paper-head">
+      <span><b>Course:</b> CS181 Application of ICT</span>
+      <span><b>Priority:</b> Weeks 4–5 SDLC</span>
+      <span><b>Paper:</b> 40 marks · 60 min</span>
+      <span><b>Must-pass:</b> number conversions</span>
+    </div>
+    <div class="cyber-art" aria-hidden="true">
+      <svg class="cy-svg" viewBox="0 0 1000 270" role="img">
+        <defs>
+          <linearGradient id="ictHeroBg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#050a16"/><stop offset=".55" stop-color="#07192e"/><stop offset="1" stop-color="#120a2a"/>
+          </linearGradient>
+          <radialGradient id="ictHeroGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#22d3ee" stop-opacity=".32"/><stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="1000" height="270" fill="url(#ictHeroBg)"/>
+        <g stroke="#22d3ee" stroke-opacity=".10">
+          <path d="M0 45H1000M0 90H1000M0 135H1000M0 180H1000M0 225H1000"/>
+          <path d="M100 0V270M200 0V270M300 0V270M400 0V270M500 0V270M600 0V270M700 0V270M800 0V270M900 0V270"/>
+        </g>
+        <circle cx="500" cy="135" r="190" fill="url(#ictHeroGlow)"/>
+        <text x="500" y="34" text-anchor="middle" font-size="11" letter-spacing="4" fill="#93a2c4">PLACE VALUE IS THE WHOLE TRICK</text>
+        <g font-family="'Cascadia Code', monospace" text-anchor="middle">
+          <g font-size="11" fill="#93a2c4">
+            <text x="170" y="82">128</text><text x="260" y="82">64</text><text x="350" y="82">32</text><text x="440" y="82">16</text>
+            <text x="530" y="82">8</text><text x="620" y="82">4</text><text x="710" y="82">2</text><text x="800" y="82">1</text>
+          </g>
+          <g font-size="34" font-weight="900" fill="#e2e8f0">
+            <text class="ict-bit" x="170" y="126">1</text><text class="ict-bit" style="animation-delay:.2s" x="260" y="126">0</text>
+            <text class="ict-bit" style="animation-delay:.4s" x="350" y="126">1</text><text class="ict-bit" style="animation-delay:.6s" x="440" y="126">1</text>
+            <text class="ict-bit" style="animation-delay:.8s" x="530" y="126">0</text><text class="ict-bit" style="animation-delay:1s" x="620" y="126">1</text>
+            <text class="ict-bit" style="animation-delay:1.2s" x="710" y="126">0</text><text class="ict-bit" style="animation-delay:1.4s" x="800" y="126">1</text>
+          </g>
+          <g font-size="12" fill="#67e8f9">
+            <text x="170" y="154">128</text><text x="350" y="154">32</text><text x="440" y="154">16</text><text x="620" y="154">4</text><text x="800" y="154">1</text>
+          </g>
+        </g>
+        <path class="flow" d="M845 120 H900"/>
+        <text x="900" y="112" text-anchor="middle" font-size="11" fill="#93a2c4">SUM</text>
+        <text x="900" y="146" text-anchor="middle" font-size="34" font-weight="900" fill="#6ee7b7">181</text>
+        <text x="500" y="218" text-anchor="middle" font-size="12" fill="#93a2c4">1011 0101₂ = 128 + 32 + 16 + 4 + 1 = 181₁₀</text>
+        <text x="500" y="244" text-anchor="middle" font-size="11" letter-spacing="2" fill="#67e8f9">CONVERT · GROUP · ADD · CHECK</text>
+      </svg>
+    </div>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>60-minute plan:</b> 0–10 min skim the four base cards + conversion map · 10–25 min redo the
+      two worked conversion ladders on paper · 25–40 min read the four SDLC model cards and play the
+      <b>model picker</b> · 40–60 min attempt the sample paper without looking at the answers.</div>
+    </div>
+    <div class="callout warn"><span class="c-ico">🎯</span>
+      <div><b>Mark weighting:</b> number conversion is the most reliable scoring block — every step is visible,
+      so partial marks are easy. For SDLC scenario questions, the marks are in the <b>justification</b>
+      (requirement stability · risk · change frequency), not just the model name.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⏪ Weeks 1–2 in 60 Seconds</h2>
+    <table>
+      <tr><th>Idea</th><th>What to remember</th></tr>
+      <tr><td><b>Computer</b></td><td>Electronic device that accepts <b>data</b>, processes it into <b>information</b>, stores and outputs it.</td></tr>
+      <tr><td><b>Data vs information</b></td><td>Data = raw values (marks); information = processed meaning (grade, GPA).</td></tr>
+      <tr><td><b>Five generations</b></td><td>Vacuum tubes → transistors → integrated circuits → microprocessors → AI/quantum era.</td></tr>
+      <tr><td><b>Hardware vs software</b></td><td>Hardware = physical parts; software = instructions + data structures + documentation.</td></tr>
+      <tr><td><b>Machine cycle</b></td><td><b>Fetch → Decode → Execute → Store</b>; the system clock paces it.</td></tr>
+      <tr><td><b>Memory hierarchy</b></td><td>Registers → cache → RAM → SSD/HDD → cloud/tape: faster &amp; smaller at the top, slower &amp; larger at the bottom.</td></tr>
+      <tr><td><b>Computer types</b></td><td>Supercomputer · mainframe · mini · micro (PC/laptop/phone).</td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🔢 Number Systems — Four Costumes, One Number</h2>
+    <p>A <b>number system</b> is a fixed set of symbols used to write a quantity. The <b>base (radix)</b>
+       is how many symbols it uses. A digit’s value depends on its <b>position</b> — that is positional notation.</p>
+    <div class="ict-base-grid">
+      <div class="ict-base"><span class="b">2</span><b>Binary</b><i>0–1 · bits · what the machine stores</i></div>
+      <div class="ict-base"><span class="b">8</span><b>Octal</b><i>0–7 · compact binary (3 bits/digit)</i></div>
+      <div class="ict-base"><span class="b">10</span><b>Decimal</b><i>0–9 · everyday numbers</i></div>
+      <div class="ict-base"><span class="b">16</span><b>Hexadecimal</b><i>0–9, A–F · compact binary (4 bits/digit)</i></div>
+    </div>
+    <div class="callout trick"><span class="c-ico brain">🧠</span>
+      <div><b>Self-check number:</b> <b>(25)₁₀ = (11001)₂ = (31)₈ = (19)₁₆</b>. If you can reproduce this one
+      from memory, every conversion rule is working. Hex letters: <b>A=10, B=11, C=12, D=13, E=14, F=15</b>.</div>
+    </div>
+    <div class="cyber-diagram">
+      <svg class="cy-svg" viewBox="0 0 760 250" role="img" aria-label="Positional expansion of 1011 binary">
+        <text x="380" y="28" text-anchor="middle" class="muted tiny">EVERY BIT HAS A PLACE VALUE — MULTIPLY, THEN ADD</text>
+        <g font-family="'Cascadia Code', monospace" text-anchor="middle">
+          <rect class="node" x="80" y="48" width="130" height="58" rx="10"/>
+          <rect class="node" x="240" y="48" width="130" height="58" rx="10"/>
+          <rect class="node" x="400" y="48" width="130" height="58" rx="10"/>
+          <rect class="node" x="560" y="48" width="130" height="58" rx="10"/>
+          <text x="145" y="76" font-size="26" font-weight="900">1</text><text x="145" y="96" font-size="11" fill="#93a2c4">× 2³ = 8</text>
+          <text x="305" y="76" font-size="26" font-weight="900">0</text><text x="305" y="96" font-size="11" fill="#93a2c4">× 2² = 0</text>
+          <text x="465" y="76" font-size="26" font-weight="900">1</text><text x="465" y="96" font-size="11" fill="#93a2c4">× 2¹ = 2</text>
+          <text x="625" y="76" font-size="26" font-weight="900">1</text><text x="625" y="96" font-size="11" fill="#93a2c4">× 2⁰ = 1</text>
+        </g>
+        <g class="flow"><path d="M145 106 V132"/><path d="M305 106 V132"/><path d="M465 106 V132"/><path d="M625 106 V132"/></g>
+        <text x="380" y="162" text-anchor="middle" font-size="13" fill="#e2e8f0">8 + 0 + 2 + 1</text>
+        <text x="380" y="205" text-anchor="middle" font-size="30" font-weight="900" fill="#6ee7b7">1011₂ = 11₁₀</text>
+        <text x="380" y="232" text-anchor="middle" class="muted tiny">Powers start at 0 on the RIGHT — not on the left.</text>
+      </svg>
+      <div class="dg-cap">Positional expansion — the universal “any base → decimal” method.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>➡️ Any Base → Decimal — “Expand Out”</h2>
+    <table>
+      <tr><th>Conversion</th><th>Expansion</th><th>Result</th></tr>
+      <tr><td>(101011)₂</td><td>1×32 + 0×16 + 1×8 + 0×4 + 1×2 + 1×1</td><td><b>43₁₀</b></td></tr>
+      <tr><td>(724)₈</td><td>7×64 + 2×8 + 4×1 = 448 + 16 + 4</td><td><b>468₁₀</b></td></tr>
+      <tr><td>(ABC)₁₆</td><td>10×256 + 11×16 + 12×1 = 2560 + 176 + 12</td><td><b>2748₁₀</b></td></tr>
+      <tr><td>(10.1011)₂</td><td>1×2 + 0×1 + 1×½ + 0×¼ + 1×⅛ + 1×1/16</td><td><b>2.6875₁₀</b></td></tr>
+      <tr><td>(A3.8)₁₆</td><td>10×16 + 3×1 + 8×1/16 = 160 + 3 + 0.5</td><td><b>163.5₁₀</b></td></tr>
+    </table>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Fraction rule:</b> weights right of the point are <b>negative powers</b> — 2⁻¹=0.5, 2⁻²=0.25,
+      2⁻³=0.125, 2⁻⁴=0.0625. The same rule works in every base.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⬅️ Decimal → Any Base — “Divide Down, Read Up”</h2>
+    <p>Divide repeatedly by the base, keep every remainder, then read the remainders <b>bottom-up</b>.
+       The <b>first remainder is the LSB</b> (rightmost digit).</p>
+    <div class="ict-conv" id="convDemo" aria-label="Worked conversion of 125 decimal to binary">
+      <div class="ict-row"><span>125 ÷ 2 = 62</span><span class="r">remainder 1</span></div>
+      <div class="ict-row"><span>62 ÷ 2 = 31</span><span class="r">remainder 0</span></div>
+      <div class="ict-row"><span>31 ÷ 2 = 15</span><span class="r">remainder 1</span></div>
+      <div class="ict-row"><span>15 ÷ 2 = 7</span><span class="r">remainder 1</span></div>
+      <div class="ict-row"><span>7 ÷ 2 = 3</span><span class="r">remainder 1</span></div>
+      <div class="ict-row"><span>3 ÷ 2 = 1</span><span class="r">remainder 1</span></div>
+      <div class="ict-row"><span>1 ÷ 2 = 0</span><span class="r">remainder 1</span></div>
+      <div class="ans">Read bottom-up → 1111101₂ &nbsp;·&nbsp; check: 64+32+16+8+4+1 = 125 ✓</div>
+    </div>
+    <p><button type="button" class="btn ghost" id="convReplay">↻ Replay the division</button></p>
+    <table>
+      <tr><th>Target</th><th>Division</th><th>Remainders (read up)</th></tr>
+      <tr><td><b>1234₁₀ → octal</b></td><td>1234÷8=154 r2 · 154÷8=19 r2 · 19÷8=2 r3 · 2÷8=0 r2</td><td><b>2322₈</b></td></tr>
+      <tr><td><b>1234₁₀ → hex</b></td><td>1234÷16=77 r2 · 77÷16=4 r13(D) · 4÷16=0 r4</td><td><b>4D2₁₆</b></td></tr>
+      <tr><td><b>125.625₁₀ → binary</b></td><td>Integer: 1111101 · fraction: .625×2=1.25→1, .25×2=0.5→0, .5×2=1.0→1</td><td><b>1111101.101₂</b></td></tr>
+    </table>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Fraction shortcut:</b> multiply by the base, write down the integer part, keep the fraction,
+      repeat until it reaches zero (or the required precision). Read integer parts <b>top-down</b>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🔗 Grouping — Binary Is the Bridge</h2>
+    <div class="cyber-diagram">
+      <svg class="cy-svg" viewBox="0 0 820 340" role="img" aria-label="Grouping binary bits into octal and hex">
+        <text x="410" y="24" text-anchor="middle" class="muted tiny">SAME BITS · DIFFERENT GROUP SIZE</text>
+        <text x="410" y="66" text-anchor="middle" font-family="'Cascadia Code', monospace" font-size="26" font-weight="900" fill="#e2e8f0">1011010111</text>
+        <text x="410" y="88" text-anchor="middle" class="muted tiny">binary</text>
+
+        <text x="90" y="120" text-anchor="middle" font-size="12" font-weight="800" fill="#67e8f9">OCTAL · 3 BITS</text>
+        <g font-family="'Cascadia Code', monospace" text-anchor="middle" font-size="18" font-weight="800">
+          <rect class="node" x="150" y="132" width="105" height="44" rx="8"/><text x="202" y="160">1</text>
+          <rect class="node" x="275" y="132" width="105" height="44" rx="8"/><text x="327" y="160">011</text>
+          <rect class="node" x="400" y="132" width="105" height="44" rx="8"/><text x="452" y="160">010</text>
+          <rect class="node" x="525" y="132" width="105" height="44" rx="8"/><text x="577" y="160">111</text>
+        </g>
+        <g fill="#6ee7b7" font-size="15" font-weight="900" text-anchor="middle">
+          <text x="202" y="198">1</text><text x="327" y="198">3</text>
+          <text x="452" y="198">2</text><text x="577" y="198">7</text>
+        </g>
+        <text x="710" y="162" text-anchor="middle" fill="#6ee7b7" font-size="22" font-weight="900">1327₈</text>
+
+        <text x="90" y="238" text-anchor="middle" font-size="12" font-weight="800" fill="#c4b5fd">HEX · 4 BITS</text>
+        <g font-family="'Cascadia Code', monospace" text-anchor="middle" font-size="17" font-weight="800">
+          <rect class="node-pink" x="150" y="250" width="150" height="44" rx="8"/><text x="225" y="278">0010</text>
+          <rect class="node-pink" x="315" y="250" width="150" height="44" rx="8"/><text x="390" y="278">1101</text>
+          <rect class="node-pink" x="480" y="250" width="150" height="44" rx="8"/><text x="555" y="278">0111</text>
+        </g>
+        <g fill="#fda4af" font-size="15" font-weight="900" text-anchor="middle">
+          <text x="225" y="316">2</text><text x="390" y="316">D</text><text x="555" y="316">7</text>
+        </g>
+        <text x="710" y="280" text-anchor="middle" fill="#fda4af" font-size="22" font-weight="900">2D7₁₆</text>
+      </svg>
+      <div class="dg-cap">Group from the <b>right</b>: 3 bits for octal, 4 bits for hex. Pad the left with zeros.</div>
+    </div>
+    <table>
+      <tr><th>From → To</th><th>Rule</th><th>Worked example</th></tr>
+      <tr><td>Octal → binary</td><td>Each octal digit → 3 bits</td><td>(705)₈ → 111 000 101 → <b>111000101₂</b></td></tr>
+      <tr><td>Hex → binary</td><td>Each hex digit → 4 bits</td><td>(10AF)₁₆ → 0001 0000 1010 1111 → <b>1000010101111₂</b></td></tr>
+      <tr><td>Binary → octal</td><td>Group 3 bits from the right</td><td>1011010111₂ → 1 011 010 111 → <b>1327₈</b></td></tr>
+      <tr><td>Binary → hex</td><td>Group 4 bits from the right</td><td>1011010111₂ → 0010 1101 0111 → <b>2D7₁₆</b></td></tr>
+      <tr><td>Octal ↔ hex</td><td>Go through binary</td><td>1076₈ → 001000111110 → 0010 0011 1110 → <b>23E₁₆</b></td></tr>
+      <tr><td>Hex → octal</td><td>Hex → binary → regroup in 3s</td><td>1F04₁₆ → 0001 1111 0000 0100 → 001 111 100 000 100 → <b>17404₈</b></td></tr>
+    </table>
+    <div class="callout trick"><span class="c-ico brain">🧠</span>
+      <div><b>“Octal is triplets, hex is quads.”</b> 8 = 2³ → 3 bits; 16 = 2⁴ → 4 bits.
+      For octal ↔ hex, binary is the translator in the middle.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>➕ Binary Arithmetic — Carry, Shift, Add</h2>
+    <table>
+      <tr><th>Addition</th><th>Result</th><th>Rule</th></tr>
+      <tr><td>0 + 0</td><td>0</td><td>—</td></tr>
+      <tr><td>0 + 1 · 1 + 0</td><td>1</td><td>—</td></tr>
+      <tr><td>1 + 1</td><td><b>10</b></td><td>Write 0, carry 1</td></tr>
+      <tr><td>1 + 1 + 1</td><td><b>11</b></td><td>Write 1, carry 1</td></tr>
+    </table>
+    <p><b>Addition example</b> — align the points, add column by column, propagate the carry:</p>
+    <pre class="gate">   1101.101        (13.625)
++  0101.011        ( 5.375)
+-----------
+  10011.000        (19.000)  ✓</pre>
+    <p><b>Multiplication example</b> — exactly like decimal long multiplication: one partial product per multiplier bit, shifted left, then add:</p>
+    <pre class="gate">       1110        (14)
+     × 1011        (11)
+     ------
+       1110
+      1110
+     0000
+    1110
+    --------
+   10011010        (154)  ✓</pre>
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>Always check in decimal.</b> Convert both operands and your answer; if the decimal values agree,
+      your binary work is almost certainly right. That check earns method marks even if one column slips.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>⚡ Powers &amp; Memory Sizes</h2>
+    <table>
+      <tr><th>Symbol</th><th>Power of 2</th><th>Value</th><th>Meaning</th></tr>
+      <tr><td><b>k</b> (kilo)</td><td>2¹⁰</td><td>1,024</td><td>1 KB = 1,024 bytes</td></tr>
+      <tr><td><b>M</b> (mega)</td><td>2²⁰</td><td>1,048,576</td><td>1 MB = 1,024 KB</td></tr>
+      <tr><td><b>G</b> (giga)</td><td>2³⁰</td><td>1,073,741,824</td><td>1 GB = 1,024 MB</td></tr>
+    </table>
+    <p><b>Multiplying powers with the same base:</b> aᵖ × aᑫ = aᵖ⁺ᑫ. So
+       <b>2⁶ × 2¹⁰ = 2¹⁶ = 65,536</b>, and <b>64 × 2¹⁰ = 2⁶ × 2¹⁰ = 64k</b>.</p>
+    <div class="callout warn"><span class="c-ico">⚠️</span>
+      <div><b>Why 1 KB = 1024 B, not 1000 B?</b> Memory is addressed in binary, so sizes step in powers of 2.
+      Disk manufacturers often use decimal (1 kB = 1000 B), which is why a “500 GB” drive shows less in Windows.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🛠️ Weeks 4–5 — Software Engineering Foundations</h2>
+    <p><b>Software engineering</b> applies engineering principles to the <b>development, operation and maintenance</b>
+       of software. It covers the whole lifecycle — not just writing code.</p>
+    <table>
+      <tr><th>Concept</th><th>Exam-ready definition</th></tr>
+      <tr><td><b>Software (3 parts)</b></td><td><b>Instructions</b> (programs) + <b>data structures</b> + <b>documentation</b> — “IDD”.</td></tr>
+      <tr><td><b>Software process</b></td><td>Structured activities: <b>Specification → Design &amp; implementation → Validation → Evolution</b> (“S-D-V-E”).</td></tr>
+      <tr><td><b>Process model</b></td><td>The roadmap showing how those activities are organised — Waterfall, V-model, Spiral, Agile.</td></tr>
+      <tr><td><b>SDLC</b></td><td>The process used by industry to <b>design, develop and test high-quality software</b>.</td></tr>
+      <tr><td><b>5 success factors</b></td><td><b>People · Process · Product · Tools &amp; technology · Project constraints</b> (“3P + T + C”).</td></tr>
+    </table>
+    <div class="cyber-diagram">
+      <svg class="cy-svg" viewBox="0 0 900 150" role="img" aria-label="SDLC phases">
+        <text x="450" y="24" text-anchor="middle" class="muted tiny">THE SDLC — ONE DIRECTION ON PAPER, FEEDBACK IN REAL LIFE</text>
+        <g font-family="inherit" text-anchor="middle">
+          <rect class="node" x="8" y="44" width="112" height="50" rx="8"/><text x="64" y="66" font-size="12" font-weight="800">PLAN</text><text x="64" y="82" class="muted tiny">scope · cost</text>
+          <rect class="node" x="132" y="44" width="112" height="50" rx="8"/><text x="188" y="66" font-size="12" font-weight="800">REQUIREMENTS</text><text x="188" y="82" class="muted tiny">what · why</text>
+          <rect class="node" x="256" y="44" width="112" height="50" rx="8"/><text x="312" y="66" font-size="12" font-weight="800">DESIGN</text><text x="312" y="82" class="muted tiny">how · architecture</text>
+          <rect class="node" x="380" y="44" width="112" height="50" rx="8"/><text x="436" y="66" font-size="12" font-weight="800">IMPLEMENT</text><text x="436" y="82" class="muted tiny">code · unit test</text>
+          <rect class="node" x="504" y="44" width="112" height="50" rx="8"/><text x="560" y="66" font-size="12" font-weight="800">TEST</text><text x="560" y="82" class="muted tiny">integrate · verify</text>
+          <rect class="node" x="628" y="44" width="112" height="50" rx="8"/><text x="684" y="66" font-size="12" font-weight="800">DEPLOY</text><text x="684" y="82" class="muted tiny">release · train</text>
+          <rect class="node" x="752" y="44" width="140" height="50" rx="8"/><text x="822" y="66" font-size="12" font-weight="800">MAINTAIN</text><text x="822" y="82" class="muted tiny">fix · evolve</text>
+        </g>
+        <g class="flow">
+          <path d="M120 69 H130"/><path d="M244 69 H254"/><path d="M368 69 H378"/>
+          <path d="M492 69 H502"/><path d="M616 69 H626"/><path d="M740 69 H750"/>
+        </g>
+        <text x="450" y="128" text-anchor="middle" class="muted tiny">Maintenance is usually the longest and most expensive phase.</text>
+      </svg>
+      <div class="dg-cap">SDLC phases — name them in order, then explain what each produces.</div>
+    </div>
+    <div class="callout trick"><span class="c-ico brain">🧠</span>
+      <div><b>Memory hooks:</b> phases = <b>P-R-D-I-T-D-M</b> · software parts = <b>IDD</b> ·
+      process activities = <b>S-D-V-E</b> · success factors = <b>3P + T + C</b>.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🗺️ SDLC Models at a Glance</h2>
+    <img class="ict-img" src="img/cs181_sdlc_models.svg" alt="Comparison of waterfall, V-model, spiral and agile with a choose-by-requirements-risk-feedback strip">
+    <div class="cy-week-grid">
+      <div class="cy-week">
+        <span class="wk">WATERFALL</span>
+        <h4>Linear, one-way, sign-off</h4>
+        <p>Requirements → design → implementation → testing → maintenance, with no overlap.</p>
+        <ul><li><b>Pick me when:</b> requirements are fixed, clear and well understood; short project.</li>
+        <li><b>Weakness:</b> change is expensive; no working software until late.</li></ul>
+        <span class="exam-line">Killer phrase: “Fixed requirements, clean sign-off.”</span>
+      </div>
+      <div class="cy-week">
+        <span class="wk">V-MODEL</span>
+        <h4>Every build phase has a test twin</h4>
+        <p>Waterfall bent upward: left side verifies, right side validates.</p>
+        <ul><li><b>Pick me when:</b> safety/reliability-critical, strict documentation, small–medium project.</li>
+        <li><b>Weakness:</b> rigid; changes are costly; working software appears late.</li></ul>
+        <span class="exam-line">Killer phrase: “Left = verify, right = validate.”</span>
+      </div>
+      <div class="cy-week">
+        <span class="wk">SPIRAL</span>
+        <h4>Risk-driven loops</h4>
+        <p>Each loop: objectives → risk analysis → develop &amp; test → evaluate.</p>
+        <ul><li><b>Pick me when:</b> large, expensive, high-risk project with evolving requirements.</li>
+        <li><b>Weakness:</b> hard to predict time/cost; needs experienced risk assessors.</li></ul>
+        <span class="exam-line">Killer phrase: “The only model with explicit risk analysis.”</span>
+      </div>
+      <div class="cy-week">
+        <span class="wk">AGILE · SCRUM</span>
+        <h4>Respond to change, ship every sprint</h4>
+        <p>Short 1–4 week sprints deliver a potentially shippable increment.</p>
+        <ul><li><b>Pick me when:</b> requirements change fast, customer feedback matters, web/mobile product.</li>
+        <li><b>Weakness:</b> needs a committed, experienced team; scope can drift.</li></ul>
+        <span class="exam-line">Killer phrase: “Working software over comprehensive documentation.”</span>
+      </div>
+    </div>
+    <table>
+      <tr><th>Criterion</th><th>Waterfall</th><th>V-model</th><th>Spiral</th><th>Agile</th></tr>
+      <tr><td><b>Change tolerance</b></td><td>Very low</td><td>Low</td><td>High (risk loops)</td><td>Very high</td></tr>
+      <tr><td><b>Risk handling</b></td><td>Implicit</td><td>Verification-led</td><td><b>Explicit</b></td><td>Continuous feedback</td></tr>
+      <tr><td><b>Working software</b></td><td>Late</td><td>Late</td><td>Early prototypes</td><td><b>Every sprint</b></td></tr>
+      <tr><td><b>Documentation</b></td><td>Heavy</td><td>Very heavy</td><td>Moderate–heavy</td><td>Light, “just enough”</td></tr>
+      <tr><td><b>Best size</b></td><td>Small</td><td>Small–medium</td><td><b>Large</b></td><td>Any, especially evolving</td></tr>
+    </table>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎮 Scenario → Model Picker</h2>
+    <p>Read the scenario, choose a model in your head, then tap to check. The exam mark is in the
+       <b>reason</b> — requirement stability, risk, change frequency and project size.</p>
+    <div class="chain-demo">
+      <div class="chain-track" id="modelTrack">
+        <button type="button" class="chain-btn active" data-model="0">🏦 Bank payroll</button>
+        <button type="button" class="chain-btn" data-model="1">🏥 Infusion pump</button>
+        <button type="button" class="chain-btn" data-model="2">🛰️ Satellite platform</button>
+        <button type="button" class="chain-btn" data-model="3">🚀 Food-delivery startup</button>
+      </div>
+      <div class="chain-info" id="modelInfo"><b>Bank payroll — Waterfall.</b> Payroll rules are fixed by law and fully understood; the team can sign off requirements and move linearly. <b>Why not Agile:</b> regulatory rules change slowly, while audit-ready documentation and predictable cost matter more than rapid experiments.</div>
+      <div class="chain-actions">
+        <button type="button" class="btn ghost" id="modelNext">Next scenario →</button>
+        <span style="color:var(--muted);font-size:.82rem;align-self:center">Tap a scenario, or cycle through all four.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>✅ V-Model — the Test-Twin Picture</h2>
+    <div class="cyber-diagram">
+      <svg class="cy-svg" viewBox="0 0 900 340" role="img" aria-label="V-model pairing development phases with test phases">
+        <path d="M125 34 L450 300 L775 34" fill="none" stroke="#22d3ee" stroke-opacity=".25" stroke-width="3"/>
+        <g font-family="inherit" text-anchor="middle">
+          <rect class="node" x="35" y="20" width="180" height="52" rx="9"/><text x="125" y="42" font-size="12" font-weight="800">REQUIREMENTS</text><text x="125" y="58" class="muted tiny">what the user needs</text>
+          <rect class="node" x="35" y="95" width="180" height="52" rx="9"/><text x="125" y="117" font-size="12" font-weight="800">SYSTEM DESIGN</text><text x="125" y="133" class="muted tiny">architecture</text>
+          <rect class="node" x="35" y="170" width="180" height="52" rx="9"/><text x="125" y="192" font-size="12" font-weight="800">MODULE DESIGN</text><text x="125" y="208" class="muted tiny">detailed design</text>
+          <rect class="node" x="35" y="245" width="180" height="52" rx="9"/><text x="125" y="267" font-size="12" font-weight="800">CODING</text><text x="125" y="283" class="muted tiny">implement</text>
+
+          <rect class="node-pink" x="685" y="20" width="180" height="52" rx="9"/><text x="775" y="42" font-size="12" font-weight="800">ACCEPTANCE TEST</text><text x="775" y="58" class="muted tiny">user validates</text>
+          <rect class="node-pink" x="685" y="95" width="180" height="52" rx="9"/><text x="775" y="117" font-size="12" font-weight="800">SYSTEM TEST</text><text x="775" y="133" class="muted tiny">whole system</text>
+          <rect class="node-pink" x="685" y="170" width="180" height="52" rx="9"/><text x="775" y="192" font-size="12" font-weight="800">INTEGRATION TEST</text><text x="775" y="208" class="muted tiny">modules together</text>
+          <rect class="node-pink" x="685" y="245" width="180" height="52" rx="9"/><text x="775" y="267" font-size="12" font-weight="800">UNIT TEST</text><text x="775" y="283" class="muted tiny">one unit</text>
+        </g>
+        <g stroke="#f472b6" stroke-width="1.6" stroke-dasharray="6 6" fill="none">
+          <path d="M215 46 H685"/><path d="M215 121 H685"/><path d="M215 196 H685"/><path d="M215 271 H685"/>
+        </g>
+        <text x="450" y="34" text-anchor="middle" font-size="11" font-weight="800" fill="#67e8f9">VERIFY →</text>
+        <text x="450" y="326" text-anchor="middle" font-size="11" font-weight="800" fill="#fda4af">← VALIDATE</text>
+      </svg>
+      <div class="dg-cap">V-model — requirements ↔ acceptance · system design ↔ system test · module design ↔ integration test · coding → unit test.</div>
+    </div>
+    <table>
+      <tr><th>Left side (verification)</th><th>Right side (validation)</th></tr>
+      <tr><td>Requirements analysis</td><td>Acceptance testing</td></tr>
+      <tr><td>System / architecture design</td><td>System testing</td></tr>
+      <tr><td>Module / detailed design</td><td>Integration testing</td></tr>
+      <tr><td>Coding</td><td>Unit testing</td></tr>
+    </table>
+    <div class="callout exam"><span class="c-ico">❓</span>
+      <div><b>The mark-earning sentence:</b> “The V-model is chosen because every development phase has a matching
+      test phase, so test planning starts with requirements and defects are caught early — essential for
+      safety-critical systems.”</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧪 Testing, V&amp;V &amp; Quality — the Tables That Repeat</h2>
+    <img class="ict-img" src="img/cs181_testing_map.svg" alt="Software quality map: verification vs validation, testing vs debugging, black box vs white box, QA vs QC">
+    <table>
+      <tr><th></th><th>Verification</th><th>Validation</th></tr>
+      <tr><td><b>Question</b></td><td>“Are we building the product <b>right</b>?”</td><td>“Are we building the <b>right product</b>?”</td></tr>
+      <tr><td><b>Nature</b></td><td><b>Static</b> — reviews, walkthroughs, inspections</td><td><b>Dynamic</b> — run the software</td></tr>
+      <tr><td><b>Checks</b></td><td>Specs, design, code, test cases</td><td>Unit → integration → system → acceptance</td></tr>
+    </table>
+    <table>
+      <tr><th></th><th>Testing</th><th>Debugging</th></tr>
+      <tr><td><b>Job</b></td><td><b>Find</b> the defect; report it</td><td><b>Fix</b> the defect</td></tr>
+      <tr><td><b>Who</b></td><td>QA/testers (also developers, users)</td><td>Developer who wrote the code</td></tr>
+      <tr><td><b>Motto</b></td><td>“Does it fail?”</td><td>“Why does it fail, and how do I fix it?”</td></tr>
+    </table>
+    <table>
+      <tr><th></th><th>Black-box</th><th>White-box</th></tr>
+      <tr><td><b>View</b></td><td>User’s view — inputs/outputs</td><td>Developer’s view — code/paths</td></tr>
+      <tr><td><b>Knows code?</b></td><td>No</td><td>Yes</td></tr>
+      <tr><td><b>Technique</b></td><td>Equivalence partitioning, boundary values</td><td>Statement, branch, path coverage</td></tr>
+    </table>
+    <table>
+      <tr><th></th><th>Quality Assurance (QA)</th><th>Quality Control (QC)</th></tr>
+      <tr><td><b>Approach</b></td><td><b>Prevent</b> defects — process focus</td><td><b>Detect</b> defects — product focus</td></tr>
+      <tr><td><b>Examples</b></td><td>Standards, audits, benchmarking, training</td><td>Inspections, testing, defect tracking</td></tr>
+    </table>
+    <div class="callout trick"><span class="c-ico brain">🧠</span>
+      <div><b>“Testers find, developers fix.”</b> · <b>“Black box = user’s eyes; white box = developer’s eyes.”</b> ·
+      <b>“QA = Avoid; QC = Catch.”</b> · Test levels: <b>U-I-S-A</b> (unit → integration → system → acceptance).</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🧾 Design &amp; Flowcharts — the PDLC Tools</h2>
+    <p><b>Software design</b> specifies what the new system looks like and how it works before coding:
+       data dictionary, DFDs, class diagrams, I/O designs, cost/benefit analysis and documentation.
+       The <b>PDLC</b> expands specifications into a complete design, then code and tests.</p>
+    <div class="cyber-diagram">
+      <svg class="cy-svg" viewBox="0 0 820 170" role="img" aria-label="Flowchart symbols">
+        <g font-family="inherit" text-anchor="middle">
+          <rect x="20" y="36" width="120" height="54" rx="27" fill="rgba(34,211,238,.10)" stroke="#22d3ee" stroke-width="1.6"/>
+          <text x="80" y="60" font-size="12" font-weight="800">START / END</text><text x="80" y="78" class="muted tiny">oval / rounded</text>
+          <path d="M190 36 H310 L290 90 H170 Z" fill="rgba(167,139,250,.10)" stroke="#a78bfa" stroke-width="1.6"/>
+          <text x="240" y="60" font-size="12" font-weight="800">INPUT / OUTPUT</text><text x="240" y="78" class="muted tiny">parallelogram</text>
+          <rect x="350" y="36" width="140" height="54" rx="4" fill="rgba(52,211,153,.10)" stroke="#34d399" stroke-width="1.6"/>
+          <text x="420" y="60" font-size="12" font-weight="800">PROCESS</text><text x="420" y="78" class="muted tiny">rectangle</text>
+          <path d="M590 36 L660 63 L590 90 L520 63 Z" fill="rgba(244,114,182,.10)" stroke="#f472b6" stroke-width="1.6"/>
+          <text x="590" y="60" font-size="12" font-weight="800">DECISION</text><text x="590" y="78" class="muted tiny">diamond</text>
+          <circle cx="760" cy="63" r="28" fill="rgba(34,211,238,.10)" stroke="#22d3ee" stroke-width="1.6"/>
+          <text x="760" y="60" font-size="11" font-weight="800">CONNECTOR</text><text x="760" y="76" class="muted tiny">circle</text>
+        </g>
+        <g class="flow">
+          <path d="M140 63 H168"/><path d="M312 63 H348"/><path d="M492 63 H518"/><path d="M662 63 H730"/>
+        </g>
+        <text x="410" y="132" text-anchor="middle" class="muted tiny">“Oval opens, parallelogram passes, rectangle works, diamond decides.”</text>
+        <text x="410" y="154" text-anchor="middle" class="muted tiny">Three control structures: sequence · selection · iteration.</text>
+      </svg>
+      <div class="dg-cap">Flowchart symbols — a labelled diagram question is almost free marks.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>🎯 Rapid-Fire Drills — ICT</h2>
+    <div class="flip-grid">
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q1</span><p>Convert (1011.01)₂ to decimal.</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>8 + 0 + 2 + 1 + 0 + 0.25 = <b>11.25₁₀</b>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q2</span><p>Convert 77₁₀ to binary and hex.</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>77₁₀ = <b>1001101₂</b> = <b>4D₁₆</b>.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q3</span><p>Why group 3 bits for octal and 4 for hex?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>8 = 2³, so one octal digit covers 3 bits; 16 = 2⁴, so one hex digit covers 4 bits. Group from the right and pad left.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q4</span><p>Which SDLC model makes risk analysis an explicit phase?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Spiral.</b> Every loop = objectives → risk analysis → develop/test → evaluate.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q5</span><p>V-model: requirements pairs with which test?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>Acceptance testing.</b> System design ↔ system test; module design ↔ integration test; coding → unit test.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q6</span><p>Verification vs validation in one line each?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Verification = “build it <b>right</b>” (static reviews). Validation = “build the <b>right thing</b>” (run and test it).</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q7</span><p>QA vs QC?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p><b>QA prevents</b> defects by improving the process; <b>QC detects</b> defects in the product through testing/inspection.</p></div>
+      </div></div>
+      <div class="flip-card"><div class="flip-inner">
+        <div class="flip-face flip-front"><span class="q-label">Q8</span><p>Why does Agile suit a startup app?</p><span class="flip-hint">↻ tap</span></div>
+        <div class="flip-face flip-back"><span class="a-label">A</span><p>Requirements change fast and competitors ship weekly; sprints deliver working software and customer feedback quickly. Waterfall’s late delivery and costly change would fail.</p></div>
+      </div></div>
+    </div>
+    <p style="margin-top:14px;"><b>Next:</b> open the <b>ICT · Sample Paper</b> tab and write every conversion step before revealing the answer.</p>
+  </div>
+</section>
+
+<!-- ======================= ICT PAPER ======================= -->
+<section class="tab-panel" id="ict-paper">
+  <div class="note-card">
+    <h2><span class="bar"></span>📝 ICT — MidZ Sample Paper</h2>
+    <div class="paper-head">
+      <span><b>Course:</b> CS181 Application of ICT</span>
+      <span><b>Time:</b> 60 minutes</span>
+      <span><b>Total:</b> 40 marks</span>
+      <span><b>Questions:</b> 8 · answer ALL</span>
+      <span><b>Coverage:</b> Weeks 1–5</span>
+    </div>
+    <div class="callout tip"><span class="c-ico">💡</span>
+      <div><b>Instructions:</b> show every conversion step — division ladders, place values and carries all earn
+      method marks. For SDLC questions, name the model <b>and</b> justify it with requirement stability,
+      risk and change frequency. No calculators for Section A.</div>
+    </div>
+    <table>
+      <tr><th>Section</th><th>Topic</th><th>Questions</th><th>Marks</th></tr>
+      <tr><td><b>A</b></td><td>Number systems &amp; binary arithmetic</td><td>Q1–Q4</td><td>20</td></tr>
+      <tr><td><b>B</b></td><td>SDLC model-choice scenarios</td><td>Q5–Q7</td><td>15</td></tr>
+      <tr><td><b>C</b></td><td>Testing, debugging &amp; quality</td><td>Q8</td><td>5</td></tr>
+    </table>
+    <div class="callout exam"><span class="c-ico">🔎</span>
+      <div><b>Paper design:</b> 50% of the marks are number conversion and binary arithmetic — the most predictable
+      scoring block. The SDLC scenarios are deliberately different (fixed requirements, safety-critical, high-risk,
+      fast-changing) so you must justify rather than memorise one model.</div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Section A · Number Systems <span style="color:var(--muted);font-size:.9rem">(20 marks)</span></h2>
+
+    <div class="hard-q">
+      <h3>Q1 · Convert with full working <span style="color:var(--muted);font-size:.85rem">(6)</span></h3>
+      <p>Convert, showing all steps:</p>
+      <p><b>(a)</b> (125.625)₁₀ → binary &nbsp;&nbsp; <b>(b)</b> (A3.8)₁₆ → decimal &nbsp;&nbsp; <b>(c)</b> (64.35)₈ → binary</p>
+      <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+      <div class="model-ans" hidden>
+        <h4>Model answer</h4>
+        <p><b>(a)</b> Integer: 125÷2 = 62 r1 · 62÷2 = 31 r0 · 31÷2 = 15 r1 · 15÷2 = 7 r1 · 7÷2 = 3 r1 ·
+           3÷2 = 1 r1 · 1÷2 = 0 r1 → read up <b>1111101</b>.<br>
+           Fraction: 0.625×2 = 1.25 →1 · 0.25×2 = 0.5 →0 · 0.5×2 = 1.0 →1 → <b>.101</b>.<br>
+           Answer: <b>(1111101.101)₂</b>. Check: 64+32+16+8+4+1 + 0.5+0.125 = 125.625.</p>
+        <p><b>(b)</b> A = 10, so 10×16¹ + 3×16⁰ + 8×16⁻¹ = 160 + 3 + 0.5 = <b>163.5₁₀</b>.</p>
+        <p><b>(c)</b> Each octal digit → 3 bits: 6→110, 4→100, 3→011, 5→101.
+           Integer part 110 100; fraction .011 101 → <b>(110100.011101)₂</b>.</p>
+        <p><b>Marking:</b> 2 marks each — 1 for method, 1 for the correct answer. A correct answer with no working
+           gets 1 at most.</p>
+      </div>
+    </div>
+
+    <div class="hard-q">
+      <h3>Q2 · Division and grouping <span style="color:var(--muted);font-size:.85rem">(6)</span></h3>
+      <p><b>(a)</b> Convert (1234)₁₀ to octal and hexadecimal using repeated division. <b>(3)</b></p>
+      <p><b>(b)</b> Convert (1011010111)₂ to octal and hexadecimal using bit grouping. <b>(3)</b></p>
+      <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+      <div class="model-ans" hidden>
+        <h4>Model answer</h4>
+        <p><b>(a) Octal:</b> 1234÷8 = 154 r2 · 154÷8 = 19 r2 · 19÷8 = 2 r3 · 2÷8 = 0 r2 → read up
+           <b>(2322)₈</b>.<br>
+           <b>Hex:</b> 1234÷16 = 77 r2 · 77÷16 = 4 r13 → D · 4÷16 = 0 r4 → read up <b>(4D2)₁₆</b>.</p>
+        <p><b>(b) Octal:</b> group 3 bits from the right: 1 | 011 | 010 | 111 → 1, 3, 2, 7 → <b>(1327)₈</b>.<br>
+           <b>Hex:</b> group 4 bits from the right (pad left): 0010 | 1101 | 0111 → 2, D, 7 → <b>(2D7)₁₆</b>.</p>
+        <p><b>Marking:</b> 1 mark per correct conversion, 1 mark for showing the division/grouping. Check
+           part (b) by converting back to decimal (727) and part (a) back to 1234 if time allows.</p>
+      </div>
+    </div>
+
+    <div class="hard-q">
+      <h3>Q3 · Binary arithmetic <span style="color:var(--muted);font-size:.85rem">(4)</span></h3>
+      <p><b>(a)</b> Add (1101.101)₂ + (101.011)₂, showing carries. <b>(2)</b></p>
+      <p><b>(b)</b> Multiply (1110)₂ × (1011)₂ using partial products. <b>(2)</b></p>
+      <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+      <div class="model-ans" hidden>
+        <h4>Model answer</h4>
+        <pre class="gate">(a)   1101.101        (13.625)
+    + 0101.011        ( 5.375)
+    -----------
+     10011.000        (19.000)  ✓
+
+(b)       1110        (14)
+       × 1011        (11)
+       ------
+         1110
+        1110
+       0000
+      1110
+      --------
+     10011010        (154)  ✓</pre>
+        <p><b>Marking:</b> 1 mark for correct column alignment/carries and 1 for the answer in each part.
+           Decimal check = 13.625 + 5.375 = 19; 14 × 11 = 154.</p>
+      </div>
+    </div>
+
+    <div class="hard-q">
+      <h3>Q4 · Fractions and powers <span style="color:var(--muted);font-size:.85rem">(4)</span></h3>
+      <p><b>(a)</b> Convert (10.1011)₂ to decimal. <b>(1)</b></p>
+      <p><b>(b)</b> State the values of k, M and G in base 2. <b>(1)</b></p>
+      <p><b>(c)</b> Simplify 2⁶ × 2¹⁰ and give the decimal value. <b>(1)</b></p>
+      <p><b>(d)</b> Why is 1 KB equal to 1,024 bytes rather than 1,000 bytes? <b>(1)</b></p>
+      <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+      <div class="model-ans" hidden>
+        <h4>Model answer</h4>
+        <p><b>(a)</b> 1×2 + 0×1 + 1×0.5 + 0×0.25 + 1×0.125 + 1×0.0625 = 2 + 0.5 + 0.125 + 0.0625 =
+           <b>2.6875₁₀</b>.</p>
+        <p><b>(b)</b> k = 2¹⁰ = <b>1,024</b> · M = 2²⁰ = <b>1,048,576</b> · G = 2³⁰ = <b>1,073,741,824</b>.</p>
+        <p><b>(c)</b> Same base → add exponents: 2⁶ × 2¹⁰ = 2¹⁶ = <b>65,536</b>.</p>
+        <p><b>(d)</b> Memory is addressed in binary, so units step in powers of 2: 2¹⁰ = 1,024.
+           Disk vendors often use decimal units (1,000), which is why advertised capacity is larger than
+           the usable capacity shown by the OS.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Section B · SDLC Scenario Questions <span style="color:var(--muted);font-size:.9rem">(15 marks)</span></h2>
+
+    <div class="hard-q">
+      <h3>Q5 · The food-delivery startup <span style="color:var(--muted);font-size:.85rem">(5)</span></h3>
+      <p><b>Scenario.</b> “CampusEats” is a student food-delivery startup. Investors want a working demo in six weeks.
+         Competing apps release new features every week, and the founders keep changing requirements after user
+         feedback. The team has five developers and no fixed specification.</p>
+      <p><b>(a)</b> Recommend an SDLC model and justify it using requirement stability, risk and delivery speed. <b>(3)</b><br>
+         <b>(b)</b> Name two Agile Manifesto values that directly address this situation. <b>(2)</b></p>
+      <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+      <div class="model-ans" hidden>
+        <h4>Model answer</h4>
+        <p><b>(a) Agile / Scrum.</b> Requirements are <b>unstable and evolving</b>, so a plan-driven model would make
+           change expensive. Short <b>1–4 week sprints</b> deliver a working increment and a demo within six weeks.
+           Risk is controlled by frequent customer feedback and a prioritised product backlog, and the team can
+           respond to competitor releases each sprint.</p>
+        <p><b>(b)</b> <b>Responding to change over following a plan</b> — requirements change after feedback.
+           <b>Working software over comprehensive documentation</b> — the investor demo needs a running product, not a
+           heavy specification. (Also acceptable: customer collaboration over contract negotiation.)</p>
+        <p><b>Examiner wants:</b> the link <i>changing requirements → sprints → working software</i>, not just
+           “Agile is modern”.</p>
+      </div>
+    </div>
+
+    <div class="hard-q">
+      <h3>Q6 · The infusion pump <span style="color:var(--muted);font-size:.85rem">(5)</span></h3>
+      <p><b>Scenario.</b> A hospital is building firmware for an automatic infusion pump. A dosing error can injure
+         or kill a patient. Regulators require detailed documentation, traceability from requirements to tests,
+         and evidence that every safety requirement was tested.</p>
+      <p><b>(a)</b> Which SDLC model should the team use? Justify your choice. <b>(2)</b><br>
+         <b>(b)</b> Match each development phase to its corresponding test phase in that model. <b>(3)</b></p>
+      <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+      <div class="model-ans" hidden>
+        <h4>Model answer</h4>
+        <p><b>(a) V-model.</b> It is a verification-and-validation model in which every development phase has a
+           matching test phase. That gives early test planning, traceability from requirements to acceptance tests,
+           and the strict documentation regulators demand — appropriate for <b>safety-critical</b> firmware.</p>
+        <p><b>(b)</b> Requirements analysis ↔ <b>acceptance testing</b> · system/architecture design ↔
+           <b>system testing</b> · module/detailed design ↔ <b>integration testing</b> · coding → <b>unit testing</b>.</p>
+        <p><b>Examiner wants:</b> “test twin per phase” + safety/reliability + documentation, not just “V-model is
+           better”.</p>
+      </div>
+    </div>
+
+    <div class="hard-q">
+      <h3>Q7 · The satellite control platform <span style="color:var(--muted);font-size:.85rem">(5)</span></h3>
+      <p><b>Scenario.</b> A national space agency is building a satellite-control platform. The project will run for
+         three years, cost millions, and involve many unknowns: new hardware, international partners and evolving
+         mission requirements. A failure could destroy the satellite.</p>
+      <p><b>(a)</b> Recommend an SDLC model and explain why it fits better than Waterfall. <b>(3)</b><br>
+         <b>(b)</b> Name the four activities performed in every loop of that model. <b>(2)</b></p>
+      <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+      <div class="model-ans" hidden>
+        <h4>Model answer</h4>
+        <p><b>(a) Spiral model.</b> The project is <b>large, expensive and high-risk</b>, with evolving requirements.
+           Spiral makes <b>risk analysis an explicit phase in every loop</b>, builds prototypes early, and lets the
+           agency evaluate each increment before committing more budget. Waterfall assumes fixed requirements and
+           delays working software, so a late discovery would be catastrophic and costly.</p>
+        <p><b>(b)</b> ① Determine objectives and alternatives · ② identify and resolve risks ·
+           ③ develop and test the next version · ④ evaluate with the customer and plan the next loop.</p>
+        <p><b>Examiner wants:</b> “risk-driven” and “large/high-risk/evolving”, plus the four quadrants.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>Section C · Testing, Debugging &amp; Quality <span style="color:var(--muted);font-size:.9rem">(5 marks)</span></h2>
+
+    <div class="hard-q">
+      <h3>Q8 · The login bug <span style="color:var(--muted);font-size:.85rem">(5)</span></h3>
+      <p><b>Scenario.</b> A tester runs the login page with valid, invalid and boundary-length passwords and reports
+         that a valid user is sometimes rejected. A developer then sets breakpoints, steps through the password-check
+         function and changes the comparison logic. Meanwhile, the QA team audits the team’s code-review checklist
+         and updates the testing standard.</p>
+      <p><b>(a)</b> Identify the black-box and white-box activities in the scenario. <b>(2)</b><br>
+         <b>(b)</b> Who is testing and who is debugging? <b>(1)</b><br>
+         <b>(c)</b> Distinguish QA from QC using the scenario. <b>(2)</b></p>
+      <button type="button" class="btn ghost reveal-btn">👁 Reveal model answer ▼</button>
+      <div class="model-ans" hidden>
+        <h4>Model answer</h4>
+        <p><b>(a)</b> The tester running inputs and observing outputs <b>without seeing the code</b> is
+           <b>black-box testing</b> (functional, user’s view). The developer stepping through the function with
+           breakpoints and inspecting paths is <b>white-box testing</b> (structural, developer’s view).</p>
+        <p><b>(b)</b> The <b>tester/QA team tests</b> — finds and reports the defect. The <b>developer debugs</b> —
+           isolates and fixes the faulty comparison.</p>
+        <p><b>(c)</b> <b>QA</b> is process-focused prevention: auditing the code-review checklist and updating the
+           standard stops defects entering. <b>QC</b> is product-focused detection: running the login tests and
+           inspecting the result finds defects that already exist.</p>
+        <p><b>Examiner wants:</b> “find vs fix”, “inputs/outputs vs code paths”, “prevent vs detect”.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>✅ After the Paper — Mark Yourself</h2>
+    <ul class="checklist">
+      <li>Did I show the <b>division ladder</b> and read remainders <b>bottom-up</b>?</li>
+      <li>Did I label every answer with its <b>base</b> (₂, ₈, ₁₀, ₁₆)?</li>
+      <li>Did I <b>check</b> each conversion by converting back to decimal?</li>
+      <li>Did I align the radix point and propagate carries in binary addition?</li>
+      <li>Did I shift each partial product one place left in binary multiplication?</li>
+      <li>For SDLC, did I justify with <b>requirement stability · risk · change frequency · size</b>?</li>
+      <li>Did I distinguish <b>verification vs validation</b> and <b>QA vs QC</b>?</li>
+    </ul>
+    <p><b>Score guide:</b> 34–40 = mids-ready · 26–33 = redo the missed conversion type and one SDLC scenario ·
+       below 26 = return to <b>ICT · Visual Revise</b>, replay the division ladder and model picker, then retry tomorrow.</p>
+    <p><b>Full notes:</b> <a href="cs181.html" style="color:var(--cyan)">CS181 Weeks 1–7 →</a>
+       · <a href="cs181l.html" style="color:var(--cyan)">CS181L Lab →</a></p>
+  </div>
+
+  <div class="note-card">
+    <h2><span class="bar"></span>📚 Sources &amp; Further Reading</h2>
+    <ul>
+      <li><b>Course guide:</b> CS181 weekly contents — Week 3 number systems, Weeks 4–5 software engineering.</li>
+      <li><b>Lecture notes:</b> <code>Week3_NumberSystems.md</code> · <code>Week4-5_SoftwareEngineering_SDLC_Testing.md</code>.</li>
+      <li><b>Textbook:</b> Parker, <i>Understanding Computers: Today and Tomorrow</i> — systems, SDLC and testing chapters.</li>
+      <li><b>Agile Manifesto:</b> <a href="https://agilemanifesto.org/" target="_blank" rel="noopener" style="color:var(--cyan)">agilemanifesto.org</a>
+          — the four value pairs quoted in Q5.</li>
+      <li><b>Classic scenario inspirations:</b> safety-critical medical devices (V-model), large space/ defence
+          platforms (Spiral), and consumer web startups (Agile). Names, figures and organisations in this paper are invented.</li>
+    </ul>
+    <p style="color:var(--muted);font-size:.85rem;margin-top:8px;">Exam answers should use the lecture definitions and
+       your own justification — not memorised incident trivia.</p>
+  </div>
+</section>
+
+<script>
+/* ---------- ICT: scenario -> SDLC model picker ---------- */
+(function () {
+  var track = document.getElementById('modelTrack');
+  var info = document.getElementById('modelInfo');
+  if (!track || !info) return;
+  var rows = [
+    ['Bank payroll', 'Waterfall',
+     'Payroll rules are fixed by law and fully understood, so the team can sign off requirements and move linearly. Predictable cost and audit-ready documentation matter more than rapid experiments.',
+     'Agile would add feedback the client does not need, while regulatory change is slow.'],
+    ['Hospital infusion pump', 'V-model',
+     'This is safety-critical firmware: a dosing error can injure a patient. The V-model pairs every development phase with a test phase, so requirements are traceable to acceptance tests and defects are caught early.',
+     'Waterfall tests too late; Agile’s light documentation fails regulatory traceability.'],
+    ['Satellite control platform', 'Spiral',
+     'Large, expensive, high-risk and full of unknowns. Spiral makes risk analysis an explicit phase in every loop and lets the agency evaluate prototypes before committing more budget.',
+     'Waterfall assumes fixed requirements; a late discovery would be catastrophic.'],
+    ['Food-delivery startup', 'Agile / Scrum',
+     'Requirements change after every round of user feedback and investors want a working demo in six weeks. One-to-four-week sprints deliver a shippable increment and keep the team responsive.',
+     'Waterfall would freeze requirements and delay working software until late.']
+  ];
+  var btns = [].slice.call(track.querySelectorAll('.chain-btn'));
+  var i = 0;
+  function show(n) {
+    i = n;
+    btns.forEach(function (b, k) { b.classList.toggle('active', k === n); });
+    info.innerHTML = '<b>' + rows[n][0] + ' → ' + rows[n][1] + '.</b> ' + rows[n][2] +
+      ' <b>Trap to avoid:</b> ' + rows[n][3];
+  }
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () { show(+b.dataset.model); });
+  });
+  var next = document.getElementById('modelNext');
+  if (next) next.addEventListener('click', function () { show((i + 1) % rows.length); });
+})();
+
+/* ---------- ICT: replay the division-ladder animation ---------- */
+(function () {
+  var conv = document.getElementById('convDemo');
+  if (!conv) return;
+  var replay = document.getElementById('convReplay');
+  function run() {
+    conv.classList.remove('run');
+    void conv.offsetWidth;
+    conv.classList.add('run');
+  }
+  if (replay) replay.addEventListener('click', run);
+  var tab = document.querySelector('.tab-btn[data-tab="ict-rev"]');
+  if (tab) tab.addEventListener('click', function () { setTimeout(run, 60); });
+  var pick = document.querySelector('.subject-pick[data-subject="ict"]');
+  if (pick) pick.addEventListener('click', function () { setTimeout(run, 80); });
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) run(); });
+    }, { threshold: 0.12 }).observe(conv);
+  } else {
+    run();
+  }
+})();
+</script>
+
 <footer class="footer">
-  🎯 <b>MidZ</b> · FE (Revise · Mock · 2 Sample Papers) + DS (Zero-to-Hero · 2 Sample Papers · Rosen 7e verbatim) + PF (Weeks 1–6 Revise · Conceptual Paper · 10 Hard Programs) + ICYS (Weeks 1–6 Visual Revise · Scenario Paper) · <a href="index.html" style="color:inherit">Notes Hub →</a> · <a href="el170.html" style="color:inherit">EL170 →</a> · <a href="ma216.html" style="color:inherit">MA216 →</a> · <a href="cs111.html" style="color:inherit">CS111 →</a> · <a href="cy104.html" style="color:inherit">CY104 →</a> · Fall 2026
+  🎯 <b>MidZ</b> · FE (Revise · Mock · 2 Sample Papers) + DS (Zero-to-Hero · 2 Sample Papers · Rosen 7e verbatim) + PF (Weeks 1–6 Revise · Conceptual Paper · 10 Hard Programs) + ICYS (Weeks 1–6 Visual Revise · Scenario Paper) + ICT (Number Systems + SDLC Visual Revise · 40-mark Paper) · <a href="index.html" style="color:inherit">Notes Hub →</a> · <a href="el170.html" style="color:inherit">EL170 →</a> · <a href="ma216.html" style="color:inherit">MA216 →</a> · <a href="cs111.html" style="color:inherit">CS111 →</a> · <a href="cy104.html" style="color:inherit">CY104 →</a> · <a href="cs181.html" style="color:inherit">CS181 →</a> · Fall 2026
 </footer>
 
 <script src="script.js"></script>
@@ -3450,7 +4284,7 @@ int main() {
 
   function setSubject(sub) {
     picks.forEach(function (p) { p.classList.toggle('active', p.dataset.subject === sub); });
-    tabsBox.classList.remove('subj-fe', 'subj-ds', 'subj-pf', 'subj-cy');
+    tabsBox.classList.remove('subj-fe', 'subj-ds', 'subj-pf', 'subj-cy', 'subj-ict');
     tabsBox.classList.add('subj-' + sub);
     btns.forEach(function (b) { b.classList.remove('active'); });
     panels.forEach(function (p) { p.classList.remove('active'); });
@@ -3475,7 +4309,7 @@ int main() {
 
   var savedSub = 'fe';
   try { savedSub = localStorage.getItem('cys-midz-subject') || 'fe'; } catch (e) {}
-  setSubject(['fe', 'ds', 'pf', 'cy'].indexOf(savedSub) !== -1 ? savedSub : 'fe');
+  setSubject(['fe', 'ds', 'pf', 'cy', 'ict'].indexOf(savedSub) !== -1 ? savedSub : 'fe');
 
   /* digits 1-9 must only hit VISIBLE tabs (shared script.js indexes all tabs) */
   document.addEventListener('keydown', function (e) {
